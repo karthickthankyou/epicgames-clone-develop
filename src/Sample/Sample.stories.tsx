@@ -1,15 +1,14 @@
-import React from 'react'
 import { withDesign } from 'storybook-addon-designs'
-import { Story, Meta } from '@storybook/react/types-6-0'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Sample, { ISampleProps } from './Sample'
 
 export default {
   title: 'Pages/Sample',
   component: Sample,
   decorators: [withDesign],
-} as Meta
+} as ComponentMeta<ISampleProps>
 
-const Template: Story<ISampleProps> = (args) => <Sample {...args} />
+const Template: ComponentStory<ISampleProps> = () => <Sample />
 
 export const Primary = Template.bind({})
 Primary.args = {}

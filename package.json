@@ -61,8 +61,18 @@
         "@storybook/node-logger": "^6.3.6",
         "@storybook/preset-create-react-app": "^3.2.0",
         "@storybook/react": "^6.3.6",
+        "@typescript-eslint/eslint-plugin": "^4.28.5",
+        "@typescript-eslint/parser": "^4.28.5",
         "autoprefixer": "^9.8.6",
+        "eslint": "^7.31.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.4",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-react": "^7.24.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
         "postcss": "^7.0.36",
+        "prettier": "^2.3.2",
         "storybook-addon-designs": "^6.0.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
     }
