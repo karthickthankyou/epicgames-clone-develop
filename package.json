@@ -61,6 +61,8 @@
         ]
     },
     "devDependencies": {
+        "@commitlint/cli": "^13.1.0",
+        "@commitlint/config-conventional": "^13.1.0",
         "@storybook/addon-a11y": "^6.3.6",
         "@storybook/addon-actions": "^6.3.6",
         "@storybook/addon-essentials": "^6.3.6",
