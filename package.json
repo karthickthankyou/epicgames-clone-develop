@@ -23,7 +23,14 @@
         "test": "craco test",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "build-storybook": "build-storybook -s public",
+        "prettier": "prettier --ignore-path .gitignore \"**/*.{js,jsx,ts,tsx,json}\"",
+        "format:check": "npm run prettier -- --check",
+        "format:fix": "npm run prettier -- --write",
+        "type:check": "tsc -p tsconfig.json",
+        "lint": "eslint --ext .ts --ext .tsx .",
+        "validate": "npm-run-all --parallel type:check format:check lint",
+        "prepare": "husky install"
     },
     "eslintConfig": {
         "extends": [
@@ -71,9 +78,15 @@
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-react": "^7.24.0",
         "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^7.0.1",
+        "lint-staged": "^11.1.1",
         "postcss": "^7.0.36",
         "prettier": "^2.3.2",
         "storybook-addon-designs": "^6.0.1",
         "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7"
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": "eslint --cache --fix",
+        "*.{ts,tsx,js,css,md}": "prettier --write"
     }
 }
