@@ -25,6 +25,11 @@ code {
 
 @tailwind utilities;
 
+@layer components {
+  .btn-lg {
+    @apply px-6 py-2;
+  }
+}
 @layer base {
   body {
     @apply text-gray-100 bg-gray-900;
