@@ -14,4 +14,19 @@ code {
 
 @tailwind base;
 @tailwind components;
+
+.activeNavlink ~ #active-marker {
+  @apply translate-y-0;
+}
+
+.hide-last:last-child {
+  display: none;
+}
+
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-100 bg-gray-900;
+  }
+}
