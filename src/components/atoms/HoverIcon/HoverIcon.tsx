@@ -27,7 +27,7 @@ const HoverIcon = ({
       </div>
 
       <div
-        className={`absolute px-2 py-1 text-sm transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap ${
+        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap ${
           showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
         }
                   ${
