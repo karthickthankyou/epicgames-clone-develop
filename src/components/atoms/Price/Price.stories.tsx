@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Price from './Price'
 
 export default {
-  title: 'components/atoms/Price',
+  title: 'atoms/Price',
   component: Price,
 } as ComponentMeta<typeof Price>
 
@@ -19,4 +19,9 @@ Primary.args = {
   discount: 0,
   comingSoon: true,
 }
-Primary.parameters = {}
+Primary.parameters = {
+  design: {
+    type: 'figma',
+    url: 'https://www.figma.com/file/KPictILHO3aOaGAkpVBBRJ/EpicRefactor?node-id=14%3A131',
+  },
+}

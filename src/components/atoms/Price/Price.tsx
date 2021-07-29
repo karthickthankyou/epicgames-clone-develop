@@ -1,13 +1,13 @@
 import { discountCalc, withCurrency } from '../../../utils'
 
-export interface IPriceCardProps {
+export interface IPriceProps {
   price: number
   discount?: number
   classes?: string
   comingSoon?: boolean
 }
 
-const Discounted = ({ discount, price }: IPriceCardProps) => (
+const Discounted = ({ discount, price }: IPriceProps) => (
   <>
     <span className='px-1 py-0.5 mr-2 bg-blue-700 rounded-sm'>
       -{discount}%
@@ -19,13 +19,8 @@ const Discounted = ({ discount, price }: IPriceCardProps) => (
   </>
 )
 
-const PriceCard = ({
-  price,
-  discount,
-  comingSoon,
-  classes,
-}: IPriceCardProps) => {
-  const Price = () => {
+const Price = ({ price, discount, comingSoon, classes }: IPriceProps) => {
+  const CreatePrice = () => {
     if (comingSoon) return <>Coming Soon</>
     if (price === 0) return <div>Free</div>
 
@@ -34,9 +29,12 @@ const PriceCard = ({
       return withCurrency(price)
     }
 
-    throw new Error('Unknown combination of values received in PriceCard.')
+    throw new Error('Unknown combination of values received in Price.')
   }
-  return <div className={`text-sm text-gray-200 ${classes}`}>{Price()}</div>
+
+  return (
+    <div className={`text-sm text-gray-200 ${classes}`}>{CreatePrice()}</div>
+  )
 }
 
-export default PriceCard
+export default Price
