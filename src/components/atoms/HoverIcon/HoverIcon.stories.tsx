@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof HoverIcon> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  IconComponent: <HiHeart className='w-5 h-5 m-1' />,
+  IconComponent: HiHeart,
   hintText: 'Hello World',
 }
 Primary.parameters = {}

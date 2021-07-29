@@ -1,14 +1,9 @@
 import { useState } from 'react'
-import {
-  HiOutlineShoppingBag,
-  HiShoppingBag,
-  HiOutlineHeart,
-  HiHeart,
-} from 'react-icons/hi'
 import { motion } from 'framer-motion'
 
 import Price, { IPriceProps } from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
+import { getInCart, getWishlisted } from '../../../utils'
 
 export interface ICard01Props {
   gameTitle: string
@@ -35,33 +30,17 @@ const GameCard01 = ({
   productionCompany,
   priceInfo: { price, discount },
   displayImage,
-  inCart,
-  wishlisted,
+  inCart = false,
+  wishlisted = false,
 }: ICard01Props) => {
   const [hover, setHover] = useState(false)
 
-  const { WishlistIcon, wishlistHintText } = wishlisted
-    ? {
-        WishlistIcon: <HiHeart className='w-5 h-5 m-1' />,
-        wishlistHintText: 'Wishlisted',
-      }
-    : {
-        WishlistIcon: <HiOutlineHeart className='w-5 h-5 m-1' />,
-        wishlistHintText: 'Add to wishlist',
-      }
-  const { CartIcon, cartHintText } = inCart
-    ? {
-        CartIcon: <HiShoppingBag className='w-5 h-5 m-1' />,
-        cartHintText: 'In cart',
-      }
-    : {
-        CartIcon: <HiOutlineShoppingBag className='w-5 h-5 m-1' />,
-        cartHintText: 'Add to cart',
-      }
+  const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
+  const { CartIcon, cartHintText } = getInCart(inCart)
 
   return (
     <div
-      className='relative max-w-md'
+      className='relative'
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
@@ -83,14 +62,19 @@ const GameCard01 = ({
           hintText={cartHintText}
         />
       </motion.div>
+
       <a href='#0'>
         <img
           src={displayImage}
           alt=''
           className='object-cover w-full transition-all transform h-60 filter hover:brightness-120'
         />
-        <div className='mt-3 font-semibold'>{gameTitle}</div>
-        <div className='text-gray-300'>{productionCompany}</div>
+        <div className='mt-3 font-semibold truncate overflow-ellipsis'>
+          {gameTitle}
+        </div>
+        <div className='text-sm text-gray-300 truncate overflow-ellipsis'>
+          {productionCompany}
+        </div>
         <Price price={price} discount={discount} classes='mt-3' />
       </a>
     </div>

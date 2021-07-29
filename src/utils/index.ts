@@ -1,3 +1,10 @@
+import {
+  HiOutlineShoppingBag,
+  HiShoppingBag,
+  HiOutlineHeart,
+  HiHeart,
+} from 'react-icons/hi'
+
 export interface ICounter {
   days: string
   hours: string
@@ -43,3 +50,24 @@ export const Timer = (callback: Function, delay: number) => {
   resume()
   return { pause, resume, clear }
 }
+
+export const getWishlisted = (wishlisted: boolean) =>
+  wishlisted
+    ? {
+        WishlistIcon: HiHeart,
+        wishlistHintText: 'Wishlisted',
+      }
+    : {
+        WishlistIcon: HiOutlineHeart,
+        wishlistHintText: 'Add to wishlist',
+      }
+export const getInCart = (inCart: boolean) =>
+  inCart
+    ? {
+        CartIcon: HiShoppingBag,
+        cartHintText: 'In cart',
+      }
+    : {
+        CartIcon: HiOutlineShoppingBag,
+        cartHintText: 'Add to cart',
+      }

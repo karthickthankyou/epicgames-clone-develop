@@ -5,7 +5,6 @@ import image from '../../../assets/game.jpg'
 
 export default {
   title: 'molecules/GameCard01',
-  argTypes: { onClick: { action: 'clicked' } },
   component: GameCard01,
 } as ComponentMeta<typeof GameCard01>
 
