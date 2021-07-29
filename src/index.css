@@ -26,6 +26,9 @@ code {
 @tailwind utilities;
 
 @layer components {
+  .btn {
+    @apply text-xs uppercase rounded-sm;
+  }
   .btn-md {
     @apply px-3 py-1;
   }

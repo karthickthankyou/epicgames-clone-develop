@@ -8,14 +8,20 @@ export interface IGameCard02Props {
   displayImage: string
   inCart?: boolean
   wishlisted?: boolean
+  classes?: string
 }
 
 const GameCard02 = ({
   gameTitle,
   description,
   displayImage,
+  classes,
 }: IGameCard02Props) => (
-  <div className='bg-gray-800 rounded-sm min-w-24 md:w-full md:min-w-full hover:bg-gray-700'>
+  <div
+    className={`bg-gray-800 rounded-sm min-w-24 md:w-full md:min-w-full hover:bg-gray-700 ${
+      classes && classes
+    }`}
+  >
     <img
       src={displayImage}
       className='object-cover w-full transition-all rounded-b-sm cursor-pointer h-60 filter hover:brightness-125'
