@@ -35,6 +35,9 @@ code {
   .btn-lg {
     @apply px-6 py-2;
   }
+  .btn-xl {
+    @apply px-8 py-3;
+  }
 }
 @layer base {
   body {

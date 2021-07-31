@@ -2,7 +2,7 @@ import dateFormat from 'dateformat'
 import { FaXbox } from 'react-icons/fa'
 import Price, { IPriceProps } from '../../atoms/Price'
 
-export interface ICard05Props {
+export interface IGameCard06Props {
   gameTitle: string
   price: IPriceProps
   displayImage: string
@@ -11,13 +11,13 @@ export interface ICard05Props {
   date: string
 }
 
-const Card05 = ({
+const GameCard06 = ({
   gameTitle,
   price: { price },
   displayImage,
   date,
   review,
-}: ICard05Props) => (
+}: IGameCard06Props) => (
   <div className='relative grid grid-cols-3 bg-gray-800 shadow-xl hover:bg-gray-700 group'>
     <button type='button' tabIndex={0}>
       <img
@@ -56,4 +56,4 @@ const Card05 = ({
   </div>
 )
 
-export default Card05
+export default GameCard06
