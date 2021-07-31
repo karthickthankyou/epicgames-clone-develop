@@ -18,7 +18,7 @@ const Card05 = ({
   date,
   review,
 }: ICard05Props) => (
-  <div className='relative grid grid-cols-3 bg-gray-800 shadow-xl group'>
+  <div className='relative grid grid-cols-3 bg-gray-800 shadow-xl hover:bg-gray-700 group'>
     <button type='button' tabIndex={0}>
       <img
         src={displayImage}
@@ -34,9 +34,6 @@ const Card05 = ({
         <div className='mt-2 text-xs text-gray-400'>
           <span className='line-clamp-2'>{review}</span>
         </div>
-        {/* <p className="text-sm text-gray-500 truncate ... mt-1">
-              {productionCompany}
-            </p> */}
         <div className='mt-3'>
           <Price price={price} />
         </div>
