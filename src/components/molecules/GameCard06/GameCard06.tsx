@@ -18,11 +18,11 @@ const GameCard06 = ({
   date,
   review,
 }: IGameCard06Props) => (
-  <div className='relative flex items-stretch p-2 bg-gray-800 rounded hover:bg-gray-700 group'>
+  <div className='relative flex items-stretch p-2 bg-gray-800 rounded group'>
     <button type='button' className='w-36' tabIndex={0}>
       <img
         src={displayImage}
-        className='object-cover w-full h-full col-span-1 rounded-sm shadow-inner cursor-pointer filter hover:brightness-125'
+        className='object-cover w-full h-full col-span-1 rounded-sm shadow-inner cursor-pointer filter group-hover:brightness-125'
         alt=''
       />
     </button>
@@ -42,7 +42,7 @@ const GameCard06 = ({
       <div className='mt-auto'>
         <button
           type='button'
-          className='w-full px-4 py-2 mt-2 text-xs border-t border-gray-700 btn rounded-white group-hover:bg-blue-800 hover:bg-blue-500'
+          className='w-full px-4 py-2 mt-2 text-xs border-t border-gray-700 btn rounded-white hover:bg-blue-700 group-hover:bg-blue-600'
         >
           Add to cart
         </button>

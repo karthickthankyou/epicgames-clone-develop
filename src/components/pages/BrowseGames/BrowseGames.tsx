@@ -5,6 +5,8 @@ import { useAppSelector } from '../../../store/hooks'
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard06 from '../../molecules/GameCard06'
 import GameCard01 from '../../molecules/GameCard01'
+import Pagination from '../../molecules/Pagination'
+import BrowseFilters from '../../molecules/BrowseFilters'
 
 export interface IBrowseGamesProps {}
 
@@ -14,23 +16,31 @@ const BrowseGames = () => {
   useGetWishlist()
   return (
     <div>
-      <div className='flex items-center justify-between'>
-        {/* <Link to='/'>To Home</Link> */}
+      <div className='flex items-start my-4'>
         <SortDropdown />
-        <div className='p-2'>Items ({games.length})</div>
+        {/* <Link to='/'>To Home</Link> */}
+        {/* <div className='p-2'>Items ({games.length})</div> */}
       </div>
-      <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4'>
-        {games.map((game) => (
-          <GameCard01
-            key={game.id}
-            displayImage={game.imageUrl}
-            title={game.title}
-            discount={game.discount}
-            price={game.price}
-            productionCompany={game.publisherId}
-            // review='An open world you can get lost in and continue finding new things to do. An open world you can get lost in and continue finding new things to do'
-          />
-        ))}
+      <div className='flex mt-6'>
+        <div className='flex-grow'>
+          <div className='grid grid-cols-2 gap-4 mr-6 sm:grid-cols-3 lg:grid-cols-4'>
+            {games.map((game) => (
+              <GameCard01
+                key={game.id}
+                displayImage={game.imageUrl}
+                title={game.title}
+                discount={game.discount}
+                price={game.price}
+                productionCompany={game.publisherId}
+                // review='An open world you can get lost in and continue finding new things to do. An open world you can get lost in and continue finding new things to do'
+              />
+            ))}
+          </div>
+          <div className='flex justify-center my-16'>
+            <Pagination current={1} total={10} />
+          </div>
+        </div>
+        <BrowseFilters />
       </div>
     </div>
   )

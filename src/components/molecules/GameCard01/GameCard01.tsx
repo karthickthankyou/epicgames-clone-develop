@@ -49,7 +49,7 @@ const GameCard01 = ({
       <motion.div
         variants={container}
         animate={hover ? 'show' : 'hidden'}
-        className={`absolute right-0 z-10 opacity-0 flex m-1 ${
+        className={`absolute right-0  z-10 opacity-0 flex m-1 ${
           hover && 'opacity-100'
         }`}
       >
@@ -57,6 +57,7 @@ const GameCard01 = ({
           key={wishlistHintText}
           IconComponent={WishlistIcon}
           hintText={wishlistHintText}
+          classes='mr-1'
         />
         <HoverIcon
           key={cartHintText}
@@ -71,7 +72,7 @@ const GameCard01 = ({
             src={displayImage}
             alt=''
             // transition-all transform filter hover:brightness-120
-            className='object-cover object-center'
+            className='object-cover object-center rounded-lg'
           />
         </div>
         <div className='mt-3 font-semibold truncate overflow-ellipsis'>

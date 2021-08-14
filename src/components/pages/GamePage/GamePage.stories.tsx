@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import GamePage from './GamePage'
 
 export default {
-  title: 'components/pages/GamePage',
+  title: 'pages/GamePage',
   component: GamePage,
 } as ComponentMeta<typeof GamePage>
 

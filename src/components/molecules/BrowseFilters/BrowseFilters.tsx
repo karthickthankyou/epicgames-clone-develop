@@ -92,9 +92,9 @@ const BrowseFilters = () => {
   const [filters, updateFilters] = useImmer(initialFilters)
 
   return (
-    <div className='w-80'>
-      <div className='flex justify-between p-3'>
-        <div className='capitalize'>
+    <div className='text-xs w-80'>
+      <div className='flex justify-between p-4'>
+        <div className='text-gray-400 uppercase'>
           filters {filters.length > 0 && <> ({filters.length})</>}
         </div>
         {filters.length > 0 && (
@@ -112,10 +112,10 @@ const BrowseFilters = () => {
       </div>
       <div>
         {allFilters.map((filter) => (
-          <div key={filter.name} className='border-t border-b border-gray-700 '>
+          <div key={filter.name} className='border-t border-gray-800 '>
             <button
               type='button'
-              className='flex justify-between w-full px-3 py-2 text-sm font-thin tracking-widest text-left text-gray-300 uppercase border-b border-gray-800'
+              className='flex justify-between w-full p-4 font-thin tracking-widest text-left text-gray-300 uppercase'
               key={filter.name}
               onClick={() =>
                 updateCategories((state) =>
@@ -127,9 +127,9 @@ const BrowseFilters = () => {
             >
               {filter.name}
               {categories.includes(filter.name) ? (
-                <FaChevronDown className='w-5 h-5 ml-auto mr-2 text-gray-500' />
+                <FaChevronDown className='w-4 h-4 ml-auto mr-2 text-gray-200' />
               ) : (
-                <FaChevronUp className='w-5 h-5 ml-auto mr-2 text-gray-500' />
+                <FaChevronUp className='w-4 h-4 ml-auto mr-2 text-gray-500' />
               )}
             </button>
             <div>
@@ -139,7 +139,7 @@ const BrowseFilters = () => {
                     <button
                       type='button'
                       key={option}
-                      className={`py-1.5 px-6 items-center flex w-full text-gray-400 text-left flex-grow ${
+                      className={`py-4 px-6 items-center flex w-full text-gray-400 text-left flex-grow ${
                         filters.includes(option) && 'bg-gray-800'
                       }`}
                       onClick={() =>
@@ -160,7 +160,7 @@ const BrowseFilters = () => {
                     >
                       {option}
                       {filters.includes(option) && (
-                        <FaCheck className='w-4 h-4 ml-auto mr-2 text-gray-200' />
+                        <FaCheck className='w-3 h-3 ml-auto mr-2 text-gray-400' />
                       )}
                     </button>
                   </div>

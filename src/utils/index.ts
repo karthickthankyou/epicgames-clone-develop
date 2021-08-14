@@ -1,9 +1,11 @@
+/* eslint-disable no-plusplus */
 import {
   HiOutlineShoppingBag,
   HiShoppingBag,
   HiOutlineHeart,
   HiHeart,
 } from 'react-icons/hi'
+import { TypeOfTag } from 'typescript'
 
 export const CAROUSEL_DURATION = 5
 export interface ICounter {
@@ -72,3 +74,48 @@ export const getInCart = (inCart: boolean) =>
         CartIcon: HiOutlineShoppingBag,
         cartHintText: 'Add to cart',
       }
+
+export const getPaginationNumbers = (current: number, total: number) => {
+  if (total === 1) return []
+  const items: number[] = []
+  let itemsComplete: (number | '<' | '>' | '...')[] = []
+
+  const validate = (num: number): boolean =>
+    num > 0 && num <= total && !items.includes(num)
+
+  // Always have 1
+  items.push(1)
+
+  const fillerStart =
+    // eslint-disable-next-line no-nested-ternary
+    current === 1 ? current + 1 : current === total ? total - 2 : current - 1
+  for (let i = fillerStart; i <= fillerStart + 2; i++)
+    if (validate(i)) items.push(i)
+
+  if (validate(total)) items.push(total)
+
+  // Insert ...
+  const dotsIndex = []
+  for (let i = 1; i < items.length; i++) {
+    const diff: number = items[i] - items[i - 1]
+    if (diff !== 1) {
+      dotsIndex.push(dotsIndex.length + i)
+    }
+  }
+  itemsComplete = items.slice()
+  for (let i = 0; i < dotsIndex.length; i++) {
+    itemsComplete.splice(dotsIndex[i], 0, '...')
+  }
+
+  // Insert arrows
+  if (current !== 1) itemsComplete.unshift('<')
+  if (current !== total) itemsComplete.push('>')
+
+  const result: { key: number; item: typeof itemsComplete[number] }[] = []
+
+  itemsComplete.forEach((item, index) => {
+    result.push({ key: index, item })
+  })
+
+  return result
+}

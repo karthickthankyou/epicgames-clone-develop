@@ -33,35 +33,35 @@ function App() {
   return (
     <Router>
       <div className='container mx-auto'>
-        <ul>
-          <li>
+        <ul className='flex'>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/'>Home</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/also-wishlist'>Old Match, to be redirected to wish</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/wishlist'>Wishlist</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/browse'>BrowseGames</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/checkout'>Checkout</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/game/004'>Game Page</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/cart'>Cart</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/signup'>Sign Up</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/signin'>Sign In</Link>
           </li>
-          <li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/also/will/not/match'>404</Link>
           </li>
         </ul>

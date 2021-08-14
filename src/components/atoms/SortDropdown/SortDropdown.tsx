@@ -1,6 +1,6 @@
 import { OrderByDirection } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
-import { FaChevronCircleUp, FaChevronCircleDown } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import { setSortKeyAndOrder } from '../../../store/browseGamesSlice'
 import { useAppDispatch } from '../../../store/hooks'
 import { SortKey } from '../../../types'
@@ -42,9 +42,9 @@ const SortDropdown = () => {
         <span className='mr-2 text-gray-300'>Sortby: </span>
         {sortByOptions[selectedIndex].displayText}
         {open ? (
-          <FaChevronCircleUp className='inline w-5 h-5 ml-2' />
+          <FaChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
         ) : (
-          <FaChevronCircleDown className='inline w-5 h-5 ml-2' />
+          <FaChevronDown className='inline w-4 h-4 ml-2 text-gray-300' />
         )}
       </button>
       {open && (
