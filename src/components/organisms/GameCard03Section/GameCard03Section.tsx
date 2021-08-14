@@ -2,7 +2,7 @@ import GameCard03 from '../../molecules/GameCard03'
 
 export interface IGameCard01SectionProps {
   heading: string
-  buttonText: string
+  buttonText?: string
 }
 
 const GameCard03Vertical = ({
@@ -10,7 +10,7 @@ const GameCard03Vertical = ({
   buttonText,
 }: {
   title: string
-  buttonText: string
+  buttonText?: string
 }) => (
   <div className='flex flex-col space-y-1'>
     <div className='flex justify-between mb-2'>

@@ -6,9 +6,10 @@ import HoverIcon from '../../atoms/HoverIcon'
 import { getInCart, getWishlisted } from '../../../utils'
 
 export interface ICard01Props {
-  gameTitle: string
+  title: string
   productionCompany: string
-  priceInfo: IPriceProps
+  price: number
+  discount?: number
   displayImage: string
   inCart?: boolean
   wishlisted?: boolean
@@ -26,9 +27,10 @@ const container = {
 }
 
 const GameCard01 = ({
-  gameTitle,
+  title,
   productionCompany,
-  priceInfo: { price, discount },
+  price,
+  discount,
   displayImage,
   inCart = false,
   wishlisted = false,
@@ -64,18 +66,21 @@ const GameCard01 = ({
       </motion.div>
 
       <a href='#0'>
-        <img
-          src={displayImage}
-          alt=''
-          className='object-cover w-full transition-all transform h-60 filter hover:brightness-120'
-        />
+        <div className='aspect-w-3 aspect-h-4'>
+          <img
+            src={displayImage}
+            alt=''
+            // transition-all transform filter hover:brightness-120
+            className='object-cover object-center'
+          />
+        </div>
         <div className='mt-3 font-semibold truncate overflow-ellipsis'>
-          {gameTitle}
+          {title}
         </div>
         <div className='text-sm text-gray-300 truncate overflow-ellipsis'>
           {productionCompany}
         </div>
-        <Price price={price} discount={discount} classes='mt-3' />
+        <Price price={price} discount={discount} classes='my-2' />
       </a>
     </div>
   )

@@ -17,14 +17,40 @@ const Template: ComponentStory<typeof GameCard06> = ({
   date,
   review,
 }) => (
-  <GameCard06
-    gameTitle={gameTitle}
-    productionCompany={productionCompany}
-    price={price}
-    displayImage={displayImage}
-    date={date}
-    review={review}
-  />
+  <div className='grid grid-cols-1 gap-2 sm:grid-cols-2'>
+    <GameCard06
+      gameTitle={gameTitle}
+      productionCompany={productionCompany}
+      price={price}
+      displayImage={displayImage}
+      date={date}
+      review={review}
+    />
+    <GameCard06
+      gameTitle={gameTitle}
+      productionCompany={productionCompany}
+      price={price}
+      displayImage={displayImage}
+      date={date}
+      review={review}
+    />
+    <GameCard06
+      gameTitle={gameTitle}
+      productionCompany={productionCompany}
+      price={price}
+      displayImage={displayImage}
+      date={date}
+      review={review}
+    />
+    <GameCard06
+      gameTitle={gameTitle}
+      productionCompany={productionCompany}
+      price={price}
+      displayImage={displayImage}
+      date={date}
+      review={review}
+    />
+  </div>
 )
 
 export const Primary = Template.bind({})

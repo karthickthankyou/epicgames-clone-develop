@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useCarouselTimer } from '../../../hooks'
 
 export interface ICarouselProps {
   image: string
@@ -12,14 +12,10 @@ export const images = [
 ]
 
 const Carousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  useEffect(() => {
-    const timer = setTimeout(
-      () => setCurrentIndex((s) => (s >= 2 ? 0 : s + 1)),
-      4000
-    )
-    return () => clearTimeout(timer)
-  }, [currentIndex])
+  const [currentIndex, setCurrentIndex] = useCarouselTimer({
+    duration: 4000,
+    itemsLength: images.length,
+  })
 
   //   console.log(index, currentIndex, index === currentIndex)
   return (
@@ -38,15 +34,14 @@ const Carousel = () => {
                   transition={{
                     duration: 0.2,
                   }}
-                  className='object-cover w-full'
+                  className='w-full'
                 />
               )
           )}
         </AnimatePresence>
       </div>
-      hello World
       <div className='grid grid-cols-3 h-36'>
-        {images.map((image) => (
+        {images.map((image, index) => (
           <motion.img
             src={image}
             key={image}
@@ -56,6 +51,7 @@ const Carousel = () => {
             transition={{
               duration: 0.2,
             }}
+            onClick={() => setCurrentIndex(index)}
             className={`object-cover w-full ${
               image === images[currentIndex] ? 'scale-110' : 'scale-90'
             }`}

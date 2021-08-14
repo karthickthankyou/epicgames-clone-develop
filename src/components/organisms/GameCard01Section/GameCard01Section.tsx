@@ -22,61 +22,49 @@ const GameCard01Section = ({
     <div className='grid grid-cols-2 gap-3 mt-3 md:grid-cols-3 lg:grid-cols-6'>
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />
       <GameCard01
         displayImage='static/media/game.e4f1f703.jpg'
-        gameTitle='Cyber Punk'
+        title='Cyber Punk'
         inCart
-        priceInfo={{
-          price: 10,
-        }}
+        price={10}
         productionCompany='Some production company'
         wishlisted
       />

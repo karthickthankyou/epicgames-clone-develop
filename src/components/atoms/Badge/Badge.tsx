@@ -1,6 +1,6 @@
 export interface IBadgeProps {
   badgeText: string
-  classes: string
+  classes?: string
 }
 
 const Badge = ({ badgeText, classes }: IBadgeProps) => (

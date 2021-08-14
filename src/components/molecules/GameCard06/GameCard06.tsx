@@ -1,5 +1,5 @@
 import dateFormat from 'dateformat'
-import { FaXbox } from 'react-icons/fa'
+import { MdClose } from 'react-icons/md'
 import Price, { IPriceProps } from '../../atoms/Price'
 
 export interface IGameCard06Props {
@@ -13,45 +13,43 @@ export interface IGameCard06Props {
 
 const GameCard06 = ({
   gameTitle,
-  price: { price },
+  price: { price, discount },
   displayImage,
   date,
   review,
 }: IGameCard06Props) => (
-  <div className='relative grid grid-cols-3 bg-gray-800 shadow-xl hover:bg-gray-700 group'>
-    <button type='button' tabIndex={0}>
+  <div className='relative flex items-stretch p-2 bg-gray-800 rounded hover:bg-gray-700 group'>
+    <button type='button' className='w-36' tabIndex={0}>
       <img
         src={displayImage}
-        className='object-cover w-full h-full col-span-1 rounded-l-sm shadow-inner cursor-pointer filter hover:brightness-125'
+        className='object-cover w-full h-full col-span-1 rounded-sm shadow-inner cursor-pointer filter hover:brightness-125'
         alt=''
       />
     </button>
-    <div className='flex flex-col col-span-2'>
-      <div className='p-4'>
-        <button type='button' tabIndex={0}>
-          <p className='w-full line truncate ... text-lg'>{gameTitle}</p>
-        </button>
-        <div className='mt-2 text-xs text-gray-400'>
-          <span className='line-clamp-2'>{review}</span>
-        </div>
-        <div className='mt-3'>
-          <Price price={price} />
-        </div>
-        <div className='mt-2 text-xs text-gray-400'>
-          Sale ends - {dateFormat(date, 'mmm d "at" h:MM TT')}
-        </div>
+    <div className='flex flex-col flex-grow pt-2 pl-3 '>
+      <p className='w-full line-clamp-1'>{gameTitle}</p>
+
+      <div className='mt-2 text-xs text-gray-400 line-clamp-2'>
+        <span className='max-w-sm line-clamp-2'>{review}</span>
       </div>
+      <div className='mt-3'>
+        <Price price={price} discount={discount} />
+      </div>
+      <div className='mt-2 text-xs text-gray-400'>
+        Sale ends - {dateFormat(date, 'mmm d "at" h:MM TT')}
+      </div>
+
       <div className='mt-auto'>
         <button
           type='button'
-          className='w-full px-4 py-2 mt-2 text-sm uppercase transition-all border-t border-gray-700 rounded-white group-hover:bg-blue-700 hover:bg-blue-600'
+          className='w-full px-4 py-2 mt-2 text-xs border-t border-gray-700 btn rounded-white group-hover:bg-blue-800 hover:bg-blue-500'
         >
           Add to cart
         </button>
       </div>
     </div>
     <button type='button' className='absolute top-0 right-0 z-10'>
-      <FaXbox className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
+      <MdClose className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
     </button>
   </div>
 )

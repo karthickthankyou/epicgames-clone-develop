@@ -1,52 +1,38 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useCarouselTimer } from '../../../hooks'
+import { selectGames2 } from '../../../store/gamesSlice'
+import { useAppSelector } from '../../../store/hooks'
 import { CAROUSEL_DURATION } from '../../../utils'
 
-export interface IHomeShowcaseProps {
-  data: {
-    title: string
-    desc: string
-    img: string
-    logo: string
-  }[]
-}
+export interface IHomeShowcaseProps {}
 
-const HomeShowcase = ({ data }: IHomeShowcaseProps) => {
-  const [imageId, setImageId] = useState<number>(0)
+const HomeShowcase = () => {
+  const games = useAppSelector(selectGames2).slice(0, 6)
+  const [imageId, setImageId] = useCarouselTimer({
+    duration: 4000,
+    itemsLength: games.length,
+  })
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setImageId((state) => {
-        if (state >= data.length - 1) {
-          return 0
-        }
-        return state + 1
-      })
-    }, CAROUSEL_DURATION * 1000)
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [data, imageId])
   return (
-    <div className='md:flex'>
+    <div className='md:flex h-96'>
       <div className='relative flex flex-col flex-grow '>
-        {data.map((game, index) => (
+        {games.map((game, index) => (
           <>
             {imageId === index && (
               <>
                 <div className='flex flex-col h-full p-12 bg-gradient-to-tr from-black via-transparent'>
                   <div className='mt-auto'>
                     <img
-                      src={data[imageId].logo}
-                      className='object-cover w-48 h-16 mt-36'
+                      src={games[imageId].subImageUrl}
+                      className='object-cover w-48 h-auto '
                       alt=''
                     />
                     <div className='mt-6 drop-shadow-md'>
-                      {data[imageId].title}
+                      {games[imageId].title}
                     </div>
 
                     <div className='mt-4 w-96 line-clamp-4'>
-                      {data[imageId].desc}
+                      {games[imageId].description}
                     </div>
                   </div>
 
@@ -74,9 +60,9 @@ const HomeShowcase = ({ data }: IHomeShowcaseProps) => {
                       duration: CAROUSEL_DURATION,
                       ease: 'easeOut',
                     }}
-                    src={data[imageId].img}
+                    src={games[imageId].imageUrl}
                     alt=''
-                    className='object-cover w-full h-full'
+                    className='object-contain w-full h-full'
                   />
                 </div>
               </>
@@ -85,9 +71,9 @@ const HomeShowcase = ({ data }: IHomeShowcaseProps) => {
         ))}
       </div>
       <div className='relative flex h-full pl-1 bg-gray-900 md:flex-col'>
-        {data.map((game, index) => (
+        {games.map((game, index) => (
           <div
-            className={`relative overflow-hidden flex-1 p-1 ${
+            className={`relative overflow-hidden w-full h-16 md:h-full md:w-16 flex-1 p-1 ${
               index === imageId && 'bg-blue-900'
             }`}
           >
@@ -98,8 +84,8 @@ const HomeShowcase = ({ data }: IHomeShowcaseProps) => {
               className='w-full'
             >
               <img
-                className='object-cover w-full h-24 rounded cursor-pointer'
-                src={game.img}
+                className='object-cover rounded cursor-pointer'
+                src={game.imageUrl}
                 alt=''
               />
             </button>
