@@ -17,7 +17,7 @@ const HomeShowcase = () => {
     <div className='md:flex h-96'>
       <div className='relative flex flex-col flex-grow '>
         {games.map((game, index) => (
-          <>
+          <div key={game.id}>
             {imageId === index && (
               <>
                 <div className='flex flex-col h-full p-12 bg-gradient-to-tr from-black via-transparent'>
@@ -67,12 +67,13 @@ const HomeShowcase = () => {
                 </div>
               </>
             )}
-          </>
+          </div>
         ))}
       </div>
       <div className='relative flex h-full pl-1 bg-gray-900 md:flex-col'>
         {games.map((game, index) => (
           <div
+            key={game.id}
             className={`relative overflow-hidden w-full h-16 md:h-full md:w-16 flex-1 p-1 ${
               index === imageId && 'bg-blue-900'
             }`}

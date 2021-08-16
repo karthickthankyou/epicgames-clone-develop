@@ -1,43 +1,40 @@
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard06 from '../../molecules/GameCard06'
-import { selectGames2 } from '../../../store/gamesSlice'
 import { useAppSelector } from '../../../store/hooks'
-import { selectWishlist } from '../../../store/wishlistSlice'
+import { selectWishlistGames } from '../../../store/userGameSlice'
 
 export interface IWishlistProps {}
 
 const Wishlist = () => {
-  const games = useAppSelector(selectGames2)
-  const wishlist = useAppSelector(selectWishlist)
+  const wishlist = useAppSelector(selectWishlistGames)
   return (
     <div>
       <div className='flex items-center justify-between'>
         {/* <Link to='/'>To Home</Link> */}
         <SortDropdown />
-        <div className='p-2'>Items ({games.length})</div>
+        <div className='p-2'>Items ({wishlist.length})</div>
       </div>
+      {wishlist.length === 0 && (
+        <div className='flex items-center justify-center h-60'>
+          Wishlist Empty.
+        </div>
+      )}
       <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'>
-        {games.map((game) => (
+        {wishlist.map((game) => (
           <GameCard06
             key={game.id}
+            id={game.id}
             date='2021-06-10T08:30:00Z'
             displayImage={game.imageUrl}
-            gameTitle={game.title}
+            title={game.title}
             price={{
               discount: game.discount,
               price: game.price,
             }}
             productionCompany={game.publisherId}
-            review='An open world you can get lost in and continue finding new things to do. An open world you can get lost in and continue finding new things to do'
           />
         ))}
       </div>
-      {wishlist.map((game) => (
-        <div key={game.gameId}>
-          {game.gameId}
-          {console.log(game)}
-        </div>
-      ))}
     </div>
   )
 }

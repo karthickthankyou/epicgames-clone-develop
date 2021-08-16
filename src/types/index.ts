@@ -16,11 +16,23 @@ export type Game = {
   subImageUrl: string
   wishlisted?: boolean
   inCart?: boolean
+  notes?: GameNotes[]
 }
 
 export type SortKey = 'releaseDate' | 'price' | 'title' | 'discount'
 
-export type Wishlist = {
+export type UserGame = {
   gameId: string
   userId: string
+  status?: string
+  updatedAt?: string
 }
+
+export type UserGameStatus =
+  | 'IN_CART'
+  | 'WISHLISTED'
+  | 'PURCHASED'
+  | 'REMOVED_FROM_CART'
+  | 'REMOVED_FROM_WISHLIST'
+
+export type GameNotes = 'HIGHEST_DISCOUNT'

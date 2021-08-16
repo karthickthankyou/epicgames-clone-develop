@@ -1,16 +1,20 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import gamesReducer from './gamesSlice'
-import wishlistReducer from './wishlistSlice'
 import userReducer from './userSlice'
+import userGamesReducer from './userGameSlice'
 import browseGamesReducer from './browseGamesSlice'
 
 export const store = configureStore({
   reducer: {
+    user: userReducer,
     games: gamesReducer,
     browseGames: browseGamesReducer,
-    wishlist: wishlistReducer,
-    user: userReducer,
+    userGames: userGamesReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
 })
 
 export type AppDispatch = typeof store.dispatch

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import { IconType } from 'react-icons'
 
 export interface IHoverIconProps {
   hintText: string
   IconComponent: IconType
   position?: 'left' | 'top' | 'bottom' | 'right'
+  onClick?: MouseEventHandler
   classes?: string
 }
 
@@ -12,6 +13,7 @@ const HoverIcon = ({
   hintText,
   IconComponent,
   position = 'top',
+  onClick,
   classes = '',
 }: IHoverIconProps) => {
   const [showHint, setShowHint] = useState(false)
@@ -21,6 +23,7 @@ const HoverIcon = ({
       className={`relative ${classes}`}
       onMouseEnter={() => setShowHint(true)}
       onMouseLeave={() => setShowHint(false)}
+      onClick={onClick}
     >
       <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
         <IconComponent />

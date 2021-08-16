@@ -9,6 +9,7 @@ export default {
 } as ComponentMeta<typeof GameCard01>
 
 const Template: ComponentStory<typeof GameCard01> = ({
+  id,
   title,
   productionCompany,
   price,
@@ -19,6 +20,7 @@ const Template: ComponentStory<typeof GameCard01> = ({
 }) => (
   <div className='mt-20'>
     <GameCard01
+      id={id}
       title={title}
       productionCompany={productionCompany}
       price={price}
@@ -32,6 +34,7 @@ const Template: ComponentStory<typeof GameCard01> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
+  id: '92',
   gameTitle: 'Cyber Punk',
   productionCompany: 'Some production company',
   priceInfo: {},

@@ -7,12 +7,12 @@ export default {
   component: CartCard,
 } as ComponentMeta<typeof CartCard>
 
-const Template: ComponentStory<typeof CartCard> = ({ displayImage }) => (
-  <CartCard displayImage={displayImage} />
+const Template: ComponentStory<typeof CartCard> = ({ game }) => (
+  <CartCard game={game} />
 )
 
 export const Primary = Template.bind({})
 Primary.args = {
-  displayImage: image,
+  game: {},
 }
 Primary.parameters = {}

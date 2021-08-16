@@ -5,7 +5,6 @@ import {
   HiOutlineHeart,
   HiHeart,
 } from 'react-icons/hi'
-import { TypeOfTag } from 'typescript'
 
 export const CAROUSEL_DURATION = 5
 export interface ICounter {
@@ -118,4 +117,10 @@ export const getPaginationNumbers = (current: number, total: number) => {
   })
 
   return result
+}
+
+export const getImageUrl = (id: string) => {
+  const imageUrl = `https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F${id}.jpg?alt=media`
+  const subImageUrl = `https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/subimages%2F${id}.jpg?alt=media`
+  return { imageUrl, subImageUrl }
 }

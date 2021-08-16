@@ -15,6 +15,16 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig)
 export const db = getFirestore(firebaseApp)
 export const auth = getAuth(firebaseApp)
+export const collections = {
+  USERS: 'users',
+  GAMES: 'games',
+  GAME_DETAILS: 'gameDetails',
+  USER_GAMES: 'userGames',
+  GAMES_SIMILAR: 'gamesSimilar',
+  PUBLISHERS: 'publishers',
+  USER_ACTIVITIES: 'userActivities',
+  CART: 'cart',
+}
 onAuthStateChanged(auth, (user: any) => {
   // Check for user status
   console.log(user)

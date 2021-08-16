@@ -17,7 +17,6 @@ const Carousel = () => {
     itemsLength: images.length,
   })
 
-  //   console.log(index, currentIndex, index === currentIndex)
   return (
     <div>
       <div className='overflow-hidden h-96'>

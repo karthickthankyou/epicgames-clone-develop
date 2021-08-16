@@ -21,6 +21,7 @@ const GameCard01Section = ({
     </div>
     <div className='grid grid-cols-2 gap-3 mt-3 md:grid-cols-3 lg:grid-cols-6'>
       <GameCard01
+        id='1'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart
@@ -29,6 +30,7 @@ const GameCard01Section = ({
         wishlisted
       />
       <GameCard01
+        id='12'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart
@@ -37,6 +39,7 @@ const GameCard01Section = ({
         wishlisted
       />
       <GameCard01
+        id='13'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart
@@ -45,6 +48,7 @@ const GameCard01Section = ({
         wishlisted
       />
       <GameCard01
+        id='14'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart
@@ -53,6 +57,7 @@ const GameCard01Section = ({
         wishlisted
       />
       <GameCard01
+        id='15'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart
@@ -61,6 +66,7 @@ const GameCard01Section = ({
         wishlisted
       />
       <GameCard01
+        id='16'
         displayImage='static/media/game.e4f1f703.jpg'
         title='Cyber Punk'
         inCart

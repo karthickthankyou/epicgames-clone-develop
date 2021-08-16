@@ -1,18 +1,27 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-import Price, { IPriceProps } from '../../atoms/Price'
+import { HiBriefcase } from 'react-icons/hi'
+
+import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import { getInCart, getWishlisted } from '../../../utils'
+import { GameNotes } from '../../../types'
+import { updateUserGames } from '../../../firebase/crud'
+import { selectUser } from '../../../store/userSlice'
+import { useAppSelector } from '../../../store/hooks'
 
 export interface ICard01Props {
+  id: string
   title: string
   productionCompany: string
   price: number
+  notes?: GameNotes[]
   discount?: number
   displayImage: string
   inCart?: boolean
   wishlisted?: boolean
+  purchased?: boolean
 }
 
 const container = {
@@ -27,15 +36,19 @@ const container = {
 }
 
 const GameCard01 = ({
+  id,
   title,
   productionCompany,
   price,
   discount,
   displayImage,
+  notes,
   inCart = false,
   wishlisted = false,
+  purchased = false,
 }: ICard01Props) => {
   const [hover, setHover] = useState(false)
+  const { uid } = useAppSelector(selectUser)
 
   const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
   const { CartIcon, cartHintText } = getInCart(inCart)
@@ -53,17 +66,41 @@ const GameCard01 = ({
           hover && 'opacity-100'
         }`}
       >
-        <HoverIcon
-          key={wishlistHintText}
-          IconComponent={WishlistIcon}
-          hintText={wishlistHintText}
-          classes='mr-1'
-        />
-        <HoverIcon
-          key={cartHintText}
-          IconComponent={CartIcon}
-          hintText={cartHintText}
-        />
+        {purchased ? (
+          <HoverIcon
+            IconComponent={HiBriefcase}
+            hintText='Purchased'
+            classes='mr-1'
+          />
+        ) : (
+          <>
+            <HoverIcon
+              key={wishlistHintText}
+              IconComponent={WishlistIcon}
+              hintText={wishlistHintText}
+              classes='mr-1'
+              onClick={() =>
+                updateUserGames({
+                  uid: uid || '',
+                  gameId: id,
+                  status: wishlisted ? 'REMOVED_FROM_WISHLIST' : 'WISHLISTED',
+                })
+              }
+            />
+            <HoverIcon
+              key={cartHintText}
+              IconComponent={CartIcon}
+              hintText={cartHintText}
+              onClick={() =>
+                updateUserGames({
+                  uid: uid || '',
+                  gameId: id,
+                  status: inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
+                })
+              }
+            />
+          </>
+        )}
       </motion.div>
 
       <a href='#0'>
@@ -81,7 +118,7 @@ const GameCard01 = ({
         <div className='text-sm text-gray-300 truncate overflow-ellipsis'>
           {productionCompany}
         </div>
-        <Price price={price} discount={discount} classes='my-2' />
+        <Price price={price} discount={discount} notes={notes} classes='my-2' />
       </a>
     </div>
   )
