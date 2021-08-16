@@ -15,6 +15,7 @@ export type Game = {
   imageUrl: string
   subImageUrl: string
   wishlisted?: boolean
+  purchased?: boolean
   inCart?: boolean
   notes?: GameNotes[]
 }

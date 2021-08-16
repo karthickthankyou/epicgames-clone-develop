@@ -7,12 +7,13 @@ import Price from '../../atoms/Price'
 
 export interface ICartCardProps {
   game: Game
+  classes?: string
 }
 
-const CartCard = ({ game }: ICartCardProps) => {
+const CartCard = ({ game, classes }: ICartCardProps) => {
   const { uid } = useAppSelector(selectUser)
   return (
-    <div className='flex items-center'>
+    <div className={`flex items-center ${classes}`}>
       <img
         src={game.imageUrl}
         alt=''

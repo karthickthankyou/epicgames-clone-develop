@@ -6,22 +6,13 @@ import { HiBriefcase } from 'react-icons/hi'
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import { getInCart, getWishlisted } from '../../../utils'
-import { GameNotes } from '../../../types'
+import { Game, GameNotes } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { selectUser } from '../../../store/userSlice'
 import { useAppSelector } from '../../../store/hooks'
 
 export interface ICard01Props {
-  id: string
-  title: string
-  productionCompany: string
-  price: number
-  notes?: GameNotes[]
-  discount?: number
-  displayImage: string
-  inCart?: boolean
-  wishlisted?: boolean
-  purchased?: boolean
+  game: Game
 }
 
 const container = {
@@ -35,18 +26,19 @@ const container = {
   },
 }
 
-const GameCard01 = ({
-  id,
-  title,
-  productionCompany,
-  price,
-  discount,
-  displayImage,
-  notes,
-  inCart = false,
-  wishlisted = false,
-  purchased = false,
-}: ICard01Props) => {
+const GameCard01 = ({ game }: ICard01Props) => {
+  const {
+    id,
+    title,
+    discount,
+    imageUrl,
+    wishlisted = false,
+    inCart = false,
+    purchased,
+    price,
+    publisherId,
+    notes,
+  } = game
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
 
@@ -106,7 +98,7 @@ const GameCard01 = ({
       <a href='#0'>
         <div className='aspect-w-3 aspect-h-4'>
           <img
-            src={displayImage}
+            src={imageUrl}
             alt=''
             // transition-all transform filter hover:brightness-120
             className='object-cover object-center rounded-lg'
@@ -116,7 +108,7 @@ const GameCard01 = ({
           {title}
         </div>
         <div className='text-sm text-gray-300 truncate overflow-ellipsis'>
-          {productionCompany}
+          {publisherId}
         </div>
         <Price price={price} discount={discount} notes={notes} classes='my-2' />
       </a>

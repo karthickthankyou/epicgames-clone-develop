@@ -22,16 +22,7 @@ const BrowseGames = () => {
             {games.map((game) => (
               <GameCard01
                 key={game.id}
-                id={game.id}
-                displayImage={game.imageUrl}
-                title={game.title}
-                discount={game.discount}
-                price={game.price}
-                notes={game.notes}
-                wishlisted={game.wishlisted}
-                inCart={game.inCart}
-                purchased={game.purchased}
-                productionCompany={game.publisherId}
+                game={game}
                 // review='An open world you can get lost in and continue finding new things to do. An open world you can get lost in and continue finding new things to do'
               />
             ))}

@@ -5,6 +5,8 @@
     "dependencies": {
         "@craco/craco": "^6.2.0",
         "@reduxjs/toolkit": "^1.6.1",
+        "@stripe/react-stripe-js": "^1.4.1",
+        "@stripe/stripe-js": "^1.17.0",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "@testing-library/jest-dom": "^5.14.1",

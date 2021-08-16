@@ -10,10 +10,12 @@ const Cart = () => {
   return (
     <div>
       {cartItems.length === 0 && (
-        <div className='flex items-center justify-center h-60'>Cart Empty.</div>
+        <div className='flex items-center justify-center h-60'>
+          Cart is ewmpty.
+        </div>
       )}
       {cartItems.map((game) => (
-        <CartCard key={game.id} game={game} />
+        <CartCard key={game.id} game={game} classes='mt-2' />
       ))}
       {cartItems.length > 0 && (
         <button className='btn btn-lg' type='button'>

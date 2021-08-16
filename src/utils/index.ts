@@ -17,7 +17,7 @@ export interface ICounter {
 export const discountCalc = (disc = 0, price: number) =>
   +(price - (price * disc) / 100).toFixed(2)
 
-export const withCurrency = (price: number) => `$${price}`
+export const withCurrency = (price: number) => `₹${price}`
 
 export const calculateTimeLeft = (date: string): ICounter => {
   const diff = new Date(date).getTime() - new Date().getTime()

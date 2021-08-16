@@ -42,7 +42,7 @@ export function useBrowseGamesListener() {
     const q = query(
       collection(db, collections.GAMES),
       orderBy(sortKey, sortOrder),
-      limit(6)
+      limit(24)
     )
     const detachListener = onSnapshot(q, (querySnapshot) => {
       const arr: any[] = []
