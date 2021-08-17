@@ -8,6 +8,8 @@ import {
   orderBy,
   DocumentData,
   Query,
+  getDocs,
+  QueryDocumentSnapshot,
 } from 'firebase/firestore'
 import {
   getAuth,
@@ -18,7 +20,14 @@ import {
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { collections, db } from './index'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { setGames } from '../store/gamesSlice'
+import {
+  setActionGames,
+  setAdventureGames,
+  setGames,
+  setHomeScreenGames,
+  setNarrationGames,
+  setPuzzleGames,
+} from '../store/gamesSlice'
 import { selectUser, setUser } from '../store/userSlice'
 import { selectSortKeyAndOrder } from '../store/browseGamesSlice'
 import {
@@ -33,7 +42,7 @@ import {
   selectPurchasedGameIds,
 } from '../store/userGameSlice'
 import { getImageUrl } from '../utils'
-import { Game, UserGame, UserGameStatus } from '../types'
+import { Game, GameGenre, UserGame, UserGameStatus } from '../types'
 
 export function useBrowseGamesListener() {
   const dispatch = useAppDispatch()
@@ -42,7 +51,7 @@ export function useBrowseGamesListener() {
     const q = query(
       collection(db, collections.GAMES),
       orderBy(sortKey, sortOrder),
-      limit(6)
+      limit(24)
     )
     const detachListener = onSnapshot(q, (querySnapshot) => {
       const arr: any[] = []
@@ -87,7 +96,7 @@ export function useUserGamesListener() {
     action: ActionCreatorWithPayload<any, string>
     // eslint-disable-next-line consistent-return
   ) => {
-    const arr = gameIds.map((game) => game.gameId)
+    const arr = gameIds.map((game) => game.gameId).slice(0, 10)
     // To avoid FirebaseError (Invalid Query. A non-empty array is required for 'in' filters), we dispatch empty [] when ids array is empty.
 
     const q = setupQuery(arr)
@@ -155,6 +164,61 @@ export function useUserGameIdsListener() {
       detachPurchasedListener()
     }
   }, [uid])
+}
+
+export const useHomeScreenGames = () => {
+  const dispatch = useAppDispatch()
+  const setupQuery = (genre: GameGenre) =>
+    query(
+      collection(db, collections.GAMES),
+      where('tags', 'array-contains', genre),
+      limit(6)
+    )
+
+  const setupSnapshot = async (
+    customQuery: Query<DocumentData>,
+    customAction: ActionCreatorWithPayload<any, string>
+  ) => {
+    const querySnapshot = await getDocs(customQuery)
+    const arr: any[] = []
+    querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
+      const { imageUrl, subImageUrl } = getImageUrl(document.id)
+      arr.push({ ...document.data(), imageUrl, subImageUrl })
+    })
+    dispatch(customAction(arr))
+  }
+
+  useEffect(() => {
+    const getHomeScreenGames = async () => {
+      const q = query(
+        collection(db, collections.GAMES),
+        where('homeScreen', '>', ''),
+        limit(7)
+      )
+      const arr: any[] = []
+      const querySnapshot = await getDocs(q)
+      querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
+        const { imageUrl, subImageUrl } = getImageUrl(document.id)
+        arr.push({ ...document.data(), imageUrl, subImageUrl })
+      })
+      dispatch(setHomeScreenGames(arr))
+    }
+    getHomeScreenGames()
+  }, [])
+  useEffect(() => {
+    ;(async () => {
+      await setupSnapshot(setupQuery('Action'), setActionGames)
+    })()
+    ;(async () => {
+      await setupSnapshot(setupQuery('Adventure'), setAdventureGames)
+    })()
+    ;(async () => {
+      await setupSnapshot(setupQuery('Puzzle'), setPuzzleGames)
+    })()
+    ;(async () => {
+      await setupSnapshot(setupQuery('Narration'), setNarrationGames)
+    })()
+  }, [])
 }
 
 export function useUserListener() {

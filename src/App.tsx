@@ -14,25 +14,31 @@ import Checkout from './components/pages/Checkout'
 import Signup from './components/pages/Signup'
 import Signin from './components/pages/Signin'
 import {
+  useBrowseGamesListener,
   useUserGameIdsListener,
   useUserGamesListener,
   useUserListener,
 } from './firebase/hooks'
 import BrowseGames from './components/pages/BrowseGames'
 import { useAppSelector } from './store/hooks'
-import { selectCartGames, selectWishlistGames } from './store/userGameSlice'
+import {
+  selectCartGames,
+  selectWishlistGameIds,
+  selectWishlistGames,
+} from './store/userGameSlice'
 
 function App() {
   useUserListener()
   useUserGameIdsListener()
   useUserGamesListener()
+  useBrowseGamesListener()
 
-  const wishlist = useAppSelector(selectWishlistGames)
+  const wishlistIds = useAppSelector(selectWishlistGameIds)
   const cart = useAppSelector(selectCartGames)
   return (
     <Router>
       <div className='container mx-auto'>
-        <ul className='flex'>
+        <ul className='flex overflow-x-scroll'>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/'>Home</Link>
           </li>
@@ -40,7 +46,7 @@ function App() {
             <Link to='/browse'>BrowseGames</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/wishlist'>Wishlist {wishlist.length}</Link>
+            <Link to='/wishlist'>Wishlist {wishlistIds.length}</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/cart'>Cart {cart.length}</Link>

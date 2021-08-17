@@ -3,12 +3,15 @@ import { getPaginationNumbers } from '../../../utils'
 export interface IPaginationProps {
   current: number
   total: number
+  classes?: string
 }
 
-const Pagination = ({ current, total }: IPaginationProps) => {
+const Pagination = ({ current, total, classes = '' }: IPaginationProps) => {
   const items = getPaginationNumbers(current, total)
   return (
-    <nav className='relative z-0 inline-flex space-x-1 rounded-md shadow-sm'>
+    <nav
+      className={`relative z-0 inline-flex space-x-1 rounded-md shadow-sm ${classes}`}
+    >
       {items.map(({ item, key }) => (
         <button
           type='button'

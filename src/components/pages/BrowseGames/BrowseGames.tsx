@@ -4,12 +4,10 @@ import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
 import Pagination from '../../molecules/Pagination'
 import BrowseFilters from '../../molecules/BrowseFilters'
-import { useBrowseGamesListener } from '../../../firebase/hooks'
 
 export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
-  useBrowseGamesListener()
   const games = useAppSelector(selectGames2)
   return (
     <div>

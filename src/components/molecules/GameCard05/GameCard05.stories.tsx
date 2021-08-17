@@ -7,8 +7,13 @@ export default {
   component: GameCard05,
 } as ComponentMeta<typeof GameCard05>
 
-const Template: ComponentStory<typeof GameCard05> = () => <GameCard05 />
+const Template: ComponentStory<typeof GameCard05> = (game) => (
+  // @ts-ignore
+  <GameCard05 game={game} />
+)
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  game: {},
+}
 Primary.parameters = {}

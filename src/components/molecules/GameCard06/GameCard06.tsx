@@ -31,7 +31,7 @@ const GameCard06 = ({
       />
 
       <div className='flex flex-col flex-grow col-span-2 pt-2 pl-3'>
-        <p className='w-full line-clamp-1'>{title}</p>
+        <p className='w-full text-lg line-clamp-1'>{title}</p>
 
         {/* <div className='mt-2 text-xs text-gray-400 line-clamp-2'>
               <span className='max-w-sm line-clamp-2'>{review}</span>

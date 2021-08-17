@@ -17,6 +17,7 @@ export type Game = {
   wishlisted?: boolean
   purchased?: boolean
   inCart?: boolean
+  homeScreen?: string
   notes?: GameNotes[]
 }
 
@@ -35,5 +36,7 @@ export type UserGameStatus =
   | 'PURCHASED'
   | 'REMOVED_FROM_CART'
   | 'REMOVED_FROM_WISHLIST'
+
+export type GameGenre = 'Action' | 'Puzzle' | 'Narration' | 'Adventure'
 
 export type GameNotes = 'HIGHEST_DISCOUNT'

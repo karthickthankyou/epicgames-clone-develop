@@ -1,18 +1,23 @@
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard06 from '../../molecules/GameCard06'
 import { useAppSelector } from '../../../store/hooks'
-import { selectWishlistGames } from '../../../store/userGameSlice'
+import {
+  selectWishlistGameIds,
+  selectWishlistGames,
+} from '../../../store/userGameSlice'
+import Pagination from '../../molecules/Pagination'
 
 export interface IWishlistProps {}
 
 const Wishlist = () => {
   const wishlist = useAppSelector(selectWishlistGames)
+  const wishlistIds = useAppSelector(selectWishlistGameIds)
   return (
     <div>
       <div className='flex items-center justify-between'>
         {/* <Link to='/'>To Home</Link> */}
         <SortDropdown />
-        <div className='p-2'>Items ({wishlist.length})</div>
+        <div className='p-2'>Items ({wishlistIds.length})</div>
       </div>
       {wishlist.length === 0 && (
         <div className='flex items-center justify-center h-60'>
@@ -35,6 +40,11 @@ const Wishlist = () => {
           />
         ))}
       </div>
+      <Pagination
+        current={1}
+        total={Math.ceil(wishlistIds.length / 10)}
+        classes='my-10'
+      />
     </div>
   )
 }

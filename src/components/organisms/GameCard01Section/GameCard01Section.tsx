@@ -1,10 +1,12 @@
 import { ReactElement } from 'react'
+import { Link } from 'react-router-dom'
 import { Game } from '../../../types'
 import GameCard01 from '../../molecules/GameCard01'
 
 export interface IGameCard01SectionProps {
   heading: string | ReactElement
   buttonText?: string
+  buttonLinkTo?: string
   games: Game[]
   classes?: string
 }
@@ -12,6 +14,7 @@ export interface IGameCard01SectionProps {
 const GameCard01Section = ({
   heading,
   buttonText = '',
+  buttonLinkTo = '#0',
   games,
   classes = '',
 }: IGameCard01SectionProps) => {
@@ -19,14 +22,16 @@ const GameCard01Section = ({
   return (
     <div className={`my-4 ${classes}`}>
       <div className='flex justify-between'>
-        <div className='text-xl capitalize'>{heading}</div>
+        <div className='flex items-center text-xl font-semibold capitalize'>
+          {heading}
+        </div>
         {buttonText && (
-          <button
-            type='button'
+          <Link
+            to={buttonLinkTo}
             className='text-xs uppercase border border-white rounded-md btn-md '
           >
             {buttonText}
-          </button>
+          </Link>
         )}
       </div>
       <div className='grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-6 '>

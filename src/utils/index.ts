@@ -6,7 +6,7 @@ import {
   HiHeart,
 } from 'react-icons/hi'
 
-export const CAROUSEL_DURATION = 5
+export const CAROUSEL_DURATION = 50
 export interface ICounter {
   days: string
   hours: string

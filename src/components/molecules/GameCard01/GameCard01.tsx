@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 import { HiBriefcase } from 'react-icons/hi'
 
@@ -95,7 +96,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
         )}
       </motion.div>
 
-      <a href='#0'>
+      <Link to={`/game/${game.id}`}>
         <div className='aspect-w-3 aspect-h-4'>
           <img
             src={imageUrl}
@@ -111,7 +112,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
           {publisherId}
         </div>
         <Price price={price} discount={discount} notes={notes} classes='my-2' />
-      </a>
+      </Link>
     </div>
   )
 }
