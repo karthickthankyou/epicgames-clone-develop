@@ -33,7 +33,7 @@ import {
   selectPurchasedGameIds,
 } from '../store/userGameSlice'
 import { getImageUrl } from '../utils'
-import { UserGame, UserGameStatus } from '../types'
+import { Game, UserGame, UserGameStatus } from '../types'
 
 export function useBrowseGamesListener() {
   const dispatch = useAppDispatch()
@@ -42,7 +42,7 @@ export function useBrowseGamesListener() {
     const q = query(
       collection(db, collections.GAMES),
       orderBy(sortKey, sortOrder),
-      limit(24)
+      limit(6)
     )
     const detachListener = onSnapshot(q, (querySnapshot) => {
       const arr: any[] = []
@@ -73,7 +73,7 @@ export function useUserGamesListener() {
     action: ActionCreatorWithPayload<any, string>
   ) => {
     onSnapshot(queryGame, (querySnapshot) => {
-      const arr: any[] = []
+      const arr: Game[] = []
       querySnapshot.forEach(async (doc: any) => {
         const { imageUrl, subImageUrl } = getImageUrl(doc.id)
         arr.push({ ...doc.data(), imageUrl, subImageUrl })

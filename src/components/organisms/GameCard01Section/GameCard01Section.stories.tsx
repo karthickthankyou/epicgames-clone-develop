@@ -10,11 +10,15 @@ export default {
 const Template: ComponentStory<typeof GameCard01Section> = ({
   heading,
   buttonText,
-}) => <GameCard01Section heading={heading} buttonText={buttonText} />
+  games,
+}) => (
+  <GameCard01Section heading={heading} buttonText={buttonText} games={games} />
+)
 
 export const Primary = Template.bind({})
 Primary.args = {
   heading: 'Most Popular',
   buttonText: 'view more',
+  games: [],
 }
 Primary.parameters = {}

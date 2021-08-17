@@ -13,7 +13,7 @@ const initialState: { games: Game[] } = {
 }
 
 const gamesSlice = createSlice({
-  name: 'game',
+  name: 'games',
   initialState,
   reducers: {
     setGames: (state, action) => {

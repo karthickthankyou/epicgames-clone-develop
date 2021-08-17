@@ -57,11 +57,19 @@ export const {
 // Selectors
 export const selectCartGameIds = (state: RootState) =>
   state.userGames.cartGameIds
-export const selectCartGames = (state: RootState) => state.userGames.cartGames
+export const selectCartGames = (state: RootState) =>
+  state.userGames.cartGames.map((game) => ({
+    ...game,
+    inCart: true,
+  }))
 export const selectWishlistGameIds = (state: RootState) =>
   state.userGames.wishlistGameIds
 export const selectWishlistGames = (state: RootState) =>
-  state.userGames.wishlistGames
+  state.userGames.wishlistGames.map((game) => ({
+    ...game,
+    wishlisted: true,
+  }))
+
 export const selectPurchasedGameIds = (state: RootState) =>
   state.userGames.purchasedGameIds
 export const selectPurchasedGames = (state: RootState) =>

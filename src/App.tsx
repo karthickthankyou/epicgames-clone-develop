@@ -19,12 +19,16 @@ import {
   useUserListener,
 } from './firebase/hooks'
 import BrowseGames from './components/pages/BrowseGames'
+import { useAppSelector } from './store/hooks'
+import { selectCartGames, selectWishlistGames } from './store/userGameSlice'
 
 function App() {
   useUserListener()
   useUserGameIdsListener()
   useUserGamesListener()
 
+  const wishlist = useAppSelector(selectWishlistGames)
+  const cart = useAppSelector(selectCartGames)
   return (
     <Router>
       <div className='container mx-auto'>
@@ -36,10 +40,10 @@ function App() {
             <Link to='/browse'>BrowseGames</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/wishlist'>Wishlist</Link>
+            <Link to='/wishlist'>Wishlist {wishlist.length}</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/cart'>Cart</Link>
+            <Link to='/cart'>Cart {cart.length}</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/checkout'>Checkout</Link>

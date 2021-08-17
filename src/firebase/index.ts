@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
+import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAGJ7luHyZBr-UPWPbmvCkaH6gwrcY-0Qg',
@@ -15,6 +15,24 @@ const firebaseConfig = {
 export const firebaseApp = initializeApp(firebaseConfig)
 export const db = getFirestore(firebaseApp)
 export const auth = getAuth(firebaseApp)
+
+enableIndexedDbPersistence(db)
+  .then((res) => console.log('enableIndexedDbPersistence success.'))
+  .catch((err) => {
+    console.log('enableIndexedDbPersistence failed: ', err)
+
+    if (err.code === 'failed-precondition') {
+      // Multiple tabs open, persistence can only be enabled
+      // in one tab at a a time.
+      // ...
+    } else if (err.code === 'unimplemented') {
+      // The current browser does not support all of the
+      // features required to enable persistence
+      // ...
+    }
+  })
+// Subsequent queries will use persistence, if it was enabled successfully
+
 export const collections = {
   USERS: 'users',
   GAMES: 'games',
