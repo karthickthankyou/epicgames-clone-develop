@@ -10,7 +10,7 @@ export type Game = {
   description: string
   title: string
   id: string
-  longDesc: string
+  longDesc: string[]
   releaseDate: string
   imageUrl: string
   subImageUrl: string
@@ -19,6 +19,8 @@ export type Game = {
   inCart?: boolean
   homeScreen?: string
   notes?: GameNotes[]
+  items?: { id: number; s: number }[]
+  s?: any
 }
 
 export type SortKey = 'releaseDate' | 'price' | 'title' | 'discount'

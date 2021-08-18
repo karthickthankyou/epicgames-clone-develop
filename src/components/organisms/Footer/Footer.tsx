@@ -6,6 +6,7 @@ import {
   FaRegStar,
   FaRegCopyright,
 } from 'react-icons/fa'
+import { scrollToTop } from '../../../utils'
 
 export interface IFooterProps {}
 
@@ -22,7 +23,12 @@ const Footer = () => (
         <FaYoutube className='w-6 h-6 mr-3 hover:text-red-500' />
       </button>
 
-      <button type='button' className='ml-auto' aria-label='go to top'>
+      <button
+        type='button'
+        className='ml-auto'
+        aria-label='go to top'
+        onClick={scrollToTop}
+      >
         <FaChevronUp className='w-8 h-8 p-1 border rounded-sm' />
       </button>
     </div>

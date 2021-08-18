@@ -8,6 +8,7 @@ import {
   selectActionGames,
   selectAdventureGames,
   selectGames2,
+  selectHighestDiscounts,
   selectHomeScreenGames,
   selectNarrationGames,
   selectPuzzleGames,
@@ -30,6 +31,7 @@ const Home = () => {
   const games = useAppSelector(selectGames2)
 
   const wishlist = useAppSelector(selectWishlistGames)
+  const highestDiscoutsEver = useAppSelector(selectHighestDiscounts)
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   const cart = useAppSelector(selectCartGames)
   const cartIds = useAppSelector(selectCartGameIds)
@@ -53,9 +55,8 @@ const Home = () => {
             Ever Recorded
           </>
         }
-        games={games}
+        games={highestDiscoutsEver}
         buttonText='View all'
-        classes='my-10'
         buttonLinkTo='/browse'
       />
       {wishlist.length > 0 && (
@@ -69,7 +70,6 @@ const Home = () => {
           }
           games={wishlist}
           buttonText='View all'
-          classes='my-10'
           buttonLinkTo='/wishlist'
         />
       )}
@@ -84,7 +84,6 @@ const Home = () => {
           }
           games={cart}
           buttonText='Checkout now'
-          classes='my-10'
           buttonLinkTo='/cart'
         />
       )}
@@ -94,7 +93,6 @@ const Home = () => {
           heading='Action Games'
           games={actionGames}
           buttonText='View more'
-          classes='my-10'
           buttonLinkTo='/browse'
         />
       )}
@@ -104,7 +102,6 @@ const Home = () => {
           heading='Adventure Games'
           games={adventureGames}
           buttonText='View more'
-          classes='my-10'
         />
       )}
       {puzzleGames.length > 0 && (
@@ -113,7 +110,6 @@ const Home = () => {
           heading='Puzzle Games'
           games={puzzleGames}
           buttonText='View more'
-          classes='my-10'
           buttonLinkTo='/browse'
         />
       )}
@@ -124,7 +120,6 @@ const Home = () => {
           games={narrationGames}
           buttonText='View more'
           buttonLinkTo='/browse'
-          classes='my-10'
         />
       )}
 

@@ -121,6 +121,25 @@ export const getPaginationNumbers = (current: number, total: number) => {
 
 export const getImageUrl = (id: string) => {
   const imageUrl = `https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F${id}.jpg?alt=media`
-  const subImageUrl = `https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/subimages%2F${id}.jpg?alt=media`
+  const subImageUrl = `https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F${id}.jpg?alt=media`
   return { imageUrl, subImageUrl }
+}
+
+export const getScoreColor = (score: number) => {
+  if (score > 90) return 'border-2 border-blue-500 bg-blue-600 bg-opacity-10'
+  if (score > 75) return 'border-2 border-green-600'
+  if (score > 50) return 'border-2 border-red-400 '
+  return 'border-2 border-red-700 '
+  //   if (score > 20) return 'border-2 border-red-300'
+}
+
+export const processGameIdsForSimilarItems = (
+  gameIds: { id: number; s: number }[]
+): string[] =>
+  gameIds.slice(0, 10).map((item) => item.id.toString().padStart(3, '0'))
+
+export const findPercentage = (num: number) => Math.round(num * 100)
+
+export const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }

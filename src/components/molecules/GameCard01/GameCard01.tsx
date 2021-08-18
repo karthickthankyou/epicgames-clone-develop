@@ -6,7 +6,7 @@ import { HiBriefcase } from 'react-icons/hi'
 
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
-import { getInCart, getWishlisted } from '../../../utils'
+import { findPercentage, getInCart, getWishlisted } from '../../../utils'
 import { Game, GameNotes } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { selectUser } from '../../../store/userSlice'
@@ -39,6 +39,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
     price,
     publisherId,
     notes,
+    s,
   } = game
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
@@ -52,6 +53,11 @@ const GameCard01 = ({ game }: ICard01Props) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
+      {s && (
+        <div className='absolute z-10 px-1 bg-black rounded-br-md bg-opacity-70'>
+          {findPercentage(s)}%
+        </div>
+      )}
       <motion.div
         variants={container}
         animate={hover ? 'show' : 'hidden'}

@@ -1,0 +1,14 @@
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import Library from './Library'
+
+export default {
+  title: 'components/pages/Library',
+  component: Library,
+} as ComponentMeta<typeof Library>
+
+const Template: ComponentStory<typeof Library> = (args) => <Library />
+
+export const Primary = Template.bind({})
+Primary.args = {}
+Primary.parameters = {}

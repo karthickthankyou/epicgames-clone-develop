@@ -20,7 +20,7 @@ const GameCard01Section = ({
 }: IGameCard01SectionProps) => {
   const gamesSix = games.slice(0, 6)
   return (
-    <div className={`my-4 ${classes}`}>
+    <div className={`my-12 ${classes}`}>
       <div className='flex justify-between'>
         <div className='flex items-center text-xl font-semibold capitalize'>
           {heading}
@@ -36,7 +36,7 @@ const GameCard01Section = ({
       </div>
       <div className='grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-6 '>
         {gamesSix.map((game) => (
-          <GameCard01 game={game} />
+          <GameCard01 key={game.id} game={game} />
         ))}
       </div>
     </div>

@@ -2,16 +2,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { OrderByDirection } from 'firebase/firestore'
 import { Game, SortKey } from '../types'
+import { sortByOptions } from '../types/static'
 import { RootState } from './store'
 
 const initialState: {
   games: Game[]
-  sortKey: SortKey
-  sortOrder: OrderByDirection
+  selectedSortIndex: number
 } = {
   games: [],
-  sortKey: 'releaseDate',
-  sortOrder: 'desc',
+  selectedSortIndex: 0,
 }
 
 const browseGamesSlice = createSlice({
@@ -21,18 +20,16 @@ const browseGamesSlice = createSlice({
     setGames: (state, action) => {
       state.games = action.payload
     },
-    setSortKeyAndOrder: (state, action) => {
-      const { sortKey, sortOrder } = action.payload
-      state.sortKey = sortKey
-      state.sortOrder = sortOrder
+    setSelectsortIndex: (state, action) => {
+      state.selectedSortIndex = action.payload
     },
   },
 })
 
-export const { setGames, setSortKeyAndOrder } = browseGamesSlice.actions
+export const { setGames, setSelectsortIndex } = browseGamesSlice.actions
 
-export const selectSortKeyAndOrder = (state: RootState) => {
-  const { sortKey, sortOrder } = state.browseGames
-  return { sortKey, sortOrder }
-}
+export const selectBrowseGames = (state: RootState) => state.browseGames.games
+
+export const selectSortIndex = (state: RootState) =>
+  state.browseGames.selectedSortIndex
 export default browseGamesSlice.reducer

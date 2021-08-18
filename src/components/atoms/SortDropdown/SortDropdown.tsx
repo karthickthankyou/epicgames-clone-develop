@@ -1,36 +1,22 @@
-import { OrderByDirection } from 'firebase/firestore'
 import { useEffect, useState } from 'react'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
-import { setSortKeyAndOrder } from '../../../store/browseGamesSlice'
-import { useAppDispatch } from '../../../store/hooks'
-import { SortKey } from '../../../types'
+import {
+  selectSortIndex,
+  setSelectsortIndex,
+} from '../../../store/browseGamesSlice'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { sortByOptions } from '../../../types/static'
 
 export interface ISortDropdownProps {
   sortByOptions: string[]
 }
 
 // : { displayText: string; sortKey; sortOrder }
-const sortByOptions: {
-  displayText: string
-  sortKey: SortKey
-  sortOrder: OrderByDirection
-}[] = [
-  { displayText: 'On Sale', sortKey: 'discount', sortOrder: 'desc' },
-  { displayText: 'Recently Added', sortKey: 'releaseDate', sortOrder: 'desc' },
-  { displayText: 'Alphabetical', sortKey: 'title', sortOrder: 'asc' },
-  { displayText: 'Price: Low to High', sortKey: 'price', sortOrder: 'asc' },
-  { displayText: 'Price: High to Low', sortKey: 'price', sortOrder: 'desc' },
-]
 
 const SortDropdown = () => {
   const dispatch = useAppDispatch()
+  const selectedIndex = useAppSelector(selectSortIndex)
   const [open, setOpen] = useState(false)
-  const [selectedIndex, setSelectedIndex] = useState<number>(0)
-
-  useEffect(() => {
-    const { sortKey, sortOrder } = sortByOptions[selectedIndex]
-    dispatch(setSortKeyAndOrder({ sortKey, sortOrder }))
-  }, [selectedIndex])
 
   return (
     <div className='relative z-20'>
@@ -59,7 +45,7 @@ const SortDropdown = () => {
                   : 'text-gray-400'
               }`}
               onClick={() => {
-                setSelectedIndex(index)
+                dispatch(setSelectsortIndex(index))
                 setOpen(false)
               }}
             >

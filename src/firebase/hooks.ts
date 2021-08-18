@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   collection,
   query,
@@ -10,6 +10,8 @@ import {
   Query,
   getDocs,
   QueryDocumentSnapshot,
+  doc as firebaseDoc,
+  getDoc,
 } from 'firebase/firestore'
 import {
   getAuth,
@@ -23,13 +25,15 @@ import { useAppDispatch, useAppSelector } from '../store/hooks'
 import {
   setActionGames,
   setAdventureGames,
-  setGames,
+  setHighestEverDiscounts,
   setHomeScreenGames,
   setNarrationGames,
   setPuzzleGames,
+  setGamePage,
+  setGamePageSimilarGames,
 } from '../store/gamesSlice'
 import { selectUser, setUser } from '../store/userSlice'
-import { selectSortKeyAndOrder } from '../store/browseGamesSlice'
+import { selectSortIndex, setGames } from '../store/browseGamesSlice'
 import {
   setCartGameIds,
   setWishlistGameIds,
@@ -41,28 +45,29 @@ import {
   selectWishlistGameIds,
   selectPurchasedGameIds,
 } from '../store/userGameSlice'
-import { getImageUrl } from '../utils'
+import { getImageUrl, processGameIdsForSimilarItems } from '../utils'
 import { Game, GameGenre, UserGame, UserGameStatus } from '../types'
+import { sortByOptions } from '../types/static'
 
-export function useBrowseGamesListener() {
+export function useBrowseGames() {
   const dispatch = useAppDispatch()
-  const { sortKey, sortOrder } = useAppSelector(selectSortKeyAndOrder)
+  const { sortKey, sortOrder } = sortByOptions[useAppSelector(selectSortIndex)]
   useEffect(() => {
-    const q = query(
-      collection(db, collections.GAMES),
-      orderBy(sortKey, sortOrder),
-      limit(24)
-    )
-    const detachListener = onSnapshot(q, (querySnapshot) => {
-      const arr: any[] = []
-      querySnapshot.forEach(async (doc) => {
-        const { imageUrl, subImageUrl } = getImageUrl(doc.id)
-        arr.push({ ...doc.data(), imageUrl, subImageUrl })
-      })
+    ;(async () => {
+      const q = query(
+        collection(db, collections.GAMES),
+        orderBy(sortKey, sortOrder),
+        limit(6)
+      )
 
+      const arr: any[] = []
+      const querySnapshot = await getDocs(q)
+      querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
+        const { imageUrl, subImageUrl } = getImageUrl(document.id)
+        arr.push({ ...document.data(), imageUrl, subImageUrl })
+      })
       dispatch(setGames(arr))
-    })
-    return detachListener
+    })()
   }, [sortKey, sortOrder])
 }
 
@@ -74,8 +79,6 @@ export function useUserGamesListener() {
 
   const setupQuery = (ids: string[]) =>
     query(collection(db, collections.GAMES), where('id', 'in', ids), limit(10))
-
-  // const getGameIds =
 
   const setupOnSnaphot = (
     queryGame: Query<DocumentData>,
@@ -97,7 +100,6 @@ export function useUserGamesListener() {
     // eslint-disable-next-line consistent-return
   ) => {
     const arr = gameIds.map((game) => game.gameId).slice(0, 10)
-    // To avoid FirebaseError (Invalid Query. A non-empty array is required for 'in' filters), we dispatch empty [] when ids array is empty.
 
     const q = setupQuery(arr)
     const detachListener = setupOnSnaphot(q, action)
@@ -105,6 +107,7 @@ export function useUserGamesListener() {
   }
 
   useEffect(() => {
+    // To avoid FirebaseError (Invalid Query. A non-empty array is required for 'in' filters), we dispatch empty [] when ids array is empty.
     if (cartGameIds.length === 0) dispatch(setCartGames([]))
     else setupListener(cartGameIds, setCartGames)
   }, [cartGameIds])
@@ -113,10 +116,15 @@ export function useUserGamesListener() {
     if (wishlistGameIds.length === 0) dispatch(setWishlistedGames([]))
     else setupListener(wishlistGameIds, setWishlistedGames)
   }, [wishlistGameIds])
+
   useEffect(() => {
     if (purchasedGameIds.length === 0) dispatch(setPurchasedGames([]))
     else setupListener(purchasedGameIds, setPurchasedGames)
   }, [purchasedGameIds])
+
+  //   useEffect(() => {
+  //     setupListener(purchasedGameIds, setPurchasedGames)
+  //   }, [purchasedGameIds])
 }
 
 export function useUserGameIdsListener() {
@@ -164,6 +172,31 @@ export function useUserGameIdsListener() {
       detachPurchasedListener()
     }
   }, [uid])
+}
+
+export function useGamesListener() {
+  const dispatch = useAppDispatch()
+
+  const setupQueryHighestDiscounts = () =>
+    query(
+      collection(db, collections.GAMES),
+      where('notes', 'array-contains', 'HIGHEST_DISCOUNT'),
+      limit(10)
+    )
+
+  useEffect(() => {
+    const q = setupQueryHighestDiscounts()
+    const detachListener = onSnapshot(q, (querySnapshot) => {
+      const arr: any[] = []
+      querySnapshot.forEach(async (doc) => {
+        const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+        arr.push({ ...doc.data(), imageUrl, subImageUrl })
+      })
+
+      dispatch(setHighestEverDiscounts(arr))
+    })
+    return detachListener
+  }, [])
 }
 
 export const useHomeScreenGames = () => {
@@ -219,6 +252,70 @@ export const useHomeScreenGames = () => {
       await setupSnapshot(setupQuery('Narration'), setNarrationGames)
     })()
   }, [])
+}
+
+export const useSimilarGames = (
+  gameIds: { id: number; s: number }[] | undefined
+) => {
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    async function run() {
+      if (gameIds) {
+        const q = query(
+          collection(db, collections.GAMES),
+          where('id', 'in', processGameIdsForSimilarItems(gameIds))
+          //   where('id', 'in', gameIds.slice(0, 10))
+        )
+        const querySnapshot = await getDocs(q)
+        const arr: Game[] = []
+        querySnapshot.forEach((doc) => {
+          const similarity = gameIds.find((item) => item.id === +doc.id)
+          const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+          // @ts-ignore
+          arr.push({
+            id: doc.id,
+            ...doc.data(),
+            s: similarity?.s || 0,
+            imageUrl,
+            subImageUrl,
+          })
+        })
+        arr.sort((a, b) => b.s - a.s)
+        dispatch(setGamePageSimilarGames(arr))
+      }
+    }
+    run()
+
+    // return () => {
+    //     cleanup
+    // }
+  }, [gameIds])
+}
+
+export const useGetGamePage = (gameId: string) => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    ;(async () => {
+      const docSnaps = [
+        getDoc(firebaseDoc(db, collections.GAMES, gameId)),
+        getDoc(firebaseDoc(db, collections.GAME_DETAILS, gameId)),
+      ]
+      let gameData: Game
+      Promise.all(docSnaps)
+        .then((documents) => {
+          documents.forEach((doc) => {
+            gameData = { ...gameData, ...doc.data() }
+          })
+          const { imageUrl, subImageUrl } = getImageUrl(gameData.id)
+          return dispatch(setGamePage({ ...gameData, imageUrl, subImageUrl }))
+        })
+        .catch((error) => console.log(error))
+    })()
+    return () => {
+      dispatch(setGamePage(null))
+    }
+  }, [gameId])
 }
 
 export function useUserListener() {

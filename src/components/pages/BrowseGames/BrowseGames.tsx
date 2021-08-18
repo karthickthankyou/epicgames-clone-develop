@@ -1,4 +1,4 @@
-import { selectGames2 } from '../../../store/gamesSlice'
+import { selectBrowseGames } from '../../../store/browseGamesSlice'
 import { useAppSelector } from '../../../store/hooks'
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
@@ -8,7 +8,7 @@ import BrowseFilters from '../../molecules/BrowseFilters'
 export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
-  const games = useAppSelector(selectGames2)
+  const games = useAppSelector(selectBrowseGames)
   return (
     <div>
       <div className='flex items-start my-4'>

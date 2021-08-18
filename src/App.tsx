@@ -14,7 +14,8 @@ import Checkout from './components/pages/Checkout'
 import Signup from './components/pages/Signup'
 import Signin from './components/pages/Signin'
 import {
-  useBrowseGamesListener,
+  useBrowseGames,
+  useGamesListener,
   useUserGameIdsListener,
   useUserGamesListener,
   useUserListener,
@@ -23,18 +24,22 @@ import BrowseGames from './components/pages/BrowseGames'
 import { useAppSelector } from './store/hooks'
 import {
   selectCartGames,
+  selectPurchasedGames,
   selectWishlistGameIds,
-  selectWishlistGames,
 } from './store/userGameSlice'
+import Library from './components/pages/Library'
+import Footer from './components/organisms/Footer'
 
 function App() {
   useUserListener()
   useUserGameIdsListener()
   useUserGamesListener()
-  useBrowseGamesListener()
+  useGamesListener()
+  useBrowseGames()
 
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   const cart = useAppSelector(selectCartGames)
+  const purchased = useAppSelector(selectPurchasedGames)
   return (
     <Router>
       <div className='container mx-auto'>
@@ -50,6 +55,9 @@ function App() {
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/cart'>Cart {cart.length}</Link>
+          </li>
+          <li className='p-1 m-1 bg-gray-800 rounded'>
+            <Link to='/library'>Library {purchased.length}</Link>
           </li>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/checkout'>Checkout</Link>
@@ -81,6 +89,9 @@ function App() {
           <Route path='/cart'>
             <Cart />
           </Route>
+          <Route path='/library'>
+            <Library />
+          </Route>
           <Route path='/signin'>
             <Signin />
           </Route>
@@ -100,6 +111,7 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   )

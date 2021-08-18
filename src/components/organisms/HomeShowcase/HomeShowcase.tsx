@@ -16,7 +16,7 @@ const HomeShowcase = () => {
   const [muted, setMuted] = useState<boolean>(true)
   return (
     <>
-      <div className='relative overflow-hidden rounded aspect-w-16 lg:aspect-h-6 md:aspect-h-8 aspect-h-16 sm:aspect-h-12'>
+      <div className='relative overflow-hidden rounded-t aspect-w-16 lg:aspect-h-6 md:aspect-h-8 aspect-h-16 sm:aspect-h-12'>
         {games.map((game, index) => (
           <>
             {/* <button
@@ -55,7 +55,7 @@ const HomeShowcase = () => {
                     style={{
                       position: 'absolute',
                       height: '200%',
-                      top: '-40%',
+                      top: '-30%',
                       width: '200%',
                       left: '-50%',
                     }}
@@ -103,23 +103,26 @@ const HomeShowcase = () => {
         ))}
       </div>
 
-      <div className='grid max-w-lg grid-cols-7 gap-1 mt-3 mb-6 ml-auto mr-3'>
-        {games.map((game, index) => (
-          <button
-            type='button'
-            onClick={() => setImageId(index)}
-            tabIndex={0}
-            className='w-full h-full rounded-full aspect-w-9 aspect-h-9'
-          >
-            <img
-              className={`object-cover object-center w-full h-full p-2  rounded-full ${
-                imageId === index && 'border-2 border-white shadow-xl'
-              }`}
-              src={game.imageUrl}
-              alt=''
-            />
-          </button>
-        ))}
+      <div className='p-3 mb-6 bg-white rounded-b bg-opacity-10 '>
+        <div className='grid max-w-lg grid-cols-7 gap-3 ml-auto'>
+          {games.map((game, index) => (
+            <button
+              key={game.id}
+              type='button'
+              onClick={() => setImageId(index)}
+              tabIndex={0}
+              className='w-full h-full rounded-full shadow-lg aspect-w-9 aspect-h-9'
+            >
+              <img
+                className={`object-cover object-center w-full h-full rounded-full ${
+                  imageId === index && 'border-2 border-white p-1'
+                }`}
+                src={game.imageUrl}
+                alt=''
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </>
   )
