@@ -43,6 +43,15 @@ function App() {
   return (
     <Router>
       <div className='container mx-auto'>
+        <button
+          type='button'
+          onClick={() => {
+            throw new Error()
+          }}
+        >
+          Break the world
+        </button>
+        ;
         <ul className='flex overflow-x-scroll'>
           <li className='p-1 m-1 bg-gray-800 rounded'>
             <Link to='/'>Home</Link>
@@ -75,7 +84,6 @@ function App() {
             <Link to='/also/will/not/match'>404</Link>
           </li>
         </ul>
-
         <Switch>
           <Route exact path='/'>
             <Home />
