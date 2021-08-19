@@ -32,3 +32,5 @@ jobs:
       #   run: npm test
       - name: Count Lines of Code (cloc)
         uses: djdefi/cloc-action@3
+      - name: Repo Visualizer
+        uses: githubocto/repo-visualizer@0.6.1
