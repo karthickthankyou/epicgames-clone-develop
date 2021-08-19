@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run the tests
-        run: npm test
+      # - name: Run the tests
+      #   run: npm test
       - name: Count Lines of Code (cloc)
         uses: djdefi/cloc-action@3
