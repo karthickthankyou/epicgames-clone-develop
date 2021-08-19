@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import GamePageFeatureBox from './GamePageFeatureBox'
 
@@ -7,7 +6,7 @@ export default {
   component: GamePageFeatureBox,
 } as ComponentMeta<typeof GamePageFeatureBox>
 
-const Template: ComponentStory<typeof GamePageFeatureBox> = (args) => (
+const Template: ComponentStory<typeof GamePageFeatureBox> = () => (
   <GamePageFeatureBox title='string' value='string' />
 )
 

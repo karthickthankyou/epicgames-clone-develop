@@ -7,7 +7,7 @@ export default {
   component: Library,
 } as ComponentMeta<typeof Library>
 
-const Template: ComponentStory<typeof Library> = (args) => <Library />
+const Template: ComponentStory<typeof Library> = () => <Library />
 
 export const Primary = Template.bind({})
 Primary.args = {}

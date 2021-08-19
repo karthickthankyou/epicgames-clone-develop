@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import {
   collection,
   query,
@@ -57,7 +57,7 @@ export function useBrowseGames() {
       const q = query(
         collection(db, collections.GAMES),
         orderBy(sortKey, sortOrder),
-        limit(6)
+        limit(32)
       )
 
       const arr: any[] = []
@@ -334,11 +334,11 @@ export const callSignIn = () => {
   const auth = getAuth()
   signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
     .then((userCredential) => {
-      const { user } = userCredential
+      //   const { user } = userCredential
     })
     .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
+      //   const errorCode = error.code
+      //   const errorMessage = error.message
     })
 }
 
@@ -350,6 +350,6 @@ export const callSignOut = () => {
     })
     .catch((error) => {
       // An error happened.
-      console.log(error)
+      //   console.log(error)
     })
 }

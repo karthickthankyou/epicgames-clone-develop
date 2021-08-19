@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import CartCard from './CartCard'
-import image from '../../../assets/game.jpg'
 
 export default {
   title: 'molecules/CartCard',

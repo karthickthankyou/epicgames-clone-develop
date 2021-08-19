@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import {
   selectSortIndex,
@@ -26,7 +26,7 @@ const SortDropdown = () => {
         onClick={() => setOpen((state) => !state)}
       >
         <span className='mr-2 text-gray-300'>Sortby: </span>
-        {sortByOptions[selectedIndex].displayText}
+        {sortByOptions[+selectedIndex].displayText}
         {open ? (
           <FaChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
         ) : (

@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { useCarouselTimer } from '../../../hooks'
 import { selectHomeScreenGames } from '../../../store/gamesSlice'
@@ -16,48 +15,21 @@ const HomeShowcase = () => {
   const [muted, setMuted] = useState<boolean>(true)
   return (
     <>
-      <div className='relative overflow-hidden rounded-t aspect-w-16 lg:aspect-h-6 md:aspect-h-8 aspect-h-16 sm:aspect-h-12'>
+      <div className='relative overflow-hidden rounded-t aspect-w-16 lg:aspect-h-7 md:aspect-h-9 aspect-h-16 sm:aspect-h-12'>
         {games.map((game, index) => (
           <>
-            {/* <button
-              type='button'
-              onClick={() => setMuted((state) => !state)}
-              className='z-20'
-            >
-              Mute
-            </button> */}
-            {/* <motion.img
-              initial={{ opacity: 0, scale: 1 }}
-              animate={{ opacity: 1, scale: 1.06 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{
-                duration: CAROUSEL_DURATION,
-                ease: 'easeOut',
-              }}
-              src={games[imageId].imageUrl}
-              alt=''
-              className='absolute inset-0 object-cover object-top -z-10'
-            /> */}
             <div key={game.id}>
               {imageId === index && (
                 <div className='flex flex-col h-full p-2 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-tr from-black'>
                   <div className='absolute inset-0 z-0 ' />
-                  {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-                  {/* <video
-                    autoPlay
-                    className='absolute inset-0 object-cover w-full h-full -z-10'
-                    src='https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/videos%2Fvideo.mp4?alt=media'
-                  >
-                    Your browser does not support the video tag.
-                  </video> */}
 
                   <div
                     style={{
                       position: 'absolute',
-                      height: '200%',
-                      top: '-30%',
-                      width: '200%',
-                      left: '-50%',
+                      height: '160%',
+                      top: '-35%',
+                      width: '160%',
+                      left: '-30%',
                     }}
                   >
                     <iframe
@@ -73,12 +45,12 @@ const HomeShowcase = () => {
 
                   <div className='z-10 mt-auto'>
                     <img
-                      src={games[imageId].subImageUrl}
+                      src={games[+imageId].subImageUrl}
                       className='object-cover w-48 h-auto'
                       alt=''
                     />
                     <div className='max-w-xs mt-4 line-clamp-4'>
-                      {games[imageId].description ||
+                      {games[+imageId].description ||
                         'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi maiores sunt voluptates nam repellat possimus, illum facilis dicta delectus!'}
                     </div>
                     <div className='flex mt-8 text-sm'>
@@ -103,7 +75,7 @@ const HomeShowcase = () => {
         ))}
       </div>
 
-      <div className='p-3 mb-6 bg-white rounded-b bg-opacity-10 '>
+      <div className='z-20 p-3 mb-6 -mt-20 bg-white rounded-b bg-opacity-10'>
         <div className='grid max-w-lg grid-cols-7 gap-3 ml-auto'>
           {games.map((game, index) => (
             <button

@@ -26,7 +26,7 @@ const spec = {
     {
       key: 'Graphics',
       value:
-        'NVIDIA GeForce GTX 660 / Radeon HD 7850 or better Windows Other DX10 with Shader 4.0 support required Windows Other DX10 with Shader 4.0 support required',
+        'NVIDIA GeForce GTX 660 / Radeon HD 7850 or better Windows Other DX10 with Shader 4.0 support required',
     },
   ],
 }

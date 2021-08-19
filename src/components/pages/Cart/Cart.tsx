@@ -1,7 +1,4 @@
-import {
-  selectCartGameIds,
-  selectCartGames,
-} from '../../../store/userGameSlice'
+import { selectCartGames } from '../../../store/userGameSlice'
 import { useAppSelector } from '../../../store/hooks'
 import CartCard from '../../molecules/CartCard'
 
@@ -9,7 +6,6 @@ export interface ICartProps {}
 
 const Cart = () => {
   const cartItems = useAppSelector(selectCartGames)
-  const cartItemIds = useAppSelector(selectCartGameIds)
 
   return (
     <div>

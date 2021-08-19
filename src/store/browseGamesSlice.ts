@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import { OrderByDirection } from 'firebase/firestore'
-import { Game, SortKey } from '../types'
-import { sortByOptions } from '../types/static'
+import { Game } from '../types'
 import { RootState } from './store'
 
 const initialState: {

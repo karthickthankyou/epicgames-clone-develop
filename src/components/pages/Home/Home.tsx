@@ -7,9 +7,7 @@ import {
 import {
   selectActionGames,
   selectAdventureGames,
-  selectGames2,
   selectHighestDiscounts,
-  selectHomeScreenGames,
   selectNarrationGames,
   selectPuzzleGames,
 } from '../../../store/gamesSlice'
@@ -28,7 +26,6 @@ export interface IHomeProps {}
 
 const Home = () => {
   const { uid } = useAppSelector(selectUser)
-  const games = useAppSelector(selectGames2)
 
   const wishlist = useAppSelector(selectWishlistGames)
   const highestDiscoutsEver = useAppSelector(selectHighestDiscounts)

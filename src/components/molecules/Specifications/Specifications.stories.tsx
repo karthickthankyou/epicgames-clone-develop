@@ -7,9 +7,7 @@ export default {
   component: Specifications,
 } as ComponentMeta<typeof Specifications>
 
-const Template: ComponentStory<typeof Specifications> = (args) => (
-  <Specifications />
-)
+const Template: ComponentStory<typeof Specifications> = () => <Specifications />
 
 export const Primary = Template.bind({})
 Primary.args = {}

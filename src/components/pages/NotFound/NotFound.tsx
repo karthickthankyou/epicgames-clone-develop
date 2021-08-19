@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ReactComponent as NotFoundSVG } from '../../../assets/404.svg'
+// import { ReactComponent as NotFoundSVG } from '../../../assets/404.svg'
 
 export interface INotFoundProps {}
 
@@ -46,7 +46,7 @@ const NotFound = () => {
             drag
             dragConstraints={constraintsRef}
             dragElastic={0.2}
-            onDrag={(event, info) => setShowBrokeMessage((count) => count + 1)}
+            onDrag={() => setShowBrokeMessage((count) => count + 1)}
           >
             404
           </motion.div>
@@ -55,7 +55,7 @@ const NotFound = () => {
             drag
             dragConstraints={constraintsRef}
             dragElastic={0.2}
-            onDrag={(event, info) => setShowBrokeMessage((count) => count + 1)}
+            onDrag={() => setShowBrokeMessage((count) => count + 1)}
           >
             The page you were looking for was not found. Please verify the
             link/URL or try starting back at our home page.

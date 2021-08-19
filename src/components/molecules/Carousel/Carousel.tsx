@@ -23,7 +23,7 @@ const Carousel = () => {
         <AnimatePresence exitBeforeEnter>
           {images.map(
             (image) =>
-              image === images[currentIndex] && (
+              image === images[+currentIndex] && (
                 <motion.img
                   src={image}
                   key={image}
@@ -52,7 +52,7 @@ const Carousel = () => {
             }}
             onClick={() => setCurrentIndex(index)}
             className={`object-cover w-full ${
-              image === images[currentIndex] ? 'scale-110' : 'scale-90'
+              image === images[+currentIndex] ? 'scale-110' : 'scale-90'
             }`}
           />
         ))}

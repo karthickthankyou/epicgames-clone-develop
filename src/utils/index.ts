@@ -96,14 +96,14 @@ export const getPaginationNumbers = (current: number, total: number) => {
   // Insert ...
   const dotsIndex = []
   for (let i = 1; i < items.length; i++) {
-    const diff: number = items[i] - items[i - 1]
+    const diff: number = items[+i] - items[i - 1]
     if (diff !== 1) {
       dotsIndex.push(dotsIndex.length + i)
     }
   }
   itemsComplete = items.slice()
   for (let i = 0; i < dotsIndex.length; i++) {
-    itemsComplete.splice(dotsIndex[i], 0, '...')
+    itemsComplete.splice(dotsIndex[+i], 0, '...')
   }
 
   // Insert arrows

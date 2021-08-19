@@ -1,8 +1,5 @@
-import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
 import Badge from '../../atoms/Badge'
-import Price from '../../atoms/Price'
-import image from '../../../assets/game.jpg'
 import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
@@ -30,7 +27,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
 
   return (
     <div>
-      <div className='mt-6 aspect-w-16 aspect-h-9'>
+      <div className='mt-6 bg-blue-600 aspect-w-16 aspect-h-9 bg-opacity-10'>
         <img
           className='object-contain object-center w-full p-2'
           src={game.subImageUrl}
@@ -43,7 +40,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
       {game.purchased ? (
         <Link
           to='/library'
-          className='flex justify-center block w-full mt-4 bg-blue-600 btn btn-xl'
+          className='flex justify-center w-full mt-4 bg-blue-600 btn btn-xl'
         >
           In Library
         </Link>

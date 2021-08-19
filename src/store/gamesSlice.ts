@@ -107,8 +107,6 @@ const combineWCPDataForObject = (
     purchased: purchasedIds.some((game) => game.gameId === gameId),
   })
 
-  console.log('combineWCPDataForObject: ', { ...input, ...includes(input.id) })
-
   return { ...input, ...includes(input.id) }
 }
 
