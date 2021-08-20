@@ -10,12 +10,11 @@ import { soloPaths } from '../../../utils'
 export interface INavbarProps {}
 
 const Navbar = () => {
-  const { pathname } = useLocation()
-
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   const cart = useAppSelector(selectCartGames)
   const purchased = useAppSelector(selectPurchasedGames)
   //   console.log(useLocation())
+  const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
   return (
     <ul className='flex overflow-x-scroll'>

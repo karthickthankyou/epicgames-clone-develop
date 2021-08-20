@@ -21,7 +21,7 @@ const Cart = () => {
         <button className='border btn-xl btn btn-outline' type='button'>
           continue shopping
         </button>
-        <button className='ml-4 bg-blue-500 btn-xl btn' type='button'>
+        <button className='ml-4 bg-primary-500 btn-xl btn' type='button'>
           purchase
         </button>
       </div>

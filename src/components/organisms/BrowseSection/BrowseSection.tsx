@@ -1,7 +1,7 @@
 export interface IBrowseSectionProps {}
 
 const BrowseSection = () => (
-  <div className='p-10 bg-gradient-to-tl via-blue-600 from-green-400 to-blue-900 '>
+  <div className='p-10 bg-gradient-to-tl via-primary-600 from-green-400 to-primary-900 '>
     <div className='text-4xl'>Browse</div>
     <div className='max-w-xs mt-2'>
       Explore our catalog for your next favorite game!

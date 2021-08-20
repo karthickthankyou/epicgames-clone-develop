@@ -41,10 +41,13 @@ const CheckoutForm = () => {
       {games.map((game) => (
         <CartCard key={game.id} game={game} classes='mt-2' />
       ))}
-      <form onSubmit={handleSubmit} className='p-4 mt-10 bg-blue-200 rounded'>
+      <form
+        onSubmit={handleSubmit}
+        className='p-4 mt-10 rounded bg-primary-200'
+      >
         <CardElement />
         <button
-          className='flex items-center px-4 py-2 mt-4 text-white bg-blue-600 btn hover:bg-blue-700'
+          className='flex items-center px-4 py-2 mt-4 text-white bg-primary-600 btn hover:bg-primary-700'
           type='submit'
           disabled={!stripe || !elements}
         >

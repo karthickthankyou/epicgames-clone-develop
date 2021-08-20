@@ -42,3 +42,6 @@ export type UserGameStatus =
 export type GameGenre = 'Action' | 'Puzzle' | 'Narration' | 'Adventure'
 
 export type GameNotes = 'HIGHEST_DISCOUNT'
+
+export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
+export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void

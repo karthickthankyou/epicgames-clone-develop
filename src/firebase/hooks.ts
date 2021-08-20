@@ -51,7 +51,14 @@ import {
   selectPurchasedGameIds,
 } from '../store/userGameSlice'
 import { getImageUrl, processGameIdsForSimilarItems } from '../utils'
-import { Game, GameGenre, UserGame, UserGameStatus } from '../types'
+import {
+  Game,
+  GameGenre,
+  LoadSuccessErrorDispatch,
+  LoadSuccessErrorType,
+  UserGame,
+  UserGameStatus,
+} from '../types'
 import { sortByOptions } from '../types/static'
 
 export function useBrowseGames() {
@@ -336,18 +343,18 @@ export function useUserListener() {
 
 export const callSignIn = (
   { email, password }: { email: string; password: string },
-  setLoadingFalse: { (): void }
+  dispatch: LoadSuccessErrorDispatch
 ) => {
   //   signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       //   const { user } = userCredential
       console.log(userCredential)
-      setLoadingFalse()
+      dispatch('success')
     })
     .catch((error) => {
       console.log('Error: ', error)
-      setLoadingFalse()
+      dispatch('failed')
       //   const errorCode = error.code
       //   const errorMessage = error.message
     })
@@ -362,7 +369,7 @@ export const callSignup = (
     password: string
     displayName?: string
   },
-  setLoadingFalse: { (): void }
+  dispatch: LoadSuccessErrorDispatch
 ) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -375,11 +382,11 @@ export const callSignup = (
         () => {
           // Update successful.
           console.log('Update successful.')
-          setLoadingFalse()
+          dispatch('success')
         },
         (error) => {
           console.log('An error happened.', error)
-          setLoadingFalse()
+          dispatch('failed')
         }
       )
       // ...
@@ -387,7 +394,7 @@ export const callSignup = (
     .catch((error) => {
       const errorCode = error.code
       const errorMessage = error.message
-      setLoadingFalse()
+      dispatch('failed')
       // ..
     })
 }
@@ -445,7 +452,7 @@ export const passwordReset = ({ email }: { email: string }) => {
 
 export const sendResetPasswordLink = (
   email: string,
-  dispatch: (arg0: 'success' | 'failed') => void
+  dispatch: LoadSuccessErrorDispatch
 ) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {

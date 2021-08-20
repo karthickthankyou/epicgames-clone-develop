@@ -9,13 +9,10 @@ import {
   AiOutlineLoading,
 } from 'react-icons/ai'
 import { useForm } from 'react-hook-form'
-import {
-  callSignIn,
-  googleSignin,
-  passwordReset,
-} from '../../../firebase/hooks'
+import { callSignIn, googleSignin } from '../../../firebase/hooks'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
+import { useLoadSuccessError } from '../../../hooks'
 
 export interface ISigninProps {}
 
@@ -28,7 +25,7 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const Signin = () => {
   const user = useAppSelector(selectUser)
-  const [loading, setLoading] = useState(false)
+  const [{ loading, success, error }, dispatch] = useLoadSuccessError()
 
   type FormValues = { email: string; password: string }
 
@@ -47,8 +44,8 @@ const Signin = () => {
       <div className='w-full max-w-md mx-auto mt-16 bg-gray-800 rounded shadow-xl'>
         <form
           onSubmit={handleSubmit(({ email, password }) => {
-            setLoading(true)
-            callSignIn({ email, password }, () => setLoading(false))
+            dispatch('load')
+            callSignIn({ email, password }, dispatch)
           })}
           className='p-8'
         >
@@ -110,6 +107,7 @@ const Signin = () => {
                 <AiOutlineLoading className='inline ml-2 animate-spin' />
               )}
             </button>
+
             <Link
               to={{
                 pathname: '/forgotpassword',
@@ -122,6 +120,9 @@ const Signin = () => {
               Forgot Password?
             </Link>
           </div>
+          {error && (
+            <div className='my-2 text-xs'>Login failed. Try again.</div>
+          )}
         </form>
         <div className='px-8 pb-8'>
           <div className='text-gray-400'>or signin with</div>
@@ -146,6 +147,7 @@ const Signin = () => {
               <AiFillFacebook className='w-6 h-6' />
             </button>
           </div>
+
           <Link
             to={{
               pathname: '/signup',

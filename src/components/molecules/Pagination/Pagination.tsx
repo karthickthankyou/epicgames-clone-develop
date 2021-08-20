@@ -17,9 +17,9 @@ const Pagination = ({ current, total, classes = '' }: IPaginationProps) => {
           type='button'
           key={key}
           className={`relative w-8 h-8 rounded  ${
-            item === current && 'bg-blue-700'
+            item === current && 'bg-primary-700'
           }
-          ${item === '...' ? 'cursor-default' : 'hover:bg-blue-700'}
+          ${item === '...' ? 'cursor-default' : 'hover:bg-primary-700'}
         `}
         >
           <div className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 '>

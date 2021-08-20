@@ -18,10 +18,10 @@ const Footer = () => {
     <div className='text-sm'>
       <div className='flex my-4'>
         <button type='button' aria-label='facebook icon'>
-          <FaFacebook className='w-6 h-6 mr-3 hover:text-blue-500' />
+          <FaFacebook className='w-6 h-6 mr-3 hover:text-primary-500' />
         </button>
         <button type='button' aria-label='twitter icon'>
-          <FaTwitter className='w-6 h-6 mr-3 hover:text-blue-300' />
+          <FaTwitter className='w-6 h-6 mr-3 hover:text-primary-300' />
         </button>
         <button type='button' aria-label='youtube icon'>
           <FaYoutube className='w-6 h-6 mr-3 hover:text-red-500' />

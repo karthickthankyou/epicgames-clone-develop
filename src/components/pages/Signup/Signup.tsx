@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form'
 import { callSignup, googleSignin } from '../../../firebase/hooks'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
+import { useLoadSuccessError } from '../../../hooks'
 
 export interface ISignupProps {}
 
@@ -24,7 +25,7 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const Signup = () => {
   const user = useAppSelector(selectUser)
-  const [loading, setLoading] = useState(false)
+  const [{ loading, success, error }, dispatch] = useLoadSuccessError()
 
   type FormValues = { email: string; password: string; displayName: string }
 
@@ -42,10 +43,8 @@ const Signup = () => {
       <div className='w-full max-w-md p-8 mx-auto mt-16 bg-gray-800 rounded shadow-xl'>
         <form
           onSubmit={handleSubmit(({ email, password, displayName }) => {
-            setLoading(true)
-            callSignup({ email, password, displayName }, () =>
-              setLoading(false)
-            )
+            dispatch('load')
+            callSignup({ email, password, displayName }, dispatch)
           })}
         >
           <div className='mb-4 text-3xl font-light'>Create Account</div>
@@ -120,6 +119,7 @@ const Signup = () => {
             </button>
           </div>
         </form>
+        {error && <div className='my-2 text-xs'>Login failed. Try again.</div>}
         <div className='mt-8'>
           <div className='text-gray-400'>or continue with</div>
           <div className='flex mt-4'>

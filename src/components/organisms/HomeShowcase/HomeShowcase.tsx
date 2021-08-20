@@ -56,13 +56,13 @@ const HomeShowcase = () => {
                     <div className='flex mt-8 text-sm'>
                       <button
                         type='button'
-                        className='mr-0.5 px-4 py-2 btn-lg bg-blue-600 rounded-l hover:bg-blue-700'
+                        className='mr-0.5 px-4 py-2 btn-lg bg-primary-600 rounded-l hover:bg-primary-700'
                       >
                         Buy now
                       </button>
                       <button
                         type='button'
-                        className='px-4 py-2 bg-blue-600 rounded-r btn hover:bg-blue-700'
+                        className='px-4 py-2 rounded-r bg-primary-600 btn hover:bg-primary-700'
                       >
                         +
                       </button>
