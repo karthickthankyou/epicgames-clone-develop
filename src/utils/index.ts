@@ -126,7 +126,8 @@ export const getImageUrl = (id: string) => {
 }
 
 export const getScoreColor = (score: number) => {
-  if (score > 90) return 'border-2 border-blue-500 bg-blue-600 bg-opacity-10'
+  if (score > 90)
+    return 'border-2 border-primary-500 bg-primary-600 bg-opacity-10'
   if (score > 75) return 'border-2 border-green-600'
   if (score > 50) return 'border-2 border-red-400 '
   return 'border-2 border-red-700 '
@@ -143,3 +144,5 @@ export const findPercentage = (num: number) => Math.round(num * 100)
 export const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
+
+export const soloPaths = ['/signin', '/signup', '/forgotpassword']

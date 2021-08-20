@@ -4,6 +4,7 @@ import {
   Route,
   Link,
   Redirect,
+  useLocation,
 } from 'react-router-dom'
 import Wishlist from './components/pages/Wishlist'
 import NotFound from './components/pages/NotFound'
@@ -29,61 +30,20 @@ import {
 } from './store/userGameSlice'
 import Library from './components/pages/Library'
 import Footer from './components/organisms/Footer'
+import Navbar from './components/organisms/Navbar'
+import ForgotPassword from './components/pages/ForgotPassword'
 
 function App() {
   useUserListener()
-  useUserGameIdsListener()
-  useUserGamesListener()
-  useGamesListener()
-  useBrowseGames()
+  //   useUserGameIdsListener()
+  //   useUserGamesListener()
+  //   useGamesListener()
+  //   useBrowseGames()
 
-  const wishlistIds = useAppSelector(selectWishlistGameIds)
-  const cart = useAppSelector(selectCartGames)
-  const purchased = useAppSelector(selectPurchasedGames)
   return (
     <Router>
       <div className='container mx-auto'>
-        <button
-          type='button'
-          onClick={() => {
-            throw new Error()
-          }}
-        >
-          Break the world
-        </button>
-        ;
-        <ul className='flex overflow-x-scroll'>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/'>Home</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/browse'>BrowseGames</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/wishlist'>Wishlist {wishlistIds.length}</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/cart'>Cart {cart.length}</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/library'>Library {purchased.length}</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/checkout'>Checkout</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/game/004'>Game Page</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/signup'>Sign Up</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/signin'>Sign In</Link>
-          </li>
-          <li className='p-1 m-1 bg-gray-800 rounded'>
-            <Link to='/also/will/not/match'>404</Link>
-          </li>
-        </ul>
+        <Navbar />
         <Switch>
           <Route exact path='/'>
             <Home />
@@ -99,6 +59,9 @@ function App() {
           </Route>
           <Route path='/library'>
             <Library />
+          </Route>
+          <Route path='/forgotpassword'>
+            <ForgotPassword />
           </Route>
           <Route path='/signin'>
             <Signin />

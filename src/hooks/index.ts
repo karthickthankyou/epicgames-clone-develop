@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 
 export function useCarouselTimer({
   duration,
@@ -17,4 +17,30 @@ export function useCarouselTimer({
     return () => clearTimeout(timer)
   }, [currentIndex])
   return [currentIndex, setCurrentIndex]
+}
+
+export const useLoadSuccessError = () => {
+  const initialState = {
+    loading: false,
+    success: false,
+    error: false,
+  }
+
+  function reducer(
+    state: typeof initialState,
+    action: 'load' | 'success' | 'failed'
+  ) {
+    switch (action) {
+      case 'load':
+        return { loading: true, error: false, success: false }
+      case 'success':
+        return { loading: false, error: false, success: true }
+      case 'failed':
+        return { loading: false, error: true, success: false }
+      default:
+        throw new Error('Invalid action.')
+    }
+  }
+
+  return useReducer(reducer, initialState)
 }

@@ -121,13 +121,9 @@ const Home = () => {
       )}
 
       <div className='mt-10'>
-        {uid ? (
+        {uid && (
           <button type='button' onClick={callSignOut}>
             Signout
-          </button>
-        ) : (
-          <button type='button' onClick={callSignIn}>
-            Signin
           </button>
         )}
       </div>

@@ -18,9 +18,14 @@ import {
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
+  sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
-import { collections, db } from './index'
+import { collections, db, auth } from './index'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import {
   setActionGames,
@@ -319,7 +324,6 @@ export const useGetGamePage = (gameId: string) => {
 }
 
 export function useUserListener() {
-  const auth = getAuth()
   const dispatch = useAppDispatch()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -330,20 +334,65 @@ export function useUserListener() {
   }, [])
 }
 
-export const callSignIn = () => {
-  const auth = getAuth()
-  signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
+export const callSignIn = (
+  { email, password }: { email: string; password: string },
+  setLoadingFalse: { (): void }
+) => {
+  //   signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
+  signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       //   const { user } = userCredential
+      console.log(userCredential)
+      setLoadingFalse()
     })
     .catch((error) => {
+      console.log('Error: ', error)
+      setLoadingFalse()
       //   const errorCode = error.code
       //   const errorMessage = error.message
     })
 }
+export const callSignup = (
+  {
+    email,
+    password,
+    displayName,
+  }: {
+    email: string
+    password: string
+    displayName?: string
+  },
+  setLoadingFalse: { (): void }
+) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in
+      const { user } = userCredential
+
+      updateProfile(user, {
+        displayName,
+      }).then(
+        () => {
+          // Update successful.
+          console.log('Update successful.')
+          setLoadingFalse()
+        },
+        (error) => {
+          console.log('An error happened.', error)
+          setLoadingFalse()
+        }
+      )
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code
+      const errorMessage = error.message
+      setLoadingFalse()
+      // ..
+    })
+}
 
 export const callSignOut = () => {
-  const auth = getAuth()
   signOut(auth)
     .then(() => {
       // Sign-out successful.
@@ -351,5 +400,58 @@ export const callSignOut = () => {
     .catch((error) => {
       // An error happened.
       //   console.log(error)
+    })
+}
+
+export const googleSignin = () => {
+  signInWithPopup(auth, new GoogleAuthProvider())
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result)
+      const token = credential?.accessToken
+      // The signed-in user info.
+      const { user } = result
+      console.log(user)
+
+      // ...
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code
+      const errorMessage = error.message
+      // The email of the user's account used.
+      const { email } = error
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error)
+      // ...
+    })
+}
+
+export const passwordReset = ({ email }: { email: string }) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+      console.log('Password reset email sent to ', email)
+    })
+    .catch((error) => {
+      const errorCode = error.code
+      const errorMessage = error.message
+      console.log(errorMessage)
+
+      // ..
+    })
+}
+
+export const sendResetPasswordLink = (
+  email: string,
+  dispatch: (arg0: 'success' | 'failed') => void
+) => {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      dispatch('success')
+    })
+    .catch((error) => {
+      dispatch('failed')
     })
 }
