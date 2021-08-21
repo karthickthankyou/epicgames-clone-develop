@@ -13,11 +13,11 @@ const Wishlist = () => {
   const wishlist = useAppSelector(selectWishlistGames)
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   return (
-    <div>
+    <div className='h-screen'>
       <div className='flex items-center justify-between'>
         {/* <Link to='/'>To Home</Link> */}
         <SortDropdown />
-        <div className='p-2'>Items ({wishlistIds.length})</div>
+        <div className='py-2'>Items ({wishlistIds.length})</div>
       </div>
       {wishlist.length === 0 && (
         <div className='flex items-center justify-center h-60'>

@@ -8,7 +8,7 @@ const Cart = () => {
   const cartItems = useAppSelector(selectCartGames)
 
   return (
-    <div>
+    <div className='h-screen max-w-md mx-auto'>
       {cartItems.length === 0 && (
         <div className='flex items-center justify-center h-60'>
           Cart is ewmpty.

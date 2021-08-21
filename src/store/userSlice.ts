@@ -4,6 +4,7 @@ import { RootState } from './store'
 
 const initialState = {
   uid: null,
+  displayName: null,
   loading: false,
   error: null,
 }
@@ -13,7 +14,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.uid = action.payload
+      state.uid = action.payload.uid
+      state.displayName = action.payload.displayName
       state.loading = false
       state.error = null
     },

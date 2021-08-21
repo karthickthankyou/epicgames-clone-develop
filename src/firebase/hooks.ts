@@ -339,7 +339,9 @@ export function useUserListener() {
   const dispatch = useAppDispatch()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) dispatch(setUser(user.uid))
+      console.log('user', user)
+      if (user)
+        dispatch(setUser({ uid: user.uid, displayName: user.displayName }))
       else dispatch(setUser(null))
     })
     return unsubscribe

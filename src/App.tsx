@@ -34,11 +34,12 @@ import Library from './components/pages/Library'
 import Footer from './components/organisms/Footer'
 import Navbar from './components/organisms/Navbar'
 import ForgotPassword from './components/pages/ForgotPassword'
+import UserPage from './components/pages/UserPage'
 
 function App() {
   useUserListener()
-  //   useUserGameIdsListener()
-  //   useUserGamesListener()
+  useUserGameIdsListener()
+  useUserGamesListener()
   //   useGamesListener()
   //   useBrowseGames()
   useSpecialGames()
@@ -46,8 +47,8 @@ function App() {
 
   return (
     <Router>
+      <Navbar />
       <div className='container mx-auto'>
-        <Navbar />
         <Switch>
           <Route exact path='/'>
             <Home />
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route path='/cart'>
             <Cart />
+          </Route>
+          <Route path='/user/:uid'>
+            <UserPage />
           </Route>
           <Route path='/library'>
             <Library />
