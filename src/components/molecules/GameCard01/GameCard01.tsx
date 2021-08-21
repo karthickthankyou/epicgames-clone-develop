@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { HiBriefcase } from 'react-icons/hi'
 
@@ -43,6 +43,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
   } = game
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
+  const history = useHistory()
 
   const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
   const { CartIcon, cartHintText } = getInCart(inCart)
@@ -83,6 +84,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
                   uid: uid || '',
                   gameId: id,
                   status: wishlisted ? 'REMOVED_FROM_WISHLIST' : 'WISHLISTED',
+                  history,
                 })
               }
             />
@@ -95,6 +97,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
                   uid: uid || '',
                   gameId: id,
                   status: inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
+                  history,
                 })
               }
             />

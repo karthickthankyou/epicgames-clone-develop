@@ -37,6 +37,7 @@ const Signin = () => {
   } = useForm<FormValues>()
 
   const [showPassword, setShowPassword] = useState(false)
+
   if (user.uid) return <Redirect to='/' />
 
   return (

@@ -7,9 +7,13 @@ import {
 import {
   selectActionGames,
   selectAdventureGames,
+  selectAnticipatedBy,
   selectHighestDiscounts,
+  selectHoursPlayed,
+  selectHoursToBeat,
   selectNarrationGames,
   selectPuzzleGames,
+  selectUnitsSold,
 } from '../../../store/gamesSlice'
 import { useAppSelector } from '../../../store/hooks'
 import {
@@ -21,6 +25,7 @@ import {
 import { selectUser } from '../../../store/userSlice'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import HomeShowcase from '../../organisms/HomeShowcase'
+import MaskedShowcase from '../../organisms/MaskedShowcase'
 
 export interface IHomeProps {}
 
@@ -37,6 +42,10 @@ const Home = () => {
   const puzzleGames = useAppSelector(selectPuzzleGames)
   const narrationGames = useAppSelector(selectNarrationGames)
 
+  const unitsSold = useAppSelector(selectUnitsSold)
+  const hoursPlayed = useAppSelector(selectHoursPlayed)
+  const hoursToBeat = useAppSelector(selectHoursToBeat)
+  const anticipatedBy = useAppSelector(selectAnticipatedBy)
   useHomeScreenGames()
 
   return (
@@ -56,6 +65,39 @@ const Home = () => {
         buttonText='View all'
         buttonLinkTo='/browse'
       />
+      {unitsSold.length > 0 && (
+        <MaskedShowcase
+          title='Blockbusters Of The Month'
+          games={unitsSold}
+          comment='thousand units sold.'
+          keyUnit='unitsSold'
+        />
+      )}
+      {anticipatedBy.length > 0 && (
+        <MaskedShowcase
+          title='Most anticipated games'
+          games={anticipatedBy}
+          comment='wishlisted'
+          keyUnit='anticipatedBy'
+        />
+      )}
+      {hoursPlayed.length > 0 && (
+        <MaskedShowcase
+          title='Most popular games'
+          games={hoursPlayed}
+          comment='hours played'
+          keyUnit='hoursPlayed'
+        />
+      )}
+      {hoursToBeat.length > 0 && (
+        <MaskedShowcase
+          title='Longest games'
+          games={hoursToBeat}
+          comment='game hours'
+          keyUnit='hoursToBeat'
+        />
+      )}
+
       {wishlist.length > 0 && (
         <GameCard01Section
           //   heading={`From your wishlist ( ${wishlist.length} )`}

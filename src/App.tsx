@@ -4,6 +4,7 @@ import {
   Route,
   Link,
   Redirect,
+  useHistory,
   useLocation,
 } from 'react-router-dom'
 import Wishlist from './components/pages/Wishlist'
@@ -17,6 +18,7 @@ import Signin from './components/pages/Signin'
 import {
   useBrowseGames,
   useGamesListener,
+  useSpecialGames,
   useUserGameIdsListener,
   useUserGamesListener,
   useUserListener,
@@ -39,6 +41,8 @@ function App() {
   //   useUserGamesListener()
   //   useGamesListener()
   //   useBrowseGames()
+  useSpecialGames()
+  const history = useHistory()
 
   return (
     <Router>

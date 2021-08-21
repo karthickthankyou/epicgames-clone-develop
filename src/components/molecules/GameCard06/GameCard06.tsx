@@ -1,5 +1,6 @@
 import dateFormat from 'dateformat'
 import { MdClose } from 'react-icons/md'
+import { useHistory } from 'react-router-dom'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
@@ -22,6 +23,7 @@ const GameCard06 = ({
   date,
 }: IGameCard06Props) => {
   const { uid } = useAppSelector(selectUser)
+  const history = useHistory()
   return (
     <div className='relative grid grid-cols-3 p-2 bg-gray-800 rounded group'>
       <img
@@ -54,6 +56,7 @@ const GameCard06 = ({
                 uid: uid || '',
                 gameId: id,
                 status: 'IN_CART',
+                history,
               })
             }
           >
@@ -69,6 +72,7 @@ const GameCard06 = ({
             uid: uid || '',
             gameId: id,
             status: 'REMOVED_FROM_WISHLIST',
+            history,
           })
         }
       >

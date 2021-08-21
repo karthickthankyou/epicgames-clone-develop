@@ -36,6 +36,10 @@ import {
   setPuzzleGames,
   setGamePage,
   setGamePageSimilarGames,
+  setUnitsSold,
+  setHoursPlayed,
+  setAnticipatedBy,
+  setHoursToBeat,
 } from '../store/gamesSlice'
 import { selectUser, setUser } from '../store/userSlice'
 import { selectSortIndex, setGames } from '../store/browseGamesSlice'
@@ -56,6 +60,7 @@ import {
   GameGenre,
   LoadSuccessErrorDispatch,
   LoadSuccessErrorType,
+  SpecialGames,
   UserGame,
   UserGameStatus,
 } from '../types'
@@ -461,4 +466,41 @@ export const sendResetPasswordLink = (
     .catch((error) => {
       dispatch('failed')
     })
+}
+
+export function useSpecialGames() {
+  const dispatch = useAppDispatch()
+
+  const setupQuery = (property: SpecialGames) =>
+    query(
+      collection(db, collections.GAMES),
+      orderBy(property, 'desc'),
+      where(property, '!=', null),
+      limit(10)
+    )
+
+  const setupSnapshot = async (
+    customQuery: Query<DocumentData>,
+    action: ActionCreatorWithPayload<any, string>
+  ) => {
+    const arr: any[] = []
+    const querySnapshot = await getDocs(customQuery)
+    querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
+      const { imageUrl, subImageUrl } = getImageUrl(document.id)
+      arr.push({ ...document.data(), imageUrl, subImageUrl })
+    })
+    dispatch(action(arr))
+  }
+
+  useEffect(() => {
+    const q1 = setupQuery('unitsSold')
+    const q2 = setupQuery('hoursPlayed')
+    const q3 = setupQuery('hoursToBeat')
+    const q4 = setupQuery('anticipatedBy')
+
+    setupSnapshot(q1, setUnitsSold)
+    setupSnapshot(q2, setHoursPlayed)
+    setupSnapshot(q3, setHoursToBeat)
+    setupSnapshot(q4, setAnticipatedBy)
+  }, [])
 }

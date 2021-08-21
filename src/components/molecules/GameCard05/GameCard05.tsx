@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import Badge from '../../atoms/Badge'
 import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
@@ -24,6 +24,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
     { label: 'Platform', value: 'Windows' },
   ]
   const { uid } = useAppSelector(selectUser)
+  const history = useHistory()
 
   return (
     <div>
@@ -54,6 +55,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
                 uid: uid || '',
                 gameId: game.id,
                 status: game.inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
+                history,
               })
             }
           >
@@ -70,6 +72,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
                 status: game.wishlisted
                   ? 'REMOVED_FROM_WISHLIST'
                   : 'WISHLISTED',
+                history,
               })
             }
           >

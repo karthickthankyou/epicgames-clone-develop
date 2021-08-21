@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSelector, createSlice } from '@reduxjs/toolkit'
 import { RootState } from './store'
-import { Game, GameGenre, UserGame } from '../types'
+import { Game, GameGenre, SpecialGames, UserGame } from '../types'
 import {
   selectCartGameIds,
   selectPurchasedGameIds,
@@ -15,6 +15,7 @@ const initialState: {
   gamePage: Game | null
   gamePageSimilarGames: Game[]
   genres: { [key in Lowercase<GameGenre>]: Game[] }
+  special: { [key in SpecialGames]: Game[] }
 } = {
   games: [],
   homeScreenGames: [],
@@ -26,6 +27,12 @@ const initialState: {
     adventure: [],
     puzzle: [],
     narration: [],
+  },
+  special: {
+    unitsSold: [],
+    hoursToBeat: [],
+    hoursPlayed: [],
+    anticipatedBy: [],
   },
 }
 
@@ -60,6 +67,18 @@ const gamesSlice = createSlice({
     setNarrationGames: (state, action) => {
       state.genres.narration = action.payload
     },
+    setUnitsSold: (state, action) => {
+      state.special.unitsSold = action.payload
+    },
+    setHoursPlayed: (state, action) => {
+      state.special.hoursPlayed = action.payload
+    },
+    setHoursToBeat: (state, action) => {
+      state.special.hoursToBeat = action.payload
+    },
+    setAnticipatedBy: (state, action) => {
+      state.special.anticipatedBy = action.payload
+    },
   },
 })
 
@@ -73,6 +92,10 @@ export const {
   setNarrationGames,
   setGamePage,
   setGamePageSimilarGames,
+  setUnitsSold,
+  setHoursPlayed,
+  setAnticipatedBy,
+  setHoursToBeat,
 } = gamesSlice.actions
 
 export const selectGames = (state: RootState) => state.games.games
@@ -154,6 +177,46 @@ export const selectGamePage = createSelector(
 export const selectActionGames = createSelector(
   [
     (state: RootState) => state.games.genres.action,
+    selectWishlistGameIds,
+    selectCartGameIds,
+    selectPurchasedGameIds,
+  ],
+  combineWCPData
+)
+
+export const selectUnitsSold = createSelector(
+  [
+    (state: RootState) => state.games.special.unitsSold,
+    selectWishlistGameIds,
+    selectCartGameIds,
+    selectPurchasedGameIds,
+  ],
+  combineWCPData
+)
+
+export const selectHoursPlayed = createSelector(
+  [
+    (state: RootState) => state.games.special.hoursPlayed,
+    selectWishlistGameIds,
+    selectCartGameIds,
+    selectPurchasedGameIds,
+  ],
+  combineWCPData
+)
+
+export const selectHoursToBeat = createSelector(
+  [
+    (state: RootState) => state.games.special.hoursToBeat,
+    selectWishlistGameIds,
+    selectCartGameIds,
+    selectPurchasedGameIds,
+  ],
+  combineWCPData
+)
+
+export const selectAnticipatedBy = createSelector(
+  [
+    (state: RootState) => state.games.special.anticipatedBy,
     selectWishlistGameIds,
     selectCartGameIds,
     selectPurchasedGameIds,

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import ReviewSection from './ReviewSection'
 
 export default {
-  title: 'components/organisms/ReviewSection',
+  title: 'organisms/ReviewSection',
   component: ReviewSection,
 } as ComponentMeta<typeof ReviewSection>
 

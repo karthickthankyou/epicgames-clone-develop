@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Library from './Library'
 
 export default {
-  title: 'components/pages/Library',
+  title: 'pages/Library',
   component: Library,
 } as ComponentMeta<typeof Library>
 

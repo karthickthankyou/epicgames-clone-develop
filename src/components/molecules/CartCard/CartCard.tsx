@@ -1,4 +1,5 @@
 import { IoCloseOutline } from 'react-icons/io5'
+import { useHistory } from 'react-router-dom'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
@@ -12,6 +13,7 @@ export interface ICartCardProps {
 
 const CartCard = ({ game, classes }: ICartCardProps) => {
   const { uid } = useAppSelector(selectUser)
+  const history = useHistory()
   return (
     <div className={`flex items-center ${classes}`}>
       <img
@@ -37,6 +39,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
             uid: uid || '',
             gameId: game.id,
             status: 'REMOVED_FROM_CART',
+            history,
           })
         }
       >

@@ -21,6 +21,10 @@ export type Game = {
   notes?: GameNotes[]
   items?: { id: number; s: number }[]
   s?: any
+  unitsSold?: number
+  hoursToBeat?: number
+  hoursPlayed?: string
+  anticipatedBy?: number
 }
 
 export type SortKey = 'releaseDate' | 'price' | 'title' | 'discount'
@@ -40,6 +44,11 @@ export type UserGameStatus =
   | 'REMOVED_FROM_WISHLIST'
 
 export type GameGenre = 'Action' | 'Puzzle' | 'Narration' | 'Adventure'
+export type SpecialGames =
+  | 'unitsSold'
+  | 'hoursToBeat'
+  | 'anticipatedBy'
+  | 'hoursPlayed'
 
 export type GameNotes = 'HIGHEST_DISCOUNT'
 

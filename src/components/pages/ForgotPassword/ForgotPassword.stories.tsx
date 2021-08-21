@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import ForgotPassword from './ForgotPassword'
 
 export default {
-  title: 'components/pages/ForgotPassword',
+  title: 'pages/ForgotPassword',
   component: ForgotPassword,
 } as ComponentMeta<typeof ForgotPassword>
 

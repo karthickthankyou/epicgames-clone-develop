@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import GamePageFeatureBox from './GamePageFeatureBox'
 
 export default {
-  title: 'components/atoms/GamePageFeatureBox',
+  title: 'atoms/GamePageFeatureBox',
   component: GamePageFeatureBox,
 } as ComponentMeta<typeof GamePageFeatureBox>
 

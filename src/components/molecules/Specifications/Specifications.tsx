@@ -43,7 +43,7 @@ const Specifications = () => (
     </div>
     <div>
       {spec.recommended.map((item) => (
-        <div className='my-4'>
+        <div className='my-4' key={item.key}>
           <div className='text-gray-400'>{item.key}</div>
           <div className='mb-1 text-gray-100'>{item.value}</div>
         </div>

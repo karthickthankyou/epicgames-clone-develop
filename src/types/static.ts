@@ -12,3 +12,15 @@ export const sortByOptions: {
   { displayText: 'Price: Low to High', sortKey: 'price', sortOrder: 'asc' },
   { displayText: 'Price: High to Low', sortKey: 'price', sortOrder: 'desc' },
 ]
+
+export const sampleGame = {
+  id: '92',
+  gameTitle: 'Cyber Punk',
+  productionCompany: 'Some production company',
+  priceInfo: {},
+  price: 10,
+  discount: 10,
+  displayImage: '',
+  inCart: true,
+  wishlisted: true,
+}
