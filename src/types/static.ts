@@ -24,3 +24,11 @@ export const sampleGame = {
   inCart: true,
   wishlisted: true,
 }
+
+export const ROUTES = {
+  SIGNIN: '/signin',
+  LIBRARY: '/library',
+  SIGNUP: '/signup',
+  GAME: '/game/:id',
+  BROWSE: '/browse',
+}

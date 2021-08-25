@@ -8,15 +8,17 @@ const Cart = () => {
   const cartItems = useAppSelector(selectCartGames)
 
   return (
-    <div className='h-screen max-w-md mx-auto'>
+    <div className='h-screen max-w-md mx-auto mt-4'>
       {cartItems.length === 0 && (
         <div className='flex items-center justify-center h-60'>
           Cart is ewmpty.
         </div>
       )}
-      {cartItems.map((game) => (
-        <CartCard key={game.id} game={game} classes='mt-2' />
-      ))}
+      <div data-testid='cart-page-list'>
+        {cartItems.map((game) => (
+          <CartCard key={game.id} game={game} classes='mt-2' />
+        ))}
+      </div>
       {cartItems.length > 0 && (
         <button className='btn btn-lg' type='button'>
           Proceed to payment

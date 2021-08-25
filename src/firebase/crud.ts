@@ -1,4 +1,5 @@
 import { doc, setDoc } from 'firebase/firestore'
+import { getFunctions, httpsCallable } from 'firebase/functions'
 import { RouteComponentProps } from 'react-router-dom'
 
 import { UserGameStatus } from '../types'
@@ -26,4 +27,10 @@ export const updateUserGames = ({
     updatedAt: new Date(),
   })
   return true
+}
+
+export const resetUserTask = () => {
+  console.log('Running resetUserTask')
+  const resetTestUser = httpsCallable(getFunctions(), 'resetTestUser')
+  resetTestUser().then((res) => console.log('Reset done'))
 }

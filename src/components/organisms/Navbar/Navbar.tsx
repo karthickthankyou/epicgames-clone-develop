@@ -13,18 +13,20 @@ import Image from '../../../assets/game.jpg'
 import { soloPaths } from '../../../utils'
 import NavIcon from '../../atoms/NavIcon'
 import { selectUser } from '../../../store/userSlice'
+import { callSignOut } from '../../../firebase/hooks'
 
 export interface INavbarProps {}
 
 const Navbar = () => {
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   const cartIds = useAppSelector(selectCartGameIds)
-  const user = useAppSelector(selectUser)
+  const { uid } = useAppSelector(selectUser)
   const cart = useAppSelector(selectCartGames)
   const purchased = useAppSelector(selectPurchasedGames)
 
   const [showSearch, setShowSearch] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
   return (
@@ -45,13 +47,25 @@ const Navbar = () => {
           <Link to='/' className='mr-2 font-bold uppercase'>
             Epic Clone
           </Link>
-          <Link to='/browse' className='hidden mx-2 text-sm uppercase md:block'>
+          <Link
+            type='button'
+            to='/browse'
+            className='hidden mx-2 text-sm uppercase md:block'
+          >
             Browse
           </Link>
-          <Link to='/' className='hidden mx-2 text-sm uppercase md:block'>
+          <Link
+            type='button'
+            to='/'
+            className='hidden mx-2 text-sm uppercase md:block'
+          >
             News
           </Link>
-          <Link to='/' className='hidden mx-2 text-sm uppercase md:block'>
+          <Link
+            type='button'
+            to='/'
+            className='hidden mx-2 text-sm uppercase md:block'
+          >
             Community
           </Link>
         </div>
@@ -70,24 +84,67 @@ const Navbar = () => {
           >
             <FiSearch className='block mx-2 md:hidden' />
           </button>
-          <NavIcon
-            IconComponent={FiShoppingCart}
-            count={cartIds.length}
-            linkTo='/cart'
-            classes='h-full'
-          />
-          <NavIcon
-            IconComponent={FiHeart}
-            count={wishlistIds.length}
-            linkTo='/wishlist'
-            classes='h-full'
-          />
-          <Link to='/user' className='ml-2 text-xs uppercase'>
-            {/* <div className='hidden md:block'>{user.displayName}</div> */}
-            <div className='block '>
-              <img src={Image} alt='' className='w-8 h-8 rounded-full' />
-            </div>
-          </Link>
+          {uid ? (
+            <>
+              <NavIcon
+                IconComponent={FiShoppingCart}
+                count={cartIds.length}
+                linkTo='/cart'
+                classes='h-full'
+                ariaLabel='nav-cart-page-link'
+              />
+              <NavIcon
+                IconComponent={FiHeart}
+                count={wishlistIds.length}
+                linkTo='/wishlist'
+                classes='h-full'
+                ariaLabel='nav-wishlist-page-link'
+              />
+              <div className='relative ml-2 text-xs uppercase '>
+                <button
+                  type='button'
+                  onClick={() => setShowUserMenu((state) => !state)}
+                  //   onMouseDown={(e) => e.preventDefault()}
+                  onBlur={() => {
+                    setTimeout(() => {
+                      setShowUserMenu(false)
+                    }, 200)
+                  }}
+                  className='block '
+                >
+                  <img src={Image} alt='' className='w-8 h-8 rounded-full' />
+                </button>
+
+                {showUserMenu && (
+                  <div className='absolute right-0 flex flex-col capitalize bg-black border border-gray-700 rounded bg-opacity-80 top-full'>
+                    <Link
+                      className='p-2 text-left rounded-t hover:bg-gray-800 whitespace-nowrap'
+                      to={`/user/${uid}`}
+                    >
+                      Account Settings
+                    </Link>
+                    <Link
+                      className='p-2 text-left hover:bg-gray-800 whitespace-nowrap'
+                      to='/library'
+                    >
+                      Library
+                    </Link>
+                    <button
+                      type='button'
+                      className='p-2 text-left rounded-b hover:bg-gray-800'
+                      onClick={callSignOut}
+                    >
+                      Signout
+                    </button>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <Link role='button' to='/signin'>
+              Login
+            </Link>
+          )}
         </div>
       </div>
       {showSearch && (

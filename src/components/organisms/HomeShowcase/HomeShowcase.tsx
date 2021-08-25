@@ -23,8 +23,8 @@ const HomeShowcase = () => {
             {imageId === index && (
               <div className='flex flex-col h-full p-2 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-tr from-black'>
                 <div className='absolute inset-0 z-0 ' />
-
-                <div
+                Hello
+                {/* <div
                   style={{
                     position: 'absolute',
                     height: '140%',
@@ -42,8 +42,7 @@ const HomeShowcase = () => {
                     className='absolute inset-0 w-full h-full -z-10'
                     tabIndex={-1}
                   />
-                </div>
-
+                </div> */}
                 <div className='z-10 mt-auto'>
                   <img
                     src={games[+imageId].subImageUrl}

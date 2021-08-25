@@ -27,11 +27,15 @@ module.exports = {
       transitionProperty: {
         width: 'width',
       },
+      height: {
+        'screen/2': '50vh',
+      },
     },
   },
   variants: {
     extend: {
       brightness: ['hover', 'group-hover'],
+      visibility: ['hover', 'group-focus', 'group-hover'],
     },
   },
   plugins: [

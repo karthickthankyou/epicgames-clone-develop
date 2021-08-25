@@ -14,8 +14,8 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.uid = action.payload.uid
-      state.displayName = action.payload.displayName
+      state.uid = action.payload?.uid
+      state.displayName = action.payload?.displayName
       state.loading = false
       state.error = null
     },

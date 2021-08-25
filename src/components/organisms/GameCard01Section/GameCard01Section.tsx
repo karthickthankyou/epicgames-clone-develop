@@ -1,10 +1,11 @@
 import { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
+import { slug } from '../../../utils'
 import { Game } from '../../../types'
 import GameCard01 from '../../molecules/GameCard01'
 
 export interface IGameCard01SectionProps {
-  heading: string | ReactElement
+  heading: string
   buttonText?: string
   buttonLinkTo?: string
   games: Game[]
@@ -34,7 +35,10 @@ const GameCard01Section = ({
           </Link>
         )}
       </div>
-      <div className='grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-6 '>
+      <div
+        data-testid={slug(`${heading}`)}
+        className='grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-6 '
+      >
         {gamesSix.map((game) => (
           <GameCard01 key={game.id} game={game} />
         ))}

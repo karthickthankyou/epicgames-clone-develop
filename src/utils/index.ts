@@ -6,6 +6,8 @@ import {
   HiHeart,
 } from 'react-icons/hi'
 
+import slugify from 'slugify'
+
 export const CAROUSEL_DURATION = 50
 export interface ICounter {
   days: string
@@ -146,3 +148,5 @@ export const scrollToTop = () => {
 }
 
 export const soloPaths = ['/signin', '/signup', '/forgotpassword']
+
+export const slug = (text: string) => slugify(text, { lower: true })

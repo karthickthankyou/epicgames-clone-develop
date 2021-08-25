@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useScroll } from 'react-use'
 import { Game } from '../../../types'
+import { slug } from '../../../utils'
 
 import MaskedShowcaseCard from '../../molecules/MaskedShowcaseCard'
 
@@ -20,11 +21,15 @@ const MaskedShowcase = ({
   const scrollRef = useRef(null)
   const { x, y } = useScroll(scrollRef)
   return (
-    <div className='my-6'>
+    <div className='my-6' id='gameCardSection01'>
       <div className='inline-block text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-blue-300 via-blue-600 to-green-700'>
         {title}
       </div>
-      <div className='flex mt-6 space-x-6 overflow-x-scroll ' ref={scrollRef}>
+      <div
+        data-testid={slug(title)}
+        className='flex mt-6 space-x-6 overflow-x-scroll '
+        ref={scrollRef}
+      >
         {/* eslint-disable-next-line react/destructuring-assignment */}
         {games.map((game) => (
           <MaskedShowcaseCard

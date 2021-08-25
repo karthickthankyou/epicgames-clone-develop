@@ -36,14 +36,15 @@ import Navbar from './components/organisms/Navbar'
 import ForgotPassword from './components/pages/ForgotPassword'
 import UserPage from './components/pages/UserPage'
 
+import { getImageUrl } from './utils'
+
 function App() {
   useUserListener()
   useUserGameIdsListener()
   useUserGamesListener()
-  //   useGamesListener()
+  //   useSpecialGames()
+  useGamesListener()
   //   useBrowseGames()
-  useSpecialGames()
-  const history = useHistory()
 
   return (
     <Router>
@@ -60,7 +61,7 @@ function App() {
             <Wishlist />
           </Route>
           <Route path='/cart'>
-            <Cart />
+            <Checkout />
           </Route>
           <Route path='/user/:uid'>
             <UserPage />
@@ -76,9 +77,6 @@ function App() {
           </Route>
           <Route path='/signup'>
             <Signup />
-          </Route>
-          <Route path='/checkout'>
-            <Checkout />
           </Route>
           <Route path='/browse'>
             <BrowseGames />

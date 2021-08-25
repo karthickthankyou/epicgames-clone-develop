@@ -1,5 +1,6 @@
 import React, { MouseEventHandler, useState } from 'react'
 import { IconType } from 'react-icons'
+import { slug } from '../../../utils'
 
 export interface IHoverIconProps {
   hintText: string
@@ -24,6 +25,7 @@ const HoverIcon = ({
       onMouseEnter={() => setShowHint(true)}
       onMouseLeave={() => setShowHint(false)}
       onClick={onClick}
+      aria-label={slug(hintText)}
     >
       <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
         <IconComponent />

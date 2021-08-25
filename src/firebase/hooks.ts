@@ -107,6 +107,7 @@ export function useUserGamesListener() {
         const { imageUrl, subImageUrl } = getImageUrl(doc.id)
         arr.push({ ...doc.data(), imageUrl, subImageUrl })
       })
+
       dispatch(action(arr))
     })
   }
@@ -148,45 +149,48 @@ export function useUserGameIdsListener() {
   const dispatch = useAppDispatch()
   const { uid } = useAppSelector(selectUser)
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const setupQuery = (status: UserGameStatus) =>
-      query(
-        collection(db, collections.USER_GAMES),
-        where('status', '==', status),
-        where('uid', '==', uid),
-        orderBy('updatedAt', 'desc')
-      )
+    if (uid) {
+      const setupQuery = (status: UserGameStatus) =>
+        query(
+          collection(db, collections.USER_GAMES),
+          where('status', '==', status),
+          where('uid', '==', uid),
+          orderBy('updatedAt', 'desc')
+        )
 
-    const setupOnSnapshot = (
-      customQuery: Query<DocumentData>,
-      customAction: ActionCreatorWithPayload<any, string>
-    ) =>
-      onSnapshot(customQuery, (querySnapshot) => {
-        const arr: any[] = []
-        querySnapshot.forEach(async (doc) => {
-          arr.push({ ...doc.data() })
+      const setupOnSnapshot = (
+        customQuery: Query<DocumentData>,
+        customAction: ActionCreatorWithPayload<any, string>
+      ) =>
+        onSnapshot(customQuery, (querySnapshot) => {
+          const arr: any[] = []
+          querySnapshot.forEach(async (doc) => {
+            arr.push({ ...doc.data() })
+          })
+
+          dispatch(customAction(arr))
         })
 
-        dispatch(customAction(arr))
-      })
+      const detachWishlistedListener = setupOnSnapshot(
+        setupQuery('WISHLISTED'),
+        setWishlistGameIds
+      )
+      const detachInCartListener = setupOnSnapshot(
+        setupQuery('IN_CART'),
+        setCartGameIds
+      )
+      const detachPurchasedListener = setupOnSnapshot(
+        setupQuery('PURCHASED'),
+        setPurchasedGameIds
+      )
 
-    const detachWishlistedListener = setupOnSnapshot(
-      setupQuery('WISHLISTED'),
-      setWishlistGameIds
-    )
-    const detachInCartListener = setupOnSnapshot(
-      setupQuery('IN_CART'),
-      setCartGameIds
-    )
-    const detachPurchasedListener = setupOnSnapshot(
-      setupQuery('PURCHASED'),
-      setPurchasedGameIds
-    )
-
-    return () => {
-      detachWishlistedListener()
-      detachInCartListener()
-      detachPurchasedListener()
+      return () => {
+        detachWishlistedListener()
+        detachInCartListener()
+        detachPurchasedListener()
+      }
     }
   }, [uid])
 }
@@ -491,6 +495,7 @@ export function useSpecialGames() {
       const { imageUrl, subImageUrl } = getImageUrl(document.id)
       arr.push({ ...document.data(), imageUrl, subImageUrl })
     })
+
     dispatch(action(arr))
   }
 

@@ -46,21 +46,14 @@ const Home = () => {
   const hoursPlayed = useAppSelector(selectHoursPlayed)
   const hoursToBeat = useAppSelector(selectHoursToBeat)
   const anticipatedBy = useAppSelector(selectAnticipatedBy)
+
   useHomeScreenGames()
 
   return (
-    <div className='container'>
+    <div className='container' id='container'>
       <HomeShowcase />
       <GameCard01Section
-        heading={
-          <>
-            Highest Discounts{' '}
-            <span className='px-1 py-0.5 text-xs bg-green-600 rounded mx-2'>
-              %
-            </span>{' '}
-            Ever Recorded
-          </>
-        }
+        heading='Highest Discounts Ever Recorded'
         games={highestDiscoutsEver}
         buttonText='View all'
         buttonLinkTo='/browse'
@@ -101,28 +94,18 @@ const Home = () => {
       {wishlist.length > 0 && (
         <GameCard01Section
           //   heading={`From your wishlist ( ${wishlist.length} )`}
-          heading={
-            <>
-              From your wishlist <HiHeart className='inline' />({' '}
-              {wishlistIds.length} )
-            </>
-          }
+          heading='From your wishlist'
           games={wishlist}
-          buttonText='View all'
+          buttonText={`View all (${wishlistIds.length})`}
           buttonLinkTo='/wishlist'
         />
       )}
       {cart.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
-          heading={
-            <>
-              From your cart <HiShoppingBag className='inline' />({' '}
-              {cartIds.length} )
-            </>
-          }
+          heading='From your cart'
           games={cart}
-          buttonText='Checkout now'
+          buttonText={`Checkout now (${cartIds.length})`}
           buttonLinkTo='/cart'
         />
       )}
