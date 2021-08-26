@@ -42,7 +42,12 @@ import {
   setHoursToBeat,
 } from '../store/gamesSlice'
 import { selectUser, setUser } from '../store/userSlice'
-import { selectSortIndex, setGames } from '../store/browseGamesSlice'
+import {
+  selectSortIndex,
+  setBrowseGames,
+  setBrowseError,
+  setBrowseLoading,
+} from '../store/browseGamesSlice'
 import {
   setCartGameIds,
   setWishlistGameIds,
@@ -70,6 +75,7 @@ export function useBrowseGames() {
   const dispatch = useAppDispatch()
   const { sortKey, sortOrder } = sortByOptions[useAppSelector(selectSortIndex)]
   useEffect(() => {
+    dispatch(setBrowseLoading(true))
     ;(async () => {
       const q = query(
         collection(db, collections.GAMES),
@@ -78,12 +84,18 @@ export function useBrowseGames() {
       )
 
       const arr: any[] = []
-      const querySnapshot = await getDocs(q)
-      querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
-        const { imageUrl, subImageUrl } = getImageUrl(document.id)
-        arr.push({ ...document.data(), imageUrl, subImageUrl })
-      })
-      dispatch(setGames(arr))
+      try {
+        const querySnapshot = await getDocs(q)
+        querySnapshot.forEach(
+          (document: QueryDocumentSnapshot<DocumentData>) => {
+            const { imageUrl, subImageUrl } = getImageUrl(document.id)
+            arr.push({ ...document.data(), imageUrl, subImageUrl })
+          }
+        )
+        dispatch(setBrowseGames(arr))
+      } catch (err) {
+        dispatch(setBrowseError(true))
+      }
     })()
   }, [sortKey, sortOrder])
 }

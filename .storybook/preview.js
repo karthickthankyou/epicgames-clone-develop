@@ -1,3 +1,5 @@
+import { addDecorator } from '@storybook/react'
+import { MemoryRouter } from 'react-router'
 import '../src/index.css'
 
 export const parameters = {
@@ -9,3 +11,7 @@ export const parameters = {
     },
   },
 }
+
+addDecorator((story) => (
+  <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>
+))

@@ -44,7 +44,7 @@ function App() {
   useUserGamesListener()
   //   useSpecialGames()
   useGamesListener()
-  //   useBrowseGames()
+  useBrowseGames()
 
   return (
     <Router>
