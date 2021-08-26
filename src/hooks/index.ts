@@ -42,3 +42,9 @@ export const useLoadSuccessError = () => {
 
   return useReducer(reducer, initialState)
 }
+
+export const useDocumentTitle = (title: string) => {
+  useEffect(() => {
+    document.title = title
+  }, [title])
+}

@@ -4,6 +4,7 @@ import {
   callSignIn,
   useHomeScreenGames,
 } from '../../../firebase/hooks'
+import { useDocumentTitle } from '../../../hooks'
 import {
   selectActionGames,
   selectAdventureGames,
@@ -48,6 +49,7 @@ const Home = () => {
   const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
   useHomeScreenGames()
+  useDocumentTitle('Epic clone')
 
   return (
     <div className='container' id='container'>

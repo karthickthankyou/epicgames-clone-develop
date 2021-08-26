@@ -4,11 +4,13 @@ import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
 import Pagination from '../../molecules/Pagination'
 import BrowseFilters from '../../molecules/BrowseFilters'
+import { useDocumentTitle } from '../../../hooks'
 
 export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
   const games = useAppSelector(selectBrowseGames)
+  useDocumentTitle('Browse Games')
   return (
     <div>
       <div className='flex items-start my-4'>

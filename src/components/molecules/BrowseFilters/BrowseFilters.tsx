@@ -47,7 +47,7 @@ const prices = [
 const allFilters = [
   {
     name: 'events',
-    options: ['Epic MEGA Sale'],
+    options: ['Epic MEGA Sale', 'Highest Discount Ever'],
   },
   {
     name: 'price',

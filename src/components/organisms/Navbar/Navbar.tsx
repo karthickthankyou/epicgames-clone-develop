@@ -100,22 +100,12 @@ const Navbar = () => {
                 classes='h-full'
                 ariaLabel='nav-wishlist-page-link'
               />
-              <div className='relative ml-2 text-xs uppercase '>
-                <button
-                  type='button'
-                  onClick={() => setShowUserMenu((state) => !state)}
-                  //   onMouseDown={(e) => e.preventDefault()}
-                  onBlur={() => {
-                    setTimeout(() => {
-                      setShowUserMenu(false)
-                    }, 200)
-                  }}
-                  className='block '
-                >
+              <div className='relative ml-2 text-xs uppercase group'>
+                <button type='button' className='block '>
                   <img src={Image} alt='' className='w-8 h-8 rounded-full' />
                 </button>
 
-                {showUserMenu && (
+                <div className='invisible group-hover:visible group-focus:visible'>
                   <div className='absolute right-0 flex flex-col capitalize bg-black border border-gray-700 rounded bg-opacity-80 top-full'>
                     <Link
                       className='p-2 text-left rounded-t hover:bg-gray-800 whitespace-nowrap'
@@ -137,7 +127,7 @@ const Navbar = () => {
                       Signout
                     </button>
                   </div>
-                )}
+                </div>
               </div>
             </>
           ) : (
