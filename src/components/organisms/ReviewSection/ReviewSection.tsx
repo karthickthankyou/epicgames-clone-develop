@@ -15,7 +15,7 @@ const ReviewSection = () => (
     </div>
 
     <div className='mt-2 text-sm text-gray-400'>based on 45 reviews</div>
-    <div className='mt-4 mb-2 text-xl'>Featured Reviews</div>
+    <div className='mt-8 mb-2 text-xl'>Featured Reviews</div>
     <div className='grid grid-cols-1 gap-2 md:grid-cols-2'>
       <ReviewCard reviewScore={97} />
       <ReviewCard reviewScore={88} />

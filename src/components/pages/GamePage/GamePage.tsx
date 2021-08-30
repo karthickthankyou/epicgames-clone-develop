@@ -96,7 +96,7 @@ const GamePage = () => {
                 <Specifications />
               </div>
               <div className='my-6'>
-                <div className='text-xl'>Ratings</div>
+                <div className='text-xl font-semibold'>Reviews</div>
                 <ReviewSection />
               </div>
             </div>

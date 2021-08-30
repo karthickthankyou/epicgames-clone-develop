@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useState } from 'react'
 import { FiShoppingCart, FiMenu, FiX, FiHeart, FiSearch } from 'react-icons/fi'
-import { useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
   selectCartGameIds,
   selectCartGames,
@@ -14,11 +14,13 @@ import { soloPaths } from '../../../utils'
 import NavIcon from '../../atoms/NavIcon'
 import { selectUser } from '../../../store/userSlice'
 import { callSignOut } from '../../../firebase/hooks'
+import { setSearchTerm } from '../../../store/browseGamesSlice'
 
 export interface INavbarProps {}
 
 const Navbar = () => {
   const wishlistIds = useAppSelector(selectWishlistGameIds)
+  const dispatch = useAppDispatch()
   const cartIds = useAppSelector(selectCartGameIds)
   const { uid } = useAppSelector(selectUser)
   const cart = useAppSelector(selectCartGames)
@@ -29,8 +31,37 @@ const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
+
+  const searchGames = (e: any) => {
+    const searchTerm = e.target.value
+    dispatch(setSearchTerm(searchTerm))
+    // // index.searchForFacetValues('discount', 'price', 'rating').then((res) => {
+    // //   console.log('facetHits res', res)
+    // // })
+    // const t0 = performance.now()
+    // index
+    //   .search(searchTerm, {
+    //     hitsPerPage: 24,
+    //     facets: ['notes', 'platform', 'tags'],
+    //     // filters: `tags:Action AND tags:Adventure AND platform:'Mac OS'`,
+    //     numericFilters: [
+    //       //   'price:239 TO 499',
+    //       //   'discount:0 TO 80',
+    //       //   'rating:69 TO 99',
+    //     ],
+    //     sumOrFiltersScores: true,
+    //     page: 0,
+    //     analytics: true,
+    //   })
+    //   .then((res) => {
+    //     console.log(res)
+    //     const t1 = performance.now()
+    //     console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
+    //   })
+  }
+
   return (
-    <nav className='sticky top-0 z-30 bg-gray-800'>
+    <nav className='sticky top-0 z-30 text-gray-300 bg-gray-800'>
       <div className='container flex items-center justify-between py-4 mx-auto '>
         <div className='flex items-center'>
           <button
@@ -76,6 +107,7 @@ const Navbar = () => {
               type='search'
               placeholder='Search'
               className='p-2 pl-8 bg-gray-700 rounded'
+              onChange={searchGames}
             />
           </div>
           <button

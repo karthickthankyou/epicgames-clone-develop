@@ -38,11 +38,12 @@ const BrowseGames = () => {
               ))}
           </div>
           <div className='flex justify-center my-16'>
-            <Pagination current={1} total={10} />
+            <Pagination current={3} total={7} />
           </div>
         </div>
         <BrowseFilters />
       </div>
+      {/* {instantsearch.widgets.poweredBy({ container: '#powered-by' })} */}
     </div>
   )
 }

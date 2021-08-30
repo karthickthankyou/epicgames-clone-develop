@@ -128,11 +128,12 @@ export const getImageUrl = (id: string) => {
 }
 
 export const getScoreColor = (score: number) => {
-  if (score > 90)
-    return 'border-2 border-primary-500 bg-primary-600 bg-opacity-10'
-  if (score > 75) return 'border-2 border-green-600'
-  if (score > 50) return 'border-2 border-red-400 '
-  return 'border-2 border-red-700 '
+  if (score > 90) return 'border-2 border-white'
+  if (score > 80) return 'border-2 border-gray-200'
+  if (score > 70) return 'border-2 border-gray-300 '
+  if (score > 60) return 'border-2 border-gray-500 '
+  if (score > 50) return 'border-2 border-gray-600 '
+  return 'border-2 border-gray-700 '
   //   if (score > 20) return 'border-2 border-red-300'
 }
 
@@ -150,3 +151,8 @@ export const scrollToTop = () => {
 export const soloPaths = ['/signin', '/signup', '/forgotpassword']
 
 export const slug = (text: string) => slugify(text, { lower: true })
+
+export const addOrRemoveItem = (arr: string[], item: string) =>
+  arr.includes(item)
+    ? arr.filter((eventItem) => eventItem !== item)
+    : [...arr, item]

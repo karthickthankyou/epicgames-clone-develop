@@ -1,8 +1,164 @@
-// import { useState } from 'react'
-import { useImmer } from 'use-immer'
+/* eslint-disable no-lone-blocks */
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { FaChevronUp, FaChevronDown, FaCheck } from 'react-icons/fa'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import ReactSlider from 'react-slider'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import {
+  setFilterDiscountRange,
+  setFilterPriceRange,
+  setFilterRatingRange,
+  setFilterPlatforms,
+  setFilterEvents,
+  setFilterTags,
+  selectFilterTags,
+  selectFilterEvents,
+  selectFilterPlatforms,
+  setFiltersToInitial,
+  selectFilterPriceRange,
+  selectFilterDiscountRange,
+  selectFilterRatingRange,
+} from '../../../store/browseGamesSlice'
 
 export interface IBrowseFiltersProps {}
+
+const AccordionHeader = ({
+  name,
+  open,
+  setOpen,
+}: {
+  name: string
+  open: boolean
+  setOpen: Dispatch<SetStateAction<boolean>>
+}) => (
+  <button
+    type='button'
+    className={` flex justify-between w-full p-4 tracking-widest text-left text-gray-300 uppercase ${
+      open && 'bg-gray-800 '
+    }`}
+    onClick={() => setOpen((state) => !state)}
+  >
+    {name}
+    {open ? (
+      <FaChevronUp className='w-4 h-4 ml-auto text-gray-200' />
+    ) : (
+      <FaChevronDown className='w-4 h-4 ml-auto text-gray-500' />
+    )}
+  </button>
+)
+
+const RangeFilter = ({
+  name,
+  min,
+  max,
+  minDistance = 10,
+  steps = 1,
+  action,
+  displayState,
+}: {
+  name: string
+  min: number
+  max: number
+  minDistance?: number
+  steps?: number
+  action: ActionCreatorWithPayload<any, string>
+  displayState?: [number, number] | null
+}) => {
+  const [open, setOpen] = useState(false)
+  const dispatch = useAppDispatch()
+  // We need this local state to show onChange as we store onAfterChange in redux store
+  const [valuePair, setValuePair] = useState([min, max])
+
+  useEffect(() => {
+    const minValue = displayState ? displayState[0] : min
+    const maxValue = displayState ? displayState[1] : max
+    setValuePair([minValue, maxValue])
+  }, [displayState])
+
+  return (
+    <div>
+      <AccordionHeader name={name} open={open} setOpen={setOpen} />
+      {open && (
+        <div className='w-full px-4 py-4 mb-4 text-left text-gray-400'>
+          <div className='flex items-center justify-between mb-6'>
+            <div className='flex items-center justify-center w-12 h-6 text-gray-300 bg-gray-800 rounded shadow-inner '>
+              {valuePair[0]}
+            </div>
+            <div>-</div>
+            <div className='flex items-center justify-center w-12 h-6 text-gray-300 bg-gray-800 rounded shadow-inner '>
+              {valuePair[1]}{' '}
+            </div>
+          </div>
+          <ReactSlider
+            className='flex text-white bg-gray-700 rounded cursor-pointer'
+            thumbActiveClassName='z-10'
+            thumbClassName='bg-gray-400 text-xs hover:bg-white border-4 border-gray-900 transform shadow-lg -translate-y-1/2 rounded-full flex h-6 w-6 items-center justify-center '
+            trackClassName='bg-gray-500 h-0.5 rounded '
+            markClassName='bg-blue-600'
+            withTracks
+            defaultValue={[valuePair[0], valuePair[1]]}
+            value={[valuePair[0], valuePair[1]]}
+            ariaLabel={['Lower thumb', 'Upper thumb']}
+            min={min}
+            max={max}
+            step={steps}
+            ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
+            pearling
+            minDistance={minDistance}
+            onAfterChange={(value, index) => {
+              dispatch(action(value))
+              console.log(value, index)
+            }}
+            onChange={(value, index) => {
+              setValuePair(value)
+            }}
+          />
+        </div>
+      )}
+    </div>
+  )
+}
+
+const CategoryFilter = ({
+  name,
+  options,
+  action,
+  displayState,
+}: {
+  name: string
+  options: string[]
+  displayState: string[]
+  action: ActionCreatorWithPayload<any, string>
+}) => {
+  const [open, setOpen] = useState(false)
+  const dispatch = useAppDispatch()
+  return (
+    <div>
+      <AccordionHeader name={name} open={open} setOpen={setOpen} />
+      {open && (
+        <div>
+          {options.map((option) => (
+            <button
+              type='button'
+              key={option}
+              className={`flex relative items-center flex-grow w-full px-6 py-4 text-left ${
+                displayState.includes(option)
+                  ? 'text-gray-200'
+                  : 'text-gray-400'
+              }`}
+              onClick={() => dispatch(action(option))}
+            >
+              {option}
+              {displayState.includes(option) && (
+                <FaCheck className='absolute right-0 w-3 h-3 mr-4 text-gray-500' />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
 
 const genres = [
   'Action',
@@ -34,140 +190,87 @@ const genres = [
   'Card Game',
   'Sports',
 ]
+const platforms = ['Windows', 'Mac OS']
 
-const prices = [
-  'Free',
-  'Under ₹750.00',
-  'Under ₹1,500.00',
-  'Under ₹2,250.00',
-  '₹1,099.00 and above',
-  'Discounted',
-]
-
-const allFilters = [
-  {
-    name: 'events',
-    options: ['Epic MEGA Sale', 'Highest Discount Ever'],
-  },
-  {
-    name: 'price',
-    options: prices,
-  },
-  {
-    name: 'genre',
-    options: genres,
-  },
-  {
-    name: 'features',
-    options: [
-      'Single Player',
-      'Controller Support',
-      'Multiplayer',
-      'Co-op',
-      'Competitive',
-      'VR',
-    ],
-  },
-  {
-    name: 'categories',
-    options: [
-      'Game',
-      'Game Bundle',
-      'Editor',
-      'Game Add-On',
-      'Game Demo',
-      'Software',
-    ],
-  },
-  {
-    name: 'platforms',
-    options: ['Windows', 'Mac OS'],
-  },
-]
-
-const initialFilters: string[] = []
+const events = ['Epic MEGA Sale', 'Highest Discount Ever']
 
 const BrowseFilters = () => {
-  const [categories, updateCategories] = useImmer<string[]>([])
-  const [filters, updateFilters] = useImmer(initialFilters)
+  const filterEvents = useAppSelector(selectFilterEvents)
+  const filterTags = useAppSelector(selectFilterTags)
+  const filterPlatforms = useAppSelector(selectFilterPlatforms)
+  const filterPriceRange = useAppSelector(selectFilterPriceRange)
+  const filterDiscountRange = useAppSelector(selectFilterDiscountRange)
+  const filterRatingRange = useAppSelector(selectFilterRatingRange)
+  const dispatch = useAppDispatch()
+
+  const filtersLength =
+    filterEvents.length +
+    filterTags.length +
+    filterPlatforms.length +
+    (filterPriceRange ? 1 : 0) +
+    (filterDiscountRange ? 1 : 0) +
+    (filterRatingRange ? 1 : 0)
 
   return (
     <div className='text-xs w-80'>
       <div className='flex justify-between p-4'>
         <div className='text-gray-400 uppercase'>
-          filters {filters.length > 0 && <> ({filters.length})</>}
+          filters {filtersLength > 0 && <> ({filtersLength})</>}
         </div>
-        {filters.length > 0 && (
-          <button
-            type='button'
-            onClick={() => {
-              updateCategories([])
-              updateFilters([])
-            }}
-            className='uppercase'
-          >
-            reset
-          </button>
-        )}
+        <button
+          type='button'
+          disabled={filtersLength === 0}
+          className={`uppercase ${
+            filtersLength > 0
+              ? 'text-white cursor-pointer'
+              : 'text-gray-400 cursor-auto'
+          }`}
+          onClick={() => dispatch(setFiltersToInitial())}
+        >
+          reset
+        </button>
       </div>
       <div>
-        {allFilters.map((filter) => (
-          <div key={filter.name} className='border-t border-gray-800 '>
-            <button
-              type='button'
-              className='flex justify-between w-full p-4 font-thin tracking-widest text-left text-gray-300 uppercase'
-              key={filter.name}
-              onClick={() =>
-                updateCategories((state) =>
-                  state.includes(filter.name)
-                    ? state.filter((s) => s !== filter.name)
-                    : [...state, filter.name]
-                )
-              }
-            >
-              {filter.name}
-              {categories.includes(filter.name) ? (
-                <FaChevronDown className='w-4 h-4 ml-auto mr-2 text-gray-200' />
-              ) : (
-                <FaChevronUp className='w-4 h-4 ml-auto mr-2 text-gray-500' />
-              )}
-            </button>
-            <div>
-              {categories.includes(filter.name) &&
-                filter.options.map((option) => (
-                  <div className='flex items-center'>
-                    <button
-                      type='button'
-                      key={option}
-                      className={`py-4 px-6 items-center flex w-full text-gray-400 text-left flex-grow ${
-                        filters.includes(option) && 'bg-gray-800'
-                      }`}
-                      onClick={() =>
-                        updateFilters((draft) => {
-                          if (prices.includes(option))
-                            return draft.filter(
-                              (s) =>
-                                !prices
-                                  .filter((price) => price !== option)
-                                  .includes(s)
-                            )
-
-                          return draft.includes(option)
-                            ? draft.filter((s) => s !== option)
-                            : [...draft, option]
-                        })
-                      }
-                    >
-                      {option}
-                      {filters.includes(option) && (
-                        <FaCheck className='w-3 h-3 ml-auto mr-2 text-gray-400' />
-                      )}
-                    </button>
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))}
+        <CategoryFilter
+          action={setFilterEvents}
+          displayState={filterEvents}
+          name='events'
+          options={events}
+        />
+        <RangeFilter
+          action={setFilterPriceRange}
+          name='price'
+          min={0}
+          max={4500}
+          steps={10}
+          displayState={filterPriceRange}
+        />
+        <RangeFilter
+          action={setFilterDiscountRange}
+          name='discount'
+          min={0}
+          max={100}
+          displayState={filterDiscountRange}
+        />
+        <RangeFilter
+          action={setFilterRatingRange}
+          name='rating'
+          min={0}
+          max={100}
+          displayState={filterRatingRange}
+        />
+        <CategoryFilter
+          displayState={filterTags}
+          action={setFilterTags}
+          name='genre'
+          options={genres}
+        />
+        <CategoryFilter
+          displayState={filterPlatforms}
+          action={setFilterPlatforms}
+          name='platform'
+          options={platforms}
+        />
       </div>
     </div>
   )
