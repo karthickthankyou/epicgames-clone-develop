@@ -37,6 +37,10 @@ import ForgotPassword from './components/pages/ForgotPassword'
 import UserPage from './components/pages/UserPage'
 
 import { getImageUrl } from './utils'
+import { useAlgoliaSearchGames } from './hooks'
+import News from './components/pages/News'
+import Community from './components/pages/Community'
+import CancelPayment from './components/pages/CancelPayment'
 
 function App() {
   useUserListener()
@@ -44,7 +48,7 @@ function App() {
   useUserGamesListener()
   //   useSpecialGames()
   useGamesListener()
-  useBrowseGames()
+  useAlgoliaSearchGames()
 
   return (
     <Router>
@@ -59,6 +63,15 @@ function App() {
           </Route>
           <Route path='/wishlist'>
             <Wishlist />
+          </Route>
+          <Route path='/news'>
+            <News />
+          </Route>
+          <Route path='/cancel'>
+            <CancelPayment />
+          </Route>
+          <Route path='/community'>
+            <Community />
           </Route>
           <Route path='/cart'>
             <Checkout />

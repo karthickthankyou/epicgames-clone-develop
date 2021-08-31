@@ -37,7 +37,7 @@ const NotFound = () => {
           )}
         </div>
         <motion.div
-          className='px-4 mx-4 font-thin origin-left transform skew-y-12 border border-white rounded-r-3xl text-9xl line-height-2 w-min'
+          className='px-4 font-thin origin-left transform skew-y-12 border border-white rounded-r-3xl text-9xl line-height-2 w-min'
           initial={{ skewY: -6 }}
           animate={{ skewY: 6 }}
           transition={{ duration: 4, yoyo: 10 }}

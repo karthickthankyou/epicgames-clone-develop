@@ -6,7 +6,12 @@ import { HiBriefcase } from 'react-icons/hi'
 
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
-import { findPercentage, getInCart, getWishlisted } from '../../../utils'
+import {
+  findPercentage,
+  getInCart,
+  getWishlisted,
+  readable,
+} from '../../../utils'
 import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { selectUser } from '../../../store/userSlice'
@@ -117,8 +122,8 @@ const GameCard01 = ({ game }: ICard01Props) => {
         <div className='mt-3 font-semibold truncate overflow-ellipsis'>
           {title}
         </div>
-        <div className='text-sm text-gray-300 truncate overflow-ellipsis'>
-          {publisherId}
+        <div className='text-sm text-gray-300 capitalize truncate overflow-ellipsis'>
+          {readable(publisherId)}
         </div>
         <Price price={price} discount={discount} notes={notes} classes='my-2' />
       </Link>

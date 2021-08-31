@@ -1,3 +1,5 @@
+import { setBrowsePageNumber } from '../../../store/browseGamesSlice'
+import { useAppDispatch } from '../../../store/hooks'
 import { getPaginationNumbers } from '../../../utils'
 
 export interface IPaginationProps {
@@ -7,7 +9,9 @@ export interface IPaginationProps {
 }
 
 const Pagination = ({ current, total, classes = '' }: IPaginationProps) => {
-  const items = getPaginationNumbers(current, total)
+  const currentPage = current + 1
+  const items = getPaginationNumbers(currentPage, total)
+  const dispatch = useAppDispatch()
   return (
     <nav
       className={`relative z-0 inline-flex space-x-1 rounded-md shadow-sm ${classes}`}
@@ -17,10 +21,23 @@ const Pagination = ({ current, total, classes = '' }: IPaginationProps) => {
           type='button'
           key={key}
           className={`relative w-8 h-8 rounded  ${
-            item === current && 'bg-primary-700'
+            item === currentPage && 'bg-primary-700'
           }
           ${item === '...' ? 'cursor-default' : 'hover:bg-primary-700'}
         `}
+          onClick={() => {
+            let pageNumber = 0
+            if (item === '>') {
+              pageNumber = currentPage + 1
+            } else if (item === '<') {
+              pageNumber = currentPage - 1
+            } else if (item === '...') {
+              // Do nothing
+            } else {
+              pageNumber = item
+            }
+            dispatch(setBrowsePageNumber(pageNumber - 1))
+          }}
         >
           <div className='absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 '>
             {item}

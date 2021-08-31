@@ -5,9 +5,10 @@ import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
 import { selectCartGames } from '../../../store/userGameSlice'
 import CartCard from '../../molecules/CartCard'
-import { discountCalc } from '../../../utils'
+import { discountCalc, withCurrency } from '../../../utils'
 import { Game } from '../../../types'
 import EmptyList from '../../molecules/EmptyList'
+import { useDocumentTitle } from '../../../hooks'
 
 const Cart = () => {
   const createStripeCheckout = httpsCallable(
@@ -16,6 +17,7 @@ const Cart = () => {
   )
   //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
   const gamesInCart = useAppSelector(selectCartGames)
+  useDocumentTitle(`(${gamesInCart.length}) Cart`)
   const createCheckoutList = (cartList: Game[]) =>
     cartList.map((cartItem) => ({
       name: cartItem.title,
@@ -54,6 +56,8 @@ const Cart = () => {
     0
   )
 
+  const findTax = findTotalAmount / 8
+
   const user = useAppSelector(selectUser)
   if (!user) return <Redirect to='/signin' />
 
@@ -68,28 +72,46 @@ const Cart = () => {
     )
 
   return (
-    <div className='max-w-md mx-auto my-12'>
+    <div className='mb-16 min-h-screen-3/4'>
       <div className='my-4 text-3xl font-light'>Cart</div>
-      <div data-testid='cart-page-list'>
-        {gamesInCart.map((game) => (
-          <CartCard key={game.id} game={game} classes='mt-2' />
-        ))}
-      </div>
-
-      <form
-        onSubmit={handleSubmit}
-        className='flex flex-col items-end h-screen/2 '
-      >
-        <div className='w-full my-1 text-right'>
-          Total: {findTotalAmount} INR
+      <div className='gap-3 sm:gap-6 sm:grid sm:grid-cols-2'>
+        <div data-testid='cart-page-list' className='sm:col-span-1'>
+          {gamesInCart.map((game) => (
+            <CartCard key={game.id} game={game} classes='mb-6' />
+          ))}
         </div>
-        <button
-          className='flex items-center px-4 py-2 mt-4 text-white bg-primary-600 btn hover:bg-primary-700'
-          type='submit'
-        >
-          Pay
-        </button>
-      </form>
+        <div>
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-col p-4 mt-8 font-mono text-sm bg-gray-800 rounded shadow-lg sm:sticky top-24 sm:mt-0'
+          >
+            <div className='mb-3 text-base font-semibold'>Order summary</div>
+            <div className='flex justify-between py-1'>
+              <div>Subtotal</div>
+              <div className='tracking-wider '>
+                {withCurrency(findTotalAmount)}
+              </div>
+            </div>
+            <div className='flex justify-between py-1'>
+              <div>Tax</div>
+              <div className='tracking-wider '>{withCurrency(findTax)}</div>
+            </div>
+            <div className='my-1 border-t border-gray-700' />
+            <div className='flex justify-between py-1 font-semibold'>
+              <div>Total</div>
+              <div className='tracking-wider '>
+                {withCurrency(findTax + findTotalAmount)}
+              </div>
+            </div>
+            <button
+              className='w-full px-4 py-3 mt-4 tracking-widest bg-primary-600 btn hover:bg-primary-700'
+              type='submit'
+            >
+              Checkout
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
   )
 }

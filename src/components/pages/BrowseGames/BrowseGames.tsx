@@ -1,17 +1,31 @@
-import { selectBrowseGames } from '../../../store/browseGamesSlice'
+import { useEffect } from 'react'
+import {
+  selectBrowseGames,
+  selectBrowseGamesWithWish,
+  selectBrowsePagination,
+} from '../../../store/browseGamesSlice'
 import { useAppSelector } from '../../../store/hooks'
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
 import Pagination from '../../molecules/Pagination'
 import BrowseFilters from '../../molecules/BrowseFilters'
 import { useDocumentTitle } from '../../../hooks'
+
 import SkeletonCard01 from '../../molecules/SkeletonCard01'
 
 export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
   useDocumentTitle('Browse Games')
-  const { games, loading, error } = useAppSelector(selectBrowseGames)
+  const { currentPage, totalPages } = useAppSelector(selectBrowsePagination)
+  const { loading, error } = useAppSelector(selectBrowseGames)
+  const games = useAppSelector(selectBrowseGamesWithWish)
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    })
+  })
 
   if (error) {
     return <div>Something went wrong.</div>
@@ -28,7 +42,7 @@ const BrowseGames = () => {
               [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => (
                 <SkeletonCard01 key={id} />
               ))}
-            {games.length > 0 &&
+            {games?.length > 0 &&
               games.map((game) => (
                 <GameCard01
                   key={game.id}
@@ -38,7 +52,7 @@ const BrowseGames = () => {
               ))}
           </div>
           <div className='flex justify-center my-16'>
-            <Pagination current={3} total={7} />
+            <Pagination current={currentPage} total={totalPages} />
           </div>
         </div>
         <BrowseFilters />

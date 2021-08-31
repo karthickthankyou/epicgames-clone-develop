@@ -1,8 +1,14 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createSelector } from '@reduxjs/toolkit'
 import { Game } from '../types'
 import { addOrRemoveItem } from '../utils'
+import { combineWCPDataForObject, combineWCPData } from './gamesSlice'
 import { RootState } from './store'
+import {
+  selectCartGameIds,
+  selectPurchasedGameIds,
+  selectWishlistGameIds,
+} from './userGameSlice'
 
 const initialState: {
   games: Game[]
@@ -17,6 +23,12 @@ const initialState: {
     priceRange: [number, number] | null
     discountRange: [number, number] | null
     ratingRange: [number, number] | null
+    pageNumber: number
+  }
+  response: {
+    currentPage: number
+    totalPages: number
+    facets: any
   }
 } = {
   games: [],
@@ -31,6 +43,54 @@ const initialState: {
     priceRange: null,
     discountRange: null,
     ratingRange: null,
+    pageNumber: 0,
+  },
+  response: {
+    currentPage: 1,
+    totalPages: 1,
+    facets: {
+      tags: {
+        Action: 216,
+        Adventure: 185,
+        Indie: 129,
+        RPG: 116,
+        Strategy: 94,
+        Simulation: 64,
+        Puzzle: 53,
+        Shooter: 47,
+        'Open World': 45,
+        'Action-Adventure': 35,
+        Narration: 35,
+        'First Person': 34,
+        Casual: 32,
+        Platformer: 29,
+        Exploration: 28,
+        Horror: 22,
+        'Turn-Based': 22,
+        Survival: 20,
+        'Rogue-Lite': 19,
+        'City Builder': 16,
+        Comedy: 16,
+        Racing: 16,
+        Stealth: 14,
+        Sports: 13,
+        'Card Game': 12,
+        Party: 12,
+        Fighting: 11,
+        Trivia: 7,
+        Application: 2,
+        'Single Player': 1,
+      },
+      notes: {
+        RECENTLY_UPDATED: 29,
+        HIGHEST_DISCOUNT: 20,
+        TOP_SELLER: 14,
+      },
+      platform: {
+        Windows: 577,
+        'Mac OS': 128,
+      },
+    },
   },
 }
 
@@ -40,6 +100,9 @@ const browseGamesSlice = createSlice({
   reducers: {
     setBrowseLoading: (state, action) => {
       state.loading = action.payload
+    },
+    setBrowsePageNumber: (state, action) => {
+      state.filter.pageNumber = action.payload
     },
     setBrowseError: (state, action) => {
       state.error = action.payload
@@ -51,27 +114,39 @@ const browseGamesSlice = createSlice({
     },
     setSearchTerm: (state, action) => {
       state.filter.searchTerm = action.payload
+      state.filter.pageNumber = 0
     },
     setFilterPriceRange: (state, action) => {
       state.filter.priceRange = action.payload
+      state.filter.pageNumber = 0
     },
     setFilterDiscountRange: (state, action) => {
       state.filter.discountRange = action.payload
+      state.filter.pageNumber = 0
     },
     setFilterRatingRange: (state, action) => {
       state.filter.ratingRange = action.payload
+      state.filter.pageNumber = 0
+    },
+    setSearchResponse: (state, action) => {
+      state.response.currentPage = action.payload.currentPage
+      state.response.totalPages = action.payload.totalPages
+      state.response.facets = action.payload.facets
     },
     setFilterEvents: (state, action) => {
       state.filter.events = addOrRemoveItem(state.filter.events, action.payload)
+      state.filter.pageNumber = 0
     },
     setFilterTags: (state, action) => {
       state.filter.tags = addOrRemoveItem(state.filter.tags, action.payload)
+      state.filter.pageNumber = 0
     },
     setFilterPlatforms: (state, action) => {
       state.filter.platforms = addOrRemoveItem(
         state.filter.platforms,
         action.payload
       )
+      state.filter.pageNumber = 0
     },
     setFiltersToInitial: (state) => {
       state.filter.platforms = []
@@ -80,6 +155,7 @@ const browseGamesSlice = createSlice({
       state.filter.priceRange = null
       state.filter.discountRange = null
       state.filter.ratingRange = null
+      state.filter.pageNumber = 0
     },
     setSelectsortIndex: (state, action) => {
       state.filter.selectedSortIndex = action.payload
@@ -102,12 +178,26 @@ export const {
   setFilterTags,
 
   setFiltersToInitial,
+
+  setSearchResponse,
+
+  setBrowsePageNumber,
 } = browseGamesSlice.actions
+
+export const selectBrowseGamesWithWish = createSelector(
+  [
+    // @ts-ignore
+    (state: RootState) => state.browseGames.games,
+    selectWishlistGameIds,
+    selectCartGameIds,
+    selectPurchasedGameIds,
+  ],
+  combineWCPData
+)
 
 export const selectBrowseGames = (state: RootState) => ({
   loading: state.browseGames.loading,
   error: state.browseGames.error,
-  games: state.browseGames.games,
 })
 
 export const selectSortIndex = (state: RootState) =>
@@ -126,5 +216,16 @@ export const selectFilterRatingRange = (state: RootState) =>
   state.browseGames.filter.ratingRange
 export const selectFilterDiscountRange = (state: RootState) =>
   state.browseGames.filter.discountRange
+export const selectFilterSearchTerm = (state: RootState) =>
+  state.browseGames.filter.searchTerm
+export const selectFilterPageNumber = (state: RootState) =>
+  state.browseGames.filter.pageNumber
+
+export const selectBrowsePagination = (state: RootState) => ({
+  currentPage: state.browseGames.response.currentPage,
+  totalPages: state.browseGames.response.totalPages,
+})
+export const selectBrowseFacets = (state: RootState) =>
+  state.browseGames.response.facets
 
 export default browseGamesSlice.reducer

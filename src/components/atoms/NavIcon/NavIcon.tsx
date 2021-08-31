@@ -18,11 +18,14 @@ const NavIcon = ({
 }: INavIconProps) => (
   <Link
     aria-label={ariaLabel}
-    className={`flex items-center h-full px-2 ${classes}`}
+    className={`flex items-start h-full px-2 ${classes}`}
     to={linkTo}
   >
     <IconComponent />
-    <div aria-label={`${ariaLabel}-count`} className='ml-1 text-gray-300'>
+    <div
+      aria-label={`${ariaLabel}-count`}
+      className='ml-1 text-xs leading-none text-gray-300'
+    >
       {count}
     </div>
   </Link>

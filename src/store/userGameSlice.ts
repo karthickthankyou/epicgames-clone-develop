@@ -7,12 +7,16 @@ const initialState: {
   cartGameIds: UserGame[]
   wishlistGameIds: UserGame[]
   purchasedGameIds: UserGame[]
+  removedFromCartGameIds: UserGame[]
   wishlistGames: Game[]
   cartGames: Game[]
+  removedFromCartGames: Game[]
   purchasedGames: Game[]
 } = {
   wishlistGameIds: [],
   cartGameIds: [],
+  removedFromCartGameIds: [],
+  removedFromCartGames: [],
   purchasedGameIds: [],
   wishlistGames: [],
   cartGames: [],
@@ -25,6 +29,12 @@ const userGamesSlice = createSlice({
   reducers: {
     setCartGameIds: (state, action) => {
       state.cartGameIds = action.payload
+    },
+    setRemovedFromCartGameIds: (state, action) => {
+      state.removedFromCartGameIds = action.payload
+    },
+    setRemovedFromCartGames: (state, action) => {
+      state.removedFromCartGames = action.payload
     },
     setWishlistGameIds: (state, action) => {
       state.wishlistGameIds = action.payload
@@ -47,6 +57,8 @@ const userGamesSlice = createSlice({
 // Actions
 export const {
   setCartGameIds,
+  setRemovedFromCartGameIds,
+  setRemovedFromCartGames,
   setWishlistGameIds,
   setPurchasedGameIds,
   setWishlistedGames,
@@ -64,6 +76,8 @@ export const selectCartGames = (state: RootState) =>
   }))
 export const selectWishlistGameIds = (state: RootState) =>
   state.userGames.wishlistGameIds
+export const selectRemovedFromCartGameIds = (state: RootState) =>
+  state.userGames.removedFromCartGameIds
 export const selectWishlistGames = (state: RootState) =>
   state.userGames.wishlistGames.map((game) => ({
     ...game,

@@ -16,10 +16,12 @@ export interface ICounter {
   seconds: string
 }
 
+export const fixedTwoDec = (num: number) => num.toFixed(2)
+
 export const discountCalc = (disc = 0, price: number) =>
   +(price - (price * disc) / 100).toFixed(2)
 
-export const withCurrency = (price: number) => `₹${price}`
+export const withCurrency = (price: number) => `₹${price.toFixed(2)}`
 
 export const calculateTimeLeft = (date: string): ICounter => {
   const diff = new Date(date).getTime() - new Date().getTime()
@@ -156,3 +158,5 @@ export const addOrRemoveItem = (arr: string[], item: string) =>
   arr.includes(item)
     ? arr.filter((eventItem) => eventItem !== item)
     : [...arr, item]
+
+export const readable = (str: string) => str.split('-').join(' ')

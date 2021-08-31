@@ -16,6 +16,7 @@ import GameCard05 from '../../molecules/GameCard05'
 import Specifications from '../../molecules/Specifications'
 import ReviewSection from '../../organisms/ReviewSection'
 import GameCard01Section from '../../organisms/GameCard01Section'
+import { useDocumentTitle } from '../../../hooks'
 
 export interface IGamePageProps {}
 
@@ -25,13 +26,12 @@ const GamePage = () => {
   const game = useAppSelector(selectGamePage)
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)
+  useDocumentTitle(`${game?.title} - Epic clone` || 'Game Page')
 
   const { id } = useParams<{ id: string }>()
 
   useGetGamePage(id)
-
   useSimilarGames(game?.items)
-
   //   if (game) let features = [{ title: 'Genres', value: game.tags.join(', ') }]
 
   return (
@@ -100,8 +100,10 @@ const GamePage = () => {
                 <ReviewSection />
               </div>
             </div>
-            <div className='sticky top-0 h-screen col-span-1'>
-              <GameCard05 game={game} />
+            <div className='col-span-1'>
+              <div className='sticky top-24'>
+                <GameCard05 game={game} />
+              </div>
             </div>
           </div>
           <div className='my-6'>

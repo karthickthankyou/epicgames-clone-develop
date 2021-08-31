@@ -15,7 +15,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
   return (
-    <div className={`flex items-center ${classes}`}>
+    <div className={`flex relative items-start ${classes}`}>
       <img
         src={game.imageUrl}
         alt=''
@@ -33,7 +33,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
 
       <button
         type='button'
-        className='ml-auto'
+        className='absolute top-0 right-0 ml-auto'
         onClick={() =>
           updateUserGames({
             uid: uid || '',
@@ -43,7 +43,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
           })
         }
       >
-        <IoCloseOutline className='w-10 h-10 p-2 text-gray-400' />
+        <IoCloseOutline className='w-8 h-8 p-1 text-gray-400' />
       </button>
     </div>
   )

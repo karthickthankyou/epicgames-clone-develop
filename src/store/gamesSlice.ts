@@ -103,7 +103,7 @@ export const selectGames = (state: RootState) => state.games.games
 export const selectHomeScreenGames = (state: RootState) =>
   state.games.homeScreenGames
 
-const combineWCPData = (
+export const combineWCPData = (
   input: Game[],
   wishlistIds: UserGame[],
   cartIds: UserGame[],
@@ -117,7 +117,7 @@ const combineWCPData = (
 
   return input.map((game) => ({ ...game, ...includes(game.id) }))
 }
-const combineWCPDataForObject = (
+export const combineWCPDataForObject = (
   input: Game | null,
   wishlistIds: UserGame[],
   cartIds: UserGame[],

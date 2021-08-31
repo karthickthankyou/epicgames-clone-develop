@@ -58,6 +58,9 @@ import {
   selectCartGameIds,
   selectWishlistGameIds,
   selectPurchasedGameIds,
+  setRemovedFromCartGameIds,
+  selectRemovedFromCartGameIds,
+  setRemovedFromCartGames,
 } from '../store/userGameSlice'
 import { getImageUrl, processGameIdsForSimilarItems } from '../utils'
 import {
@@ -71,6 +74,9 @@ import {
 } from '../types'
 import { sortByOptions } from '../types/static'
 
+/**
+ * @deprecated Use `useAlgoliaSearchGames()` instead for the browse games page.
+ */
 export function useBrowseGames() {
   const dispatch = useAppDispatch()
   const { sortKey, sortOrder } = sortByOptions[useAppSelector(selectSortIndex)]
@@ -105,6 +111,7 @@ export function useUserGamesListener() {
   const cartGameIds = useAppSelector(selectCartGameIds)
   const wishlistGameIds = useAppSelector(selectWishlistGameIds)
   const purchasedGameIds = useAppSelector(selectPurchasedGameIds)
+  const removedFromCartGameIds = useAppSelector(selectRemovedFromCartGameIds)
 
   const setupQuery = (ids: string[]) =>
     query(collection(db, collections.GAMES), where('id', 'in', ids), limit(10))
@@ -152,6 +159,12 @@ export function useUserGamesListener() {
     else setupListener(purchasedGameIds, setPurchasedGames)
   }, [purchasedGameIds])
 
+  useEffect(() => {
+    if (removedFromCartGameIds.length === 0)
+      dispatch(setRemovedFromCartGames([]))
+    else setupListener(removedFromCartGameIds, setRemovedFromCartGames)
+  }, [removedFromCartGameIds])
+
   //   useEffect(() => {
   //     setupListener(purchasedGameIds, setPurchasedGames)
   //   }, [purchasedGameIds])
@@ -193,6 +206,10 @@ export function useUserGameIdsListener() {
         setupQuery('IN_CART'),
         setCartGameIds
       )
+      const detachRemovedFromCartListener = setupOnSnapshot(
+        setupQuery('REMOVED_FROM_CART'),
+        setRemovedFromCartGameIds
+      )
       const detachPurchasedListener = setupOnSnapshot(
         setupQuery('PURCHASED'),
         setPurchasedGameIds
@@ -202,6 +219,7 @@ export function useUserGameIdsListener() {
         detachWishlistedListener()
         detachInCartListener()
         detachPurchasedListener()
+        detachRemovedFromCartListener()
       }
     }
   }, [uid])

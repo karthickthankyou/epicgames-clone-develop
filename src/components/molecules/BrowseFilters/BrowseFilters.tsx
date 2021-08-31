@@ -1,7 +1,8 @@
 /* eslint-disable no-lone-blocks */
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
+// import debounce from 'lodash.debounce'
 import { FaChevronUp, FaChevronDown, FaCheck } from 'react-icons/fa'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
 import ReactSlider from 'react-slider'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
@@ -18,6 +19,7 @@ import {
   selectFilterPriceRange,
   selectFilterDiscountRange,
   selectFilterRatingRange,
+  selectBrowseFacets,
 } from '../../../store/browseGamesSlice'
 
 export interface IBrowseFiltersProps {}
@@ -69,6 +71,9 @@ const RangeFilter = ({
   // We need this local state to show onChange as we store onAfterChange in redux store
   const [valuePair, setValuePair] = useState([min, max])
 
+  //   const debouncedEventHandler = (cb: any) =>
+  //     useMemo(() => debounce(cb, 1000), [])
+
   useEffect(() => {
     const minValue = displayState ? displayState[0] : min
     const maxValue = displayState ? displayState[1] : max
@@ -105,10 +110,7 @@ const RangeFilter = ({
             ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
             pearling
             minDistance={minDistance}
-            onAfterChange={(value, index) => {
-              dispatch(action(value))
-              console.log(value, index)
-            }}
+            onAfterChange={(value, index) => dispatch(action(value))}
             onChange={(value, index) => {
               setValuePair(value)
             }}
@@ -124,14 +126,19 @@ const CategoryFilter = ({
   options,
   action,
   displayState,
+  facet,
 }: {
   name: string
   options: string[]
   displayState: string[]
   action: ActionCreatorWithPayload<any, string>
+  facet: any
 }) => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
+
+  console.log('Facet: ', facet, name, options)
+
   return (
     <div>
       <AccordionHeader name={name} open={open} setOpen={setOpen} />
@@ -149,8 +156,16 @@ const CategoryFilter = ({
               onClick={() => dispatch(action(option))}
             >
               {option}
+              <div className='ml-auto'>
+                {/* eslint-disable-next-line no-nested-ternary */}
+                {facet
+                  ? Object.prototype.hasOwnProperty.call(facet, option)
+                    ? facet[option]
+                    : 0
+                  : 0}
+              </div>
               {displayState.includes(option) && (
-                <FaCheck className='absolute right-0 w-3 h-3 mr-4 text-gray-500' />
+                <FaCheck className='absolute left-0 w-3 h-3 ml-2 text-gray-500' />
               )}
             </button>
           ))}
@@ -192,7 +207,9 @@ const genres = [
 ]
 const platforms = ['Windows', 'Mac OS']
 
-const events = ['Epic MEGA Sale', 'Highest Discount Ever']
+const events = ['RECENTLY_UPDATED', 'HIGHEST_DISCOUNT', 'TOP_SELLER']
+// 'Epic MEGA Sale',
+// 'Highest Discount Ever',
 
 const BrowseFilters = () => {
   const filterEvents = useAppSelector(selectFilterEvents)
@@ -201,6 +218,13 @@ const BrowseFilters = () => {
   const filterPriceRange = useAppSelector(selectFilterPriceRange)
   const filterDiscountRange = useAppSelector(selectFilterDiscountRange)
   const filterRatingRange = useAppSelector(selectFilterRatingRange)
+
+  const {
+    tags: tagsFacet,
+    notes: notesFacet,
+    platform: platformFacet,
+  } = useAppSelector(selectBrowseFacets)
+
   const dispatch = useAppDispatch()
 
   const filtersLength =
@@ -236,6 +260,7 @@ const BrowseFilters = () => {
           displayState={filterEvents}
           name='events'
           options={events}
+          facet={notesFacet}
         />
         <RangeFilter
           action={setFilterPriceRange}
@@ -264,12 +289,14 @@ const BrowseFilters = () => {
           action={setFilterTags}
           name='genre'
           options={genres}
+          facet={tagsFacet}
         />
         <CategoryFilter
           displayState={filterPlatforms}
           action={setFilterPlatforms}
           name='platform'
           options={platforms}
+          facet={platformFacet}
         />
       </div>
     </div>

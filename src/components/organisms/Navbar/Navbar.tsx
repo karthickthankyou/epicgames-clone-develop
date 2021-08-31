@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { FiShoppingCart, FiMenu, FiX, FiHeart, FiSearch } from 'react-icons/fi'
+import debounce from 'lodash.debounce'
+
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
   selectCartGameIds,
@@ -30,35 +32,16 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
   const { pathname } = useLocation()
-  if (soloPaths.includes(pathname)) return <></>
 
   const searchGames = (e: any) => {
+    // Debounce https://dmitripavlutin.com/react-throttle-debounce/
+    // Debounce example http://demo.nimius.net/debounce_throttle/
     const searchTerm = e.target.value
     dispatch(setSearchTerm(searchTerm))
-    // // index.searchForFacetValues('discount', 'price', 'rating').then((res) => {
-    // //   console.log('facetHits res', res)
-    // // })
-    // const t0 = performance.now()
-    // index
-    //   .search(searchTerm, {
-    //     hitsPerPage: 24,
-    //     facets: ['notes', 'platform', 'tags'],
-    //     // filters: `tags:Action AND tags:Adventure AND platform:'Mac OS'`,
-    //     numericFilters: [
-    //       //   'price:239 TO 499',
-    //       //   'discount:0 TO 80',
-    //       //   'rating:69 TO 99',
-    //     ],
-    //     sumOrFiltersScores: true,
-    //     page: 0,
-    //     analytics: true,
-    //   })
-    //   .then((res) => {
-    //     console.log(res)
-    //     const t1 = performance.now()
-    //     console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
-    //   })
   }
+  const debouncedEventHandler = useMemo(() => debounce(searchGames, 1000), [])
+
+  if (soloPaths.includes(pathname)) return <></>
 
   return (
     <nav className='sticky top-0 z-30 text-gray-300 bg-gray-800'>
@@ -81,21 +64,21 @@ const Navbar = () => {
           <Link
             type='button'
             to='/browse'
-            className='hidden mx-2 text-sm uppercase md:block'
+            className='hidden text-sm uppercase md:block'
           >
             Browse
           </Link>
           <Link
             type='button'
-            to='/'
-            className='hidden mx-2 text-sm uppercase md:block'
+            to='/news'
+            className='hidden text-sm uppercase md:block'
           >
             News
           </Link>
           <Link
             type='button'
-            to='/'
-            className='hidden mx-2 text-sm uppercase md:block'
+            to='/community'
+            className='hidden text-sm uppercase md:block'
           >
             Community
           </Link>
@@ -107,14 +90,14 @@ const Navbar = () => {
               type='search'
               placeholder='Search'
               className='p-2 pl-8 bg-gray-700 rounded'
-              onChange={searchGames}
+              onChange={debouncedEventHandler}
             />
           </div>
           <button
             type='button'
             onClick={() => setShowSearch((state) => !state)}
           >
-            <FiSearch className='block mx-2 md:hidden' />
+            <FiSearch className='block md:hidden' />
           </button>
           {uid ? (
             <>
@@ -170,7 +153,7 @@ const Navbar = () => {
         </div>
       </div>
       {showSearch && (
-        <div className='flex items-center w-full px-2 py-2 mx-2 md:hidden'>
+        <div className='flex items-center w-full px-2 py-2 md:hidden'>
           <FiSearch className='z-10 -mr-6' />
           <input
             type='search'
