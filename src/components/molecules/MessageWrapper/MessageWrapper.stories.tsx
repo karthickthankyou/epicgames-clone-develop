@@ -7,7 +7,7 @@ export default {
   component: MessageWrapper,
 } as ComponentMeta<typeof MessageWrapper>
 
-const Template: ComponentStory<typeof MessageWrapper> = (args) => (
+const Template: ComponentStory<typeof MessageWrapper> = () => (
   <MessageWrapper>
     <div>Hello</div>
   </MessageWrapper>

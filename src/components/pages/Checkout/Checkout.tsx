@@ -77,7 +77,7 @@ const Cart = () => {
       <div className='gap-3 sm:gap-6 sm:grid sm:grid-cols-2'>
         <div data-testid='cart-page-list' className='sm:col-span-1'>
           {gamesInCart.map((game) => (
-            <CartCard key={game.id} game={game} classes='mb-6' />
+            <CartCard key={game.id} game={game} classes='mb-3' />
           ))}
         </div>
         <div>

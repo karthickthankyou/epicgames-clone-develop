@@ -7,7 +7,9 @@ export default {
   component: ReviewSection,
 } as ComponentMeta<typeof ReviewSection>
 
-const Template: ComponentStory<typeof ReviewSection> = () => <ReviewSection />
+const Template: ComponentStory<typeof ReviewSection> = () => (
+  <ReviewSection rating={100} />
+)
 
 export const Primary = Template.bind({})
 Primary.args = {}

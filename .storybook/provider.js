@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
-import { configureStore } from '../redux/configureStore'
+import { store } from '../src/store'
 
-const store = configureStore()
+// const store = configureStore()
 
 const ProviderWrapper = ({ children, store }) => (
   <Provider store={store}>{children}</Provider>

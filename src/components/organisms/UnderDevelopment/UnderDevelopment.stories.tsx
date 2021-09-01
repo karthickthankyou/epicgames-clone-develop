@@ -8,7 +8,7 @@ export default {
 } as ComponentMeta<typeof UnderDevelopment>
 
 const Template: ComponentStory<typeof UnderDevelopment> = (args) => (
-  <UnderDevelopment />
+  <UnderDevelopment text='Sample Text' />
 )
 
 export const Primary = Template.bind({})

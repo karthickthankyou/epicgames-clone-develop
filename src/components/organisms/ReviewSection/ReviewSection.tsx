@@ -1,16 +1,18 @@
 import { getScoreColor } from '../../../utils'
 import ReviewCard from '../../molecules/ReviewCard'
 
-export interface IReviewSectionProps {}
+export interface IReviewSectionProps {
+  rating: number
+}
 
-const ReviewSection = () => (
+const ReviewSection = ({ rating }: IReviewSectionProps) => (
   <div className='my-6'>
     <div
       className={`items-baseline inline-block rounded-lg p-2 ${getScoreColor(
-        87
+        rating
       )}`}
     >
-      <span className='text-6xl font-light'>87</span>
+      <span className='text-6xl font-light'>{rating}</span>
       <span className='text-lg text-gray-300'>/ 100</span>
     </div>
 

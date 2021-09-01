@@ -97,7 +97,7 @@ const GamePage = () => {
               </div>
               <div className='my-6'>
                 <div className='text-xl font-semibold'>Reviews</div>
-                <ReviewSection />
+                <ReviewSection rating={89} />
               </div>
             </div>
             <div className='col-span-1'>

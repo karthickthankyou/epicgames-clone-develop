@@ -7,7 +7,9 @@ export default {
   component: CustomHelmet,
 } as ComponentMeta<typeof CustomHelmet>
 
-const Template: ComponentStory<typeof CustomHelmet> = (args) => <CustomHelmet />
+const Template: ComponentStory<typeof CustomHelmet> = () => (
+  <CustomHelmet title='Hello' description='hello description' />
+)
 
 export const Primary = Template.bind({})
 Primary.args = {}

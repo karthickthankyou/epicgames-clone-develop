@@ -64,21 +64,21 @@ const Navbar = () => {
           <Link
             type='button'
             to='/browse'
-            className='hidden text-sm uppercase md:block'
+            className='hidden px-2 text-sm uppercase hover:text-white md:block'
           >
             Browse
           </Link>
           <Link
             type='button'
             to='/news'
-            className='hidden text-sm uppercase md:block'
+            className='hidden px-2 text-sm uppercase hover:text-white md:block'
           >
             News
           </Link>
           <Link
             type='button'
             to='/community'
-            className='hidden text-sm uppercase md:block'
+            className='hidden px-2 text-sm uppercase hover:text-white md:block'
           >
             Community
           </Link>
