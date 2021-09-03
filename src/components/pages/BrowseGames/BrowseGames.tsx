@@ -12,6 +12,7 @@ import BrowseFilters from '../../molecules/BrowseFilters'
 import { useDocumentTitle } from '../../../hooks'
 
 import SkeletonCard01 from '../../molecules/SkeletonCard01'
+import Heading from '../../atoms/Heading'
 
 export interface IBrowseGamesProps {}
 
@@ -32,6 +33,9 @@ const BrowseGames = () => {
   }
   return (
     <div>
+      <Heading variant='heading-1' headerType='h1' classes='mt-2'>
+        Browse Games
+      </Heading>
       <div className='flex items-start my-4'>
         <SortDropdown />
       </div>

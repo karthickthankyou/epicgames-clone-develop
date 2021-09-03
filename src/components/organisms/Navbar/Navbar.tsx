@@ -51,6 +51,7 @@ const Navbar = () => {
             type='button'
             className='block mr-2 md:hidden'
             onClick={() => setShowMenu((state) => !state)}
+            aria-label='drawer'
           >
             {showMenu ? (
               <FiX className='w-6 h-6' />
@@ -96,6 +97,7 @@ const Navbar = () => {
           <button
             type='button'
             onClick={() => setShowSearch((state) => !state)}
+            aria-label='search'
           >
             <FiSearch className='block md:hidden' />
           </button>
@@ -116,7 +118,11 @@ const Navbar = () => {
                 ariaLabel='nav-wishlist-page-link'
               />
               <div className='relative ml-2 text-xs uppercase group'>
-                <button type='button' className='block '>
+                <button
+                  type='button'
+                  aria-label='profile picture'
+                  className='block '
+                >
                   <img src={Image} alt='' className='w-8 h-8 rounded-full' />
                 </button>
 

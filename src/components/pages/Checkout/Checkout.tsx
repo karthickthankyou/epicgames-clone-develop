@@ -9,6 +9,7 @@ import { discountCalc, withCurrency } from '../../../utils'
 import { Game } from '../../../types'
 import EmptyList from '../../molecules/EmptyList'
 import { useDocumentTitle } from '../../../hooks'
+import Heading from '../../atoms/Heading'
 
 const Cart = () => {
   const createStripeCheckout = httpsCallable(
@@ -73,7 +74,10 @@ const Cart = () => {
 
   return (
     <div className='mb-16 min-h-screen-3/4'>
-      <div className='my-4 text-3xl font-light'>Cart</div>
+      <Heading variant='heading-1' classes='mt-2' headerType='h1'>
+        Cart
+      </Heading>
+      {/* <div className='my-4 text-3xl font-light'>Cart</div> */}
       <div className='gap-3 sm:gap-6 sm:grid sm:grid-cols-2'>
         <div data-testid='cart-page-list' className='sm:col-span-1'>
           {gamesInCart.map((game) => (
@@ -83,7 +87,7 @@ const Cart = () => {
         <div>
           <form
             onSubmit={handleSubmit}
-            className='flex flex-col p-4 mt-8 font-mono text-sm bg-gray-800 rounded shadow-lg sm:sticky top-24 sm:mt-0'
+            className='flex flex-col p-4 mt-8 font-mono text-sm sm:sticky top-24 sm:mt-0'
           >
             <div className='mb-3 text-base font-semibold'>Order summary</div>
             <div className='flex justify-between py-1'>

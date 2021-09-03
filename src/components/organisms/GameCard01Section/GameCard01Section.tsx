@@ -1,4 +1,3 @@
-import { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 import { slug } from '../../../utils'
 import { Game } from '../../../types'
@@ -14,7 +13,7 @@ export interface IGameCard01SectionProps {
 
 const GameCard01Section = ({
   heading,
-  buttonText = '',
+  buttonText = 'view more',
   buttonLinkTo = '#0',
   games,
   classes = '',
@@ -22,7 +21,7 @@ const GameCard01Section = ({
   const gamesSix = games.slice(0, 6)
   return (
     <div className={`my-12 ${classes}`}>
-      <div className='flex justify-between'>
+      <div className='flex items-baseline justify-between'>
         <div className='flex items-center text-xl font-semibold capitalize'>
           {heading}
         </div>
@@ -30,6 +29,7 @@ const GameCard01Section = ({
           <Link
             to={buttonLinkTo}
             className='text-xs uppercase border border-white rounded-md btn-md '
+            aria-label={`view more ${heading}`}
           >
             {buttonText}
           </Link>

@@ -10,7 +10,9 @@ export default {
 const Template: ComponentStory<typeof Heading> = ({ variant, children }) => (
   <div>
     <hr className='border-gray-600' />
-    <Heading variant={variant}>{children}</Heading>
+    <Heading headerType='h3' variant={variant}>
+      {children}
+    </Heading>
     <hr className='border-gray-600' />
   </div>
 )

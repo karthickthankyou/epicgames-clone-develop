@@ -11,6 +11,7 @@ import EmptyList from '../../molecules/EmptyList'
 
 import { useDocumentTitle } from '../../../hooks'
 import CustomHelmet from '../../organisms/CustomHelmet'
+import Heading from '../../atoms/Heading'
 
 export interface IWishlistProps {}
 
@@ -34,6 +35,9 @@ const Wishlist = () => {
         title={`Wishlist (${wishlistIds.length})`}
         description={`The wishlisted games appear here. There are currently ${wishlistIds.length} games in this page now.`}
       />
+      <Heading variant='heading-1' headerType='h1' classes='mt-2'>
+        Wishlist
+      </Heading>
       <div className='flex items-center justify-between'>
         {/* <Link to='/'>To Home</Link> */}
         <SortDropdown />

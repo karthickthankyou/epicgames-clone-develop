@@ -22,12 +22,7 @@ const NavIcon = ({
     to={linkTo}
   >
     <IconComponent />
-    <div
-      aria-label={`${ariaLabel}-count`}
-      className='ml-1 text-xs leading-none text-gray-300'
-    >
-      {count}
-    </div>
+    <div className='ml-1 text-xs leading-none text-gray-300'>{count}</div>
   </Link>
 )
 

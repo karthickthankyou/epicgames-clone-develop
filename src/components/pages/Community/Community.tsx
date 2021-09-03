@@ -1,3 +1,4 @@
+import Heading from '../../atoms/Heading'
 import MessageWrapper from '../../molecules/MessageWrapper'
 import CustomHelmet from '../../organisms/CustomHelmet'
 
@@ -10,7 +11,10 @@ const Community = () => (
         title='Epic Community'
         description='Community page is a space for gamers to talk about their favorite games.'
       />
-      <div className='mt-4 mb-2 text-3xl font-light'>Community Page</div>
+      <Heading variant='heading-0' headerType='h1'>
+        Community Page
+      </Heading>
+      {/* <div className='mt-4 mb-2 text-3xl font-light'>Community Page</div> */}
       <div className='text-gray-400'>This page is under development.</div>
     </div>
   </MessageWrapper>

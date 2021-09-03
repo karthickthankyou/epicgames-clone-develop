@@ -15,7 +15,7 @@ const Footer = () => {
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
   return (
-    <div className='text-sm'>
+    <footer className='text-sm'>
       <div className='flex my-4'>
         <button type='button' aria-label='facebook icon'>
           <FaFacebook className='w-6 h-6 mr-3 hover:text-primary-500' />
@@ -121,7 +121,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

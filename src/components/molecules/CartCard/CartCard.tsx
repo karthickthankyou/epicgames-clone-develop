@@ -36,6 +36,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
       <button
         type='button'
         className='absolute top-0 right-0 ml-auto'
+        aria-label='close'
         onClick={() =>
           updateUserGames({
             uid: uid || '',

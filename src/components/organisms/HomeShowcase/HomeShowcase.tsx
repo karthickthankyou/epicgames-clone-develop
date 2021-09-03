@@ -82,6 +82,7 @@ const HomeShowcase = () => {
               type='button'
               onClick={() => setImageId(index)}
               tabIndex={0}
+              aria-label={game.title}
               className='w-full h-full rounded-full shadow-lg aspect-w-9 aspect-h-9'
             >
               <img
