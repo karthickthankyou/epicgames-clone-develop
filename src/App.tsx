@@ -105,7 +105,7 @@ const BrowseGames = React.lazy(
 const Library = React.lazy(
   () =>
     import(
-      /* webpackChunkName: "Library" webpackPrefetch: true */ './components/pages/Library'
+      /* webpackChunkName: "Library", webpackPrefetch: true */ './components/pages/Library'
     )
 )
 
