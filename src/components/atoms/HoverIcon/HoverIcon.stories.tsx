@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { HiHeart } from 'react-icons/hi'
+import { ReactComponent as Heart } from '../../../assets/svgs/heart.svg'
 import HoverIcon from './HoverIcon'
 
 export default {
@@ -19,7 +19,7 @@ const Template: ComponentStory<typeof HoverIcon> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
-  IconComponent: HiHeart,
+  IconComponent: Heart,
   hintText: 'Hello World',
 }
 Primary.parameters = {}

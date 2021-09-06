@@ -1,10 +1,13 @@
 /* eslint-disable no-lone-blocks */
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 // import debounce from 'lodash.debounce'
-import { FaChevronUp, FaChevronDown, FaCheck } from 'react-icons/fa'
+
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
 import ReactSlider from 'react-slider'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
+import { ReactComponent as Check } from '../../../assets/svgs/check.svg'
 import {
   setFilterDiscountRange,
   setFilterPriceRange,
@@ -42,9 +45,9 @@ const AccordionHeader = ({
   >
     {name}
     {open ? (
-      <FaChevronUp className='w-4 h-4 ml-auto text-gray-200' />
+      <ChevronUp className='w-4 h-4 ml-auto text-gray-200' />
     ) : (
-      <FaChevronDown className='w-4 h-4 ml-auto text-gray-500' />
+      <ChevronDown className='w-4 h-4 ml-auto text-gray-500' />
     )}
   </button>
 )
@@ -165,7 +168,7 @@ const CategoryFilter = ({
                   : 0}
               </div>
               {displayState.includes(option) && (
-                <FaCheck className='absolute left-0 w-3 h-3 ml-2 text-gray-500' />
+                <Check className='absolute left-0 w-3 h-3 ml-2 text-gray-500' />
               )}
             </button>
           ))}

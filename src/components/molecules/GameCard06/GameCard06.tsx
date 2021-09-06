@@ -1,10 +1,11 @@
 import dateFormat from 'dateformat'
-import { MdClose } from 'react-icons/md'
 import { useHistory } from 'react-router-dom'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
 import Price, { IPriceProps } from '../../atoms/Price'
+
+import { ReactComponent as Close } from '../../../assets/svgs/x.svg'
 
 export interface IGameCard06Props {
   id: string
@@ -76,7 +77,7 @@ const GameCard06 = ({
           })
         }
       >
-        <MdClose className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
+        <Close className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
       </button>
     </div>
   )

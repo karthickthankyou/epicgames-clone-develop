@@ -1,6 +1,6 @@
 import React from 'react'
-import { FiActivity } from 'react-icons/fi'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ReactComponent as EducationIcon } from '../../../assets/svgs/education.svg'
 import NavIcon from './NavIcon'
 
 export default {
@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof NavIcon>
 
 const Template: ComponentStory<typeof NavIcon> = () => (
-  <NavIcon IconComponent={FiActivity} count={45} linkTo='/lk' />
+  <NavIcon IconComponent={EducationIcon} count={45} linkTo='/lk' />
 )
 
 export const Primary = Template.bind({})

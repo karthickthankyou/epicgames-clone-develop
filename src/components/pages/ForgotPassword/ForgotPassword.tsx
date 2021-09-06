@@ -1,8 +1,11 @@
 import { useForm } from 'react-hook-form'
-import { AiOutlineLoading, AiOutlineWarning } from 'react-icons/ai'
+
 import { Link, useLocation } from 'react-router-dom'
 import { sendResetPasswordLink } from '../../../firebase/hooks'
 import { useLoadSuccessError } from '../../../hooks'
+
+import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
+import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
 
 export interface IForgotPasswordProps {}
 
@@ -12,7 +15,7 @@ type LocationState = {
 
 const ErrorMessage = ({ message }: { message: string | undefined }) => (
   <p className='flex items-center text-xs text-gray-300'>
-    <AiOutlineWarning className='w-3 h-3 mr-1' />
+    <WarningIcon className='w-3 h-3 mr-1' />
     {message}
   </p>
 )
@@ -60,7 +63,7 @@ const ForgotPassword = () => {
           //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
         >
           Send reset password link
-          {loading && <AiOutlineLoading className='inline ml-2 animate-spin' />}
+          {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
         </button>
         {error && <div className='my-2 text-xs'>Invalid email. Try again.</div>}
         {success && (

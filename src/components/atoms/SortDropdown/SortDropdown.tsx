@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
 import {
   selectSortIndex,
   setSelectsortIndex,
@@ -28,9 +29,9 @@ const SortDropdown = () => {
         <span className='mr-2 text-gray-300'>Sortby: </span>
         {sortByOptions[+selectedIndex].displayText}
         {open ? (
-          <FaChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
         ) : (
-          <FaChevronDown className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronDown className='inline w-4 h-4 ml-2 text-gray-300' />
         )}
       </button>
       {open && (

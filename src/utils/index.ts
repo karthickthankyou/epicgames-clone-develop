@@ -1,12 +1,10 @@
 /* eslint-disable no-plusplus */
-import {
-  HiOutlineShoppingBag,
-  HiShoppingBag,
-  HiOutlineHeart,
-  HiHeart,
-} from 'react-icons/hi'
-
 import slugify from 'slugify'
+
+import { ReactComponent as HeartOutlineIcon } from '../assets/svgs/heart.svg'
+import { ReactComponent as HeartSolidIcon } from '../assets/svgs/heartSolid.svg'
+import { ReactComponent as CartOutlineIcon } from '../assets/svgs/cartOutline.svg'
+import { ReactComponent as CartSolidIcon } from '../assets/svgs/cartSolid.svg'
 
 export const CAROUSEL_DURATION = 50
 export interface ICounter {
@@ -60,21 +58,21 @@ export const Timer = (callback: Function, delay: number) => {
 export const getWishlisted = (wishlisted: boolean) =>
   wishlisted
     ? {
-        WishlistIcon: HiHeart,
+        WishlistIcon: HeartSolidIcon,
         wishlistHintText: 'Wishlisted',
       }
     : {
-        WishlistIcon: HiOutlineHeart,
+        WishlistIcon: HeartOutlineIcon,
         wishlistHintText: 'Add to wishlist',
       }
 export const getInCart = (inCart: boolean) =>
   inCart
     ? {
-        CartIcon: HiShoppingBag,
+        CartIcon: CartSolidIcon,
         cartHintText: 'In cart',
       }
     : {
-        CartIcon: HiOutlineShoppingBag,
+        CartIcon: CartOutlineIcon,
         cartHintText: 'Add to cart',
       }
 

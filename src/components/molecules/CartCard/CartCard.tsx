@@ -1,10 +1,10 @@
-import { IoCloseOutline } from 'react-icons/io5'
 import { useHistory } from 'react-router-dom'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
 import { Game } from '../../../types'
 import Price from '../../atoms/Price'
+import { ReactComponent as Close } from '../../../assets/svgs/x.svg'
 
 export interface ICartCardProps {
   game: Game
@@ -46,7 +46,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
           })
         }
       >
-        <IoCloseOutline className='w-8 h-8 p-1 text-gray-400' />
+        <Close className='w-8 h-8 p-1 text-gray-400' />
       </button>
     </div>
   )

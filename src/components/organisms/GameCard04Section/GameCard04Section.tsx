@@ -1,5 +1,5 @@
-import { HiGift } from 'react-icons/hi'
 import GameCard04 from '../../molecules/GameCard04'
+import { ReactComponent as GiftIcon } from '../../../assets/svgs/gift.svg'
 
 export interface IGameCard04SectionProps {}
 
@@ -7,7 +7,7 @@ const GameCard04Section = () => (
   <div className='p-8 bg-gray-800'>
     <div className='flex items-center justify-between'>
       <div>
-        <HiGift className='inline w-8 h-8 mb-2 mr-2 text-gray-300 hover:text-white' />
+        <GiftIcon className='inline w-8 h-8 mb-2 mr-2 text-gray-300 hover:text-white' />
         Free Games
       </div>
       <button type='button' className='outline btn-lg btn'>

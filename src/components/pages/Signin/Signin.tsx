@@ -1,24 +1,24 @@
 // eslint-disable-next-line import/no-unresolved
 import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import {
-  AiFillApple,
-  AiFillFacebook,
-  AiOutlineWarning,
-  AiOutlineGoogle,
-  AiOutlineLoading,
-} from 'react-icons/ai'
+
 import { useForm } from 'react-hook-form'
 import { callSignIn, googleSignin } from '../../../firebase/hooks'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
 import { useLoadSuccessError } from '../../../hooks'
 
+import { ReactComponent as AppleIcon } from '../../../assets/svgs/apple.svg'
+import { ReactComponent as FacebookIcon } from '../../../assets/svgs/facebook.svg'
+import { ReactComponent as GoogleIcon } from '../../../assets/svgs/google.svg'
+import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
+import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
+
 export interface ISigninProps {}
 
 const ErrorMessage = ({ message }: { message: string | undefined }) => (
   <p className='flex items-center text-xs text-gray-300'>
-    <AiOutlineWarning className='w-3 h-3 mr-1' />
+    <WarningIcon className='w-3 h-3 mr-1' />
     {message}
   </p>
 )
@@ -104,9 +104,7 @@ const Signin = () => {
               //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
             >
               Sign In
-              {loading && (
-                <AiOutlineLoading className='inline ml-2 animate-spin' />
-              )}
+              {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
             </button>
 
             <Link
@@ -133,19 +131,19 @@ const Signin = () => {
               className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
               onClick={googleSignin}
             >
-              <AiOutlineGoogle className='w-6 h-6' />
+              <GoogleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
               className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
             >
-              <AiFillApple className='w-6 h-6' />
+              <AppleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
               className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
             >
-              <AiFillFacebook className='w-6 h-6' />
+              <FacebookIcon className='w-6 h-6' />
             </button>
           </div>
 

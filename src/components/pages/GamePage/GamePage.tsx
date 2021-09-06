@@ -1,10 +1,4 @@
 import { Link, useParams } from 'react-router-dom'
-import {
-  FaFacebookSquare,
-  FaTwitterSquare,
-  FaDiscord,
-  FaInstagramSquare,
-} from 'react-icons/fa'
 import { useGetGamePage, useSimilarGames } from '../../../firebase/hooks'
 import {
   selectGamePage,
@@ -17,6 +11,11 @@ import Specifications from '../../molecules/Specifications'
 import ReviewSection from '../../organisms/ReviewSection'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import { useDocumentTitle } from '../../../hooks'
+
+import { ReactComponent as FacebookIcon } from '../../../assets/svgs/facebook.svg'
+import { ReactComponent as TwitterIcon } from '../../../assets/svgs/twitter.svg'
+import { ReactComponent as DiscordIcon } from '../../../assets/svgs/discord.svg'
+import { ReactComponent as InstagramIcon } from '../../../assets/svgs/instagram.svg'
 
 export interface IGamePageProps {}
 
@@ -78,16 +77,16 @@ const GamePage = () => {
                 <div className='text-xl'>Follow us</div>
                 <div className='flex justify-center p-6 mt-2 space-x-10 bg-gray-800'>
                   <Link to='/to'>
-                    <FaFacebookSquare className='w-6 h-6 text-gray-400 hover:text-gray-50' />
+                    <FacebookIcon className='w-6 h-6 text-gray-400 hover:text-gray-50' />
                   </Link>
                   <Link to='/to'>
-                    <FaTwitterSquare className='w-6 h-6 text-gray-400 hover:text-gray-50' />
+                    <TwitterIcon className='w-6 h-6 text-gray-400 hover:text-gray-50' />
                   </Link>
                   <Link to='/to'>
-                    <FaDiscord className='w-6 h-6 text-gray-400 hover:text-gray-50' />
+                    <DiscordIcon className='w-6 h-6 text-gray-400 hover:text-gray-50' />
                   </Link>
                   <Link to='/to'>
-                    <FaInstagramSquare className='w-6 h-6 text-gray-400 hover:text-gray-50' />
+                    <InstagramIcon className='w-6 h-6 text-gray-400 hover:text-gray-50' />
                   </Link>
                 </div>
               </div>

@@ -1,4 +1,3 @@
-import { HiHeart, HiShoppingBag } from 'react-icons/hi'
 import {
   callSignOut,
   callSignIn,

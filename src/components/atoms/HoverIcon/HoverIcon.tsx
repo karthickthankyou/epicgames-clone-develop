@@ -1,10 +1,9 @@
-import React, { MouseEventHandler, useState } from 'react'
-import { IconType } from 'react-icons'
+import React, { MouseEventHandler, ReactElement, useState } from 'react'
 import { slug } from '../../../utils'
 
 export interface IHoverIconProps {
   hintText: string
-  IconComponent: IconType
+  IconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   position?: 'left' | 'top' | 'bottom' | 'right'
   onClick?: MouseEventHandler
   classes?: string

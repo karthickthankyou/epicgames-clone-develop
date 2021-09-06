@@ -1,7 +1,13 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useMemo, useState } from 'react'
-import { FiShoppingCart, FiMenu, FiX, FiHeart, FiSearch } from 'react-icons/fi'
+
 import debounce from 'lodash.debounce'
+
+import { ReactComponent as CloseIcon } from '../../../assets/svgs/x.svg'
+import { ReactComponent as SearchIcon } from '../../../assets/svgs/search.svg'
+import { ReactComponent as HeartIcon } from '../../../assets/svgs/heart.svg'
+import { ReactComponent as CartIcon } from '../../../assets/svgs/cart.svg'
+import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
 
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
@@ -10,7 +16,7 @@ import {
   selectPurchasedGames,
   selectWishlistGameIds,
 } from '../../../store/userGameSlice'
-import Image from '../../../assets/game.jpg'
+import Image from '../../../assets/cyberpunk.png'
 
 import { soloPaths } from '../../../utils'
 import NavIcon from '../../atoms/NavIcon'
@@ -54,9 +60,9 @@ const Navbar = () => {
             aria-label='drawer'
           >
             {showMenu ? (
-              <FiX className='w-6 h-6' />
+              <CloseIcon className='w-6 h-6' />
             ) : (
-              <FiMenu className='w-6 h-6' />
+              <MenuIcon className='w-6 h-6' />
             )}
           </button>
           <Link to='/' className='mr-2 font-bold uppercase'>
@@ -86,7 +92,7 @@ const Navbar = () => {
         </div>
         <div className='flex items-center'>
           <div className='items-center hidden mr-4 md:flex'>
-            <FiSearch className='z-10 -mr-6' />
+            <SearchIcon className='z-10 -mr-6' />
             <input
               type='search'
               placeholder='Search'
@@ -99,19 +105,19 @@ const Navbar = () => {
             onClick={() => setShowSearch((state) => !state)}
             aria-label='search'
           >
-            <FiSearch className='block md:hidden' />
+            <SearchIcon className='block md:hidden' />
           </button>
           {uid ? (
             <>
               <NavIcon
-                IconComponent={FiShoppingCart}
+                IconComponent={CartIcon}
                 count={cartIds.length}
                 linkTo='/cart'
                 classes='h-full'
                 ariaLabel='nav-cart-page-link'
               />
               <NavIcon
-                IconComponent={FiHeart}
+                IconComponent={HeartIcon}
                 count={wishlistIds.length}
                 linkTo='/wishlist'
                 classes='h-full'
@@ -160,7 +166,7 @@ const Navbar = () => {
       </div>
       {showSearch && (
         <div className='flex items-center w-full px-2 py-2 md:hidden'>
-          <FiSearch className='z-10 -mr-6' />
+          <SearchIcon className='z-10 -mr-6' />
           <input
             type='search'
             placeholder='Search'

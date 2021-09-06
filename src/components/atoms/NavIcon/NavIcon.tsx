@@ -1,8 +1,8 @@
-import { IconType } from 'react-icons'
+import React, { ReactElement } from 'react'
 import { Link } from 'react-router-dom'
 
 export interface INavIconProps {
-  IconComponent: IconType
+  IconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   count: number
   linkTo: string
   classes?: string

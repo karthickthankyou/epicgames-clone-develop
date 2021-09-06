@@ -1,13 +1,12 @@
-import {
-  FaFacebook,
-  FaTwitter,
-  FaYoutube,
-  FaChevronUp,
-  FaRegStar,
-  FaRegCopyright,
-} from 'react-icons/fa'
 import { useLocation } from 'react-router-dom'
 import { scrollToTop, soloPaths } from '../../../utils'
+
+import { ReactComponent as Copyright } from '../../../assets/svgs/copyright.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
+import { ReactComponent as RegStar } from '../../../assets/svgs/regStar.svg'
+import { ReactComponent as Facebook } from '../../../assets/svgs/facebook.svg'
+import { ReactComponent as Twitter } from '../../../assets/svgs/twitter.svg'
+import { ReactComponent as Youtube } from '../../../assets/svgs/youtube.svg'
 
 export interface IFooterProps {}
 
@@ -18,13 +17,13 @@ const Footer = () => {
     <footer className='text-sm'>
       <div className='flex my-4'>
         <button type='button' aria-label='facebook icon'>
-          <FaFacebook className='w-6 h-6 mr-3 hover:text-primary-500' />
+          <Facebook className='w-6 h-6 mr-3 hover:text-primary-500' />
         </button>
         <button type='button' aria-label='twitter icon'>
-          <FaTwitter className='w-6 h-6 mr-3 hover:text-primary-300' />
+          <Twitter className='w-6 h-6 mr-3 hover:text-primary-300' />
         </button>
         <button type='button' aria-label='youtube icon'>
-          <FaYoutube className='w-6 h-6 mr-3 hover:text-red-500' />
+          <Youtube className='w-6 h-6 mr-3 hover:text-red-500' />
         </button>
 
         <button
@@ -33,7 +32,7 @@ const Footer = () => {
           aria-label='go to top'
           onClick={scrollToTop}
         >
-          <FaChevronUp className='w-8 h-8 p-1 border rounded-sm' />
+          <ChevronUp className='w-8 h-8 p-1 border rounded-sm' />
         </button>
       </div>
       <div className='mt-4'>
@@ -113,10 +112,10 @@ const Footer = () => {
           </button>
           <div className='flex mt-2 sm:ml-auto'>
             <button type='button' aria-label='icon'>
-              <FaRegStar className='w-6 h-6 p-1 mr-2' />
+              <RegStar className='w-6 h-6 p-1 mr-2' />
             </button>
             <button type='button' aria-label='icon'>
-              <FaRegCopyright className='w-6 h-6 p-1 mr-2' />
+              <Copyright className='w-6 h-6 p-1 mr-2' />
             </button>
           </div>
         </div>

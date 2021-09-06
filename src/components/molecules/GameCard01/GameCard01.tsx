@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
-import { HiBriefcase } from 'react-icons/hi'
-
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import {
@@ -16,6 +14,7 @@ import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { selectUser } from '../../../store/userSlice'
 import { useAppSelector } from '../../../store/hooks'
+import { ReactComponent as Briefcase } from '../../../assets/svgs/briefcase.svg'
 
 export interface ICard01Props {
   game: Game
@@ -73,7 +72,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
       >
         {purchased ? (
           <HoverIcon
-            IconComponent={HiBriefcase}
+            IconComponent={Briefcase}
             hintText='Purchased'
             classes='mr-1'
           />
