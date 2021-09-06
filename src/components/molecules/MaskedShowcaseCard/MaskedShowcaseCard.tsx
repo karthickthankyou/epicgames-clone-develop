@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Image from '../../../assets/image.jpg'
 import { Game } from '../../../types'
 
 export interface IMaskedShowcaseCardProps {
