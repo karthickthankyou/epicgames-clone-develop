@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import * as PriceStory from '@atoms/Price/Price.stories'
+import image from '@assets/game.jpg'
+import { SbReduxProvider } from '@utils/sb'
 import GameCard06 from './GameCard06'
-import * as PriceStory from '../../atoms/Price/Price.stories'
-import image from '../../../assets/game.jpg'
-import { SbReduxProvider } from '../../../utils/sb'
 
 export default {
   title: 'molecules/GameCard06',

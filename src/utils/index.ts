@@ -1,10 +1,10 @@
 /* eslint-disable no-plusplus */
 import slugify from 'slugify'
 
-import { ReactComponent as HeartOutlineIcon } from '../assets/svgs/heart.svg'
-import { ReactComponent as HeartSolidIcon } from '../assets/svgs/heartSolid.svg'
-import { ReactComponent as CartOutlineIcon } from '../assets/svgs/cartOutline.svg'
-import { ReactComponent as CartSolidIcon } from '../assets/svgs/cartSolid.svg'
+import { ReactComponent as HeartOutlineIcon } from '@assets/svgs/heart.svg'
+import { ReactComponent as HeartSolidIcon } from '@assets/svgs/heartSolid.svg'
+import { ReactComponent as CartOutlineIcon } from '@assets/svgs/cartOutline.svg'
+import { ReactComponent as CartSolidIcon } from '@assets/svgs/cartSolid.svg'
 
 export const CAROUSEL_DURATION = 50
 export interface ICounter {

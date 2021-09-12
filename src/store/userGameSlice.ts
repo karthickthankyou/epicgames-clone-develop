@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit'
-import { Game, UserGame } from '../types'
+import { Game, UserGame } from '@epictypes/index'
 import { RootState } from './store'
 
 const initialState: {

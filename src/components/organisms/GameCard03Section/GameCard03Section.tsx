@@ -1,4 +1,4 @@
-import GameCard03 from '../../molecules/GameCard03'
+import GameCard03 from '@molecules/GameCard03'
 
 export interface IGameCard01SectionProps {
   heading: string

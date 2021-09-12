@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom'
-import SortDropdown from '../../atoms/SortDropdown'
-import GameCard06 from '../../molecules/GameCard06'
-import { useAppSelector } from '../../../store/hooks'
+import SortDropdown from '@atoms/SortDropdown'
+import GameCard06 from '@molecules/GameCard06'
+import { useAppSelector } from '@store/hooks'
 import {
   selectWishlistGameIds,
   selectWishlistGames,
-} from '../../../store/userGameSlice'
-import Pagination from '../../molecules/Pagination'
-import EmptyList from '../../molecules/EmptyList'
+} from '@store/userGameSlice'
+import Pagination from '@molecules/Pagination'
+import EmptyList from '@molecules/EmptyList'
 
-import { useDocumentTitle } from '../../../hooks'
-import CustomHelmet from '../../organisms/CustomHelmet'
-import Heading from '../../atoms/Heading'
+import { useDocumentTitle } from '@hooks/index'
+import CustomHelmet from '@organisms/CustomHelmet'
+import Heading from '@atoms/Heading'
 
 export interface IWishlistProps {}
 

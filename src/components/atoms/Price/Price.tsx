@@ -1,5 +1,5 @@
-import { GameNotes } from '../../../types'
-import { discountCalc, withCurrency } from '../../../utils'
+import { GameNotes } from '@epictypes/index'
+import { discountCalc, withCurrency } from '@utils/index'
 
 export interface IPriceProps {
   price: number
@@ -44,9 +44,11 @@ const Price = ({
       return withCurrency(price)
     }
 
-    throw new Error(
-      'Unknown combination of values received in Price component.'
-    )
+    return 0
+
+    // throw new Error(
+    //   'Unknown combination of values received in Price component.'
+    // )
   }
 
   return (

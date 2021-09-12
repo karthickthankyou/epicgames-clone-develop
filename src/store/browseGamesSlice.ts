@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createSelector } from '@reduxjs/toolkit'
-import { Game } from '../types'
-import { addOrRemoveItem } from '../utils'
+import { Game } from '@epictypes/index'
+import { addOrRemoveItem } from '@utils/index'
 import { combineWCPDataForObject, combineWCPData } from './gamesSlice'
 import { RootState } from './store'
 import {

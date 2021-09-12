@@ -3,26 +3,26 @@ import { useMemo, useState } from 'react'
 
 import debounce from 'lodash.debounce'
 
-import { ReactComponent as CloseIcon } from '../../../assets/svgs/x.svg'
-import { ReactComponent as SearchIcon } from '../../../assets/svgs/search.svg'
-import { ReactComponent as HeartIcon } from '../../../assets/svgs/heart.svg'
-import { ReactComponent as CartIcon } from '../../../assets/svgs/cart.svg'
-import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
+import { ReactComponent as CloseIcon } from '@assets/svgs/x.svg'
+import { ReactComponent as SearchIcon } from '@assets/svgs/search.svg'
+import { ReactComponent as HeartIcon } from '@assets/svgs/heart.svg'
+import { ReactComponent as CartIcon } from '@assets/svgs/cart.svg'
+import { ReactComponent as MenuIcon } from '@assets/svgs/menu.svg'
 
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
 import {
   selectCartGameIds,
   selectCartGames,
   selectPurchasedGames,
   selectWishlistGameIds,
-} from '../../../store/userGameSlice'
-import Image from '../../../assets/cyberpunk.png'
+} from '@store/userGameSlice'
+import Image from '@assets/cyberpunk.png'
 
-import { soloPaths } from '../../../utils'
-import NavIcon from '../../atoms/NavIcon'
-import { selectUser } from '../../../store/userSlice'
-import { callSignOut } from '../../../firebase/hooks'
-import { setSearchTerm } from '../../../store/browseGamesSlice'
+import { soloPaths } from '@utils/index'
+import NavIcon from '@atoms/NavIcon'
+import { selectUser } from '@store/userSlice'
+import { callSignOut } from '@epicfirebase/hooks'
+import { setSearchTerm } from '@store/browseGamesSlice'
 
 export interface INavbarProps {}
 

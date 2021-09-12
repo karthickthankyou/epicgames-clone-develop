@@ -22,6 +22,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'security'],
   rules: {
     'import/prefer-default-export': 0,
+    'import/no-unresolved': 0,
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
@@ -42,7 +43,6 @@ module.exports = {
     // note you must disable the base rule as it can report incorrect errors
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': ['error'],
-    // 'import/no-unresolved': 0,
     'import/extensions': 0,
   },
   settings: {

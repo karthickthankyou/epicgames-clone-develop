@@ -1,4 +1,4 @@
-import Price, { IPriceProps } from '../../atoms/Price'
+import Price, { IPriceProps } from '@atoms/Price'
 
 export interface IGameCard02Props {
   gameTitle: string

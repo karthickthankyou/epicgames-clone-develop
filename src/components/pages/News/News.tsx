@@ -1,7 +1,7 @@
-import Heading from '../../atoms/Heading'
-import MessageWrapper from '../../molecules/MessageWrapper'
-import CustomHelmet from '../../organisms/CustomHelmet'
-import UnderDevelopment from '../../organisms/UnderDevelopment'
+import Heading from '@atoms/Heading'
+import MessageWrapper from '@molecules/MessageWrapper'
+import CustomHelmet from '@organisms/CustomHelmet'
+import UnderDevelopment from '@organisms/UnderDevelopment'
 
 export interface INewsProps {}
 

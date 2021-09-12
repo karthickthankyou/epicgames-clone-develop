@@ -1,6 +1,6 @@
-import { getScoreColor } from '../../../utils'
-import { ReactComponent as Thumbsup } from '../../../assets/svgs/thumbsup.svg'
-import { ReactComponent as Thumbsdown } from '../../../assets/svgs/thumbsdown.svg'
+import { getScoreColor } from '@utils/index'
+import { ReactComponent as Thumbsup } from '@assets/svgs/thumbsup.svg'
+import { ReactComponent as Thumbsdown } from '@assets/svgs/thumbsdown.svg'
 
 export interface IReviewCardProps {
   reviewScore: number

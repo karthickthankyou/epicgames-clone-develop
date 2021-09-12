@@ -1,7 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { sampleGame } from '@epictypes/static'
 import MaskedShowcase from './MaskedShowcase'
-import { sampleGame } from '../../../types/static'
 
 export default {
   title: 'organisms/MaskedShowcase',

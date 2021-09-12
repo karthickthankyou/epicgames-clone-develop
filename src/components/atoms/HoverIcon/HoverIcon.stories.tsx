@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { ReactComponent as Heart } from '../../../assets/svgs/heart.svg'
+import { ReactComponent as Heart } from '@assets/svgs/heart.svg'
 import HoverIcon from './HoverIcon'
 
 export default {

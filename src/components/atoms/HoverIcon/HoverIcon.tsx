@@ -1,5 +1,5 @@
 import React, { MouseEventHandler, ReactElement, useState } from 'react'
-import { slug } from '../../../utils'
+import { slug } from '@utils/index'
 
 export interface IHoverIconProps {
   hintText: string

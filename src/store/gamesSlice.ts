@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSelector, createSlice } from '@reduxjs/toolkit'
+import { Game, GameGenre, SpecialGames, UserGame } from '@epictypes/index'
 import { RootState } from './store'
-import { Game, GameGenre, SpecialGames, UserGame } from '../types'
 import {
   selectCartGameIds,
   selectPurchasedGameIds,

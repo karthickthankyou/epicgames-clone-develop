@@ -2,19 +2,19 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
-import Price from '../../atoms/Price'
-import HoverIcon from '../../atoms/HoverIcon'
+import Price from '@atoms/Price'
+import HoverIcon from '@atoms/HoverIcon'
+import { selectUser } from '@store/userSlice'
 import {
   findPercentage,
   getInCart,
   getWishlisted,
   readable,
-} from '../../../utils'
-import { Game } from '../../../types'
-import { updateUserGames } from '../../../firebase/crud'
-import { selectUser } from '../../../store/userSlice'
-import { useAppSelector } from '../../../store/hooks'
-import { ReactComponent as Briefcase } from '../../../assets/svgs/briefcase.svg'
+} from '@utils/index'
+import { useAppSelector } from '@store/hooks'
+import { updateUserGames } from '@epicfirebase/crud'
+import { Game } from '@epictypes/index'
+import { ReactComponent as Briefcase } from '@assets/svgs/briefcase.svg'
 
 export interface ICard01Props {
   game: Game

@@ -10,6 +10,21 @@ module.exports = {
     'storybook-addon-designs',
   ],
   webpackFinal: async (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@components': path.resolve('src/components'),
+      '@atoms': path.resolve('src/components/atoms'),
+      '@molecules': path.resolve('src/components/molecules'),
+      '@organisms': path.resolve('src/components/organisms'),
+      '@pages': path.resolve('src/components/pages'),
+      '@hooks': path.resolve('src/hooks'),
+      '@utils': path.resolve('src/utils'),
+      '@assets': path.resolve('src/assets'),
+      '@store': path.resolve('src/store'),
+      '@epicfirebase': path.resolve('src/firebase'),
+      '@epictypes': path.resolve('src/types'),
+    }
+
     config.module.rules.push({
       test: /\.css$/,
       use: [

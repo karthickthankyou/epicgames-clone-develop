@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 
 import { Link, useLocation } from 'react-router-dom'
-import { sendResetPasswordLink } from '../../../firebase/hooks'
-import { useLoadSuccessError } from '../../../hooks'
+import { sendResetPasswordLink } from '@epicfirebase/hooks'
+import { useLoadSuccessError } from '@hooks/index'
 
-import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
-import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
+import { ReactComponent as LoadingIcon } from '@assets/svgs/loader.svg'
+import { ReactComponent as WarningIcon } from '@assets/svgs/warning.svg'
 
 export interface IForgotPasswordProps {}
 

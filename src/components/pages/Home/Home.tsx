@@ -2,8 +2,8 @@ import {
   callSignOut,
   callSignIn,
   useHomeScreenGames,
-} from '../../../firebase/hooks'
-import { useDocumentTitle } from '../../../hooks'
+} from '@epicfirebase/hooks'
+import { useDocumentTitle } from '@hooks/index'
 import {
   selectActionGames,
   selectAdventureGames,
@@ -14,18 +14,18 @@ import {
   selectNarrationGames,
   selectPuzzleGames,
   selectUnitsSold,
-} from '../../../store/gamesSlice'
-import { useAppSelector } from '../../../store/hooks'
+} from '@store/gamesSlice'
+import { useAppSelector } from '@store/hooks'
 import {
   selectCartGameIds,
   selectCartGames,
   selectWishlistGameIds,
   selectWishlistGames,
-} from '../../../store/userGameSlice'
-import { selectUser } from '../../../store/userSlice'
-import GameCard01Section from '../../organisms/GameCard01Section'
-import HomeShowcase from '../../organisms/HomeShowcase'
-import MaskedShowcase from '../../organisms/MaskedShowcase'
+} from '@store/userGameSlice'
+import { selectUser } from '@store/userSlice'
+import GameCard01Section from '@organisms/GameCard01Section'
+import HomeShowcase from '@organisms/HomeShowcase'
+import MaskedShowcase from '@organisms/MaskedShowcase'
 
 export interface IHomeProps {}
 

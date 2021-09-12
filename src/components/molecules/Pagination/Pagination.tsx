@@ -1,6 +1,6 @@
-import { setBrowsePageNumber } from '../../../store/browseGamesSlice'
-import { useAppDispatch } from '../../../store/hooks'
-import { getPaginationNumbers } from '../../../utils'
+import { setBrowsePageNumber } from '@store/browseGamesSlice'
+import { useAppDispatch } from '@store/hooks'
+import { getPaginationNumbers } from '@utils/index'
 
 export interface IPaginationProps {
   current: number

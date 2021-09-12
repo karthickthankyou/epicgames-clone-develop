@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
-import { useCarouselTimer } from '../../../hooks'
-import { selectHomeScreenGames } from '../../../store/gamesSlice'
-import { useAppSelector } from '../../../store/hooks'
-import { CAROUSEL_DURATION } from '../../../utils'
+import { useCarouselTimer } from '@hooks/index'
+import { selectHomeScreenGames } from '@store/gamesSlice'
+import { useAppSelector } from '@store/hooks'
+import { CAROUSEL_DURATION } from '@utils/index'
 
 export interface IHomeShowcaseProps {}
 

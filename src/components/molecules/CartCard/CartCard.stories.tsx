@@ -12,6 +12,9 @@ const Template: ComponentStory<typeof CartCard> = ({ game }) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  game: {},
+  game: {
+    price: 10,
+    discount: 10,
+  },
 }
 Primary.parameters = {}

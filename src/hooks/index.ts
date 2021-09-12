@@ -1,13 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import { SearchResponse } from '@algolia/client-search'
 import { ReactElement, useEffect, useReducer, useState } from 'react'
-import {
-  sortByReleaseDateIndex,
-  sortByDiscountIndex,
-  sortByPriceAscIndex,
-  sortByPriceDescIndex,
-  sortByRatingsIndex,
-} from '../algolia'
+
 import {
   selectFilterDiscountRange,
   selectFilterEvents,
@@ -21,10 +15,18 @@ import {
   setBrowseGames,
   setBrowseLoading,
   setSearchResponse,
-} from '../store/browseGamesSlice'
-import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { LoadSuccessErrorType } from '../types'
-import { getImageUrl } from '../utils'
+} from '@store/browseGamesSlice'
+import { useAppDispatch, useAppSelector } from '@store/hooks'
+
+import { LoadSuccessErrorType } from '@epictypes/index'
+import { getImageUrl } from '@utils/index'
+import {
+  sortByReleaseDateIndex,
+  sortByDiscountIndex,
+  sortByPriceAscIndex,
+  sortByPriceDescIndex,
+  sortByRatingsIndex,
+} from '../algolia'
 
 export function useCarouselTimer({
   duration,

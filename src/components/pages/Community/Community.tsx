@@ -1,6 +1,6 @@
-import Heading from '../../atoms/Heading'
-import MessageWrapper from '../../molecules/MessageWrapper'
-import CustomHelmet from '../../organisms/CustomHelmet'
+import Heading from '@atoms/Heading'
+import MessageWrapper from '@molecules/MessageWrapper'
+import CustomHelmet from '@organisms/CustomHelmet'
 
 export interface ICommunityProps {}
 

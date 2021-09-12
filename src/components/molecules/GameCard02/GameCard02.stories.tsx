@@ -1,8 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import image from '@assets/game.jpg'
 import GameCard02 from './GameCard02'
-
-import image from '../../../assets/game.jpg'
 
 export default {
   title: 'molecules/GameCard02',

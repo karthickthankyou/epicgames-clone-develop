@@ -3,16 +3,16 @@ import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
-import { callSignup, googleSignin } from '../../../firebase/hooks'
-import { useAppSelector } from '../../../store/hooks'
-import { selectUser } from '../../../store/userSlice'
-import { useLoadSuccessError } from '../../../hooks'
+import { callSignup, googleSignin } from '@epicfirebase/hooks'
+import { useAppSelector } from '@store/hooks'
+import { selectUser } from '@store/userSlice'
+import { useLoadSuccessError } from '@hooks/index'
 
-import { ReactComponent as AppleIcon } from '../../../assets/svgs/apple.svg'
-import { ReactComponent as FacebookIcon } from '../../../assets/svgs/facebook.svg'
-import { ReactComponent as GoogleIcon } from '../../../assets/svgs/google.svg'
-import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
-import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
+import { ReactComponent as AppleIcon } from '@assets/svgs/apple.svg'
+import { ReactComponent as FacebookIcon } from '@assets/svgs/facebook.svg'
+import { ReactComponent as GoogleIcon } from '@assets/svgs/google.svg'
+import { ReactComponent as WarningIcon } from '@assets/svgs/warning.svg'
+import { ReactComponent as LoadingIcon } from '@assets/svgs/loader.svg'
 
 export interface ISignupProps {}
 
