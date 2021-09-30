@@ -191,9 +191,20 @@ export function useUserGameIdsListener() {
         customAction: ActionCreatorWithPayload<any, string>
       ) =>
         onSnapshot(customQuery, (querySnapshot) => {
-          const arr: any[] = []
+          const arr: UserGame[] = []
           querySnapshot.forEach(async (doc) => {
-            arr.push({ ...doc.data() })
+            const {
+              gameId,
+              uid: uidDoc,
+              status,
+              updatedAt,
+            } = doc.data() as UserGame
+            arr.push({
+              gameId,
+              uid: uidDoc,
+              status,
+              updatedAt,
+            })
           })
 
           dispatch(customAction(arr))
@@ -316,31 +327,55 @@ export const useSimilarGames = (
         const q = query(
           collection(db, collections.GAMES),
           where('id', 'in', processGameIdsForSimilarItems(gameIds))
-          //   where('id', 'in', gameIds.slice(0, 10))
         )
         const querySnapshot = await getDocs(q)
         const arr: Game[] = []
         querySnapshot.forEach((doc) => {
-          const similarity = gameIds.find((item) => item.id === +doc.id)
+          const similarGame = gameIds.find((item) => item.id === +doc.id)
           const { imageUrl, subImageUrl } = getImageUrl(doc.id)
-          // @ts-ignore
+          const {
+            spec,
+            tags,
+            price,
+            discount,
+            developer,
+            languages,
+            platform,
+            publisherId,
+            description,
+            title,
+            longDesc,
+            releaseDate,
+          } = doc.data()
+
           arr.push({
             id: doc.id,
-            ...doc.data(),
-            s: similarity?.s || 0,
+            spec,
+            tags,
+            price,
+            discount,
+            developer,
+            languages,
+            platform,
+            publisherId,
+            description,
+            title,
+            longDesc,
+            releaseDate,
+            similarity: similarGame?.s || 0,
             imageUrl,
             subImageUrl,
           })
         })
-        arr.sort((a, b) => b.s - a.s)
+        arr.sort((a, b) => {
+          const aValue = a?.similarity || 0
+          const bValue = b?.similarity || 0
+          return bValue - aValue
+        })
         dispatch(setGamePageSimilarGames(arr))
       }
     }
     run()
-
-    // return () => {
-    //     cleanup
-    // }
   }, [gameIds])
 }
 
@@ -433,9 +468,9 @@ export const callSignup = (
       )
       // ...
     })
-    .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
+    .catch(() => {
+      // const errorCode = error.code
+      // const errorMessage = error.message
       dispatch('failed')
       // ..
     })
@@ -446,7 +481,7 @@ export const callSignOut = () => {
     .then(() => {
       // Sign-out successful.
     })
-    .catch((error) => {
+    .catch(() => {
       // An error happened.
       //   console.log(error)
     })
@@ -456,8 +491,8 @@ export const googleSignin = () => {
   signInWithPopup(auth, new GoogleAuthProvider())
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result)
-      const token = credential?.accessToken
+      // const credential = GoogleAuthProvider.credentialFromResult(result)
+      // const token = credential?.accessToken
       // The signed-in user info.
       const { user } = result
       console.log(user)

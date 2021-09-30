@@ -37,14 +37,15 @@ const GameCard01 = ({ game }: ICard01Props) => {
     title,
     discount,
     imageUrl,
-    wishlisted = false,
-    inCart = false,
-    purchased,
+    status,
     price,
     publisherId,
     notes,
-    s,
+    similarity,
   } = game
+  const wishlisted = status === 'WISHLISTED'
+  const inCart = status === 'IN_CART'
+  const purchased = status === 'PURCHASED'
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
@@ -58,9 +59,9 @@ const GameCard01 = ({ game }: ICard01Props) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      {s && (
+      {similarity && (
         <div className='absolute z-10 px-1 bg-black rounded-br-md bg-opacity-70'>
-          {findPercentage(s)}%
+          {findPercentage(similarity)}%
         </div>
       )}
       <motion.div

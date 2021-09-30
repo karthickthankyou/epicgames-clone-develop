@@ -119,8 +119,6 @@ function App() {
 
   return (
     <Router>
-      <Building className='w-6 h-6 text-red-500' />
-      <Cart className='w-6 h-6 text-red-500' />
       <Suspense fallback={<>Loading</>}>
         <Navbar />
       </Suspense>
