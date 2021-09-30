@@ -38,7 +38,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
 
       <Badge badgeText='base game' classes='mt-4' />
       {/* <Price price={game.price} classes='mt-2' /> */}
-      {game.purchased ? (
+      {game.status === 'PURCHASED' ? (
         <Link
           to='/library'
           className='flex justify-center w-full mt-4 bg-primary-600 btn btn-xl'
@@ -54,12 +54,13 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
               updateUserGames({
                 uid: uid || '',
                 gameId: game.id,
-                status: game.inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
+                status:
+                  game.status === 'IN_CART' ? 'REMOVED_FROM_CART' : 'IN_CART',
                 history,
               })
             }
           >
-            {game.inCart ? 'In Cart' : 'Add to cart'}
+            {game.status === 'IN_CART' ? 'In Cart' : 'Add to cart'}
           </button>
 
           <button
@@ -69,14 +70,15 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
               updateUserGames({
                 uid: uid || '',
                 gameId: game.id,
-                status: game.wishlisted
-                  ? 'REMOVED_FROM_WISHLIST'
-                  : 'WISHLISTED',
+                status:
+                  game.status === 'WISHLISTED'
+                    ? 'REMOVED_FROM_WISHLIST'
+                    : 'WISHLISTED',
                 history,
               })
             }
           >
-            {game.wishlisted ? 'In Wishlist' : 'Wishlist'}
+            {game.status === 'WISHLISTED' ? 'In Wishlist' : 'Wishlist'}
           </button>
         </>
       )}

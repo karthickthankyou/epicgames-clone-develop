@@ -26,7 +26,8 @@ module.exports = {
     'react/prop-types': 0,
     'react/require-default-props': 0,
     'react/react-in-jsx-scope': 0,
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['warn'],
     // To use JSX inside TSX file.
     'react/jsx-filename-extension': [
       1,

@@ -59,7 +59,7 @@ const Home = () => {
         buttonText='View all'
         buttonLinkTo='/browse'
       />
-      {unitsSold.length > 0 && (
+      {/* {unitsSold.length > 0 && (
         <MaskedShowcase
           title='Blockbusters Of The Month'
           games={unitsSold}
@@ -90,7 +90,7 @@ const Home = () => {
           comment='game hours'
           keyUnit='hoursToBeat'
         />
-      )}
+      )} */}
 
       {wishlist.length > 0 && (
         <GameCard01Section
