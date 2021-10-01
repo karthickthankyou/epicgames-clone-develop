@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { sampleGame } from '@epictypes/static'
 import MaskedShowcase from './MaskedShowcase'
@@ -8,9 +7,13 @@ export default {
   component: MaskedShowcase,
 } as ComponentMeta<typeof MaskedShowcase>
 
-const Template: ComponentStory<typeof MaskedShowcase> = (args) => (
-  // @ts-ignore
-  <MaskedShowcase games={[sampleGame]} />
+const Template: ComponentStory<typeof MaskedShowcase> = () => (
+  <MaskedShowcase
+    games={[sampleGame]}
+    title='Title'
+    comment='Comment'
+    keyUnit='id'
+  />
 )
 
 export const Primary = Template.bind({})

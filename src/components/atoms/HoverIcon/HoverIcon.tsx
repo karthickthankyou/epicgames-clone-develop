@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, ReactElement, useState } from 'react'
+import React, { MouseEventHandler, useState } from 'react'
 import { slug } from '@utils/index'
 
 export interface IHoverIconProps {
@@ -27,7 +27,7 @@ const HoverIcon = ({
       aria-label={slug(hintText)}
     >
       <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
-        <IconComponent />
+        <IconComponent className='w-5 h-5' />
       </div>
 
       <div

@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { useCarouselTimer } from '@hooks/index'
 import { selectHomeScreenGames } from '@store/gamesSlice'
 import { useAppSelector } from '@store/hooks'
@@ -14,7 +12,7 @@ const HomeShowcase = () => {
     itemsLength: games.length,
   })
 
-  const [muted, setMuted] = useState<boolean>(true)
+  // const [muted, setMuted] = useState<boolean>(true)
   return (
     <>
       <div className='relative overflow-hidden rounded-t aspect-w-16 lg:aspect-h-7 md:aspect-h-9 aspect-h-16 sm:aspect-h-12'>
@@ -23,7 +21,6 @@ const HomeShowcase = () => {
             {imageId === index && (
               <div className='flex flex-col h-full p-2 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-tr from-black'>
                 <div className='absolute inset-0 z-0 ' />
-                Hello
                 {/* <div
                   style={{
                     position: 'absolute',

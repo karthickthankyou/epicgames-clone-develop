@@ -7,7 +7,7 @@ export default {
   component: Spacing,
 } as ComponentMeta<typeof Spacing>
 
-const Template: ComponentStory<typeof Spacing> = (args) => <Spacing />
+const Template: ComponentStory<typeof Spacing> = () => <Spacing />
 
 export const Primary = Template.bind({})
 Primary.args = {}

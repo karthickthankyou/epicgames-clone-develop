@@ -1,6 +1,13 @@
 /* eslint-disable no-param-reassign */
-import { createSelector, createSlice } from '@reduxjs/toolkit'
-import { Game, GameGenre, SpecialGames, UserGame } from '@epictypes/index'
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import {
+  Extends,
+  Game,
+  GameGenre,
+  SpecialGames,
+  UserGame,
+} from '@epictypes/index'
+import { getStatus } from '@utils/index'
 import { RootState } from './store'
 import {
   selectCartGameIds,
@@ -14,7 +21,11 @@ const initialState: {
   highestEverDiscounts: Game[]
   gamePage: Game | null
   gamePageSimilarGames: Game[]
-  genres: { [key in Lowercase<GameGenre>]: Game[] }
+  genres: {
+    [key in Lowercase<
+      Extends<GameGenre, 'Action' | 'Adventure' | 'Puzzle' | 'Narration'>
+    >]: Game[]
+  }
   special: { [key in SpecialGames]: Game[] }
 } = {
   games: [],
@@ -55,28 +66,28 @@ const gamesSlice = createSlice({
     setHighestEverDiscounts: (state, action) => {
       state.highestEverDiscounts = action.payload
     },
-    setActionGames: (state, action) => {
+    setActionGames: (state, action: PayloadAction<Game[]>) => {
       state.genres.action = action.payload
     },
-    setAdventureGames: (state, action) => {
+    setAdventureGames: (state, action: PayloadAction<Game[]>) => {
       state.genres.adventure = action.payload
     },
-    setPuzzleGames: (state, action) => {
+    setPuzzleGames: (state, action: PayloadAction<Game[]>) => {
       state.genres.puzzle = action.payload
     },
-    setNarrationGames: (state, action) => {
+    setNarrationGames: (state, action: PayloadAction<Game[]>) => {
       state.genres.narration = action.payload
     },
-    setUnitsSold: (state, action) => {
+    setUnitsSold: (state, action: PayloadAction<Game[]>) => {
       state.special.unitsSold = action.payload
     },
-    setHoursPlayed: (state, action) => {
+    setHoursPlayed: (state, action: PayloadAction<Game[]>) => {
       state.special.hoursPlayed = action.payload
     },
-    setHoursToBeat: (state, action) => {
+    setHoursToBeat: (state, action: PayloadAction<Game[]>) => {
       state.special.hoursToBeat = action.payload
     },
-    setAnticipatedBy: (state, action) => {
+    setAnticipatedBy: (state, action: PayloadAction<Game[]>) => {
       state.special.anticipatedBy = action.payload
     },
   },
@@ -108,29 +119,24 @@ export const combineWCPData = (
   wishlistIds: UserGame[],
   cartIds: UserGame[],
   purchasedIds: UserGame[]
-) => {
-  const includes = (gameId: string) => ({
-    wishlisted: wishlistIds.some((game) => game.gameId === gameId),
-    inCart: cartIds.some((game) => game.gameId === gameId),
-    purchased: purchasedIds.some((game) => game.gameId === gameId),
-  })
+): Game[] =>
+  input.map((game) => ({
+    ...game,
+    status: getStatus(game.id, wishlistIds, cartIds, purchasedIds),
+  }))
 
-  return input.map((game) => ({ ...game, ...includes(game.id) }))
-}
 export const combineWCPDataForObject = (
   input: Game | null,
   wishlistIds: UserGame[],
   cartIds: UserGame[],
   purchasedIds: UserGame[]
-) => {
+): Game | null => {
   if (!input) return null
-  const includes = (gameId: string) => ({
-    wishlisted: wishlistIds.some((game) => game.gameId === gameId),
-    inCart: cartIds.some((game) => game.gameId === gameId),
-    purchased: purchasedIds.some((game) => game.gameId === gameId),
-  })
 
-  return { ...input, ...includes(input.id) }
+  return {
+    ...input,
+    status: getStatus(input.id, wishlistIds, cartIds, purchasedIds),
+  }
 }
 
 export const selectHighestDiscounts = createSelector(
@@ -162,7 +168,6 @@ export const selectGamePageSimilarGames = createSelector(
   ],
   combineWCPData
 )
-// export const selectGamePage =
 
 export const selectGamePage = createSelector(
   [

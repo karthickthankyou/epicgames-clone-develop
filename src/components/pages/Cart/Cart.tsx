@@ -1,7 +1,6 @@
 import { selectCartGames } from '@store/userGameSlice'
 import { useAppSelector } from '@store/hooks'
 import CartCard from '@molecules/CartCard'
-import { useDocumentTitle } from '@hooks/index'
 import CustomHelmet from '@organisms/CustomHelmet'
 import MessageWrapper from '@molecules/MessageWrapper'
 

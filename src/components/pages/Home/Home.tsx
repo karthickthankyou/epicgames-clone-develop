@@ -1,8 +1,4 @@
-import {
-  callSignOut,
-  callSignIn,
-  useHomeScreenGames,
-} from '@epicfirebase/hooks'
+import { callSignOut, useHomeScreenGames } from '@epicfirebase/hooks'
 import { useDocumentTitle } from '@hooks/index'
 import {
   selectActionGames,

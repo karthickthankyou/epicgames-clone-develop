@@ -5,12 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import Price from '@atoms/Price'
 import HoverIcon from '@atoms/HoverIcon'
 import { selectUser } from '@store/userSlice'
-import {
-  findPercentage,
-  getInCart,
-  getWishlisted,
-  readable,
-} from '@utils/index'
+import { getInCart, getWishlisted, readable } from '@utils/index'
 import { useAppSelector } from '@store/hooks'
 import { updateUserGames } from '@epicfirebase/crud'
 import { Game } from '@epictypes/index'
@@ -46,6 +41,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
   const wishlisted = status === 'WISHLISTED'
   const inCart = status === 'IN_CART'
   const purchased = status === 'PURCHASED'
+
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
@@ -61,7 +57,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
     >
       {similarity && (
         <div className='absolute z-10 px-1 bg-black rounded-br-md bg-opacity-70'>
-          {findPercentage(similarity)}%
+          {similarity}%
         </div>
       )}
       <motion.div

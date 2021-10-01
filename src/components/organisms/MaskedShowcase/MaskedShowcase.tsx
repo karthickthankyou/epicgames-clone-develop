@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useScroll } from 'react-use'
+// import { useScroll } from 'react-use'
 import { Game } from '@epictypes/index'
 import { slug } from '@utils/index'
 
@@ -19,7 +19,7 @@ const MaskedShowcase = ({
   keyUnit,
 }: IMaskedShowcaseProps) => {
   const scrollRef = useRef(null)
-  const { x, y } = useScroll(scrollRef)
+  // const { x, y } = useScroll(scrollRef)
   return (
     <div className='my-6' id='gameCardSection01'>
       <div className='inline-block text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-blue-300 via-blue-600 to-green-700'>
@@ -30,7 +30,6 @@ const MaskedShowcase = ({
         className='flex mt-6 space-x-6 overflow-x-scroll '
         ref={scrollRef}
       >
-        {/* eslint-disable-next-line react/destructuring-assignment */}
         {games.map((game) => (
           <MaskedShowcaseCard
             key={game.id}

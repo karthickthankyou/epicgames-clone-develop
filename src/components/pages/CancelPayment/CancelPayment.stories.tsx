@@ -7,9 +7,7 @@ export default {
   component: CancelPayment,
 } as ComponentMeta<typeof CancelPayment>
 
-const Template: ComponentStory<typeof CancelPayment> = (args) => (
-  <CancelPayment />
-)
+const Template: ComponentStory<typeof CancelPayment> = () => <CancelPayment />
 
 export const Primary = Template.bind({})
 Primary.args = {}

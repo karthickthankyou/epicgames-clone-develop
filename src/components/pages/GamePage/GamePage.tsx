@@ -20,6 +20,7 @@ const GamePage = () => {
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
   const game = useAppSelector(selectGamePage)
+  const longDesc = game?.longDesc || []
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)
   useDocumentTitle(`${game?.title} - Epic clone` || 'Game Page')
@@ -27,7 +28,7 @@ const GamePage = () => {
   const { id } = useParams<{ id: string }>()
 
   useGetGamePage(id)
-  useSimilarGames(game?.items)
+  useSimilarGames(game?.similar)
   //   if (game) let features = [{ title: 'Genres', value: game.tags.join(', ') }]
 
   return (
@@ -53,11 +54,11 @@ const GamePage = () => {
                 <GamePageFeatureBox title='Features' value='-' />
                 <GamePageFeatureBox
                   title='Platforms'
-                  value={game.platform.join(', ')}
+                  value={game.platform?.join(', ') || ''}
                 />
               </div>
               <div className='my-6'>
-                {game.longDesc.map((descItem) => (
+                {longDesc.map((descItem) => (
                   <div
                     key={descItem}
                     className={`mb-2 ${

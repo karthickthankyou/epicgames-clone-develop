@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 export interface INavIconProps {
@@ -21,7 +21,7 @@ const NavIcon = ({
     className={`flex items-start h-full px-2 ${classes}`}
     to={linkTo}
   >
-    <IconComponent />
+    <IconComponent className='w-6 h-6 text-white' />
     <div className='ml-1 text-xs leading-none text-gray-300'>{count}</div>
   </Link>
 )

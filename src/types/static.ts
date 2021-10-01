@@ -1,5 +1,5 @@
 import { OrderByDirection } from 'firebase/firestore'
-import { SortKey } from '.'
+import { Game, SortKey } from '.'
 
 export const sortByOptions: {
   displayText: string
@@ -14,16 +14,15 @@ export const sortByOptions: {
   { displayText: 'Highest Rated', sortKey: 'price', sortOrder: 'desc' },
 ]
 
-export const sampleGame = {
+export const sampleGame: Game = {
   id: '92',
-  gameTitle: 'Cyber Punk',
-  productionCompany: 'Some production company',
-  priceInfo: {},
+  title: 'Cyber Punk',
+  tags: ['Action'],
+  imageUrl: '',
+  subImageUrl: '',
+  publisherId: 'Some production company',
   price: 10,
   discount: 10,
-  displayImage: '',
-  inCart: true,
-  wishlisted: true,
 }
 
 export const ROUTES = {

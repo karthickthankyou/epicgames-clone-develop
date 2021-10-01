@@ -14,7 +14,6 @@ import {
   getDoc,
 } from 'firebase/firestore'
 import {
-  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -67,7 +66,8 @@ import {
   Game,
   GameGenre,
   LoadSuccessErrorDispatch,
-  LoadSuccessErrorType,
+  // LoadSuccessErrorType,
+  SimilarGame,
   SpecialGames,
   UserGame,
   UserGameStatus,
@@ -90,15 +90,14 @@ export function useBrowseGames() {
         limit(32)
       )
 
-      const arr: any[] = []
       try {
         const querySnapshot = await getDocs(q)
-        querySnapshot.forEach(
-          (document: QueryDocumentSnapshot<DocumentData>) => {
-            const { imageUrl, subImageUrl } = getImageUrl(document.id)
-            arr.push({ ...document.data(), imageUrl, subImageUrl })
-          }
-        )
+        const arr: Game[] = []
+        querySnapshot.forEach((doc) => {
+          const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+          const gameDetails = doc.data() as Game
+          arr.push({ ...gameDetails, imageUrl, subImageUrl })
+        })
         dispatch(setBrowseGames(arr))
       } catch (err) {
         dispatch(setBrowseError(true))
@@ -114,56 +113,50 @@ export function useUserGamesListener() {
   const purchasedGameIds = useAppSelector(selectPurchasedGameIds)
   const removedFromCartGameIds = useAppSelector(selectRemovedFromCartGameIds)
 
-  const setupQuery = (ids: string[]) =>
-    query(collection(db, collections.GAMES), where('id', 'in', ids), limit(10))
-
-  const setupOnSnaphot = (
-    queryGame: Query<DocumentData>,
-    action: ActionCreatorWithPayload<any, string>
+  const setupListener = (
+    userGames: UserGame[],
+    action: ActionCreatorWithPayload<Game[], string>
   ) => {
-    onSnapshot(queryGame, (querySnapshot) => {
+    const ids = userGames.map((userGame) => userGame.gameId).slice(0, 10)
+    if (ids.length === 0) return dispatch(action([]))
+    const queryGame = query(
+      collection(db, collections.GAMES),
+      where('id', 'in', ids),
+      limit(10)
+    )
+    const detachListener = onSnapshot(queryGame, (querySnapshot) => {
       const arr: Game[] = []
-      querySnapshot.forEach(async (doc: any) => {
+      querySnapshot.forEach(async (doc) => {
         const { imageUrl, subImageUrl } = getImageUrl(doc.id)
-        arr.push({ ...doc.data(), imageUrl, subImageUrl })
+        const gameDetails = doc.data() as Game
+        arr.push({ ...gameDetails, imageUrl, subImageUrl })
       })
 
       dispatch(action(arr))
     })
-  }
-
-  const setupListener = (
-    gameIds: UserGame[],
-    action: ActionCreatorWithPayload<any, string>
-    // eslint-disable-next-line consistent-return
-  ) => {
-    const arr = gameIds.map((game) => game.gameId).slice(0, 10)
-
-    const q = setupQuery(arr)
-    const detachListener = setupOnSnaphot(q, action)
     return detachListener
   }
 
   useEffect(() => {
     // To avoid FirebaseError (Invalid Query. A non-empty array is required for 'in' filters), we dispatch empty [] when ids array is empty.
     if (cartGameIds.length === 0) dispatch(setCartGames([]))
-    else setupListener(cartGameIds, setCartGames)
+    setupListener(cartGameIds, setCartGames)
   }, [cartGameIds])
 
   useEffect(() => {
     if (wishlistGameIds.length === 0) dispatch(setWishlistedGames([]))
-    else setupListener(wishlistGameIds, setWishlistedGames)
+    setupListener(wishlistGameIds, setWishlistedGames)
   }, [wishlistGameIds])
 
   useEffect(() => {
     if (purchasedGameIds.length === 0) dispatch(setPurchasedGames([]))
-    else setupListener(purchasedGameIds, setPurchasedGames)
+    setupListener(purchasedGameIds, setPurchasedGames)
   }, [purchasedGameIds])
 
   useEffect(() => {
     if (removedFromCartGameIds.length === 0)
       dispatch(setRemovedFromCartGames([]))
-    else setupListener(removedFromCartGameIds, setRemovedFromCartGames)
+    setupListener(removedFromCartGameIds, setRemovedFromCartGames)
   }, [removedFromCartGameIds])
 
   //   useEffect(() => {
@@ -175,7 +168,6 @@ export function useUserGameIdsListener() {
   const dispatch = useAppDispatch()
   const { uid } = useAppSelector(selectUser)
 
-  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (uid) {
       const setupQuery = (status: UserGameStatus) =>
@@ -188,7 +180,7 @@ export function useUserGameIdsListener() {
 
       const setupOnSnapshot = (
         customQuery: Query<DocumentData>,
-        customAction: ActionCreatorWithPayload<any, string>
+        customAction: ActionCreatorWithPayload<UserGame[], string>
       ) =>
         onSnapshot(customQuery, (querySnapshot) => {
           const arr: UserGame[] = []
@@ -234,6 +226,7 @@ export function useUserGameIdsListener() {
         detachRemovedFromCartListener()
       }
     }
+    return undefined
   }, [uid])
 }
 
@@ -250,10 +243,11 @@ export function useGamesListener() {
   useEffect(() => {
     const q = setupQueryHighestDiscounts()
     const detachListener = onSnapshot(q, (querySnapshot) => {
-      const arr: any[] = []
+      const arr: Game[] = []
       querySnapshot.forEach(async (doc) => {
         const { imageUrl, subImageUrl } = getImageUrl(doc.id)
-        arr.push({ ...doc.data(), imageUrl, subImageUrl })
+        const gameData = doc.data() as Game
+        arr.push({ ...gameData, imageUrl, subImageUrl })
       })
 
       dispatch(setHighestEverDiscounts(arr))
@@ -273,13 +267,14 @@ export const useHomeScreenGames = () => {
 
   const setupSnapshot = async (
     customQuery: Query<DocumentData>,
-    customAction: ActionCreatorWithPayload<any, string>
+    customAction: ActionCreatorWithPayload<Game[], string>
   ) => {
     const querySnapshot = await getDocs(customQuery)
-    const arr: any[] = []
-    querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
-      const { imageUrl, subImageUrl } = getImageUrl(document.id)
-      arr.push({ ...document.data(), imageUrl, subImageUrl })
+    const arr: Game[] = []
+    querySnapshot.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
+      const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+      const gameData = doc.data() as Game
+      arr.push({ ...gameData, imageUrl, subImageUrl })
     })
     dispatch(customAction(arr))
   }
@@ -291,11 +286,12 @@ export const useHomeScreenGames = () => {
         where('homeScreen', '>', ''),
         limit(7)
       )
-      const arr: any[] = []
+      const arr: Game[] = []
       const querySnapshot = await getDocs(q)
-      querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
-        const { imageUrl, subImageUrl } = getImageUrl(document.id)
-        arr.push({ ...document.data(), imageUrl, subImageUrl })
+      querySnapshot.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
+        const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+        const gameData = doc.data() as Game
+        arr.push({ ...gameData, imageUrl, subImageUrl })
       })
       dispatch(setHomeScreenGames(arr))
     }
@@ -317,9 +313,7 @@ export const useHomeScreenGames = () => {
   }, [])
 }
 
-export const useSimilarGames = (
-  gameIds: { id: number; s: number }[] | undefined
-) => {
+export const useSimilarGames = (gameIds: SimilarGame[] | undefined) => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     async function run() {
@@ -331,15 +325,15 @@ export const useSimilarGames = (
         const querySnapshot = await getDocs(q)
         const arr: Game[] = []
         querySnapshot.forEach((doc) => {
-          const similarGame = gameIds.find((item) => item.id === +doc.id)
+          const similarGame = gameIds.find((item) => item.id === doc.id)
           const { imageUrl, subImageUrl } = getImageUrl(doc.id)
           const {
-            spec,
             tags,
             price,
             discount,
             developer,
             languages,
+            rating,
             platform,
             publisherId,
             description,
@@ -350,11 +344,11 @@ export const useSimilarGames = (
 
           arr.push({
             id: doc.id,
-            spec,
             tags,
             price,
             discount,
             developer,
+            rating,
             languages,
             platform,
             publisherId,
@@ -362,7 +356,7 @@ export const useSimilarGames = (
             title,
             longDesc,
             releaseDate,
-            similarity: similarGame?.s || 0,
+            similarity: similarGame?.s || '0',
             imageUrl,
             subImageUrl,
           })
@@ -370,7 +364,7 @@ export const useSimilarGames = (
         arr.sort((a, b) => {
           const aValue = a?.similarity || 0
           const bValue = b?.similarity || 0
-          return bValue - aValue
+          return +bValue - +aValue
         })
         dispatch(setGamePageSimilarGames(arr))
       }
@@ -409,7 +403,6 @@ export function useUserListener() {
   const dispatch = useAppDispatch()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log('user', user)
       if (user)
         dispatch(setUser({ uid: user.uid, displayName: user.displayName }))
       else dispatch(setUser(null))
@@ -553,13 +546,14 @@ export function useSpecialGames() {
 
   const setupSnapshot = async (
     customQuery: Query<DocumentData>,
-    action: ActionCreatorWithPayload<any, string>
+    action: ActionCreatorWithPayload<Game[], string>
   ) => {
-    const arr: any[] = []
+    const arr: Game[] = []
     const querySnapshot = await getDocs(customQuery)
-    querySnapshot.forEach((document: QueryDocumentSnapshot<DocumentData>) => {
-      const { imageUrl, subImageUrl } = getImageUrl(document.id)
-      arr.push({ ...document.data(), imageUrl, subImageUrl })
+    querySnapshot.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
+      const { imageUrl, subImageUrl } = getImageUrl(doc.id)
+      const gameData = doc.data() as Game
+      arr.push({ ...gameData, imageUrl, subImageUrl })
     })
 
     dispatch(action(arr))

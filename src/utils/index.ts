@@ -5,6 +5,7 @@ import { ReactComponent as HeartOutlineIcon } from '@assets/svgs/heart.svg'
 import { ReactComponent as HeartSolidIcon } from '@assets/svgs/heartSolid.svg'
 import { ReactComponent as CartOutlineIcon } from '@assets/svgs/cartOutline.svg'
 import { ReactComponent as CartSolidIcon } from '@assets/svgs/cartSolid.svg'
+import { SimilarGame, UserGame, UserGameStatus } from '@epictypes/index'
 
 export const CAROUSEL_DURATION = 50
 export interface ICounter {
@@ -87,9 +88,15 @@ export const getPaginationNumbers = (current: number, total: number) => {
   // Always have 1
   items.push(1)
 
-  const fillerStart =
-    // eslint-disable-next-line no-nested-ternary
-    current === 1 ? current + 1 : current === total ? total - 2 : current - 1
+  const getFillerStart = () => {
+    if (current === 1) return current + 1
+    if (current === total) return total - 1
+    return current - 1
+  }
+
+  const fillerStart = getFillerStart()
+  // current === 1 ? current + 1 : current === total ? total - 2 : current - 1
+
   for (let i = fillerStart; i <= fillerStart + 2; i++)
     if (validate(i)) items.push(i)
 
@@ -138,7 +145,7 @@ export const getScoreColor = (score: number) => {
 }
 
 export const processGameIdsForSimilarItems = (
-  gameIds: { id: number; s: number }[]
+  gameIds: SimilarGame[]
 ): string[] =>
   gameIds.slice(0, 10).map((item) => item.id.toString().padStart(3, '0'))
 
@@ -158,3 +165,15 @@ export const addOrRemoveItem = (arr: string[], item: string) =>
     : [...arr, item]
 
 export const readable = (str: string) => str.split('-').join(' ')
+
+export const getStatus = (
+  gameId: string,
+  wishlistIds: UserGame[],
+  cartIds: UserGame[],
+  purchasedIds: UserGame[]
+): UserGameStatus | undefined => {
+  if (wishlistIds.some((game) => game.gameId === gameId)) return 'WISHLISTED'
+  if (cartIds.some((game) => game.gameId === gameId)) return 'IN_CART'
+  if (purchasedIds.some((game) => game.gameId === gameId)) return 'PURCHASED'
+  return undefined
+}

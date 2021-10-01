@@ -25,7 +25,6 @@ const ForgotPassword = () => {
   const { email } = location.state
   const {
     register,
-    watch,
     handleSubmit,
     formState: { errors },
   } = useForm<{ emailId: string }>({ defaultValues: { emailId: email } })

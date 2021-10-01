@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import * as PriceStory from '@atoms/Price/Price.stories'
 import image from '@assets/game.jpg'
-import { SbReduxProvider } from '@utils/sb'
+// import { SbReduxProvider } from '@utils/sb'
 import GameCard06 from './GameCard06'
 
 export default {
   title: 'molecules/GameCard06',
   component: GameCard06,
-  decorators: [SbReduxProvider],
+  // decorators: [SbReduxProvider],
 } as ComponentMeta<typeof GameCard06>
 
 const Template: ComponentStory<typeof GameCard06> = ({

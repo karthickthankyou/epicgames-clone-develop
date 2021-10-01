@@ -1,5 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import { SearchResponse } from '@algolia/client-search'
+// import { SearchResponse } from '@algolia/client-search'
 import { ReactElement, useEffect, useReducer, useState } from 'react'
 
 import {
@@ -18,7 +17,7 @@ import {
 } from '@store/browseGamesSlice'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 
-import { LoadSuccessErrorType } from '@epictypes/index'
+import { Game, LoadSuccessErrorType } from '@epictypes/index'
 import { getImageUrl } from '@utils/index'
 import {
   sortByReleaseDateIndex,
@@ -130,7 +129,7 @@ export const useAlgoliaSearchGames = () => {
       filterRatingString,
     ].filter((item) => item !== '')
 
-    console.log(numericalFilters, categoricalFilter)
+    // console.log(numericalFilters, categoricalFilter)
 
     const searchIndex = [
       sortByReleaseDateIndex,
@@ -140,11 +139,11 @@ export const useAlgoliaSearchGames = () => {
       sortByRatingsIndex,
     ][+filterSortIndex]
 
-    console.log('searchIndex', searchIndex)
+    // console.log('searchIndex', searchIndex)
 
-    const t0 = performance.now()
+    // const t0 = performance.now()
     searchIndex
-      .search(searchTerm, {
+      .search<Game>(searchTerm, {
         hitsPerPage: 24,
         facets: ['notes', 'platform', 'tags'],
         filters: categoricalFilter,
@@ -153,13 +152,34 @@ export const useAlgoliaSearchGames = () => {
         page: filterPageNumber,
         analytics: true,
       })
-      // @ts-ignore
-      .then((res: SearchResponse<{ id: string }>): void => {
-        console.log(res)
+      .then((res): void => {
         const { hits, page, nbPages, facets } = res
-        const arr = hits.map((hit) => {
-          const { imageUrl, subImageUrl } = getImageUrl(hit.id)
-          return { ...hit, imageUrl, subImageUrl }
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const arr: Game[] = hits.map((hit) => {
+          const {
+            id,
+            title,
+            discount,
+            price,
+            tags,
+            platform,
+            releaseDate,
+            publisherId,
+          }: Game = hit
+          const { imageUrl, subImageUrl } = getImageUrl(id)
+          return {
+            id,
+            title,
+            discount,
+            price,
+            tags,
+            platform,
+            releaseDate,
+            publisherId,
+            imageUrl,
+            subImageUrl,
+          }
         })
         dispatch(setBrowseGames(arr))
         dispatch(
@@ -169,10 +189,12 @@ export const useAlgoliaSearchGames = () => {
             facets,
           })
         )
-        const t1 = performance.now()
-        console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
+        // const t1 = performance.now()
+        // console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
       })
-      .catch((err) => console.log('Algolia error: ', err))
+      .catch((err) => {
+        console.error(err)
+      })
   }, [
     filterDiscountRange,
     filterPriceRange,

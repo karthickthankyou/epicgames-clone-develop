@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app'
 
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import { getFirestore, enableIndexedDbPersistence } from 'firebase/firestore'
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore'
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAGJ7luHyZBr-UPWPbmvCkaH6gwrcY-0Qg',
@@ -44,7 +44,3 @@ export const collections = {
   USER_ACTIVITIES: 'userActivities',
   CART: 'cart',
 }
-onAuthStateChanged(auth, (user: any) => {
-  // Check for user status
-  console.log(user)
-})

@@ -7,7 +7,7 @@ export default {
   component: NavbarDummy,
 } as ComponentMeta<typeof NavbarDummy>
 
-const Template: ComponentStory<typeof NavbarDummy> = (args) => <NavbarDummy />
+const Template: ComponentStory<typeof NavbarDummy> = () => <NavbarDummy />
 
 export const Primary = Template.bind({})
 Primary.args = {}

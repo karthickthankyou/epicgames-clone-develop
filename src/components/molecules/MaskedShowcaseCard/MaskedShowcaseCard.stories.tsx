@@ -8,8 +8,7 @@ export default {
 } as ComponentMeta<typeof MaskedShowcaseCard>
 
 const Template: ComponentStory<typeof MaskedShowcaseCard> = () => (
-  // @ts-ignore
-  <MaskedShowcaseCard game={sampleGame} comment='hello' />
+  <MaskedShowcaseCard game={sampleGame} keyUnit='title' comment='hello' />
 )
 
 export const Primary = Template.bind({})

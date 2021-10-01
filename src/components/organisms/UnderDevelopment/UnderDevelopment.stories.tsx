@@ -7,7 +7,7 @@ export default {
   component: UnderDevelopment,
 } as ComponentMeta<typeof UnderDevelopment>
 
-const Template: ComponentStory<typeof UnderDevelopment> = (args) => (
+const Template: ComponentStory<typeof UnderDevelopment> = () => (
   <UnderDevelopment text='Sample Text' />
 )
 

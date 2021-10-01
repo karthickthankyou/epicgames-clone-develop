@@ -1,12 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import debounce from 'lodash.debounce'
 
 import { ReactComponent as CloseIcon } from '@assets/svgs/x.svg'
 import { ReactComponent as SearchIcon } from '@assets/svgs/search.svg'
-import { ReactComponent as HeartIcon } from '@assets/svgs/heart.svg'
-import { ReactComponent as CartIcon } from '@assets/svgs/cart.svg'
+import { ReactComponent as HeartIcon } from '@assets/svgs/heartSolid.svg'
+import { ReactComponent as CartIcon } from '@assets/svgs/cartSolid.svg'
 import { ReactComponent as MenuIcon } from '@assets/svgs/menu.svg'
 
 import { useAppDispatch, useAppSelector } from '@store/hooks'
@@ -31,15 +31,15 @@ const Navbar = () => {
   const dispatch = useAppDispatch()
   const cartIds = useAppSelector(selectCartGameIds)
   const { uid } = useAppSelector(selectUser)
-  const cart = useAppSelector(selectCartGames)
-  const purchased = useAppSelector(selectPurchasedGames)
+  // const cart = useAppSelector(selectCartGames)
+  // const purchased = useAppSelector(selectPurchasedGames)
 
   const [showSearch, setShowSearch] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
-  const [showUserMenu, setShowUserMenu] = useState(false)
+
   const { pathname } = useLocation()
 
-  const searchGames = (e: any) => {
+  const searchGames = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Debounce https://dmitripavlutin.com/react-throttle-debounce/
     // Debounce example http://demo.nimius.net/debounce_throttle/
     const searchTerm = e.target.value

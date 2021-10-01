@@ -1,5 +1,3 @@
-import { ReactElement } from 'react'
-
 export interface IButtonProps {
   variant: 'containedPrimary' | 'outlinedPrimary' | 'outlinedWhite'
   size: 'lg' | 'md' | 'sm'
@@ -23,9 +21,9 @@ const sizes = {
 const Button = ({ variant, size, fullWidth, children }: IButtonProps) => (
   <button
     type='button'
-    className={`uppercase transform transition-all ${variants[variant]} ${
-      sizes[size]
-    } ${fullWidth && 'w-full'}`}
+    className={`uppercase transform transition-all ${
+      variants[variant as IButtonProps['variant']]
+    } ${sizes[size as IButtonProps['size']]} ${fullWidth && 'w-full'}`}
   >
     {children}
   </button>

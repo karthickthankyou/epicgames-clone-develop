@@ -1,8 +1,8 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createSelector } from '@reduxjs/toolkit'
-import { Game } from '@epictypes/index'
+import { createSlice, createSelector, PayloadAction } from '@reduxjs/toolkit'
+import { Game, GameGenre, GameNotes, Platform } from '@epictypes/index'
 import { addOrRemoveItem } from '@utils/index'
-import { combineWCPDataForObject, combineWCPData } from './gamesSlice'
+import { combineWCPData } from './gamesSlice'
 import { RootState } from './store'
 import {
   selectCartGameIds,
@@ -28,7 +28,11 @@ const initialState: {
   response: {
     currentPage: number
     totalPages: number
-    facets: any
+    facets: {
+      tags: { [key in GameGenre]: number }
+      platform: { [key in Platform]: number }
+      notes: { [key in GameNotes]: number }
+    }
   }
 } = {
   games: [],
@@ -58,28 +62,26 @@ const initialState: {
         Simulation: 64,
         Puzzle: 53,
         Shooter: 47,
-        'Open World': 45,
-        'Action-Adventure': 35,
+        OpenWorld: 45,
+        ActionAdventure: 35,
         Narration: 35,
-        'First Person': 34,
+        FirstPerson: 34,
         Casual: 32,
         Platformer: 29,
         Exploration: 28,
         Horror: 22,
-        'Turn-Based': 22,
+        TurnBased: 22,
         Survival: 20,
-        'Rogue-Lite': 19,
-        'City Builder': 16,
+        RogueLite: 19,
+        CityBuilder: 16,
         Comedy: 16,
         Racing: 16,
         Stealth: 14,
         Sports: 13,
-        'Card Game': 12,
+        CardGame: 12,
         Party: 12,
         Fighting: 11,
         Trivia: 7,
-        Application: 2,
-        'Single Player': 1,
       },
       notes: {
         RECENTLY_UPDATED: 29,
@@ -107,7 +109,7 @@ const browseGamesSlice = createSlice({
     setBrowseError: (state, action) => {
       state.error = action.payload
     },
-    setBrowseGames: (state, action) => {
+    setBrowseGames: (state, action: { payload: Game[] }) => {
       state.games = action.payload
       state.loading = false
       state.error = false
@@ -116,11 +118,17 @@ const browseGamesSlice = createSlice({
       state.filter.searchTerm = action.payload
       state.filter.pageNumber = 0
     },
-    setFilterPriceRange: (state, action) => {
+    setFilterPriceRange: (
+      state,
+      action: PayloadAction<[number, number] | null>
+    ) => {
       state.filter.priceRange = action.payload
       state.filter.pageNumber = 0
     },
-    setFilterDiscountRange: (state, action) => {
+    setFilterDiscountRange: (
+      state,
+      action: PayloadAction<[number, number] | null>
+    ) => {
       state.filter.discountRange = action.payload
       state.filter.pageNumber = 0
     },
@@ -133,15 +141,15 @@ const browseGamesSlice = createSlice({
       state.response.totalPages = action.payload.totalPages
       state.response.facets = action.payload.facets
     },
-    setFilterEvents: (state, action) => {
+    setFilterEvents: (state, action: PayloadAction<string>) => {
       state.filter.events = addOrRemoveItem(state.filter.events, action.payload)
       state.filter.pageNumber = 0
     },
-    setFilterTags: (state, action) => {
+    setFilterTags: (state, action: PayloadAction<string>) => {
       state.filter.tags = addOrRemoveItem(state.filter.tags, action.payload)
       state.filter.pageNumber = 0
     },
-    setFilterPlatforms: (state, action) => {
+    setFilterPlatforms: (state, action: PayloadAction<string>) => {
       state.filter.platforms = addOrRemoveItem(
         state.filter.platforms,
         action.payload
@@ -186,7 +194,6 @@ export const {
 
 export const selectBrowseGamesWithWish = createSelector(
   [
-    // @ts-ignore
     (state: RootState) => state.browseGames.games,
     selectWishlistGameIds,
     selectCartGameIds,

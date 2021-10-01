@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import SortDropdown from '@atoms/SortDropdown'
 import GameCard06 from '@molecules/GameCard06'
 import { useAppSelector } from '@store/hooks'
@@ -9,7 +8,6 @@ import {
 import Pagination from '@molecules/Pagination'
 import EmptyList from '@molecules/EmptyList'
 
-import { useDocumentTitle } from '@hooks/index'
 import CustomHelmet from '@organisms/CustomHelmet'
 import Heading from '@atoms/Heading'
 

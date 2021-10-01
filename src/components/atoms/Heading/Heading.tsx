@@ -19,8 +19,13 @@ const Heading = ({
     'heading-2': 'text-4xl mb-6 font-bold',
   }
   const Header = headerType
+
   return (
-    <Header className={`${variantClasses[variant]} ${classes}`}>
+    <Header
+      className={`${
+        variantClasses[variant as IHeadingProps['variant']]
+      } ${classes}`}
+    >
       {children}
     </Header>
   )

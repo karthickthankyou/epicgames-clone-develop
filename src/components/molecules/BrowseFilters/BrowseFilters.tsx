@@ -2,7 +2,7 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 // import debounce from 'lodash.debounce'
 
-import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import ReactSlider from 'react-slider'
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import { ReactComponent as ChevronDown } from '@assets/svgs/chevron-down.svg'
@@ -66,16 +66,13 @@ const RangeFilter = ({
   max: number
   minDistance?: number
   steps?: number
-  action: ActionCreatorWithPayload<any, string>
+  action: ActionCreatorWithPayload<[number, number] | null, string>
   displayState?: [number, number] | null
 }) => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
   // We need this local state to show onChange as we store onAfterChange in redux store
   const [valuePair, setValuePair] = useState([min, max])
-
-  //   const debouncedEventHandler = (cb: any) =>
-  //     useMemo(() => debounce(cb, 1000), [])
 
   useEffect(() => {
     const minValue = displayState ? displayState[0] : min
@@ -113,8 +110,8 @@ const RangeFilter = ({
             ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
             pearling
             minDistance={minDistance}
-            onAfterChange={(value, index) => dispatch(action(value))}
-            onChange={(value, index) => {
+            onAfterChange={(value) => dispatch(action([value[0], value[1]]))}
+            onChange={(value) => {
               setValuePair(value)
             }}
           />
@@ -133,14 +130,12 @@ const CategoryFilter = ({
 }: {
   name: string
   options: string[]
+  action: ActionCreatorWithPayload<string, string>
   displayState: string[]
-  action: ActionCreatorWithPayload<any, string>
-  facet: any
+  facet: { [key: string]: number }
 }) => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
-
-  console.log('Facet: ', facet, name, options)
 
   return (
     <div>
@@ -163,7 +158,7 @@ const CategoryFilter = ({
                 {/* eslint-disable-next-line no-nested-ternary */}
                 {facet
                   ? Object.prototype.hasOwnProperty.call(facet, option)
-                    ? facet[option]
+                    ? facet[+option]
                     : 0
                   : 0}
               </div>

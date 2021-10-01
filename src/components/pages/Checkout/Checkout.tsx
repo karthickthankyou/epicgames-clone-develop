@@ -1,3 +1,4 @@
+import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { getFunctions, httpsCallable } from 'firebase/functions'
@@ -6,20 +7,22 @@ import { selectUser } from '@store/userSlice'
 import { selectCartGames } from '@store/userGameSlice'
 import CartCard from '@molecules/CartCard'
 import { discountCalc, withCurrency } from '@utils/index'
-import { Game } from '@epictypes/index'
+import { Game, StripeItem } from '@epictypes/index'
 import EmptyList from '@molecules/EmptyList'
 import { useDocumentTitle } from '@hooks/index'
 import Heading from '@atoms/Heading'
 
 const Cart = () => {
-  const createStripeCheckout = httpsCallable(
-    getFunctions(),
-    'createStripeCheckout'
-  )
+  const createStripeCheckout = httpsCallable<
+    { cartItems: StripeItem[]; gameIds: string },
+    { id: string }
+  >(getFunctions(), 'createStripeCheckout')
+
   //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
+
   const gamesInCart = useAppSelector(selectCartGames)
   useDocumentTitle(`(${gamesInCart.length}) Cart`)
-  const createCheckoutList = (cartList: Game[]) =>
+  const createCheckoutList = (cartList: Game[]): StripeItem[] =>
     cartList.map((cartItem) => ({
       name: cartItem.title,
       amount: cartItem.price * 100,
@@ -36,7 +39,7 @@ const Cart = () => {
     }))
   const cartGameIds = gamesInCart.map((game) => game.id)
 
-  const handleSubmit = async (event: any) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
     const stripe = await loadStripe(
@@ -46,7 +49,6 @@ const Cart = () => {
       cartItems: createCheckoutList(gamesInCart),
       gameIds: cartGameIds.join(','),
     }).then((res) => {
-      // @ts-ignore
       const sessionId = res.data.id
       stripe?.redirectToCheckout({ sessionId })
     })

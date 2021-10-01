@@ -1,7 +1,8 @@
-// import { StoryFnReactReturnType } from '@storybook/react/dist/ts3.9/client/preview/types'
+import { ReactElement } from 'react'
 import { Provider } from 'react-redux'
 import { store } from '@store/store'
+import { StoryFn } from '@storybook/addons'
 
-export const SbReduxProvider = (story: any) => (
+export const SbReduxProvider = (story: StoryFn<ReactElement>) => (
   <Provider store={store}>{story()}</Provider>
 )
