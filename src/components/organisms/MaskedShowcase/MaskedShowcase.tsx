@@ -1,9 +1,9 @@
 import { useRef } from 'react'
 // import { useScroll } from 'react-use'
-import { Game } from '@epictypes/index'
-import { slug } from '@utils/index'
+import { Game } from '../../../types/index'
+import { slug } from '../../../utils/index'
 
-import MaskedShowcaseCard from '@molecules/MaskedShowcaseCard'
+import MaskedShowcaseCard from '../../molecules/MaskedShowcaseCard'
 
 export interface IMaskedShowcaseProps {
   games: Game[]

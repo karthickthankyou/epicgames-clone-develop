@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { useCarouselTimer } from '@hooks/index'
+import { useCarouselTimer } from '../../../hooks/index'
 
 export interface ICarouselProps {
   image: string

@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { sampleGame } from '@epictypes/static'
+import { sampleGame } from '../../../types/static'
 import MaskedShowcase from './MaskedShowcase'
 
 export default {

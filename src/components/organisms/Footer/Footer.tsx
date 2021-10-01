@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom'
-import { scrollToTop, soloPaths } from '@utils/index'
+import { scrollToTop, soloPaths } from '../../../utils/index'
 
-import { ReactComponent as Copyright } from '@assets/svgs/copyright.svg'
-import { ReactComponent as ChevronUp } from '@assets/svgs/chevron-up.svg'
-import { ReactComponent as RegStar } from '@assets/svgs/regStar.svg'
-import { ReactComponent as Facebook } from '@assets/svgs/facebook.svg'
-import { ReactComponent as Twitter } from '@assets/svgs/twitter.svg'
-import { ReactComponent as Youtube } from '@assets/svgs/youtube.svg'
+import { ReactComponent as Copyright } from '../../../assets/svgs/copyright.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
+import { ReactComponent as RegStar } from '../../../assets/svgs/regStar.svg'
+import { ReactComponent as Facebook } from '../../../assets/svgs/facebook.svg'
+import { ReactComponent as Twitter } from '../../../assets/svgs/twitter.svg'
+import { ReactComponent as Youtube } from '../../../assets/svgs/youtube.svg'
 
 export interface IFooterProps {}
 

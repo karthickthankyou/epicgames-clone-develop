@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { slug } from '@utils/index'
-import { Game } from '@epictypes/index'
-import GameCard01 from '@molecules/GameCard01'
+import { slug } from '../../../utils/index'
+import { Game } from '../../../types/index'
+import GameCard01 from '../../molecules/GameCard01'
 
 export interface IGameCard01SectionProps {
   heading: string

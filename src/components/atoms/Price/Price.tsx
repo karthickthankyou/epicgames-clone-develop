@@ -1,5 +1,5 @@
-import { GameNotes } from '@epictypes/index'
-import { discountCalc, withCurrency } from '@utils/index'
+import { GameNotes } from '../../../types/index'
+import { discountCalc, withCurrency } from '../../../utils/index'
 
 export interface IPriceProps {
   price: number

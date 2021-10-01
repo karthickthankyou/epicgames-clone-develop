@@ -1,9 +1,9 @@
 import { Link, useHistory } from 'react-router-dom'
-import Badge from '@atoms/Badge'
-import { Game } from '@epictypes/index'
-import { updateUserGames } from '@epicfirebase/crud'
-import { useAppSelector } from '@store/hooks'
-import { selectUser } from '@store/userSlice'
+import Badge from '../../atoms/Badge'
+import { Game } from '../../../types/index'
+import { updateUserGames } from '../../../firebase/crud'
+import { useAppSelector } from '../../../store/hooks'
+import { selectUser } from '../../../store/userSlice'
 
 export interface IGameCard05Props {
   game: Game

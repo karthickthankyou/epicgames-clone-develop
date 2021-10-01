@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Game } from '@epictypes/index'
+import { Game } from '../../../types/index'
 
 export interface IMaskedShowcaseCardProps {
   game: Game

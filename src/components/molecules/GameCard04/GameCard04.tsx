@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import dateFormat from 'dateformat'
-import { calculateTimeLeft, ICounter } from '@utils/index'
+import { calculateTimeLeft, ICounter } from '../../../utils/index'
 
 export interface IGameCard04Props {
   gameTitle: string

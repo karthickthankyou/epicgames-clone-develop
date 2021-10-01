@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import image from '@assets/game.jpg'
+import image from '../../../assets/game.jpg'
 import GameCard02 from './GameCard02'
 
 export default {

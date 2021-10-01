@@ -6,8 +6,8 @@ import {
   GameGenre,
   SpecialGames,
   UserGame,
-} from '@epictypes/index'
-import { getStatus } from '@utils/index'
+} from '../types/index'
+import { getStatus } from '../utils/index'
 import { RootState } from './store'
 import {
   selectCartGameIds,

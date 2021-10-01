@@ -1,9 +1,12 @@
 import { useState } from 'react'
-import { ReactComponent as ChevronDown } from '@assets/svgs/chevron-down.svg'
-import { ReactComponent as ChevronUp } from '@assets/svgs/chevron-up.svg'
-import { selectSortIndex, setSelectsortIndex } from '@store/browseGamesSlice'
-import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { sortByOptions } from '@epictypes/static'
+import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
+import {
+  selectSortIndex,
+  setSelectsortIndex,
+} from '../../../store/browseGamesSlice'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { sortByOptions } from '../../../types/static'
 
 export interface ISortDropdownProps {
   sortByOptions: string[]

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { ReactComponent as EducationIcon } from '@assets/svgs/education.svg'
+import { ReactComponent as EducationIcon } from '../../../assets/svgs/education.svg'
 import NavIcon from './NavIcon'
 
 export default {

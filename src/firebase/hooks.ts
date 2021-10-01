@@ -25,7 +25,7 @@ import {
 } from 'firebase/auth'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
-import { useAppDispatch, useAppSelector } from '@store/hooks'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 import {
   setActionGames,
   setAdventureGames,
@@ -39,14 +39,14 @@ import {
   setHoursPlayed,
   setAnticipatedBy,
   setHoursToBeat,
-} from '@store/gamesSlice'
-import { selectUser, setUser } from '@store/userSlice'
+} from '../store/gamesSlice'
+import { selectUser, setUser } from '../store/userSlice'
 import {
   selectSortIndex,
   setBrowseGames,
   setBrowseError,
   setBrowseLoading,
-} from '@store/browseGamesSlice'
+} from '../store/browseGamesSlice'
 import {
   setCartGameIds,
   setWishlistGameIds,
@@ -60,8 +60,8 @@ import {
   setRemovedFromCartGameIds,
   selectRemovedFromCartGameIds,
   setRemovedFromCartGames,
-} from '@store/userGameSlice'
-import { getImageUrl, processGameIdsForSimilarItems } from '@utils/index'
+} from '../store/userGameSlice'
+import { getImageUrl, processGameIdsForSimilarItems } from '../utils/index'
 import {
   Game,
   GameGenre,
@@ -71,8 +71,8 @@ import {
   SpecialGames,
   UserGame,
   UserGameStatus,
-} from '@epictypes/index'
-import { sortByOptions } from '@epictypes/static'
+} from '../types/index'
+import { sortByOptions } from '../types/static'
 import { collections, db, auth } from './index'
 
 /**

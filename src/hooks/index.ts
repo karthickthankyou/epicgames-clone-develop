@@ -14,11 +14,11 @@ import {
   setBrowseGames,
   setBrowseLoading,
   setSearchResponse,
-} from '@store/browseGamesSlice'
-import { useAppDispatch, useAppSelector } from '@store/hooks'
+} from '../store/browseGamesSlice'
+import { useAppDispatch, useAppSelector } from '../store/hooks'
 
-import { Game, LoadSuccessErrorType } from '@epictypes/index'
-import { getImageUrl } from '@utils/index'
+import { Game, LoadSuccessErrorType } from '../types/index'
+import { getImageUrl } from '../utils/index'
 import {
   sortByReleaseDateIndex,
   sortByDiscountIndex,

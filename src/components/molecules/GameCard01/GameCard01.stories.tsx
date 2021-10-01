@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import image from '@assets/game.jpg'
-// import { SbReduxProvider } from '@utils/sb'
+import image from '../../../assets/game.jpg'
+// import { SbReduxProvider } from '../../../utils/sb'
 import GameCard01 from './GameCard01'
 
 export default {

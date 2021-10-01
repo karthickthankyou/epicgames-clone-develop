@@ -1,4 +1,4 @@
-import image from '@assets/game.jpg'
+import image from '../../../assets/game.jpg'
 
 export interface IBigBannerProps {}
 

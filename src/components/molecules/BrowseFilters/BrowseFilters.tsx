@@ -4,10 +4,10 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import ReactSlider from 'react-slider'
-import { useAppDispatch, useAppSelector } from '@store/hooks'
-import { ReactComponent as ChevronDown } from '@assets/svgs/chevron-down.svg'
-import { ReactComponent as ChevronUp } from '@assets/svgs/chevron-up.svg'
-import { ReactComponent as Check } from '@assets/svgs/check.svg'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
+import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
+import { ReactComponent as Check } from '../../../assets/svgs/check.svg'
 import {
   setFilterDiscountRange,
   setFilterPriceRange,
@@ -23,7 +23,7 @@ import {
   selectFilterDiscountRange,
   selectFilterRatingRange,
   selectBrowseFacets,
-} from '@store/browseGamesSlice'
+} from '../../../store/browseGamesSlice'
 
 export interface IBrowseFiltersProps {}
 
