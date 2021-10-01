@@ -12,8 +12,8 @@ import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import {
   selectCartGameIds,
-  selectCartGames,
-  selectPurchasedGames,
+  // selectCartGames,
+  // selectPurchasedGames,
   selectWishlistGameIds,
 } from '../../../store/userGameSlice'
 import Image from '../../../assets/cyberpunk.png'

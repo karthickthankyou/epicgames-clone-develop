@@ -1,5 +1,6 @@
 // import { SearchResponse } from '@algolia/client-search'
 import { ReactElement, useEffect, useReducer, useState } from 'react'
+import { captureException } from '@sentry/react'
 
 import {
   selectFilterDiscountRange,
@@ -192,8 +193,8 @@ export const useAlgoliaSearchGames = () => {
         // const t1 = performance.now()
         // console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
       })
-      .catch((err) => {
-        console.error(err)
+      .catch((error) => {
+        captureException(error)
       })
   }, [
     filterDiscountRange,

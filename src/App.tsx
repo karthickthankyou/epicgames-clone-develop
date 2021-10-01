@@ -7,23 +7,20 @@ import {
 } from 'react-router-dom'
 
 import {
-  useBrowseGames,
   useGamesListener,
-  useSpecialGames,
   useUserGameIdsListener,
   useUserGamesListener,
   useUserListener,
+  // useSpecialGames,
+  // useBrowseGames,
 } from './firebase/hooks'
 
-import { useAppSelector } from './store/hooks'
-import {
-  selectCartGames,
-  selectPurchasedGames,
-  selectWishlistGameIds,
-} from './store/userGameSlice'
-
-import { ReactComponent as Building } from './assets/svgs/Building.svg'
-import { ReactComponent as Cart } from './assets/svgs/cart.svg'
+// import { useAppSelector } from './store/hooks'
+// import {
+//   selectCartGames,
+//   selectPurchasedGames,
+//   selectWishlistGameIds,
+// } from './store/userGameSlice'
 
 import { useAlgoliaSearchGames } from './hooks'
 // import News from './components/pages/News'

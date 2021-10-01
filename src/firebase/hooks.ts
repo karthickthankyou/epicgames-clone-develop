@@ -24,6 +24,7 @@ import {
   updateProfile,
 } from 'firebase/auth'
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
+import { captureException } from '@sentry/react'
 
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import {
@@ -391,7 +392,7 @@ export const useGetGamePage = (gameId: string) => {
           const { imageUrl, subImageUrl } = getImageUrl(gameData.id)
           return dispatch(setGamePage({ ...gameData, imageUrl, subImageUrl }))
         })
-        .catch((error) => console.log(error))
+        .catch((error) => captureException(error))
     })()
     return () => {
       dispatch(setGamePage(null))
@@ -417,13 +418,13 @@ export const callSignIn = (
 ) => {
   //   signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      //   const { user } = userCredential
-      console.log(userCredential)
+    .then(() => {
+      // We can get userCredential as parameter.  And access user from it.   const { user } = userCredential
+      // console.log(userCredential)
       dispatch('success')
     })
     .catch((error) => {
-      console.log('Error: ', error)
+      captureException(error)
       dispatch('failed')
       //   const errorCode = error.code
       //   const errorMessage = error.message
@@ -451,19 +452,18 @@ export const callSignup = (
       }).then(
         () => {
           // Update successful.
-          console.log('Update successful.')
           dispatch('success')
         },
-        (error) => {
-          console.log('An error happened.', error)
+        () => {
           dispatch('failed')
         }
       )
       // ...
     })
-    .catch(() => {
+    .catch((error) => {
       // const errorCode = error.code
       // const errorMessage = error.message
+      captureException(error)
       dispatch('failed')
       // ..
     })
@@ -474,33 +474,34 @@ export const callSignOut = () => {
     .then(() => {
       // Sign-out successful.
     })
-    .catch(() => {
+    .catch((error) => {
       // An error happened.
       //   console.log(error)
+      captureException(error)
     })
 }
 
 export const googleSignin = () => {
   signInWithPopup(auth, new GoogleAuthProvider())
-    .then((result) => {
+    .then(() => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       // const credential = GoogleAuthProvider.credentialFromResult(result)
       // const token = credential?.accessToken
       // The signed-in user info.
-      const { user } = result
-      console.log(user)
-
+      // We can get results as parameter and access user. const { user } = result
+      // console.log(user)
       // ...
     })
     .catch((error) => {
       // Handle Errors here.
-      const errorCode = error.code
-      const errorMessage = error.message
-      // The email of the user's account used.
-      const { email } = error
-      // The AuthCredential type that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error)
+      // const errorCode = error.code
+      // const errorMessage = error.message
+      // // The email of the user's account used.
+      // const { email } = error
+      // // The AuthCredential type that was used.
+      // const credential = GoogleAuthProvider.credentialFromError(error)
       // ...
+      captureException(error)
     })
 }
 
@@ -509,14 +510,13 @@ export const passwordReset = ({ email }: { email: string }) => {
     .then(() => {
       // Password reset email sent!
       // ..
-      console.log('Password reset email sent to ', email)
+      // console.log('Password reset email sent to ', email)
     })
     .catch((error) => {
-      const errorCode = error.code
-      const errorMessage = error.message
-      console.log(errorMessage)
-
-      // ..
+      // const errorCode = error.code
+      // const errorMessage = error.message
+      // console.log(errorMessage)
+      captureException(error)
     })
 }
 
@@ -529,6 +529,7 @@ export const sendResetPasswordLink = (
       dispatch('success')
     })
     .catch((error) => {
+      captureException(error)
       dispatch('failed')
     })
 }

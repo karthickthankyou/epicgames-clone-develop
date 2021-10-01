@@ -3,13 +3,13 @@ import { useDocumentTitle } from '../../../hooks/index'
 import {
   selectActionGames,
   selectAdventureGames,
-  selectAnticipatedBy,
   selectHighestDiscounts,
-  selectHoursPlayed,
-  selectHoursToBeat,
   selectNarrationGames,
   selectPuzzleGames,
-  selectUnitsSold,
+  // selectAnticipatedBy,
+  // selectHoursToBeat,
+  // selectUnitsSold,
+  // selectHoursPlayed,
 } from '../../../store/gamesSlice'
 import { useAppSelector } from '../../../store/hooks'
 import {
@@ -21,7 +21,7 @@ import {
 import { selectUser } from '../../../store/userSlice'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import HomeShowcase from '../../organisms/HomeShowcase'
-import MaskedShowcase from '../../organisms/MaskedShowcase'
+// import MaskedShowcase from '../../organisms/MaskedShowcase'
 
 export interface IHomeProps {}
 
@@ -38,10 +38,10 @@ const Home = () => {
   const puzzleGames = useAppSelector(selectPuzzleGames)
   const narrationGames = useAppSelector(selectNarrationGames)
 
-  const unitsSold = useAppSelector(selectUnitsSold)
-  const hoursPlayed = useAppSelector(selectHoursPlayed)
-  const hoursToBeat = useAppSelector(selectHoursToBeat)
-  const anticipatedBy = useAppSelector(selectAnticipatedBy)
+  // const unitsSold = useAppSelector(selectUnitsSold)
+  // const hoursPlayed = useAppSelector(selectHoursPlayed)
+  // const hoursToBeat = useAppSelector(selectHoursToBeat)
+  // const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
   useHomeScreenGames()
   useDocumentTitle('Epic clone')
