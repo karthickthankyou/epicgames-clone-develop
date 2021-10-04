@@ -1,5 +1,6 @@
-/* eslint-disable global-require */
 const colors = require('tailwindcss/colors')
+const lineClamp = require('@tailwindcss/line-clamp')
+const aspectRatio = require('@tailwindcss/aspect-ratio')
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -43,8 +44,5 @@ module.exports = {
       visibility: ['hover', 'group-focus', 'group-hover'],
     },
   },
-  plugins: [
-    require('@tailwindcss/line-clamp'),
-    require('@tailwindcss/aspect-ratio'),
-  ],
+  plugins: [lineClamp, aspectRatio],
 }

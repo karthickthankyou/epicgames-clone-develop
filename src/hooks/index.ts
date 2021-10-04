@@ -1,4 +1,3 @@
-// import { SearchResponse } from '@algolia/client-search'
 import { ReactElement, useEffect, useReducer, useState } from 'react'
 import { captureException } from '@sentry/react'
 
