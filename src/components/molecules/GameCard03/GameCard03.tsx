@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getInCart, getWishlisted } from '../../../utils/index'
+import { getInCart, getWishlisted } from '../../../utils/ui'
 import HoverIcon from '../../atoms/HoverIcon'
 import Price, { IPriceProps } from '../../atoms/Price'
 

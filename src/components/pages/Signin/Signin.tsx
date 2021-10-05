@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
-import { callSignIn, googleSignin } from '../../../firebase/hooks'
+import { callSignIn, googleSignin, test123 } from '../../../firebase/hooks'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
 import { useLoadSuccessError } from '../../../hooks/index'
@@ -23,6 +23,8 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 )
 
 const Signin = () => {
+  test123()
+
   const user = useAppSelector(selectUser)
   const [{ loading, /* success, */ error }, dispatch] = useLoadSuccessError()
 

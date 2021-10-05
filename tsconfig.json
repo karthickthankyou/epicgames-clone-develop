@@ -20,5 +20,5 @@
     "types": ["cypress", "@testing-library/cypress"],
     "baseUrl": "."
   },
-  "include": ["src"]
+  "include": ["src", "cypress"]
 }

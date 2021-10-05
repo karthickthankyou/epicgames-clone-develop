@@ -76,6 +76,10 @@ import {
 import { sortByOptions } from '../types/static'
 import { collections, db, auth } from './index'
 
+export function test123() {
+  console.log('This is production code.')
+}
+
 /**
  * @deprecated Use `useAlgoliaSearchGames()` instead for the browse games page.
  */
@@ -258,6 +262,7 @@ export function useGamesListener() {
 }
 
 export const useHomeScreenGames = () => {
+  console.log('useHomeScreenGames called in real')
   const dispatch = useAppDispatch()
   const setupQuery = (genre: GameGenre) =>
     query(
@@ -298,6 +303,7 @@ export const useHomeScreenGames = () => {
     }
     getHomeScreenGames()
   }, [])
+
   useEffect(() => {
     ;(async () => {
       await setupSnapshot(setupQuery('Action'), setActionGames)

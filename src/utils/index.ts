@@ -1,10 +1,6 @@
 /* eslint-disable no-plusplus */
 import slugify from 'slugify'
 
-import { ReactComponent as HeartOutlineIcon } from '../assets/svgs/heart.svg'
-import { ReactComponent as HeartSolidIcon } from '../assets/svgs/heartSolid.svg'
-import { ReactComponent as CartOutlineIcon } from '../assets/svgs/cartOutline.svg'
-import { ReactComponent as CartSolidIcon } from '../assets/svgs/cartSolid.svg'
 import { SimilarGame, UserGame, UserGameStatus } from '../types/index'
 
 export const CAROUSEL_DURATION = 50
@@ -55,27 +51,6 @@ export const Timer = (callback: Function, delay: number) => {
   resume()
   return { pause, resume, clear }
 }
-
-export const getWishlisted = (wishlisted: boolean) =>
-  wishlisted
-    ? {
-        WishlistIcon: HeartSolidIcon,
-        wishlistHintText: 'Wishlisted',
-      }
-    : {
-        WishlistIcon: HeartOutlineIcon,
-        wishlistHintText: 'Add to wishlist',
-      }
-export const getInCart = (inCart: boolean) =>
-  inCart
-    ? {
-        CartIcon: CartSolidIcon,
-        cartHintText: 'In cart',
-      }
-    : {
-        CartIcon: CartOutlineIcon,
-        cartHintText: 'Add to cart',
-      }
 
 export const getPaginationNumbers = (current: number, total: number) => {
   if (total === 1) return []

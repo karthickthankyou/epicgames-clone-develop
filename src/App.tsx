@@ -23,6 +23,7 @@ import {
 // } from './store/userGameSlice'
 
 import { useAlgoliaSearchGames } from './hooks'
+import * as api from './firebase/hooks'
 import { useAppSelector } from './store/hooks'
 // import News from './components/pages/News'
 // import Community from './components/pages/Community'
@@ -105,8 +106,16 @@ const Library = React.lazy(
 )
 
 function App() {
+  /* @ts-ignore */
+  if (window.Cypress) {
+    /* @ts-ignore */
+    window.api = api
+    console.log('assigning api to window')
+    /* @ts-ignore */
+    window.appReady = true
+  }
   useUserListener()
-  // useUserGameIdsListener()
+  useUserGameIdsListener()
   useUserGamesListener()
   //   useSpecialGames()
   useGamesListener()

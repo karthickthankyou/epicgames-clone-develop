@@ -15,9 +15,14 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+// const injectDevServer = require('@cypress/react/plugins/react-scripts')
+const injectDevServer = require('@cypress/react/plugins/craco')
+const cracoConfig = require('../../craco.config')
 
-module.exports = function (on, config) {
+module.exports = (on, config) => {
   // configure plugins here
+  injectDevServer(on, config, cracoConfig)
+  return config
 }
 // // we require some code in our app that
 // // is responsible for seeding our database
