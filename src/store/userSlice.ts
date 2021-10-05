@@ -25,6 +25,7 @@ const userSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload
     },
+    resetUser: (state, action) => initialState,
   },
 })
 

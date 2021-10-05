@@ -23,6 +23,7 @@ import {
 // } from './store/userGameSlice'
 
 import { useAlgoliaSearchGames } from './hooks'
+import { useAppSelector } from './store/hooks'
 // import News from './components/pages/News'
 // import Community from './components/pages/Community'
 // import CancelPayment from './components/pages/CancelPayment'
@@ -105,21 +106,22 @@ const Library = React.lazy(
 
 function App() {
   useUserListener()
-  useUserGameIdsListener()
+  // useUserGameIdsListener()
   useUserGamesListener()
   //   useSpecialGames()
   useGamesListener()
+
   useAlgoliaSearchGames()
 
   return (
     <Router>
-      <Suspense fallback={<>Loading</>}>
+      <Suspense fallback={<>Loading navbar</>}>
         <Navbar />
       </Suspense>
       <main className='container mx-auto'>
         <Switch>
           <Route exact path='/'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<>Loading home</>}>
               <Home />
             </Suspense>
           </Route>
@@ -192,7 +194,7 @@ function App() {
             </Suspense>
           </Route>
         </Switch>
-        <Suspense fallback={<>Loading</>}>
+        <Suspense fallback={<>Loading footer</>}>
           <Footer />
         </Suspense>
       </main>

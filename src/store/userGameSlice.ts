@@ -51,6 +51,7 @@ const userGamesSlice = createSlice({
     setPurchasedGames: (state, action) => {
       state.purchasedGames = action.payload
     },
+    resetUserGames: (state, action) => initialState,
   },
 })
 

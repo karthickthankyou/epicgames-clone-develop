@@ -168,6 +168,7 @@ const browseGamesSlice = createSlice({
     setSelectsortIndex: (state, action) => {
       state.filter.selectedSortIndex = action.payload
     },
+    resetBrowseGames: (state, action) => initialState,
   },
 })
 

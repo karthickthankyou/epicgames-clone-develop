@@ -15,7 +15,7 @@ import {
   selectWishlistGameIds,
 } from './userGameSlice'
 
-const initialState: {
+type stateType = {
   games: Game[]
   homeScreenGames: Game[]
   highestEverDiscounts: Game[]
@@ -27,7 +27,9 @@ const initialState: {
     >]: Game[]
   }
   special: { [key in SpecialGames]: Game[] }
-} = {
+}
+
+const initialState: stateType = {
   games: [],
   homeScreenGames: [],
   highestEverDiscounts: [],
@@ -51,45 +53,79 @@ const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    setGames: (state, action) => {
+    setGames: (state, action: PayloadAction<stateType['games']>) => {
       state.games = action.payload
     },
-    setHomeScreenGames: (state, action) => {
+    setHomeScreenGames: (
+      state,
+      action: PayloadAction<stateType['homeScreenGames']>
+    ) => {
       state.homeScreenGames = action.payload
     },
-    setGamePage: (state, action) => {
+    setGamePage: (state, action: PayloadAction<stateType['gamePage']>) => {
       state.gamePage = action.payload
     },
-    setGamePageSimilarGames: (state, action) => {
+    setGamePageSimilarGames: (
+      state,
+      action: PayloadAction<stateType['gamePageSimilarGames']>
+    ) => {
       state.gamePageSimilarGames = action.payload
     },
-    setHighestEverDiscounts: (state, action) => {
+    setHighestEverDiscounts: (
+      state,
+      action: PayloadAction<stateType['highestEverDiscounts']>
+    ) => {
       state.highestEverDiscounts = action.payload
     },
-    setActionGames: (state, action: PayloadAction<Game[]>) => {
+    setActionGames: (
+      state,
+      action: PayloadAction<stateType['genres']['action']>
+    ) => {
       state.genres.action = action.payload
     },
-    setAdventureGames: (state, action: PayloadAction<Game[]>) => {
+    setAdventureGames: (
+      state,
+      action: PayloadAction<stateType['genres']['adventure']>
+    ) => {
       state.genres.adventure = action.payload
     },
-    setPuzzleGames: (state, action: PayloadAction<Game[]>) => {
+    setPuzzleGames: (
+      state,
+      action: PayloadAction<stateType['genres']['puzzle']>
+    ) => {
       state.genres.puzzle = action.payload
     },
-    setNarrationGames: (state, action: PayloadAction<Game[]>) => {
+    setNarrationGames: (
+      state,
+      action: PayloadAction<stateType['genres']['narration']>
+    ) => {
       state.genres.narration = action.payload
     },
-    setUnitsSold: (state, action: PayloadAction<Game[]>) => {
+    setUnitsSold: (
+      state,
+      action: PayloadAction<stateType['special']['unitsSold']>
+    ) => {
       state.special.unitsSold = action.payload
     },
-    setHoursPlayed: (state, action: PayloadAction<Game[]>) => {
+    setHoursPlayed: (
+      state,
+      action: PayloadAction<stateType['special']['hoursPlayed']>
+    ) => {
       state.special.hoursPlayed = action.payload
     },
-    setHoursToBeat: (state, action: PayloadAction<Game[]>) => {
+    setHoursToBeat: (
+      state,
+      action: PayloadAction<stateType['special']['hoursToBeat']>
+    ) => {
       state.special.hoursToBeat = action.payload
     },
-    setAnticipatedBy: (state, action: PayloadAction<Game[]>) => {
+    setAnticipatedBy: (
+      state,
+      action: PayloadAction<stateType['special']['anticipatedBy']>
+    ) => {
       state.special.anticipatedBy = action.payload
     },
+    resetGames: (state, action) => initialState,
   },
 })
 

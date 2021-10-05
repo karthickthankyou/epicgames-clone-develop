@@ -53,7 +53,8 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "cypress open",
+    "test": "craco test",
+    "test:e2e": "cypress open",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
