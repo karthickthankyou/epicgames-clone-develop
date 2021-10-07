@@ -24,6 +24,7 @@ import {
   selectFilterRatingRange,
   selectBrowseFacets,
 } from '../../../store/browseGamesSlice'
+import { genres, platforms, events } from '../../../types/static'
 
 export interface IBrowseFiltersProps {}
 
@@ -163,7 +164,10 @@ const CategoryFilter = ({
                   : 0}
               </div>
               {displayState.includes(option) && (
-                <Check className='absolute left-0 w-3 h-3 ml-2 text-gray-500' />
+                <Check
+                  data-testid='itemSelected'
+                  className='absolute left-0 w-3 h-3 ml-2 text-gray-500'
+                />
               )}
             </button>
           ))}
@@ -172,42 +176,6 @@ const CategoryFilter = ({
     </div>
   )
 }
-
-const genres = [
-  'Action',
-  'Adventure',
-  'Indie',
-  'RPG',
-  'Strategy',
-  'Open World',
-  'Shooter',
-  'Puzzle',
-  'First Person',
-  'Narration',
-  'Simulation',
-  'Casual',
-  'Turn-Based',
-  'Exploration',
-  'Horror',
-  'Platformer',
-  'Party',
-  'Survival',
-  'Trivia',
-  'City Builder',
-  'Stealth',
-  'Fighting',
-  'Comedy',
-  'Action-Adventure',
-  'Racing',
-  'Rogue-Lite',
-  'Card Game',
-  'Sports',
-]
-const platforms = ['Windows', 'Mac OS']
-
-const events = ['RECENTLY_UPDATED', 'HIGHEST_DISCOUNT', 'TOP_SELLER']
-// 'Epic MEGA Sale',
-// 'Highest Discount Ever',
 
 const BrowseFilters = () => {
   const filterEvents = useAppSelector(selectFilterEvents)

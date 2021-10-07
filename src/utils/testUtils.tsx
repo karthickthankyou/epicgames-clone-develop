@@ -15,13 +15,12 @@ export const renderWithProviders = (
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   store: any = actualStore,
   options = {}
-) => {
+) =>
   render(
     <BrowserRouter>
       <Provider store={store}>{children}</Provider>
     </BrowserRouter>
   )
-}
 
 export const getDispatch = () => {
   const dispatch = useAppDispatch()

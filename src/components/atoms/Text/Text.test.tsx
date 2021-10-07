@@ -10,7 +10,6 @@ describe('Text component', () => {
   test('should accept props', () => {
     const textContent = 'Hello World'
     render(<Text size='text-7xl'>{textContent}</Text>)
-    screen.debug()
     expect(screen.getByText(textContent)).toHaveTextContent(textContent)
   })
 })
