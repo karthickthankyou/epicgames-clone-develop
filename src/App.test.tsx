@@ -13,9 +13,9 @@ import { Game } from './types'
 jest.mock('./firebase/hooks')
 
 describe('Components with redux', () => {
-  // test('wrapped with store', () => {
-  //   renderWithProviders(<App />)
-  // })
+  test('wrapped with store', () => {
+    renderWithProviders(<App />)
+  })
   test('initialize a custom store', async () => {
     const msg = 'Redux rocks'
     const store = configureStore({
@@ -36,7 +36,7 @@ describe('Components with redux', () => {
     }
 
     renderWithProviders(<DummyComponent />, store)
-    screen.debug()
+    // screen.debug()
     await waitFor(() => expect(screen.getByText(msg)).toHaveTextContent(msg))
   })
 
@@ -64,7 +64,7 @@ describe('Components with redux', () => {
     const mockAddListener = jest.spyOn(hooks, 'useGamesListener')
     mockAddListener.mockImplementation(useGamesListener)
     renderWithProviders(<App />)
-    screen.debug()
+    // screen.debug()
     await waitFor(() =>
       screen.getByTestId(slug('Highest Discounts Ever Recorded'))
     )

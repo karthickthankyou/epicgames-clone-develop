@@ -30,16 +30,18 @@ const HoverIcon = ({
         <IconComponent className='w-5 h-5' />
       </div>
 
-      <div
-        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap ${
-          showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
-        }
+      {showHint && (
+        <div
+          className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap ${
+            showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
+          }
         ${position === 'top' && '-translate-x-2/4 left-2/4 bottom-full mb-2'}
         ${position === 'left' && 'right-full top-0 mr-2 translate-y-0'}
         `}
-      >
-        {hintText}
-      </div>
+        >
+          {hintText}
+        </div>
+      )}
     </button>
   )
 }

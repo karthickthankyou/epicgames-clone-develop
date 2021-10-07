@@ -5,8 +5,8 @@ export interface INavIconProps {
   IconComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
   count: number
   linkTo: string
+  ariaLabel: string
   classes?: string
-  ariaLabel?: string
 }
 
 const NavIcon = ({

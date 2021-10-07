@@ -8,9 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import { sortByOptions } from '../../../types/static'
 
-export interface ISortDropdownProps {
-  sortByOptions: string[]
-}
+export interface ISortDropdownProps {}
 
 // : { displayText: string; sortKey; sortOrder }
 
@@ -23,19 +21,29 @@ const SortDropdown = () => {
     <div className='relative z-20'>
       <button
         type='button'
+        aria-label='sortByOptions'
         className='flex items-center justify-between w-full py-2'
         onClick={() => setOpen((state) => !state)}
       >
         <span className='mr-2 text-gray-300'>Sortby: </span>
         {sortByOptions[+selectedIndex].displayText}
         {open ? (
-          <ChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronUp
+            className='inline w-4 h-4 ml-2 text-gray-300'
+            aria-label='sortIconChevUp'
+          />
         ) : (
-          <ChevronDown className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronDown
+            className='inline w-4 h-4 ml-2 text-gray-300'
+            aria-label='sortIconChevDown'
+          />
         )}
       </button>
       {open && (
-        <div className='absolute inset-x-0 bg-gray-800 top-full'>
+        <div
+          className='absolute inset-x-0 bg-gray-800 top-full'
+          data-testid='sortOptionsList'
+        >
           {sortByOptions.map((option, index) => (
             <button
               type='button'

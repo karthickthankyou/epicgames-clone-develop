@@ -1,7 +1,8 @@
 export interface IButtonProps {
-  variant: 'containedPrimary' | 'outlinedPrimary' | 'outlinedWhite'
-  size: 'lg' | 'md' | 'sm'
-  fullWidth: boolean
+  variant?: 'containedPrimary' | 'outlinedPrimary' | 'outlinedWhite'
+  size?: 'lg' | 'md' | 'sm'
+  fullWidth?: boolean
+  clickAction?: () => void
   children: string
 }
 
@@ -18,12 +19,19 @@ const sizes = {
   sm: 'text-xs px-2 py-1',
 }
 
-const Button = ({ variant, size, fullWidth, children }: IButtonProps) => (
+const Button = ({
+  variant = 'containedPrimary',
+  size = 'md',
+  fullWidth = false,
+  clickAction = () => console.error('button not implemented'),
+  children,
+}: IButtonProps) => (
   <button
     type='button'
-    className={`uppercase transform transition-all ${
-      variants[variant as IButtonProps['variant']]
-    } ${sizes[size as IButtonProps['size']]} ${fullWidth && 'w-full'}`}
+    onClick={clickAction}
+    className={`uppercase transform transition-all ${variants[variant]} ${
+      sizes[size]
+    } ${fullWidth && 'w-full'}`}
   >
     {children}
   </button>
