@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { slug } from '../../../utils/index'
-import { Game } from '../../../types/index'
+import { Game } from '../../../types'
 import GameCard01 from '../../molecules/GameCard01'
 
 export interface IGameCard01SectionProps {

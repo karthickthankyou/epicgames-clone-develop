@@ -1,4 +1,4 @@
-import { Game, GameNotes } from '../../../types/index'
+import { Game, GameNotes } from '../../../types'
 import { discountCalc, withCurrency } from '../../../utils/index'
 
 export type IPriceProps = Pick<Game, 'price' | 'notes'> &

@@ -53,7 +53,7 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test --coverage",
+    "test": "craco test --coverage --detectOpenHandles",
     "test:e2e": "cypress open",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",

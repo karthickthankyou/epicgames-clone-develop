@@ -26,7 +26,7 @@ import {
   setPurchasedGameIds,
 } from '../../store/userGameSlice'
 
-import { Game, LoadSuccessErrorDispatch, SimilarGame } from '../../types/index'
+import { Game, LoadSuccessErrorDispatch, SimilarGame } from '../../types'
 
 /**
  * @deprecated Use `useAlgoliaSearchGames()` instead for the browse games page.

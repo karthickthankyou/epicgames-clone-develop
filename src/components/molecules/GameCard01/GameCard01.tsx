@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
+import { wishlistUserGames } from 'src/store/userGameSlice'
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import { selectUser } from '../../../store/userSlice'
 import { getInCart, getWishlisted, readable } from '../../../utils/index'
-import { useAppSelector } from '../../../store/hooks'
-import { updateUserGames } from '../../../firebase/crud'
-import { Game } from '../../../types/index'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { Game } from '../../../types'
 import { ReactComponent as Briefcase } from '../../../assets/svgs/briefcase.svg'
 
 export interface ICard01Props {
@@ -48,6 +48,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
 
   const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
   const { CartIcon, cartHintText } = getInCart(inCart)
+  const dispatch = useAppDispatch()
 
   return (
     <div
@@ -81,12 +82,14 @@ const GameCard01 = ({ game }: ICard01Props) => {
               hintText={wishlistHintText}
               classes='mr-1'
               onClick={() =>
-                updateUserGames({
-                  uid: uid || '',
-                  gameId: id,
-                  status: wishlisted ? 'REMOVED_FROM_WISHLIST' : 'WISHLISTED',
-                  history,
-                })
+                dispatch(
+                  wishlistUserGames({
+                    uid: uid || '',
+                    gameId: id,
+                    status: wishlisted ? 'REMOVED_FROM_WISHLIST' : 'WISHLISTED',
+                    history,
+                  })
+                )
               }
             />
             <HoverIcon
@@ -94,12 +97,14 @@ const GameCard01 = ({ game }: ICard01Props) => {
               IconComponent={CartIcon}
               hintText={cartHintText}
               onClick={() =>
-                updateUserGames({
-                  uid: uid || '',
-                  gameId: id,
-                  status: inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
-                  history,
-                })
+                dispatch(
+                  wishlistUserGames({
+                    uid: uid || '',
+                    gameId: id,
+                    status: inCart ? 'REMOVED_FROM_CART' : 'IN_CART',
+                    history,
+                  })
+                )
               }
             />
           </>

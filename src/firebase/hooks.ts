@@ -67,12 +67,13 @@ import {
   Game,
   GameGenre,
   LoadSuccessErrorDispatch,
+  SignupInfo,
   // LoadSuccessErrorType,
   SimilarGame,
   SpecialGames,
   UserGame,
   UserGameStatus,
-} from '../types/index'
+} from '../types'
 import { sortByOptions } from '../types/static'
 import { collections, db, auth } from './index'
 
@@ -165,70 +166,70 @@ export function useUserGamesListener() {
   //   }, [purchasedGameIds])
 }
 
-export function useUserGameIdsListener() {
+export function gameIdsListener() {
   const dispatch = useAppDispatch()
   const { uid } = useAppSelector(selectUser)
 
-  useEffect(() => {
-    if (uid) {
-      const setupQuery = (status: UserGameStatus) =>
-        query(
-          collection(db, collections.USER_GAMES),
-          where('status', '==', status),
-          where('uid', '==', uid),
-          orderBy('updatedAt', 'desc')
-        )
+  console.log('user game ids listener!')
+  if (uid) {
+    const setupQuery = (status: UserGameStatus) =>
+      query(
+        collection(db, collections.USER_GAMES),
+        where('status', '==', status),
+        where('uid', '==', uid),
+        orderBy('updatedAt', 'desc')
+      )
 
-      const setupOnSnapshot = (
-        customQuery: Query<DocumentData>,
-        customAction: ActionCreatorWithPayload<UserGame[], string>
-      ) =>
-        onSnapshot(customQuery, (querySnapshot) => {
-          const arr: UserGame[] = []
-          querySnapshot.forEach(async (doc) => {
-            const {
-              gameId,
-              uid: uidDoc,
-              status,
-              updatedAt,
-            } = doc.data() as UserGame
-            arr.push({
-              gameId,
-              uid: uidDoc,
-              status,
-              updatedAt,
-            })
+    const setupOnSnapshot = (
+      customQuery: Query<DocumentData>,
+      customAction: ActionCreatorWithPayload<UserGame[], string>
+    ) =>
+      onSnapshot(customQuery, (querySnapshot) => {
+        const arr: UserGame[] = []
+        querySnapshot.forEach(async (doc) => {
+          const {
+            gameId,
+            uid: uidDoc,
+            status,
+            updatedAt,
+          } = doc.data() as UserGame
+          arr.push({
+            gameId,
+            uid: uidDoc,
+            status,
+            updatedAt,
           })
-
-          dispatch(customAction(arr))
         })
 
-      const detachWishlistedListener = setupOnSnapshot(
-        setupQuery('WISHLISTED'),
-        setWishlistGameIds
-      )
-      const detachInCartListener = setupOnSnapshot(
-        setupQuery('IN_CART'),
-        setCartGameIds
-      )
-      const detachRemovedFromCartListener = setupOnSnapshot(
-        setupQuery('REMOVED_FROM_CART'),
-        setRemovedFromCartGameIds
-      )
-      const detachPurchasedListener = setupOnSnapshot(
-        setupQuery('PURCHASED'),
-        setPurchasedGameIds
-      )
+        dispatch(customAction(arr))
+      })
 
-      return () => {
-        detachWishlistedListener()
-        detachInCartListener()
-        detachPurchasedListener()
-        detachRemovedFromCartListener()
-      }
+    const detachWishlistedListener = setupOnSnapshot(
+      setupQuery('WISHLISTED'),
+      setWishlistGameIds
+    )
+    const detachInCartListener = setupOnSnapshot(
+      setupQuery('IN_CART'),
+      setCartGameIds
+    )
+    const detachRemovedFromCartListener = setupOnSnapshot(
+      setupQuery('REMOVED_FROM_CART'),
+      setRemovedFromCartGameIds
+    )
+    const detachPurchasedListener = setupOnSnapshot(
+      setupQuery('PURCHASED'),
+      setPurchasedGameIds
+    )
+
+    return () => {
+      console.log('detaching all listeners.')
+      detachWishlistedListener()
+      detachInCartListener()
+      detachPurchasedListener()
+      detachRemovedFromCartListener()
     }
-    return undefined
-  }, [uid])
+  }
+  return undefined
 }
 
 export function useGamesListener() {
@@ -317,7 +318,7 @@ export const useHomeScreenGames = () => {
 export const useSimilarGames = (gameIds: SimilarGame[] | undefined) => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    async function run() {
+    ;(async () => {
       if (gameIds) {
         const q = query(
           collection(db, collections.GAMES),
@@ -369,7 +370,7 @@ export const useSimilarGames = (gameIds: SimilarGame[] | undefined) => {
         })
         dispatch(setGamePageSimilarGames(arr))
       }
-    }
+    })()
     run()
   }, [gameIds])
 }
@@ -431,15 +432,7 @@ export const callSignIn = (
     })
 }
 export const callSignup = (
-  {
-    email,
-    password,
-    displayName,
-  }: {
-    email: string
-    password: string
-    displayName?: string
-  },
+  { email, password, displayName }: SignupInfo,
   dispatch: LoadSuccessErrorDispatch
 ) => {
   createUserWithEmailAndPassword(auth, email, password)
@@ -451,7 +444,6 @@ export const callSignup = (
         displayName,
       }).then(
         () => {
-          // Update successful.
           dispatch('success')
         },
         () => {

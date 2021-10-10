@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 // import { useScroll } from 'react-use'
-import { Game } from '../../../types/index'
+import { Game } from '../../../types'
 import { slug } from '../../../utils/index'
 
 import MaskedShowcaseCard from '../../molecules/MaskedShowcaseCard'

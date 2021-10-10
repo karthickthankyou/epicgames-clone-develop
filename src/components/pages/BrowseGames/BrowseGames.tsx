@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
+import { firstListener } from 'src/store/userGameSlice'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
   selectBrowsePagination,
 } from '../../../store/browseGamesSlice'
-import { useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../../store/hooks'
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
 import Pagination from '../../molecules/Pagination'
@@ -18,9 +19,14 @@ export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
   useDocumentTitle('Browse Games')
+  const dispatch = useAppDispatch()
   const { currentPage, totalPages } = useAppSelector(selectBrowsePagination)
   const { loading, error } = useAppSelector(selectBrowseGames)
   const games = useAppSelector(selectBrowseGamesWithWish)
+
+  useEffect(() => {
+    const detachAll = dispatch(firstListener())
+  }, [])
 
   useEffect(() => {
     window.scrollTo({

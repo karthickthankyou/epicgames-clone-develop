@@ -1,6 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Game, UserGame } from '../types/index'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RouteComponentProps } from 'react-router-dom'
+import { updateUserGames } from 'src/firebase/crud'
+import { gameIdsListener } from 'src/firebase/hooks'
+import { Game, UserGame, UserGameStatus } from '../types'
 import { RootState } from './store'
 
 const initialState: {
@@ -22,6 +25,33 @@ const initialState: {
   cartGames: [],
   purchasedGames: [],
 }
+
+export const wishlistUserGames = createAsyncThunk(
+  'userGames/wishlist',
+  async ({
+    uid,
+    gameId,
+    status,
+    history,
+  }: {
+    uid: string
+    gameId: Game['id']
+    status: UserGameStatus
+    history: RouteComponentProps['history']
+  }) => {
+    await updateUserGames({
+      uid: uid || '',
+      gameId,
+      status,
+      history,
+    })
+  }
+)
+
+export const firstListener = createAsyncThunk(
+  'userGames/firstLis',
+  gameIdsListener
+)
 
 const userGamesSlice = createSlice({
   name: 'games/userGames',
@@ -52,6 +82,18 @@ const userGamesSlice = createSlice({
       state.purchasedGames = action.payload
     },
     resetUserGames: (state, action) => initialState,
+  },
+  extraReducers: {
+    // Add reducers for additional action types here, and handle loading state as needed
+    [wishlistUserGames.fulfilled.toString()]: (state, action) => {},
+    [firstListener.fulfilled.toString()]: (state, action) => {
+      console.log(state, action)
+    },
+    [firstListener.rejected.toString()]: (state, action) => {
+      console.log(state, action)
+    },
+    [wishlistUserGames.pending.toString()]: (state, action) => {},
+    [wishlistUserGames.rejected.toString()]: (state, action) => {},
   },
 })
 

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Game } from '../../../types/index'
+import { Game } from '../../../types'
 
 export interface IMaskedShowcaseCardProps {
   game: Game

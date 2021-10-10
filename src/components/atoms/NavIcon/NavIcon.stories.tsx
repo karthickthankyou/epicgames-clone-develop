@@ -9,7 +9,12 @@ export default {
 } as ComponentMeta<typeof NavIcon>
 
 const Template: ComponentStory<typeof NavIcon> = () => (
-  <NavIcon IconComponent={EducationIcon} count={45} linkTo='/lk' />
+  <NavIcon
+    IconComponent={EducationIcon}
+    count={45}
+    linkTo='/lk'
+    ariaLabel='sample-nav-icon'
+  />
 )
 
 export const Primary = Template.bind({})

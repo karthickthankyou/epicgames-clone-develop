@@ -23,6 +23,12 @@ export type Game = {
   similarity?: string
 }
 
+export type SignupInfo = {
+  email: string
+  password: string
+  displayName?: string
+}
+
 // const game: Game = {
 //   platform: ["Mac OS","Windows"]
 // }
@@ -87,6 +93,14 @@ export type SpecialGames =
 
 // To create a subset of union types
 export type Extends<T, U extends T> = U
+
+type genre = Extends<GameGenre, 'Action' | 'Adventure' | 'Puzzle' | 'Narration'>
+
+type genres = {
+  [key in Lowercase<
+    Extends<GameGenre, 'Action' | 'Adventure' | 'Puzzle' | 'Narration'>
+  >]: Game[]
+}
 
 // type SelectedGenre = Extends<
 //   GameGenre,

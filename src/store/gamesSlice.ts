@@ -1,12 +1,11 @@
 /* eslint-disable no-param-reassign */
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
-  Extends,
-  Game,
-  GameGenre,
-  SpecialGames,
-  UserGame,
-} from '../types/index'
+  createAsyncThunk,
+  createSelector,
+  createSlice,
+  PayloadAction,
+} from '@reduxjs/toolkit'
+import { Extends, Game, GameGenre, SpecialGames, UserGame } from '../types'
 import { getStatus } from '../utils/index'
 import { RootState } from './store'
 import {

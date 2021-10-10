@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SampleComponent Component it should match the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    🛬  Hello, This is SampleComponent component! 🛫
+  </div>
+</DocumentFragment>
+`;

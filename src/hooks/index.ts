@@ -17,7 +17,7 @@ import {
 } from '../store/browseGamesSlice'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 
-import { Game, LoadSuccessErrorType } from '../types/index'
+import { Game, LoadSuccessErrorType } from '../types'
 import { getImageUrl } from '../utils/index'
 import {
   sortByReleaseDateIndex,

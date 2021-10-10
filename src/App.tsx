@@ -8,7 +8,7 @@ import {
 
 import {
   useGamesListener,
-  useUserGameIdsListener,
+  // useUserGameIdsListener,
   useUserGamesListener,
   useUserListener,
   // useSpecialGames,
@@ -23,7 +23,8 @@ import {
 // } from './store/userGameSlice'
 
 import { useAlgoliaSearchGames } from './hooks'
-import { useAppSelector } from './store/hooks'
+import { useAppDispatch, useAppSelector } from './store/hooks'
+import { firstListener } from './store/userGameSlice'
 // import News from './components/pages/News'
 // import Community from './components/pages/Community'
 // import CancelPayment from './components/pages/CancelPayment'
@@ -107,9 +108,10 @@ const Library = React.lazy(
 function App() {
   useUserListener()
   // useUserGameIdsListener()
-  useUserGamesListener()
+
+  // useUserGamesListener()
   //   useSpecialGames()
-  useGamesListener()
+  // useGamesListener()
 
   useAlgoliaSearchGames()
 

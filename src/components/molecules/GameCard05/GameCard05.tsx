@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom'
 import Badge from '../../atoms/Badge'
-import { Game } from '../../../types/index'
+import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'

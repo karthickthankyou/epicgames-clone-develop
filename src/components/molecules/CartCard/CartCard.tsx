@@ -2,7 +2,7 @@ import { useHistory } from 'react-router-dom'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
 import { selectUser } from '../../../store/userSlice'
-import { Game } from '../../../types/index'
+import { Game } from '../../../types'
 import Price from '../../atoms/Price'
 import { ReactComponent as Close } from '../../../assets/svgs/x.svg'
 
