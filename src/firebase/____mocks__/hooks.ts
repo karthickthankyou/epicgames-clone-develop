@@ -13,7 +13,7 @@ import {
   setAnticipatedBy,
   setHoursToBeat,
 } from '../../store/gamesSlice'
-import { setUser } from '../../store/userSlice'
+import { setUser } from '../../store/user/userSlice'
 import { setBrowseGames } from '../../store/browseGamesSlice'
 import {
   setCartGames,
@@ -172,11 +172,6 @@ export const useSimilarGames = (gameIds: SimilarGame[] | undefined) => {
 export const useGetGamePage = (gameId: string) => {
   const dispatch = useAppDispatch()
   dispatch(setGamePage(null))
-}
-
-export function useUserListener() {
-  const dispatch = useAppDispatch()
-  dispatch(setUser(null))
 }
 
 export const callSignIn = (

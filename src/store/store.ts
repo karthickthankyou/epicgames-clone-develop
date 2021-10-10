@@ -1,6 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import gamesReducer from './gamesSlice'
-import userReducer from './userSlice'
+import userReducer from './user'
 import userGamesReducer from './userGameSlice'
 import browseGamesReducer from './browseGamesSlice'
 

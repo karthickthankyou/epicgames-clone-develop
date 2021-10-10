@@ -3,7 +3,7 @@ import Badge from '../../atoms/Badge'
 import { Game } from '../../../types'
 import { updateUserGames } from '../../../firebase/crud'
 import { useAppSelector } from '../../../store/hooks'
-import { selectUser } from '../../../store/userSlice'
+import { selectUser } from '../../../store/user'
 
 export interface IGameCard05Props {
   game: Game

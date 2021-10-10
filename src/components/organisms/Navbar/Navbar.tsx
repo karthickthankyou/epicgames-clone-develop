@@ -20,8 +20,8 @@ import Image from '../../../assets/cyberpunk.png'
 
 import { soloPaths } from '../../../utils/index'
 import NavIcon from '../../atoms/NavIcon'
-import { selectUser } from '../../../store/userSlice'
-import { callSignOut } from '../../../firebase/hooks'
+import { selectUser, signout } from '../../../store/user'
+
 import { setSearchTerm } from '../../../store/browseGamesSlice'
 
 export interface INavbarProps {}
@@ -149,7 +149,7 @@ const Navbar = () => {
                     <button
                       type='button'
                       className='p-2 text-left rounded-b hover:bg-gray-800'
-                      onClick={callSignOut}
+                      onClick={() => dispatch(signout)}
                     >
                       Signout
                     </button>

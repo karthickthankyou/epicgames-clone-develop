@@ -13,16 +13,7 @@ import {
   doc as firebaseDoc,
   getDoc,
 } from 'firebase/firestore'
-import {
-  onAuthStateChanged,
-  signInWithEmailAndPassword,
-  signOut,
-  signInWithPopup,
-  GoogleAuthProvider,
-  sendPasswordResetEmail,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from 'firebase/auth'
+
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { captureException } from '@sentry/react'
 
@@ -41,7 +32,7 @@ import {
   setAnticipatedBy,
   setHoursToBeat,
 } from '../store/gamesSlice'
-import { selectUser, setUser } from '../store/userSlice'
+import { selectUser } from '../store/user'
 import {
   selectSortIndex,
   setBrowseGames,
@@ -66,16 +57,13 @@ import { getImageUrl, processGameIdsForSimilarItems } from '../utils/index'
 import {
   Game,
   GameGenre,
-  LoadSuccessErrorDispatch,
-  SignupInfo,
-  // LoadSuccessErrorType,
   SimilarGame,
   SpecialGames,
   UserGame,
   UserGameStatus,
 } from '../types'
 import { sortByOptions } from '../types/static'
-import { collections, db, auth } from './index'
+import { collections, db } from './index'
 
 /**
  * @deprecated Use `useAlgoliaSearchGames()` instead for the browse games page.
@@ -399,131 +387,6 @@ export const useGetGamePage = (gameId: string) => {
       dispatch(setGamePage(null))
     }
   }, [gameId])
-}
-
-export function useUserListener() {
-  const dispatch = useAppDispatch()
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user)
-        dispatch(setUser({ uid: user.uid, displayName: user.displayName }))
-      else dispatch(setUser(null))
-    })
-    return unsubscribe
-  }, [])
-}
-
-export const callSignIn = (
-  { email, password }: { email: string; password: string },
-  dispatch: LoadSuccessErrorDispatch
-) => {
-  //   signInWithEmailAndPassword(auth, 'user1@epic.com', 'user1User1')
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      // We can get userCredential as parameter.  And access user from it.   const { user } = userCredential
-      // console.log(userCredential)
-      dispatch('success')
-    })
-    .catch((error) => {
-      captureException(error)
-      dispatch('failed')
-      //   const errorCode = error.code
-      //   const errorMessage = error.message
-    })
-}
-export const callSignup = (
-  { email, password, displayName }: SignupInfo,
-  dispatch: LoadSuccessErrorDispatch
-) => {
-  createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const { user } = userCredential
-
-      updateProfile(user, {
-        displayName,
-      }).then(
-        () => {
-          dispatch('success')
-        },
-        () => {
-          dispatch('failed')
-        }
-      )
-      // ...
-    })
-    .catch((error) => {
-      // const errorCode = error.code
-      // const errorMessage = error.message
-      captureException(error)
-      dispatch('failed')
-      // ..
-    })
-}
-
-export const callSignOut = () => {
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-      //   console.log(error)
-      captureException(error)
-    })
-}
-
-export const googleSignin = () => {
-  signInWithPopup(auth, new GoogleAuthProvider())
-    .then(() => {
-      // This gives you a Google Access Token. You can use it to access the Google API.
-      // const credential = GoogleAuthProvider.credentialFromResult(result)
-      // const token = credential?.accessToken
-      // The signed-in user info.
-      // We can get results as parameter and access user. const { user } = result
-      // console.log(user)
-      // ...
-    })
-    .catch((error) => {
-      // Handle Errors here.
-      // const errorCode = error.code
-      // const errorMessage = error.message
-      // // The email of the user's account used.
-      // const { email } = error
-      // // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(error)
-      // ...
-      captureException(error)
-    })
-}
-
-export const passwordReset = ({ email }: { email: string }) => {
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      // Password reset email sent!
-      // ..
-      // console.log('Password reset email sent to ', email)
-    })
-    .catch((error) => {
-      // const errorCode = error.code
-      // const errorMessage = error.message
-      // console.log(errorMessage)
-      captureException(error)
-    })
-}
-
-export const sendResetPasswordLink = (
-  email: string,
-  dispatch: LoadSuccessErrorDispatch
-) => {
-  sendPasswordResetEmail(auth, email)
-    .then(() => {
-      dispatch('success')
-    })
-    .catch((error) => {
-      captureException(error)
-      dispatch('failed')
-    })
 }
 
 export function useSpecialGames() {

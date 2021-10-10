@@ -1,6 +1,6 @@
 import { Redirect } from 'react-router-dom'
-import { useAppSelector } from '../../../store/hooks'
-import { selectUser } from '../../../store/userSlice'
+import { selectUser } from 'src/store/user'
+import { useAppSelector } from 'src/store/hooks'
 
 export interface ILibraryProps {}
 

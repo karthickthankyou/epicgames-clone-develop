@@ -1,4 +1,5 @@
-import { callSignOut, useHomeScreenGames } from '../../../firebase/hooks'
+import { selectUser, signout } from 'src/store/user'
+import { useHomeScreenGames } from '../../../firebase/hooks'
 import { useDocumentTitle } from '../../../hooks/index'
 import {
   selectActionGames,
@@ -11,14 +12,13 @@ import {
   // selectUnitsSold,
   // selectHoursPlayed,
 } from '../../../store/gamesSlice'
-import { useAppSelector } from '../../../store/hooks'
+import { useAppSelector, useAppDispatch } from '../../../store/hooks'
 import {
   selectCartGameIds,
   selectCartGames,
   selectWishlistGameIds,
   selectWishlistGames,
 } from '../../../store/userGameSlice'
-import { selectUser } from '../../../store/userSlice'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import HomeShowcase from '../../organisms/HomeShowcase'
 // import MaskedShowcase from '../../organisms/MaskedShowcase'
@@ -26,6 +26,8 @@ import HomeShowcase from '../../organisms/HomeShowcase'
 export interface IHomeProps {}
 
 const Home = () => {
+  const dispatch = useAppDispatch()
+
   const { uid } = useAppSelector(selectUser)
 
   const wishlist = useAppSelector(selectWishlistGames)
@@ -144,7 +146,7 @@ const Home = () => {
 
       <div className='mt-10'>
         {uid && (
-          <button type='button' onClick={callSignOut}>
+          <button type='button' onClick={() => dispatch(signout)}>
             Signout
           </button>
         )}

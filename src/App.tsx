@@ -10,7 +10,7 @@ import {
   useGamesListener,
   // useUserGameIdsListener,
   useUserGamesListener,
-  useUserListener,
+
   // useSpecialGames,
   // useBrowseGames,
 } from './firebase/hooks'
@@ -24,6 +24,7 @@ import {
 
 import { useAlgoliaSearchGames } from './hooks'
 import { useAppDispatch, useAppSelector } from './store/hooks'
+import { useUserListener } from './store/user'
 import { firstListener } from './store/userGameSlice'
 // import News from './components/pages/News'
 // import Community from './components/pages/Community'

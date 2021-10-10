@@ -23,9 +23,11 @@ export type Game = {
   similarity?: string
 }
 
-export type SignupInfo = {
+export type SigninInfo = {
   email: string
   password: string
+}
+export type SignupInfo = SigninInfo & {
   displayName?: string
 }
 

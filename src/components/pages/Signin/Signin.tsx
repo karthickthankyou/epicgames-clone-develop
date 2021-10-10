@@ -2,16 +2,15 @@ import { useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
-import { callSignIn, googleSignin } from '../../../firebase/hooks'
-import { useAppSelector } from '../../../store/hooks'
-import { selectUser } from '../../../store/userSlice'
-import { useLoadSuccessError } from '../../../hooks/index'
+import { SigninInfo } from 'src/types'
+import { selectUser, signin, googleSignin } from 'src/store/user'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
 
-import { ReactComponent as FacebookIcon } from '../../../assets/svgs/facebook.svg'
-import { ReactComponent as GoogleIcon } from '../../../assets/svgs/google.svg'
-import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
-import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
-import { ReactComponent as AppleIcon } from '../../../assets/svgs/apple.svg'
+import { ReactComponent as FacebookIcon } from 'src/assets/svgs/facebook.svg'
+import { ReactComponent as GoogleIcon } from 'src/assets/svgs/google.svg'
+import { ReactComponent as WarningIcon } from 'src/assets/svgs/warning.svg'
+import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'
+import { ReactComponent as AppleIcon } from 'src/assets/svgs/apple.svg'
 
 export interface ISigninProps {}
 
@@ -23,30 +22,25 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 )
 
 const Signin = () => {
-  const user = useAppSelector(selectUser)
-  const [{ loading, /* success, */ error }, dispatch] = useLoadSuccessError()
-
-  type FormValues = { email: string; password: string }
+  const { uid, loading, error } = useAppSelector(selectUser)
+  const dispatch = useAppDispatch()
 
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>()
+  } = useForm<SigninInfo>()
 
   const [showPassword, setShowPassword] = useState(false)
 
-  if (user.uid) return <Redirect to='/' />
+  if (uid) return <Redirect to='/' />
 
   return (
     <>
       <div className='w-full max-w-md mx-auto mt-16 bg-gray-800 rounded shadow-xl'>
         <form
-          onSubmit={handleSubmit(({ email, password }) => {
-            dispatch('load')
-            callSignIn({ email, password }, dispatch)
-          })}
+          onSubmit={handleSubmit((data) => dispatch(signin(data)))}
           className='p-8'
         >
           <div className='mb-4 text-3xl font-light'>Sign in</div>

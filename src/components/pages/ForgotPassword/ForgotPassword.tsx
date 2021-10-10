@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form'
 
 import { Link, useLocation } from 'react-router-dom'
-import { sendResetPasswordLink } from '../../../firebase/hooks'
-import { useLoadSuccessError } from '../../../hooks/index'
+import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import { forgotPassword, selectUser } from 'src/store/user'
 
-import { ReactComponent as LoadingIcon } from '../../../assets/svgs/loader.svg'
-import { ReactComponent as WarningIcon } from '../../../assets/svgs/warning.svg'
+import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'
+import { ReactComponent as WarningIcon } from 'src/assets/svgs/warning.svg'
 
 export interface IForgotPasswordProps {}
 
@@ -21,6 +21,8 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 )
 
 const ForgotPassword = () => {
+  const dispatch = useAppDispatch()
+  const { uid, loading, error, fulfilled } = useAppSelector(selectUser)
   const location = useLocation<LocationState>()
   const { email } = location.state
   const {
@@ -29,14 +31,11 @@ const ForgotPassword = () => {
     formState: { errors },
   } = useForm<{ emailId: string }>({ defaultValues: { emailId: email } })
 
-  const [{ loading, success, error }, dispatch] = useLoadSuccessError()
-
   return (
     <div className='max-w-md mx-auto mt-16 bg-gray-800 rounded shadow-lg'>
       <form
         onSubmit={handleSubmit(({ emailId }) => {
-          dispatch('load')
-          sendResetPasswordLink(emailId, dispatch)
+          dispatch(forgotPassword(emailId))
         })}
         className='p-8'
       >
@@ -65,7 +64,8 @@ const ForgotPassword = () => {
           {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
         </button>
         {error && <div className='my-2 text-xs'>Invalid email. Try again.</div>}
-        {success && (
+        {/* TODO: implement this success branch */}
+        {fulfilled && (
           <div className='my-2 text-xs'>
             Password reset email sent successfully.
           </div>
