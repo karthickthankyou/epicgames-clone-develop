@@ -8,7 +8,7 @@ import {
   forgotPassword,
   googleSignin,
 } from './userThunks'
-import { RootState } from '../store'
+import { RootState } from '..'
 
 type UserSliceType = {
   uid: string | null

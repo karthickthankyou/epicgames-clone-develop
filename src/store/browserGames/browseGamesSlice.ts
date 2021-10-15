@@ -1,14 +1,7 @@
 /* eslint-disable no-param-reassign */
-import { createSlice, createSelector, PayloadAction } from '@reduxjs/toolkit'
-import { Game, GameGenre, GameNotes, Platform } from '../types'
-import { addOrRemoveItem } from '../utils/index'
-import { combineWCPData } from './gamesSlice'
-import { RootState } from './store'
-import {
-  selectCartGameIds,
-  selectPurchasedGameIds,
-  selectWishlistGameIds,
-} from './userGameSlice'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Game, GameGenre, GameSection, Platform } from '../../types'
+import { addOrRemoveItem } from '../../utils/index'
 
 const initialState: {
   games: Game[]
@@ -29,9 +22,9 @@ const initialState: {
     currentPage: number
     totalPages: number
     facets: {
-      tags: { [key in GameGenre]: number }
-      platform: { [key in Platform]: number }
-      notes: { [key in GameNotes]: number }
+      tags: { [key in GameGenre]?: number }
+      platform: { [key in Platform]?: number }
+      notes: { [key in GameSection]?: number }
     }
   }
 } = {
@@ -53,45 +46,9 @@ const initialState: {
     currentPage: 1,
     totalPages: 1,
     facets: {
-      tags: {
-        Action: 216,
-        Adventure: 185,
-        Indie: 129,
-        RPG: 116,
-        Strategy: 94,
-        Simulation: 64,
-        Puzzle: 53,
-        Shooter: 47,
-        OpenWorld: 45,
-        ActionAdventure: 35,
-        Narration: 35,
-        FirstPerson: 34,
-        Casual: 32,
-        Platformer: 29,
-        Exploration: 28,
-        Horror: 22,
-        TurnBased: 22,
-        Survival: 20,
-        RogueLite: 19,
-        CityBuilder: 16,
-        Comedy: 16,
-        Racing: 16,
-        Stealth: 14,
-        Sports: 13,
-        CardGame: 12,
-        Party: 12,
-        Fighting: 11,
-        Trivia: 7,
-      },
-      notes: {
-        RECENTLY_UPDATED: 29,
-        HIGHEST_DISCOUNT: 20,
-        TOP_SELLER: 14,
-      },
-      platform: {
-        Windows: 577,
-        'Mac OS': 128,
-      },
+      tags: {},
+      notes: {},
+      platform: {},
     },
   },
 }
@@ -168,7 +125,7 @@ const browseGamesSlice = createSlice({
     setSelectsortIndex: (state, action) => {
       state.filter.selectedSortIndex = action.payload
     },
-    resetBrowseGames: (state, action) => initialState,
+    resetBrowseGames: () => initialState,
   },
 })
 
@@ -181,59 +138,12 @@ export const {
   setFilterPriceRange,
   setFilterDiscountRange,
   setFilterRatingRange,
-
   setFilterPlatforms,
   setFilterEvents,
   setFilterTags,
-
   setFiltersToInitial,
-
   setSearchResponse,
-
   setBrowsePageNumber,
 } = browseGamesSlice.actions
-
-export const selectBrowseGamesWithWish = createSelector(
-  [
-    (state: RootState) => state.browseGames.games,
-    selectWishlistGameIds,
-    selectCartGameIds,
-    selectPurchasedGameIds,
-  ],
-  combineWCPData
-)
-
-export const selectBrowseGames = (state: RootState) => ({
-  loading: state.browseGames.loading,
-  error: state.browseGames.error,
-})
-
-export const selectSortIndex = (state: RootState) =>
-  state.browseGames.filter.selectedSortIndex
-
-export const selectFilterTags = (state: RootState) =>
-  state.browseGames.filter.tags
-export const selectFilterEvents = (state: RootState) =>
-  state.browseGames.filter.events
-export const selectFilterPlatforms = (state: RootState) =>
-  state.browseGames.filter.platforms
-
-export const selectFilterPriceRange = (state: RootState) =>
-  state.browseGames.filter.priceRange
-export const selectFilterRatingRange = (state: RootState) =>
-  state.browseGames.filter.ratingRange
-export const selectFilterDiscountRange = (state: RootState) =>
-  state.browseGames.filter.discountRange
-export const selectFilterSearchTerm = (state: RootState) =>
-  state.browseGames.filter.searchTerm
-export const selectFilterPageNumber = (state: RootState) =>
-  state.browseGames.filter.pageNumber
-
-export const selectBrowsePagination = (state: RootState) => ({
-  currentPage: state.browseGames.response.currentPage,
-  totalPages: state.browseGames.response.totalPages,
-})
-export const selectBrowseFacets = (state: RootState) =>
-  state.browseGames.response.facets
 
 export default browseGamesSlice.reducer

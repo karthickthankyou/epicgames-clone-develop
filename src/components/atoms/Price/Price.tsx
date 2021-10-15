@@ -1,7 +1,7 @@
-import { Game, GameNotes } from '../../../types'
+import { Game } from '../../../types'
 import { discountCalc, withCurrency } from '../../../utils/index'
 
-export type IPriceProps = Pick<Game, 'price' | 'notes'> &
+export type IPriceProps = Pick<Game, 'price' | 'sections'> &
   Partial<Pick<Game, 'discount'>> & {
     classes?: string
     comingSoon?: boolean
@@ -10,7 +10,7 @@ export type IPriceProps = Pick<Game, 'price' | 'notes'> &
 const Price = ({
   price,
   discount,
-  notes,
+  sections,
   comingSoon,
   classes,
 }: IPriceProps) => {
@@ -23,7 +23,7 @@ const Price = ({
       <>
         <span
           className={`px-1 py-0.5 mr-2 ${
-            notes?.includes('HIGHEST_DISCOUNT')
+            sections?.includes('HIGHEST_DISCOUNT')
               ? 'bg-primary-600 text-white'
               : 'bg-green-700 text-white'
           }  rounded-sm`}

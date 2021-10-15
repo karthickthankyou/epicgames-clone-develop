@@ -1,10 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { RouteComponentProps } from 'react-router-dom'
-import { updateUserGames } from 'src/firebase/crud'
-import { gameIdsListener } from 'src/firebase/hooks'
-import { Game, UserGame, UserGameStatus } from '../types'
-import { RootState } from './store'
+import { updateUserGames } from 'src/store/browserGames/browseGamesThunks'
+import { gameIdsListener } from 'src/store/userGames/userGameHooks'
+import { Game, UserGame, UserGameStatus } from '../../types'
+import { RootState } from '..'
 
 const initialState: {
   cartGameIds: UserGame[]

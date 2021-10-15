@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect } from 'react'
 import { auth } from 'src/firebase'
-import { useAppDispatch } from '../hooks'
+import { useAppDispatch } from '..'
 import { setUser } from './userSlice'
 
 export function useUserListener() {

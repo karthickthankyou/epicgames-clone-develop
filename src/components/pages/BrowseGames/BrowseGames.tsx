@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
-import { firstListener } from 'src/store/userGameSlice'
+import { firstListener } from 'src/store/userGames/userGameSlice'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
   selectBrowsePagination,
-} from '../../../store/browseGamesSlice'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+} from '../../../store/browserGames/browseGamesSelectors'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard01 from '../../molecules/GameCard01'
 import Pagination from '../../molecules/Pagination'

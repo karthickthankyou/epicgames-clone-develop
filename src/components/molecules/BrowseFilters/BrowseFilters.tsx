@@ -4,7 +4,7 @@ import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import ReactSlider from 'react-slider'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
 import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
 import { ReactComponent as Check } from '../../../assets/svgs/check.svg'
@@ -15,15 +15,17 @@ import {
   setFilterPlatforms,
   setFilterEvents,
   setFilterTags,
+  setFiltersToInitial,
+} from '../../../store/browserGames/browseGamesSlice'
+import {
   selectFilterTags,
   selectFilterEvents,
   selectFilterPlatforms,
-  setFiltersToInitial,
   selectFilterPriceRange,
   selectFilterDiscountRange,
   selectFilterRatingRange,
   selectBrowseFacets,
-} from '../../../store/browseGamesSlice'
+} from '../../../store/browserGames/browseGamesSelectors'
 import { genres, platforms, events } from '../../../types/static'
 
 export interface IBrowseFiltersProps {}

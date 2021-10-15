@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom'
-import { updateUserGames } from '../../../firebase/crud'
-import { useAppSelector } from '../../../store/hooks'
+import { updateUserGames } from 'src/store/browserGames/browseGamesThunks'
+import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/user'
 import { Game } from '../../../types'
 import Price from '../../atoms/Price'
@@ -28,7 +28,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
         <Price
           price={game.price}
           discount={game.discount}
-          notes={game.notes}
+          sections={game.sections}
           classes='ml-auto mt-2'
         />
       </div>

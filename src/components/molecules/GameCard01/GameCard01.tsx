@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
-import { wishlistUserGames } from 'src/store/userGameSlice'
+import { wishlistUserGames } from 'src/store/userGames/userGameSlice'
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import { selectUser } from '../../../store/user'
 import { getInCart, getWishlisted, readable } from '../../../utils/index'
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import { Game } from '../../../types'
 import { ReactComponent as Briefcase } from '../../../assets/svgs/briefcase.svg'
 
@@ -35,7 +35,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
     status,
     price,
     publisherId,
-    notes,
+    sections,
     similarity,
   } = game
   const wishlisted = status === 'WISHLISTED'
@@ -126,7 +126,12 @@ const GameCard01 = ({ game }: ICard01Props) => {
         <div className='text-sm text-gray-300 capitalize truncate overflow-ellipsis'>
           {readable(publisherId)}
         </div>
-        <Price price={price} discount={discount} notes={notes} classes='my-2' />
+        <Price
+          price={price}
+          discount={discount}
+          sections={sections}
+          classes='my-2'
+        />
       </Link>
     </div>
   )

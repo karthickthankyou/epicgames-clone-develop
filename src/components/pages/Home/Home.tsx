@@ -1,5 +1,6 @@
+import { selectGamesWithWCP } from 'src/store/games/gameUtils'
 import { selectUser, signout } from 'src/store/user'
-import { useHomeScreenGames } from '../../../firebase/hooks'
+import { useAppSelector, useAppDispatch } from 'src/store'
 import { useDocumentTitle } from '../../../hooks/index'
 import {
   selectActionGames,
@@ -11,14 +12,14 @@ import {
   // selectHoursToBeat,
   // selectUnitsSold,
   // selectHoursPlayed,
-} from '../../../store/gamesSlice'
-import { useAppSelector, useAppDispatch } from '../../../store/hooks'
+} from '../../../store/games/gameSelectors'
+
 import {
   selectCartGameIds,
   selectCartGames,
   selectWishlistGameIds,
   selectWishlistGames,
-} from '../../../store/userGameSlice'
+} from '../../../store/userGames/userGameSlice'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import HomeShowcase from '../../organisms/HomeShowcase'
 // import MaskedShowcase from '../../organisms/MaskedShowcase'
@@ -38,14 +39,17 @@ const Home = () => {
   const actionGames = useAppSelector(selectActionGames)
   const adventureGames = useAppSelector(selectAdventureGames)
   const puzzleGames = useAppSelector(selectPuzzleGames)
-  const narrationGames = useAppSelector(selectNarrationGames)
+  // const narrationGames = useAppSelector(selectNarrationGames)
+  const narrationGames = useAppSelector(
+    selectGamesWithWCP((state) => state.games.genres.Narration?.items || [])
+  )
 
   // const unitsSold = useAppSelector(selectUnitsSold)
   // const hoursPlayed = useAppSelector(selectHoursPlayed)
   // const hoursToBeat = useAppSelector(selectHoursToBeat)
   // const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
-  useHomeScreenGames()
+  // useHomeScreenGames()
   useDocumentTitle('Epic clone')
 
   return (

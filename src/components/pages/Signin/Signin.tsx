@@ -4,7 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { SigninInfo } from 'src/types'
 import { selectUser, signin, googleSignin } from 'src/store/user'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import { useAppDispatch, useAppSelector } from 'src/store'
 
 import { ReactComponent as FacebookIcon } from 'src/assets/svgs/facebook.svg'
 import { ReactComponent as GoogleIcon } from 'src/assets/svgs/google.svg'

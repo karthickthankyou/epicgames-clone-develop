@@ -1,5 +1,5 @@
-import { selectCartGames } from '../../../store/userGameSlice'
-import { useAppSelector } from '../../../store/hooks'
+import { selectCartGames } from '../../../store/userGames/userGameSlice'
+import { useAppSelector } from '../../../store'
 import CartCard from '../../molecules/CartCard'
 
 export interface ICartProps {}

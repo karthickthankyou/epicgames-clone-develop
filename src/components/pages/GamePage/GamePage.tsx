@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
-import { useGetGamePage, useSimilarGames } from '../../../firebase/hooks'
+// import { useGetGamePage, useSimilarGames } from 'src/store/games'
+import { Game } from 'src/types'
 import {
   selectGamePage,
   selectGamePageSimilarGames,
-} from '../../../store/gamesSlice'
-import { useAppSelector } from '../../../store/hooks'
+} from '../../../store/games/gameSelectors'
+
+import { useAppSelector } from '../../../store'
 import GamePageFeatureBox from '../../atoms/GamePageFeatureBox'
 import GameCard05 from '../../molecules/GameCard05'
 import Specifications from '../../molecules/Specifications'
@@ -22,7 +24,7 @@ export interface IGamePageProps {}
 const GamePage = () => {
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
-  const game = useAppSelector(selectGamePage)
+  const game: Game | null = useAppSelector(selectGamePage)
   const longDesc = game?.longDesc || []
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)
@@ -30,8 +32,8 @@ const GamePage = () => {
 
   const { id } = useParams<{ id: string }>()
 
-  useGetGamePage(id)
-  useSimilarGames(game?.similar)
+  // useGetGamePage(id)
+  // useSimilarGames(game?.similar)
   //   if (game) let features = [{ title: 'Genres', value: game.tags.join(', ') }]
 
   return (

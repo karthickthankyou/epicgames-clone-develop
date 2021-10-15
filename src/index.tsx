@@ -8,7 +8,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { store } from './store/store'
+import { store } from './store'
 
 Sentry.init({
   dsn: 'https://ac112d52ed0141c3ac7f87ca69e27ec3@o927079.ingest.sentry.io/5916473',

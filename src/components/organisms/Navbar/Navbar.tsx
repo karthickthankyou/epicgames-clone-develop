@@ -9,20 +9,20 @@ import { ReactComponent as HeartIcon } from '../../../assets/svgs/heartSolid.svg
 import { ReactComponent as CartIcon } from '../../../assets/svgs/cartSolid.svg'
 import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
 
-import { useAppDispatch, useAppSelector } from '../../../store/hooks'
+import { useAppDispatch, useAppSelector } from '../../../store'
 import {
   selectCartGameIds,
   // selectCartGames,
   // selectPurchasedGames,
   selectWishlistGameIds,
-} from '../../../store/userGameSlice'
+} from '../../../store/userGames/userGameSlice'
 import Image from '../../../assets/cyberpunk.png'
 
 import { soloPaths } from '../../../utils/index'
 import NavIcon from '../../atoms/NavIcon'
 import { selectUser, signout } from '../../../store/user'
 
-import { setSearchTerm } from '../../../store/browseGamesSlice'
+import { setSearchTerm } from '../../../store/browserGames/browseGamesSlice'
 
 export interface INavbarProps {}
 

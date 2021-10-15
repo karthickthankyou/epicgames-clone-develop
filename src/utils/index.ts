@@ -177,3 +177,7 @@ export const getStatus = (
   if (purchasedIds.some((game) => game.gameId === gameId)) return 'PURCHASED'
   return undefined
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const hasOwnProperty = (object: any, property: any) =>
+  Object.prototype.hasOwnProperty.call(object, property)

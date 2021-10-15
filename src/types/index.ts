@@ -5,23 +5,32 @@ export type Game = {
   price: number
   discount: number
   publisherId: Publisher['id']
-  rating?: number
-  notes?: GameNotes[]
-  features?: Feature[]
   imageUrl: string
   subImageUrl: string
+  rating?: number
+  sections?: GameSection[]
+  specialSections?: SpecialSection
+  features?: Feature[]
   description?: string
   developer?: string
   languages?: string
   platform?: Platform[]
   longDesc?: string[]
   releaseDate?: string
+  spec?: {}
 
   similar?: SimilarGame[]
 
   status?: GameStatus
   similarity?: string
 }
+
+export type AsyncGame = {
+  loading?: boolean
+  error?: boolean
+  item: Game | null
+}
+export type AsyncGames = { loading?: boolean; error?: boolean; items: Game[] }
 
 export type SigninInfo = {
   email: string
@@ -57,6 +66,7 @@ type Feature =
   | 'Controller Support'
   | 'Competitve'
   | 'VR'
+  | 'Competitive'
 
 type GameStatus =
   | 'WISHLISTED'
@@ -76,7 +86,13 @@ export type GameLight = Pick<
   | 'subImageUrl'
 >
 
-export type GameNotes = 'HIGHEST_DISCOUNT' | 'TOP_SELLER' | 'RECENTLY_UPDATED'
+export type GameSection =
+  | 'HIGHEST_DISCOUNT'
+  | 'TOP_SELLER'
+  | 'RECENTLY_UPDATED'
+  | 'HOMESCREEN_CAROUSEL'
+  | 'STORY_RICH'
+  | 'VISUAL_MARVEL'
 
 export type SortKey = 'releaseDate' | 'price' | 'title' | 'discount'
 
@@ -87,27 +103,18 @@ export type UserGameStatus =
   | 'REMOVED_FROM_CART'
   | 'REMOVED_FROM_WISHLIST'
 
-export type SpecialGames =
+export type SpecialSectionKey =
   | 'unitsSold'
   | 'hoursToBeat'
   | 'anticipatedBy'
-  | 'hoursPlayed'
+  | 'quickBites'
+
+export type SpecialSection = {
+  [key in SpecialSectionKey]?: number
+}
 
 // To create a subset of union types
 export type Extends<T, U extends T> = U
-
-type genre = Extends<GameGenre, 'Action' | 'Adventure' | 'Puzzle' | 'Narration'>
-
-type genres = {
-  [key in Lowercase<
-    Extends<GameGenre, 'Action' | 'Adventure' | 'Puzzle' | 'Narration'>
-  >]: Game[]
-}
-
-// type SelectedGenre = Extends<
-//   GameGenre,
-//   'Action' | 'Adventure' | 'Puzzle' | 'Narration'
-// >
 
 export type GameGenre =
   | 'Action'
@@ -138,6 +145,7 @@ export type GameGenre =
   | 'RogueLite'
   | 'CardGame'
   | 'Sports'
+  | 'Application'
 
 export type Platform = 'Windows' | 'Mac OS'
 

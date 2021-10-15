@@ -3,8 +3,7 @@ import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
 import { render } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import { RootState, store as actualStore } from '../store/store'
-import { useAppDispatch } from '../store/hooks'
+import { RootState, store as actualStore, useAppDispatch } from '../store'
 
 // export const StoreWrapper = ({ children }: { children: ReactElement }) => (
 //   <Provider store={store}>{children}</Provider>

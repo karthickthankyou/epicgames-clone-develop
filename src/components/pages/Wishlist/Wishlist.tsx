@@ -1,10 +1,10 @@
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard06 from '../../molecules/GameCard06'
-import { useAppSelector } from '../../../store/hooks'
+import { useAppSelector } from '../../../store'
 import {
   selectWishlistGameIds,
   selectWishlistGames,
-} from '../../../store/userGameSlice'
+} from '../../../store/userGames/userGameSlice'
 import Pagination from '../../molecules/Pagination'
 import EmptyList from '../../molecules/EmptyList'
 

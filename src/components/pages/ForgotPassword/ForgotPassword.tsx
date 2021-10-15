@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { Link, useLocation } from 'react-router-dom'
-import { useAppDispatch, useAppSelector } from 'src/store/hooks'
+import { useAppDispatch, useAppSelector } from 'src/store'
 import { forgotPassword, selectUser } from 'src/store/user'
 
 import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'

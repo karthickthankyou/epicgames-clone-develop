@@ -10,6 +10,7 @@ import {
   signInWithPopup,
 } from 'firebase/auth'
 import { auth } from 'src/firebase'
+import { getFunctions, httpsCallable } from 'firebase/functions'
 
 // Wrap the functions with createAsyncThunk to include them within the redux flow. We dont have to wrap these functions with try catch as we handle with in extra reducers.
 export const signup = createAsyncThunk(
@@ -45,4 +46,9 @@ export const forgotPassword = createAsyncThunk(
 
 export const googleSignin = createAsyncThunk('user/googleSignin', async () => {
   await signInWithPopup(auth, new GoogleAuthProvider())
+})
+
+export const resetUserTask = createAsyncThunk('user/reset', async () => {
+  const resetTestUser = httpsCallable(getFunctions(), 'resetTestUser')
+  await resetTestUser()
 })
