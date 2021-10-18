@@ -1,129 +1,185 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/types/types-external'
 import { captureException } from '@sentry/react'
-import { GameGenre, SpecialSectionKey } from '../../types'
-import { GameSliceType, gameInitialState as initialState } from './gameState'
-import { getGamesCustom } from './gameThunks'
+import { defaultAsyncGame, defaultAsyncGames } from 'src/types/static'
+import {
+  AsyncGame,
+  AsyncGames,
+  GameGenre,
+  GameSection,
+  SpecialSectionKey,
+  UserGameStatus,
+} from '../../types'
+import {
+  getGamePage,
+  getGameSections,
+  getGamesGenre,
+  getSpecialGames,
+} from './gameActions'
+
+// Hey we need to look into the Record! to compose an object.
+
+type GameSliceType = {
+  gamePage: AsyncGame
+  similarGames: AsyncGames
+  genres: {
+    [key in GameGenre]?: AsyncGames
+  }
+  sections: {
+    [key in GameSection]?: AsyncGames
+  }
+  specialSections: {
+    [key in SpecialSectionKey]?: AsyncGames
+  }
+  userGames: {
+    [key in UserGameStatus]: AsyncGames
+  }
+}
+
+const initialState: GameSliceType = {
+  gamePage: defaultAsyncGame,
+  similarGames: defaultAsyncGames,
+  genres: {},
+  sections: {},
+  specialSections: {},
+  userGames: {
+    WISHLISTED: defaultAsyncGames,
+    IN_CART: defaultAsyncGames,
+    PURCHASED: defaultAsyncGames,
+    REMOVED_FROM_CART: defaultAsyncGames,
+    REMOVED_FROM_WISHLIST: defaultAsyncGames,
+  },
+}
+
+const setAsyncGames = (
+  asyncGames: WritableDraft<AsyncGames> | undefined,
+  {
+    fulfilled = false,
+    loading = false,
+    error = false,
+    data = [],
+  }: Partial<AsyncGames>
+) => {
+  asyncGames = {
+    data,
+    fulfilled,
+    loading,
+    error,
+  }
+}
+const setAsyncGame = (
+  asyncGame: WritableDraft<AsyncGame> | undefined,
+  {
+    fulfilled = false,
+    loading = false,
+    error = false,
+    data = null,
+  }: Partial<AsyncGame>
+) => {
+  asyncGame = {
+    data,
+    fulfilled,
+    loading,
+    error,
+  }
+}
+
+const setGames =
+  (status: UserGameStatus) =>
+  (state: WritableDraft<GameSliceType>, action: PayloadAction<AsyncGames>) => {
+    state.userGames[status as UserGameStatus] = action.payload
+  }
 
 const gamesSlice = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    setHomeScreenGames: (
-      state,
-      action: PayloadAction<GameSliceType['homeScreenGames']>
-    ) => {
-      state.homeScreenGames = action.payload
-    },
-    setGamePage: (state, action: PayloadAction<GameSliceType['gamePage']>) => {
-      state.gamePage = action.payload
-    },
-    setGamePageSimilarGames: (
-      state,
-      action: PayloadAction<GameSliceType['gamePageSimilarGames']>
-    ) => {
-      state.gamePageSimilarGames = action.payload
-    },
-    setHighestEverDiscounts: (
-      state,
-      action: PayloadAction<GameSliceType['highestEverDiscounts']>
-    ) => {
-      state.highestEverDiscounts = action.payload
-    },
-    setActionGames: (
-      state,
-      action: PayloadAction<GameSliceType['genres']['Action']>
-    ) => {
-      state.genres.Action = action.payload
-    },
-    setAdventureGames: (
-      state,
-      action: PayloadAction<GameSliceType['genres']['Adventure']>
-    ) => {
-      state.genres.Adventure = action.payload
-    },
-    setPuzzleGames: (
-      state,
-      action: PayloadAction<GameSliceType['genres']['Puzzle']>
-    ) => {
-      state.genres.Puzzle = action.payload
-    },
-    setNarrationGames: (
-      state,
-      action: PayloadAction<GameSliceType['genres']['Narration']>
-    ) => {
-      state.genres.Narration = action.payload
-    },
-    setUnitsSold: (
-      state,
-      action: PayloadAction<GameSliceType['sections']['unitsSold']>
-    ) => {
-      state.sections.unitsSold = action.payload
-    },
-    setHoursToBeat: (
-      state,
-      action: PayloadAction<GameSliceType['sections']['hoursToBeat']>
-    ) => {
-      state.sections.hoursToBeat = action.payload
-    },
-    setAnticipatedBy: (
-      state,
-      action: PayloadAction<GameSliceType['sections']['anticipatedBy']>
-    ) => {
-      state.sections.anticipatedBy = action.payload
-    },
-    resetGames: (state, action) => initialState,
+    setWishlistedGames: setGames('WISHLISTED'),
+    setCartGames: setGames('IN_CART'),
+    setPurchasedGames: setGames('PURCHASED'),
+    setRemovedFromCartGames: setGames('REMOVED_FROM_CART'),
+    setRemovedFromWishlistGames: setGames('REMOVED_FROM_WISHLIST'),
   },
-  // "builder callback API", recommended for TypeScript users as the object notation wont carry type information.
   extraReducers: (builder) => {
     builder
-      .addCase(getGamesCustom('notes').pending, (state, action) => {
-        const { condition } = action.meta.arg
-        state.sections[condition as SpecialSectionKey] = {
-          loading: true,
-          items: [],
-        }
+      .addCase(getGamePage.pending, (state) => {
+        setAsyncGame(state.gamePage, { loading: true })
       })
-      .addCase(getGamesCustom('notes').fulfilled, (state, action) => {
-        const { condition, games } = action.payload
-        state.sections[condition as SpecialSectionKey] = { items: games }
+      .addCase(getGamePage.fulfilled, (state, action) => {
+        setAsyncGame(state.gamePage, { data: action.payload })
       })
-      .addCase(getGamesCustom('notes').rejected, (state, action) => {
-        const { condition } = action.meta.arg
-        state.sections[condition as SpecialSectionKey] = {
-          error: true,
-          items: [],
-        }
+      .addCase(getGamePage.rejected, (state) => {
+        setAsyncGame(state.gamePage, { error: true })
       })
     builder
-      .addCase(getGamesCustom('genre').pending, (state, action) => {
-        const { condition } = action.meta.arg
-        state.genres[condition as GameGenre] = { items: [], loading: true }
+      .addCase(getSpecialGames.pending, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.specialSections[property as SpecialSectionKey], {
+          loading: true,
+        })
       })
-      .addCase(getGamesCustom('genre').fulfilled, (state, action) => {
-        const { condition, games } = action.payload
-        state.genres[condition as GameGenre] = { items: games }
+      .addCase(getSpecialGames.fulfilled, (state, action) => {
+        const { property } = action.meta.arg
+        const { games } = action.payload
+        setAsyncGames(state.specialSections[property as SpecialSectionKey], {
+          data: games,
+        })
       })
-      .addCase(getGamesCustom('genre').rejected, (state, action) => {
-        const { condition } = action.meta.arg
-        state.genres[condition as GameGenre] = { items: [], error: true }
+      .addCase(getSpecialGames.rejected, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.specialSections[property as SpecialSectionKey], {
+          error: true,
+        })
+      })
+    builder
+      .addCase(getGamesGenre.pending, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.genres[property as GameGenre], {
+          loading: true,
+        })
+      })
+      .addCase(getGamesGenre.fulfilled, (state, action) => {
+        const { property } = action.meta.arg
+        const { games } = action.payload
+        setAsyncGames(state.genres[property as GameGenre], {
+          data: games,
+        })
+      })
+      .addCase(getGamesGenre.rejected, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.genres[property as GameGenre], {
+          error: true,
+        })
+      })
+    builder
+      .addCase(getGameSections.pending, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.sections[property as GameSection], {
+          loading: true,
+        })
+      })
+      .addCase(getGameSections.fulfilled, (state, action) => {
+        const { property } = action.meta.arg
+        const { games } = action.payload
+        setAsyncGames(state.sections[property as GameSection], {
+          data: games,
+        })
+      })
+      .addCase(getGameSections.rejected, (state, action) => {
+        const { property } = action.meta.arg
+        setAsyncGames(state.sections[property as GameSection], {
+          error: true,
+        })
       })
   },
 })
 
 export const {
-  //   setGames,
-  setHomeScreenGames,
-  setHighestEverDiscounts,
-  setActionGames,
-  setAdventureGames,
-  setPuzzleGames,
-  setNarrationGames,
-  setGamePage,
-  setGamePageSimilarGames,
-  setUnitsSold,
-  setAnticipatedBy,
-  setHoursToBeat,
+  setWishlistedGames,
+  setCartGames,
+  setPurchasedGames,
+  setRemovedFromCartGames,
 } = gamesSlice.actions
 
 export default gamesSlice.reducer

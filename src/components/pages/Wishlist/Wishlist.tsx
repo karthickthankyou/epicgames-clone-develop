@@ -1,10 +1,8 @@
 import SortDropdown from '../../atoms/SortDropdown'
 import GameCard06 from '../../molecules/GameCard06'
 import { useAppSelector } from '../../../store'
-import {
-  selectWishlistGameIds,
-  selectWishlistGames,
-} from '../../../store/userGames/userGameSlice'
+import { selectWishlistGameIds } from '../../../store/userGames/userGameSelectors'
+import { selectWishlistGames } from '../../../store/games/gameSelectors'
 import Pagination from '../../molecules/Pagination'
 import EmptyList from '../../molecules/EmptyList'
 
@@ -14,8 +12,8 @@ import Heading from '../../atoms/Heading'
 export interface IWishlistProps {}
 
 const Wishlist = () => {
-  const wishlist = useAppSelector(selectWishlistGames)
-  const wishlistIds = useAppSelector(selectWishlistGameIds)
+  const { data: wishlist } = useAppSelector(selectWishlistGames)
+  const { data: wishlistIds } = useAppSelector(selectWishlistGameIds)
 
   if (wishlist.length === 0)
     return (

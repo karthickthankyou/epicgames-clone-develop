@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { slug } from '../../../utils/index'
-import { Game } from '../../../types'
+import { AsyncGames, Game } from '../../../types'
 import GameCard01 from '../../molecules/GameCard01'
 
 export interface IGameCard01SectionProps {
   heading: string
   buttonText?: string
   buttonLinkTo?: string
-  games: Game[]
+  games: AsyncGames
   classes?: string
 }
 
@@ -18,7 +18,7 @@ const GameCard01Section = ({
   games,
   classes = '',
 }: IGameCard01SectionProps) => {
-  const gamesSix = games.slice(0, 6)
+  const gamesSix = games.data.slice(0, 6)
   return (
     <div className={`my-12 ${classes}`}>
       <div className='flex items-baseline justify-between'>

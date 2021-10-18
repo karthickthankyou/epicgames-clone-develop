@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { setSelectsortIndex } from 'src/store/browserGames'
 import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
 import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
-import { setSelectsortIndex } from '../../../store/browserGames/browseGamesSlice'
 import { selectSortIndex } from '../../../store/browserGames/browseGamesSelectors'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import { sortByOptions } from '../../../types/static'

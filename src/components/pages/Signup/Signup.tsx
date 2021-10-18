@@ -22,7 +22,11 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 )
 
 const Signup = () => {
-  const { uid, loading, error } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+    loading,
+    error,
+  } = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
 
   const {

@@ -1,11 +1,11 @@
-import { selectCartGames } from '../../../store/userGames/userGameSlice'
+import { selectCartGames } from '../../../store/games'
 import { useAppSelector } from '../../../store'
 import CartCard from '../../molecules/CartCard'
 
 export interface ICartProps {}
 
 const Cart = () => {
-  const cartItems = useAppSelector(selectCartGames)
+  const { data: cartItems } = useAppSelector(selectCartGames)
   return (
     <div className='space-y-2'>
       <div className='py-4 text-lg text-gray-400 uppercase'>Shopping cart</div>

@@ -12,14 +12,14 @@ import {
   // selectHoursToBeat,
   // selectUnitsSold,
   // selectHoursPlayed,
-} from '../../../store/games/gameSelectors'
+  selectWishlistGames,
+  selectCartGames,
+} from '../../../store/games'
 
 import {
   selectCartGameIds,
-  selectCartGames,
   selectWishlistGameIds,
-  selectWishlistGames,
-} from '../../../store/userGames/userGameSlice'
+} from '../../../store/userGames'
 import GameCard01Section from '../../organisms/GameCard01Section'
 import HomeShowcase from '../../organisms/HomeShowcase'
 // import MaskedShowcase from '../../organisms/MaskedShowcase'
@@ -29,20 +29,22 @@ export interface IHomeProps {}
 const Home = () => {
   const dispatch = useAppDispatch()
 
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
 
+  const cart = useAppSelector(selectCartGames)
   const wishlist = useAppSelector(selectWishlistGames)
   const highestDiscoutsEver = useAppSelector(selectHighestDiscounts)
   const wishlistIds = useAppSelector(selectWishlistGameIds)
-  const cart = useAppSelector(selectCartGames)
   const cartIds = useAppSelector(selectCartGameIds)
   const actionGames = useAppSelector(selectActionGames)
   const adventureGames = useAppSelector(selectAdventureGames)
   const puzzleGames = useAppSelector(selectPuzzleGames)
-  // const narrationGames = useAppSelector(selectNarrationGames)
-  const narrationGames = useAppSelector(
-    selectGamesWithWCP((state) => state.games.genres.Narration?.items || [])
-  )
+  const narrationGames = useAppSelector(selectNarrationGames)
+  // const narrationGames = useAppSelector(
+  //   selectGamesWithWCP((state) => state.games.genres.Narration)
+  // )
 
   // const unitsSold = useAppSelector(selectUnitsSold)
   // const hoursPlayed = useAppSelector(selectHoursPlayed)
@@ -94,25 +96,25 @@ const Home = () => {
         />
       )} */}
 
-      {wishlist.length > 0 && (
+      {wishlist.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your wishlist ( ${wishlist.length} )`}
           heading='From your wishlist'
           games={wishlist}
-          buttonText={`View all (${wishlistIds.length})`}
+          buttonText={`View all (${wishlistIds.data.length})`}
           buttonLinkTo='/wishlist'
         />
       )}
-      {cart.length > 0 && (
+      {cart.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='From your cart'
           games={cart}
-          buttonText={`Checkout now (${cartIds.length})`}
+          buttonText={`Checkout now (${cartIds.data.length})`}
           buttonLinkTo='/cart'
         />
       )}
-      {actionGames.length > 0 && (
+      {actionGames.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='Action Games'
@@ -121,7 +123,7 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
-      {adventureGames.length > 0 && (
+      {adventureGames.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='Adventure Games'
@@ -129,7 +131,7 @@ const Home = () => {
           buttonText='View more'
         />
       )}
-      {puzzleGames.length > 0 && (
+      {puzzleGames.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='Puzzle Games'
@@ -138,7 +140,7 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
-      {narrationGames.length > 0 && (
+      {narrationGames.data.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='Narration Games'

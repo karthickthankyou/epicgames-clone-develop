@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/browserGames/browseGamesThunks'
+import { updateUserGames } from 'src/store/userGames/userGameActions'
 import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/user'
 import { Game } from '../../../types'
@@ -12,7 +12,9 @@ export interface ICartCardProps {
 }
 
 const CartCard = ({ game, classes }: ICartCardProps) => {
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   const history = useHistory()
   return (
     <div

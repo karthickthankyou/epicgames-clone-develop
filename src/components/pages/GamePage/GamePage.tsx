@@ -24,7 +24,7 @@ export interface IGamePageProps {}
 const GamePage = () => {
   // We can use the `useParams` hook here to access
   // the dynamic pieces of the URL.
-  const game: Game | null = useAppSelector(selectGamePage)
+  const { data: game } = useAppSelector(selectGamePage)
   const longDesc = game?.longDesc || []
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)

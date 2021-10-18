@@ -1,4 +1,4 @@
-import { selectCartGames } from '../../../store/userGames/userGameSlice'
+import { selectCartGames } from '../../../store/games'
 import { useAppSelector } from '../../../store'
 import CartCard from '../../molecules/CartCard'
 import CustomHelmet from '../../organisms/CustomHelmet'
@@ -7,7 +7,7 @@ import MessageWrapper from '../../molecules/MessageWrapper'
 export interface ICartProps {}
 
 const Cart = () => {
-  const cartItems = useAppSelector(selectCartGames)
+  const { data: cartItems } = useAppSelector(selectCartGames)
   if (cartItems.length === 0)
     return (
       <MessageWrapper>

@@ -1,16 +1,15 @@
 import { createSelector } from '@reduxjs/toolkit'
-import { Game, UserGame } from 'src/types'
+import { AsyncGame, AsyncGames, AsyncUserGames } from 'src/types'
+import { defaultAsyncGame, defaultAsyncGames } from 'src/types/static'
 import { getStatus } from 'src/utils'
 import { RootState } from '..'
 import {
   selectCartGameIds,
   selectPurchasedGameIds,
   selectWishlistGameIds,
-} from '../userGames/userGameSlice'
+} from '../userGames'
 
-export const selectGameWithWCP = (
-  selector: (state: RootState) => Game | null
-) =>
+export const selectGameWithWCP = (selector: (state: RootState) => AsyncGame) =>
   createSelector(
     [
       selector,
@@ -20,20 +19,25 @@ export const selectGameWithWCP = (
     ],
     (
       input,
-      wishlistIds: UserGame[],
-      cartIds: UserGame[],
-      purchasedIds: UserGame[]
-    ): Game | null => {
-      if (!input) return null
+      wishlistIds: AsyncUserGames,
+      cartIds: AsyncUserGames,
+      purchasedIds: AsyncUserGames
+    ): AsyncGame => {
+      if (!input.data) return defaultAsyncGame
 
       return {
         ...input,
-        status: getStatus(input.id, wishlistIds, cartIds, purchasedIds),
+        data: {
+          ...input.data,
+          status: getStatus(input.data.id, wishlistIds, cartIds, purchasedIds),
+        },
       }
     }
   )
 
-export const selectGamesWithWCP = (selector: (state: RootState) => Game[]) =>
+export const selectGamesWithWCP = (
+  selector: (state: RootState) => AsyncGames | undefined
+) =>
   createSelector(
     [
       selector,
@@ -42,13 +46,16 @@ export const selectGamesWithWCP = (selector: (state: RootState) => Game[]) =>
       selectPurchasedGameIds,
     ],
     (
-      input: Game[],
-      wishlistIds: UserGame[],
-      cartIds: UserGame[],
-      purchasedIds: UserGame[]
-    ): Game[] =>
-      input.map((game) => ({
+      input: AsyncGames | undefined,
+      wishlistIds: AsyncUserGames,
+      cartIds: AsyncUserGames,
+      purchasedIds: AsyncUserGames
+    ): AsyncGames => {
+      if (!input) return defaultAsyncGames
+      const data = input.data.map((game) => ({
         ...game,
         status: getStatus(game.id, wishlistIds, cartIds, purchasedIds),
       }))
+      return { ...input, data }
+    }
   )

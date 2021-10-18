@@ -4,7 +4,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { getFunctions, httpsCallable } from 'firebase/functions'
 import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/user'
-import { selectCartGames } from '../../../store/userGames/userGameSlice'
+import { selectCartGames } from '../../../store/games'
 import CartCard from '../../molecules/CartCard'
 import { Game, StripeItem } from '../../../types'
 import { discountCalc, withCurrency } from '../../../utils/index'
@@ -20,7 +20,7 @@ const Cart = () => {
 
   //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
 
-  const gamesInCart = useAppSelector(selectCartGames)
+  const { data: gamesInCart } = useAppSelector(selectCartGames)
   useDocumentTitle(`(${gamesInCart.length}) Cart`)
   const createCheckoutList = (cartList: Game[]): StripeItem[] =>
     cartList.map((cartItem) => ({

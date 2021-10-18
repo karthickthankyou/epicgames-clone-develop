@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
-import { wishlistUserGames } from 'src/store/userGames/userGameSlice'
+import { updateUserGames } from 'src/store/userGames/userGameActions'
 import Price from '../../atoms/Price'
 import HoverIcon from '../../atoms/HoverIcon'
 import { selectUser } from '../../../store/user'
@@ -43,7 +43,9 @@ const GameCard01 = ({ game }: ICard01Props) => {
   const purchased = status === 'PURCHASED'
 
   const [hover, setHover] = useState(false)
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   const history = useHistory()
 
   const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
@@ -83,7 +85,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
               classes='mr-1'
               onClick={() =>
                 dispatch(
-                  wishlistUserGames({
+                  updateUserGames({
                     uid: uid || '',
                     gameId: id,
                     status: wishlisted ? 'REMOVED_FROM_WISHLIST' : 'WISHLISTED',
@@ -98,7 +100,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
               hintText={cartHintText}
               onClick={() =>
                 dispatch(
-                  wishlistUserGames({
+                  updateUserGames({
                     uid: uid || '',
                     gameId: id,
                     status: inCart ? 'REMOVED_FROM_CART' : 'IN_CART',

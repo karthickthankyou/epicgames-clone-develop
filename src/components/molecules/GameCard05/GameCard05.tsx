@@ -1,5 +1,5 @@
 import { Link, useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/browserGames/browseGamesThunks'
+import { updateUserGames } from 'src/store/userGames/userGameActions'
 import Badge from '../../atoms/Badge'
 import { Game } from '../../../types'
 import { useAppSelector } from '../../../store'
@@ -23,7 +23,9 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
     { label: 'Release Date', value: game.releaseDate || '' },
     { label: 'Platform', value: 'Windows' },
   ]
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   const history = useHistory()
 
   return (

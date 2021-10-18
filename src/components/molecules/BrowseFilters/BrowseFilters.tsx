@@ -1,13 +1,9 @@
 /* eslint-disable no-lone-blocks */
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
-// import debounce from 'lodash.debounce'
+import { GameGenre, GameSection, Platform } from 'src/types'
+import CategoryFilter from 'src/components/atoms/CategoryFilter'
+import RangeFilter from 'src/components/atoms/RangeFilter'
+import { useAppDispatch, useAppSelector } from 'src/store'
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import ReactSlider from 'react-slider'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
-import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
-import { ReactComponent as Check } from '../../../assets/svgs/check.svg'
 import {
   setFilterDiscountRange,
   setFilterPriceRange,
@@ -16,7 +12,7 @@ import {
   setFilterEvents,
   setFilterTags,
   setFiltersToInitial,
-} from '../../../store/browserGames/browseGamesSlice'
+} from 'src/store/browserGames'
 import {
   selectFilterTags,
   selectFilterEvents,
@@ -25,167 +21,20 @@ import {
   selectFilterDiscountRange,
   selectFilterRatingRange,
   selectBrowseFacets,
-} from '../../../store/browserGames/browseGamesSelectors'
-import { genres, platforms, events } from '../../../types/static'
+} from 'src/store/browserGames/browseGamesSelectors'
+import { genres, platforms, events } from 'src/types/static'
 
 export interface IBrowseFiltersProps {}
 
-const AccordionHeader = ({
-  name,
-  open,
-  setOpen,
-}: {
-  name: string
-  open: boolean
-  setOpen: Dispatch<SetStateAction<boolean>>
-}) => (
-  <button
-    type='button'
-    className={` flex justify-between w-full p-4 tracking-widest text-left text-gray-300 uppercase ${
-      open && 'bg-gray-800 '
-    }`}
-    onClick={() => setOpen((state) => !state)}
-  >
-    {name}
-    {open ? (
-      <ChevronUp className='w-4 h-4 ml-auto text-gray-200' />
-    ) : (
-      <ChevronDown className='w-4 h-4 ml-auto text-gray-500' />
-    )}
-  </button>
-)
-
-const RangeFilter = ({
-  name,
-  min,
-  max,
-  minDistance = 10,
-  steps = 1,
-  action,
-  displayState,
-}: {
-  name: string
-  min: number
-  max: number
-  minDistance?: number
-  steps?: number
-  action: ActionCreatorWithPayload<[number, number] | null, string>
-  displayState?: [number, number] | null
-}) => {
-  const [open, setOpen] = useState(false)
-  const dispatch = useAppDispatch()
-  // We need this local state to show onChange as we store onAfterChange in redux store
-  const [valuePair, setValuePair] = useState([min, max])
-
-  useEffect(() => {
-    const minValue = displayState ? displayState[0] : min
-    const maxValue = displayState ? displayState[1] : max
-    setValuePair([minValue, maxValue])
-  }, [displayState])
-
-  return (
-    <div>
-      <AccordionHeader name={name} open={open} setOpen={setOpen} />
-      {open && (
-        <div className='w-full px-4 py-4 mb-4 text-left text-gray-400'>
-          <div className='flex items-center justify-between mb-6'>
-            <div className='flex items-center justify-center w-12 h-6 text-gray-300 bg-gray-800 rounded shadow-inner '>
-              {valuePair[0]}
-            </div>
-            <div>-</div>
-            <div className='flex items-center justify-center w-12 h-6 text-gray-300 bg-gray-800 rounded shadow-inner '>
-              {valuePair[1]}{' '}
-            </div>
-          </div>
-          <ReactSlider
-            className='flex text-white bg-gray-700 rounded cursor-pointer'
-            thumbActiveClassName='z-10'
-            thumbClassName='bg-gray-400 text-xs hover:bg-white border-4 border-gray-900 transform shadow-lg -translate-y-1/2 rounded-full flex h-6 w-6 items-center justify-center '
-            trackClassName='bg-gray-500 h-0.5 rounded '
-            markClassName='bg-blue-600'
-            withTracks
-            defaultValue={[valuePair[0], valuePair[1]]}
-            value={[valuePair[0], valuePair[1]]}
-            ariaLabel={['Lower thumb', 'Upper thumb']}
-            min={min}
-            max={max}
-            step={steps}
-            ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
-            pearling
-            minDistance={minDistance}
-            onAfterChange={(value) => dispatch(action([value[0], value[1]]))}
-            onChange={(value) => {
-              setValuePair(value)
-            }}
-          />
-        </div>
-      )}
-    </div>
-  )
-}
-
-const CategoryFilter = ({
-  name,
-  options,
-  action,
-  displayState,
-  facet,
-}: {
-  name: string
-  options: string[]
-  action: ActionCreatorWithPayload<string, string>
-  displayState: string[]
-  facet: { [key: string]: number }
-}) => {
-  const [open, setOpen] = useState(false)
-  const dispatch = useAppDispatch()
-
-  return (
-    <div>
-      <AccordionHeader name={name} open={open} setOpen={setOpen} />
-      {open && (
-        <div>
-          {options.map((option) => (
-            <button
-              type='button'
-              key={option}
-              className={`flex relative items-center flex-grow w-full px-6 py-4 text-left ${
-                displayState.includes(option)
-                  ? 'text-gray-200'
-                  : 'text-gray-400'
-              }`}
-              onClick={() => dispatch(action(option))}
-            >
-              {option}
-              <div className='ml-auto'>
-                {/* eslint-disable-next-line no-nested-ternary */}
-                {facet
-                  ? Object.prototype.hasOwnProperty.call(facet, option)
-                    ? facet[+option]
-                    : 0
-                  : 0}
-              </div>
-              {displayState.includes(option) && (
-                <Check
-                  data-testid='itemSelected'
-                  className='absolute left-0 w-3 h-3 ml-2 text-gray-500'
-                />
-              )}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
-}
-
 const BrowseFilters = () => {
-  const filterEvents = useAppSelector(selectFilterEvents)
-  const filterTags = useAppSelector(selectFilterTags)
-  const filterPlatforms = useAppSelector(selectFilterPlatforms)
-  const filterPriceRange = useAppSelector(selectFilterPriceRange)
-  const filterDiscountRange = useAppSelector(selectFilterDiscountRange)
-  const filterRatingRange = useAppSelector(selectFilterRatingRange)
+  const { range: filterEvents } = useAppSelector(selectFilterEvents)
+  const { range: filterTags } = useAppSelector(selectFilterTags)
+  const { range: filterPlatforms } = useAppSelector(selectFilterPlatforms)
+  const { range: filterPriceRange } = useAppSelector(selectFilterPriceRange)
+  const { range: filterDiscountRange } = useAppSelector(
+    selectFilterDiscountRange
+  )
+  const { range: filterRatingRange } = useAppSelector(selectFilterRatingRange)
 
   const {
     tags: tagsFacet,
@@ -223,7 +72,7 @@ const BrowseFilters = () => {
         </button>
       </div>
       <div>
-        <CategoryFilter
+        <CategoryFilter<GameSection>
           action={setFilterEvents}
           displayState={filterEvents}
           name='events'
@@ -252,18 +101,18 @@ const BrowseFilters = () => {
           max={100}
           displayState={filterRatingRange}
         />
-        <CategoryFilter
+        <CategoryFilter<GameGenre>
           displayState={filterTags}
           action={setFilterTags}
           name='genre'
           options={genres}
           facet={tagsFacet}
         />
-        <CategoryFilter
+        <CategoryFilter<Platform>
           displayState={filterPlatforms}
           action={setFilterPlatforms}
           name='platform'
-          options={platforms}
+          options={platforms as Platform[]}
           facet={platformFacet}
         />
       </div>

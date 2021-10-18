@@ -1,18 +1,15 @@
 import { Link, useLocation } from 'react-router-dom'
 import { useAppSelector } from '../../../store'
-import {
-  selectCartGames,
-  selectPurchasedGames,
-  selectWishlistGameIds,
-} from '../../../store/userGames/userGameSlice'
+import { selectWishlistGameIds } from '../../../store/userGames'
+import { selectCartGames, selectPurchasedGames } from '../../../store/games'
 import { soloPaths } from '../../../utils/index'
 
 export interface INavbarDummyProps {}
 
 const NavbarDummy = () => {
-  const wishlistIds = useAppSelector(selectWishlistGameIds)
-  const cart = useAppSelector(selectCartGames)
-  const purchased = useAppSelector(selectPurchasedGames)
+  const { data: wishlistIds } = useAppSelector(selectWishlistGameIds)
+  const { data: cart } = useAppSelector(selectCartGames)
+  const { data: purchased } = useAppSelector(selectPurchasedGames)
   //   console.log(useLocation())
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>

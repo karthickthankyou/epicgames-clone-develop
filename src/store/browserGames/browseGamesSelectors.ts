@@ -13,19 +13,55 @@ export const selectBrowseGames = (state: RootState) => ({
 export const selectSortIndex = (state: RootState) =>
   state.browseGames.filter.selectedSortIndex
 
-export const selectFilterTags = (state: RootState) =>
-  state.browseGames.filter.tags
-export const selectFilterEvents = (state: RootState) =>
-  state.browseGames.filter.events
-export const selectFilterPlatforms = (state: RootState) =>
-  state.browseGames.filter.platforms
+export const selectFilterTags = (state: RootState) => {
+  const range = state.browseGames.filter.tags
+  return {
+    range,
+    str: range ? range.map((tag: string) => `tags:'${tag}'`).join(' AND ') : '',
+  }
+}
 
-export const selectFilterPriceRange = (state: RootState) =>
-  state.browseGames.filter.priceRange
-export const selectFilterRatingRange = (state: RootState) =>
-  state.browseGames.filter.ratingRange
-export const selectFilterDiscountRange = (state: RootState) =>
-  state.browseGames.filter.discountRange
+export const selectFilterEvents = (state: RootState) => {
+  const range = state.browseGames.filter.events || []
+  return {
+    range,
+    str: range ? range.map((event) => `notes:'${event}'`).join(' AND ') : '',
+  }
+}
+
+export const selectFilterPlatforms = (state: RootState) => {
+  const range = state.browseGames.filter.platforms || []
+  return {
+    range,
+    str: range
+      ? range.map((platform) => `platforms:'${platform}'`).join(' AND ')
+      : '',
+  }
+}
+
+export const selectFilterPriceRange = (state: RootState) => {
+  const range = state.browseGames.filter.priceRange || []
+  return {
+    range,
+    str: range ? `price:${range[0]} TO ${range[1]}` : '',
+  }
+}
+
+export const selectFilterDiscountRange = (state: RootState) => {
+  const range = state.browseGames.filter.discountRange || []
+  return {
+    range,
+    str: range ? `discount:${range[0]} TO ${range[1]}` : '',
+  }
+}
+export const selectFilterRatingRange = (state: RootState) => {
+  const range = state.browseGames.filter.ratingRange || []
+  return {
+    range,
+    str: range ? `rating:${range[0]} TO ${range[1]}` : '',
+  }
+}
+
 export const selectFilterSearchTerm = (state: RootState) =>
   state.browseGames.filter.searchTerm
 export const selectFilterPageNumber = (state: RootState) =>

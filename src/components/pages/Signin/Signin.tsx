@@ -22,7 +22,11 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 )
 
 const Signin = () => {
-  const { uid, loading, error } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+    loading,
+    error,
+  } = useAppSelector(selectUser)
   const dispatch = useAppDispatch()
 
   const {
@@ -81,7 +85,7 @@ const Signin = () => {
               <button
                 type='button'
                 onClick={() => setShowPassword((state) => !state)}
-                className='absolute bottom-0 right-0 p-3'
+                className='absolute bottom-0 right-0 p-3 text-gray-500'
               >
                 {showPassword ? 'hide' : 'show'}
               </button>

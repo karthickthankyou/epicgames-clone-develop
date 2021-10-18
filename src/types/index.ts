@@ -25,12 +25,21 @@ export type Game = {
   similarity?: string
 }
 
-export type AsyncGame = {
+export type User = {
+  uid: string | null
+  displayName: string | null
+}
+
+export type AsyncData<T> = {
+  data: T
+  fulfilled?: boolean
   loading?: boolean
   error?: boolean
-  item: Game | null
 }
-export type AsyncGames = { loading?: boolean; error?: boolean; items: Game[] }
+export type AsyncGames = AsyncData<Game[]>
+export type AsyncGame = AsyncData<Game | null>
+export type AsyncUserGames = AsyncData<UserGame[]>
+export type AsyncUser = AsyncData<User>
 
 export type SigninInfo = {
   email: string

@@ -6,7 +6,7 @@ import { CAROUSEL_DURATION } from '../../../utils/index'
 export interface IHomeShowcaseProps {}
 
 const HomeShowcase = () => {
-  const games = useAppSelector(selectHomeScreenGames)
+  const { data: games } = useAppSelector(selectHomeScreenGames)
   const [imageId, setImageId] = useCarouselTimer({
     duration: CAROUSEL_DURATION * 1000,
     itemsLength: games.length,

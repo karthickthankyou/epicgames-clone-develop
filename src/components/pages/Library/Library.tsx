@@ -5,7 +5,9 @@ import { useAppSelector } from 'src/store'
 export interface ILibraryProps {}
 
 const Library = () => {
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   if (!uid) return <Redirect to='/signin' />
   return <div>Library</div>
 }

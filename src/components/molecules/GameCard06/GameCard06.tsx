@@ -1,6 +1,6 @@
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/browserGames/browseGamesThunks'
+import { updateUserGames } from 'src/store/userGames/userGameActions'
 import { useAppSelector } from '../../../store'
 import { selectUser } from '../../../store/user'
 import Price, { IPriceProps } from '../../atoms/Price'
@@ -23,7 +23,9 @@ const GameCard06 = ({
   displayImage,
   date,
 }: IGameCard06Props) => {
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   const history = useHistory()
   return (
     <div className='relative grid grid-cols-3 p-2 bg-gray-800 rounded group'>

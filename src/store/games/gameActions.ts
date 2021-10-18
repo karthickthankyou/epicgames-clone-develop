@@ -4,62 +4,45 @@ import {
   getDocs,
   limit,
   where,
-  DocumentData,
   query,
   orderBy,
   getDoc,
   doc,
-  DocumentSnapshot,
 } from 'firebase/firestore'
 import { collections, db } from 'src/firebase'
-import { Game, GameGenre, SimilarGame, SpecialSectionKey } from 'src/types'
+import {
+  Game,
+  GameGenre,
+  GameSection,
+  SimilarGame,
+  SpecialSectionKey,
+} from 'src/types'
 import { getImageUrl, processGameIdsForSimilarItems } from 'src/utils'
 
 export const getGamesGenre = createAsyncThunk(
   'games/genre',
-  async ({ genre, docLimit = 6 }: { genre: GameGenre; docLimit?: number }) => {
+  async ({
+    property,
+    docLimit = 6,
+  }: {
+    property: GameGenre
+    docLimit?: number
+  }) => {
     const q = query(
       collection(db, collections.GAMES),
-      where('tags', 'array-contains', genre),
+      where('tags', 'array-contains', property),
       limit(docLimit)
     )
 
     const querySnapshot = await getDocs(q)
     const games: Game[] = []
     querySnapshot.forEach((document) => {
-      const { imageUrl, subImageUrl } = getImageUrl(document.id)
       const gameData = document.data() as Game
-      games.push({ ...gameData, imageUrl, subImageUrl })
+      games.push(gameData)
     })
-    return { genre, games }
+    return { games }
   }
 )
-export const getGamesCustom = (topic: 'notes' | 'genre') =>
-  createAsyncThunk(
-    `games/${topic}`,
-    async ({
-      condition,
-      docLimit = 6,
-    }: {
-      condition: GameGenre | SpecialSectionKey
-      docLimit?: number
-    }) => {
-      const q = query(
-        collection(db, collections.GAMES),
-        where(topic, 'array-contains', condition),
-        limit(docLimit)
-      )
-
-      const querySnapshot = await getDocs(q)
-      const games: Game[] = []
-      querySnapshot.forEach((document) => {
-        const { imageUrl, subImageUrl } = getImageUrl(document.id)
-        const gameData = document.data() as Game
-        games.push({ ...gameData, imageUrl, subImageUrl })
-      })
-      return { topic, condition, games }
-    }
-  )
 
 export const getHomeScreenGames = createAsyncThunk(
   'games/homeScreen',
@@ -100,25 +83,31 @@ export const getSpecialGames = createAsyncThunk(
   }
 )
 
+export const getGameSections = createAsyncThunk(
+  'games/sections',
+  async ({ property }: { property: GameSection }) => {
+    const q = query(
+      collection(db, collections.GAMES),
+      where('sections', 'array-contains', property),
+      limit(10)
+    )
+    const games: Game[] = []
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((document) => {
+      games.push(document.data() as Game)
+    })
+    return { property, games }
+  }
+)
+
 export const getGamePage = createAsyncThunk(
   'games/gamePage',
   async ({ gameId }: { gameId: Game['id'] | null }) => {
     if (!gameId) {
       return null
     }
-    const docSnaps: [
-      Promise<DocumentSnapshot<DocumentData>>,
-      Promise<DocumentSnapshot<DocumentData>>
-    ] = [
-      getDoc(doc(db, collections.GAMES, gameId)),
-      getDoc(doc(db, collections.GAME_DETAILS, gameId)),
-    ]
-
-    const documents = await Promise.all(docSnaps)
-    const { imageUrl, subImageUrl } = getImageUrl(gameId)
-
-    const [doc1, doc2] = documents
-    return { ...doc1.data(), ...doc2.data(), imageUrl, subImageUrl }
+    const document = await getDoc(doc(db, collections.GAMES, gameId))
+    return document.data() as Game
   }
 )
 

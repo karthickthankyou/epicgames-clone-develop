@@ -22,7 +22,12 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const ForgotPassword = () => {
   const dispatch = useAppDispatch()
-  const { uid, loading, error, fulfilled } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+    loading,
+    error,
+    fulfilled,
+  } = useAppSelector(selectUser)
   const location = useLocation<LocationState>()
   const { email } = location.state
   const {

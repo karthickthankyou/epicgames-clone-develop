@@ -12,17 +12,15 @@ import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
 import { useAppDispatch, useAppSelector } from '../../../store'
 import {
   selectCartGameIds,
-  // selectCartGames,
-  // selectPurchasedGames,
   selectWishlistGameIds,
-} from '../../../store/userGames/userGameSlice'
+} from '../../../store/userGames'
 import Image from '../../../assets/cyberpunk.png'
 
 import { soloPaths } from '../../../utils/index'
 import NavIcon from '../../atoms/NavIcon'
 import { selectUser, signout } from '../../../store/user'
 
-import { setSearchTerm } from '../../../store/browserGames/browseGamesSlice'
+import { setSearchTerm } from '../../../store/browserGames'
 
 export interface INavbarProps {}
 
@@ -30,7 +28,9 @@ const Navbar = () => {
   const wishlistIds = useAppSelector(selectWishlistGameIds)
   const dispatch = useAppDispatch()
   const cartIds = useAppSelector(selectCartGameIds)
-  const { uid } = useAppSelector(selectUser)
+  const {
+    data: { uid },
+  } = useAppSelector(selectUser)
   // const cart = useAppSelector(selectCartGames)
   // const purchased = useAppSelector(selectPurchasedGames)
 
@@ -111,14 +111,14 @@ const Navbar = () => {
             <>
               <NavIcon
                 IconComponent={CartIcon}
-                count={cartIds.length}
+                count={cartIds.data.length}
                 linkTo='/cart'
                 classes='h-full'
                 ariaLabel='nav-cart-page-link'
               />
               <NavIcon
                 IconComponent={HeartIcon}
-                count={wishlistIds.length}
+                count={wishlistIds.data.length}
                 linkTo='/wishlist'
                 classes='h-full'
                 ariaLabel='nav-wishlist-page-link'

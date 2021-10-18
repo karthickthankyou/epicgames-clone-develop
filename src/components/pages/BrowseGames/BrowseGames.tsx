@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { firstListener } from 'src/store/userGames/userGameSlice'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
@@ -19,14 +18,9 @@ export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
   useDocumentTitle('Browse Games')
-  const dispatch = useAppDispatch()
   const { currentPage, totalPages } = useAppSelector(selectBrowsePagination)
   const { loading, error } = useAppSelector(selectBrowseGames)
-  const games = useAppSelector(selectBrowseGamesWithWish)
-
-  useEffect(() => {
-    const detachAll = dispatch(firstListener())
-  }, [])
+  const { data: games } = useAppSelector(selectBrowseGamesWithWish)
 
   useEffect(() => {
     window.scrollTo({

@@ -1,26 +1,20 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/types/types-external'
+import { AsyncUser, User } from 'src/types'
 import {
   signup,
   signin,
   signout,
   forgotPassword,
   googleSignin,
-} from './userThunks'
-import { RootState } from '..'
+} from './userActions'
 
-type UserSliceType = {
-  uid: string | null
-  displayName: string | null
-  fulfilled: boolean
-  loading: boolean
-  error: boolean
-}
-
-const initialState: UserSliceType = {
-  uid: null,
-  displayName: null,
+const initialState: AsyncUser = {
+  data: {
+    uid: null,
+    displayName: null,
+  },
   fulfilled: true,
   loading: false,
   error: false,
@@ -38,33 +32,20 @@ const setStatus =
     loading?: boolean
     error?: boolean
   }) =>
-  (state: WritableDraft<UserSliceType>) => {
+  (state: WritableDraft<AsyncUser>) => {
     state.fulfilled = fulfilled
     state.loading = loading
     state.error = error
   }
 
-const setStatus2 =
-  ({
-    fulfilled = false,
-    loading = false,
-    error = false,
-  }: {
-    fulfilled?: boolean
-    loading?: boolean
-    error?: boolean
-  }) =>
-  (state: WritableDraft<UserSliceType>) => {
-    console.log(fulfilled, loading, error)
-  }
-
-const userSlice = createSlice({
+export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUser: (state, action) => {
-      state.uid = action.payload?.uid
-      state.displayName = action.payload?.displayName
+    setUser: (state, action: PayloadAction<User | null>) => {
+      state.data.uid = action.payload?.uid || null
+      state.data.displayName = action.payload?.displayName || null
+      state.fulfilled = true
       state.loading = false
       state.error = false
     },
@@ -111,7 +92,6 @@ const userSlice = createSlice({
     // ),
   },
 })
-
 export const { setUser } = userSlice.actions
-export const selectUser = (state: RootState) => state.user
+
 export default userSlice.reducer

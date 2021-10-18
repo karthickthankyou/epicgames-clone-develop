@@ -6,13 +6,7 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import {
-  // useUserGameIdsListener,
-  useUserGamesListener,
-
-  // useSpecialGames,
-  // useBrowseGames,
-} from 'src/store/userGames/userGameHooks'
+import { useUserGamesListener } from 'src/store/games'
 
 // import { useAppSelector } from './store/hooks'
 // import {
@@ -25,7 +19,7 @@ import { useAlgoliaSearchGames } from './store/browserGames/browseGamesHooks'
 import { useGetHomeGames } from './store/games/gameHooks'
 import { useAppDispatch, useAppSelector } from './store'
 import { useUserListener } from './store/user'
-import { firstListener } from './store/userGames/userGameSlice'
+
 // import News from './components/pages/News'
 // import Community from './components/pages/Community'
 // import CancelPayment from './components/pages/CancelPayment'
@@ -107,7 +101,7 @@ const Library = React.lazy(
 )
 
 function App() {
-  useUserListener()
+  // useUserListener()
   // useUserGameIdsListener()
 
   // useUserGamesListener()

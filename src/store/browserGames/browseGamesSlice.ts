@@ -1,18 +1,21 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Game, GameGenre, GameSection, Platform } from '../../types'
-import { addOrRemoveItem } from '../../utils/index'
+import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/internal'
+import { defaultAsyncGames } from 'src/types/static'
+import { AsyncGames, Game, GameGenre, GameSection, Platform } from '../../types'
+import { addOrRemoveItem, getImageUrl } from '../../utils/index'
+import { searchAlgolia } from './browseGamesActions'
 
-const initialState: {
-  games: Game[]
+type BrowseGamesType = {
+  games: AsyncGames
   loading: boolean
   error: boolean
   filter: {
     selectedSortIndex: number
     searchTerm: string
-    tags: string[]
-    events: string[]
-    platforms: string[]
+    tags: Game['tags']
+    events: Game['sections']
+    platforms: Game['platform']
     priceRange: [number, number] | null
     discountRange: [number, number] | null
     ratingRange: [number, number] | null
@@ -27,8 +30,10 @@ const initialState: {
       notes: { [key in GameSection]?: number }
     }
   }
-} = {
-  games: [],
+}
+
+const initialState: BrowseGamesType = {
+  games: defaultAsyncGames,
   loading: false,
   error: false,
   filter: {
@@ -53,23 +58,25 @@ const initialState: {
   },
 }
 
+const setStatus =
+  ({
+    loading = false,
+    error = false,
+  }: {
+    loading?: boolean
+    error?: boolean
+  }) =>
+  (state: WritableDraft<BrowseGamesType>) => {
+    state.loading = loading
+    state.error = error
+  }
+
 const browseGamesSlice = createSlice({
-  name: 'games/browse',
+  name: 'browseGames/browse',
   initialState,
   reducers: {
-    setBrowseLoading: (state, action) => {
-      state.loading = action.payload
-    },
     setBrowsePageNumber: (state, action) => {
       state.filter.pageNumber = action.payload
-    },
-    setBrowseError: (state, action) => {
-      state.error = action.payload
-    },
-    setBrowseGames: (state, action: { payload: Game[] }) => {
-      state.games = action.payload
-      state.loading = false
-      state.error = false
     },
     setSearchTerm: (state, action) => {
       state.filter.searchTerm = action.payload
@@ -93,22 +100,23 @@ const browseGamesSlice = createSlice({
       state.filter.ratingRange = action.payload
       state.filter.pageNumber = 0
     },
-    setSearchResponse: (state, action) => {
-      state.response.currentPage = action.payload.currentPage
-      state.response.totalPages = action.payload.totalPages
-      state.response.facets = action.payload.facets
-    },
-    setFilterEvents: (state, action: PayloadAction<string>) => {
-      state.filter.events = addOrRemoveItem(state.filter.events, action.payload)
+    setFilterEvents: (state, action: PayloadAction<GameSection>) => {
+      state.filter.events = addOrRemoveItem<GameSection>(
+        state.filter.events || [],
+        action.payload
+      )
       state.filter.pageNumber = 0
     },
-    setFilterTags: (state, action: PayloadAction<string>) => {
-      state.filter.tags = addOrRemoveItem(state.filter.tags, action.payload)
+    setFilterTags: (state, action: PayloadAction<GameGenre>) => {
+      state.filter.tags = addOrRemoveItem<GameGenre>(
+        state.filter.tags,
+        action.payload
+      )
       state.filter.pageNumber = 0
     },
-    setFilterPlatforms: (state, action: PayloadAction<string>) => {
-      state.filter.platforms = addOrRemoveItem(
-        state.filter.platforms,
+    setFilterPlatforms: (state, action: PayloadAction<Platform>) => {
+      state.filter.platforms = addOrRemoveItem<Platform>(
+        state.filter.platforms || [],
         action.payload
       )
       state.filter.pageNumber = 0
@@ -127,12 +135,35 @@ const browseGamesSlice = createSlice({
     },
     resetBrowseGames: () => initialState,
   },
+  extraReducers: (builder) => {
+    builder
+      .addCase(searchAlgolia.fulfilled, (state, action) => {
+        const { hits, page, nbPages, facets } = action.payload
+
+        const arr: Game[] = hits.map((hit) => {
+          const game: Game = hit
+          const { imageUrl, subImageUrl } = getImageUrl(game.id)
+          return {
+            ...game,
+            imageUrl,
+            subImageUrl,
+          }
+        })
+        state.games = { data: arr }
+        state.loading = false
+        state.error = false
+        state.response.currentPage = page
+        state.response.totalPages = nbPages
+        // facets type given by algolia is "Record<string, Record<string, number>> | undefined".
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        state.response.facets = facets as any
+      })
+      .addCase(searchAlgolia.pending, setStatus({ loading: true }))
+      .addCase(searchAlgolia.rejected, setStatus({ error: true }))
+  },
 })
 
 export const {
-  setBrowseGames,
-  setBrowseError,
-  setBrowseLoading,
   setSelectsortIndex,
   setSearchTerm,
   setFilterPriceRange,
@@ -142,7 +173,6 @@ export const {
   setFilterEvents,
   setFilterTags,
   setFiltersToInitial,
-  setSearchResponse,
   setBrowsePageNumber,
 } = browseGamesSlice.actions
 

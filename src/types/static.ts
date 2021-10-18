@@ -1,5 +1,13 @@
 import { OrderByDirection } from 'firebase/firestore'
-import { Game, SortKey } from '.'
+import {
+  AsyncData,
+  AsyncGame,
+  AsyncGames,
+  AsyncUserGames,
+  Game,
+  SortKey,
+  UserGame,
+} from '.'
 
 export const sortByOptions: {
   displayText: string
@@ -63,6 +71,49 @@ export const genres: Game['tags'] = [
   'CardGame',
   'Sports',
 ]
-export const platforms = ['Windows', 'Mac OS']
+export const platforms: Required<Game>['platform'] = ['Windows', 'Mac OS']
 
-export const events = ['RECENTLY_UPDATED', 'HIGHEST_DISCOUNT', 'TOP_SELLER']
+export const events: Required<Game>['sections'] = [
+  'RECENTLY_UPDATED',
+  'HIGHEST_DISCOUNT',
+  'TOP_SELLER',
+]
+
+// const defaultItemCreator = <AsyncData<T>>({data: T}) => ({
+//   data: T,
+//   fulfilled: false,
+//   loading: false,
+//   error: false,
+// })
+
+function defaultValueCreator<T>(arg: T): AsyncData<T> {
+  return {
+    data: arg,
+    fulfilled: false,
+    loading: false,
+    error: false,
+  }
+}
+
+export const defaultAsyncGame: AsyncGame = defaultValueCreator<Game | null>(
+  null
+)
+export const defaultAsyncGames: AsyncGames = defaultValueCreator<Game[]>([])
+export const defaultAsyncUserGames: AsyncUserGames = defaultValueCreator<
+  UserGame[]
+>([])
+
+// console.log(defaultAsyncGame, defaultAsyncGames, defaultAsyncUserGames)
+// export const defaultAsyncGame: AsyncGame = {
+//   data: null,
+//   fulfilled: false,
+//   loading: false,
+//   error: false,
+// }
+
+// export const defaultAsyncGames: AsyncGames = {
+//   data: [],
+//   fulfilled: false,
+//   loading: false,
+//   error: false,
+// }

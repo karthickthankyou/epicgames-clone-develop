@@ -5,7 +5,15 @@ import { ReactComponent as HeartOutlineIcon } from '../assets/svgs/heart.svg'
 import { ReactComponent as HeartSolidIcon } from '../assets/svgs/heartSolid.svg'
 import { ReactComponent as CartOutlineIcon } from '../assets/svgs/cartOutline.svg'
 import { ReactComponent as CartSolidIcon } from '../assets/svgs/cartSolid.svg'
-import { SimilarGame, UserGame, UserGameStatus } from '../types'
+import {
+  AsyncUserGames,
+  GameGenre,
+  GameSection,
+  Platform,
+  SimilarGame,
+  UserGame,
+  UserGameStatus,
+} from '../types'
 
 export const CAROUSEL_DURATION = 50
 export interface ICounter {
@@ -159,7 +167,10 @@ export const soloPaths = ['/signin', '/signup', '/forgotpassword']
 
 export const slug = (text: string) => slugify(text, { lower: true })
 
-export const addOrRemoveItem = (arr: string[], item: string) =>
+export const addOrRemoveItem = <T extends GameGenre | Platform | GameSection>(
+  arr: T[],
+  item: T
+) =>
   arr.includes(item)
     ? arr.filter((eventItem) => eventItem !== item)
     : [...arr, item]
@@ -168,13 +179,15 @@ export const readable = (str: string) => str.split('-').join(' ')
 
 export const getStatus = (
   gameId: string,
-  wishlistIds: UserGame[],
-  cartIds: UserGame[],
-  purchasedIds: UserGame[]
+  wishlistIds: AsyncUserGames,
+  cartIds: AsyncUserGames,
+  purchasedIds: AsyncUserGames
 ): UserGameStatus | undefined => {
-  if (wishlistIds.some((game) => game.gameId === gameId)) return 'WISHLISTED'
-  if (cartIds.some((game) => game.gameId === gameId)) return 'IN_CART'
-  if (purchasedIds.some((game) => game.gameId === gameId)) return 'PURCHASED'
+  if (wishlistIds.data.some((game) => game.gameId === gameId))
+    return 'WISHLISTED'
+  if (cartIds.data.some((game) => game.gameId === gameId)) return 'IN_CART'
+  if (purchasedIds.data.some((game) => game.gameId === gameId))
+    return 'PURCHASED'
   return undefined
 }
 

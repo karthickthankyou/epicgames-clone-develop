@@ -19,7 +19,6 @@ export const updateUserGames = createAsyncThunk(
     // eslint-disable-next-line consistent-return
   }) => {
     if (!uid) return history.push('/signin')
-
     const gameRef = doc(db, collections.USER_GAMES, `${uid}-${gameId}`)
 
     setDoc(gameRef, {
