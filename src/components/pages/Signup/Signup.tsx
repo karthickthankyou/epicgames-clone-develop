@@ -6,11 +6,13 @@ import { SignupInfo } from 'src/types'
 import { signup, selectUser, googleSignin } from 'src/store/user'
 import { useAppDispatch, useAppSelector } from 'src/store'
 
-import { ReactComponent as AppleIcon } from 'src/assets/svgs/apple.svg'
-import { ReactComponent as FacebookIcon } from 'src/assets/svgs/facebook.svg'
-import { ReactComponent as GoogleIcon } from 'src/assets/svgs/google.svg'
-import { ReactComponent as WarningIcon } from 'src/assets/svgs/warning.svg'
-import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'
+import {
+  AppleIcon,
+  FacebookIcon,
+  GoogleIcon,
+  WarningIcon,
+  LoaderIcon,
+} from 'src/assets'
 
 export interface ISignupProps {}
 
@@ -109,7 +111,7 @@ const Signup = () => {
               className='flex items-center text-sm text-white rounded bg-primary-600 btn btn-lg hover:bg-primary-700 focus:outline-none focus:shadow-outline'
               type='submit'
             >
-              Create {loading && <LoadingIcon className='ml-2 animate-spin' />}
+              Create {loading && <LoaderIcon className='ml-2 animate-spin' />}
             </button>
           </div>
         </form>

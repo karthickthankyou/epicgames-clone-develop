@@ -1,11 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
+import { renderWithProviders } from 'src/utils/testUtils'
 import { setFilterRatingRange } from 'src/store/browserGames'
-import RangeFilter from './RangeFilter'
+import RangeFilter from '.'
 
 describe('RangeFilter Component', () => {
   test('it should match the snapshot', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithProviders(
       <RangeFilter
         name='Karthick'
         min={0}

@@ -1,8 +1,7 @@
-import { selectCartGames } from '../../../store/games'
-import { useAppSelector } from '../../../store'
-import CartCard from '../../molecules/CartCard'
-import CustomHelmet from '../../organisms/CustomHelmet'
-import MessageWrapper from '../../molecules/MessageWrapper'
+import { selectCartGames } from 'src/store/games'
+import { useAppSelector } from 'src/store'
+import { CartCard, MessageWrapper } from 'src/components/molecules'
+import { CustomHelmet } from 'src/components/organisms'
 
 export interface ICartProps {}
 

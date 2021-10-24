@@ -1,9 +1,9 @@
 import { Link, useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/userGames/userGameActions'
-import Badge from '../../atoms/Badge'
-import { Game } from '../../../types'
-import { useAppSelector } from '../../../store'
-import { selectUser } from '../../../store/user'
+import { updateUserGames } from 'src/store/userGames'
+import { Game } from 'src/types'
+import { useAppSelector } from 'src/store'
+import { selectUser } from 'src/store/user'
+import { Badge } from 'src/components/atoms'
 
 export interface IGameCard05Props {
   game: Game

@@ -6,6 +6,8 @@ export {
   selectWishlistGameIds,
   selectRemovedFromCartGameIds,
   selectPurchasedGameIds,
+  createSelectorWCPGame,
+  createSelectorWCPGames,
 } from './userGameSelectors'
 
 /** Actions */

@@ -4,7 +4,7 @@ import { screen, waitFor } from '@testing-library/react'
 import App from './App'
 import { renderWithProviders } from './utils/testUtils'
 
-jest.mock('./firebase/hooks')
+// jest.mock('./firebase/hooks')
 
 describe('Components with redux', () => {
   test('wrapped with store', () => {

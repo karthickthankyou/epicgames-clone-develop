@@ -21,7 +21,7 @@ const RangeFilter = ({
   action: ActionCreatorWithPayload<[number, number] | null>
   minDistance?: number
   steps?: number
-  displayState?: [number, number] | []
+  displayState?: [number, number] | null
 }) => {
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { slug } from '../../../utils/index'
-import { AsyncGames, Game } from '../../../types'
-import GameCard01 from '../../molecules/GameCard01'
+import { slug } from 'src/utils/index'
+import { AsyncGames } from 'src/types'
+import { GameCard01 } from 'src/components/molecules'
 
 export interface IGameCard01SectionProps {
   heading: string

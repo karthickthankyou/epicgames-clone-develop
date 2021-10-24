@@ -1,7 +1,7 @@
 import { RootState } from '..'
-import { selectGamesWithWCP } from '../games/gameUtils'
+import { createSelectorWCPGames } from '../userGames'
 
-export const selectBrowseGamesWithWish = selectGamesWithWCP(
+export const selectBrowseGamesWithWish = createSelectorWCPGames(
   (state) => state.browseGames.games
 )
 
@@ -40,7 +40,7 @@ export const selectFilterPlatforms = (state: RootState) => {
 }
 
 export const selectFilterPriceRange = (state: RootState) => {
-  const range = state.browseGames.filter.priceRange || []
+  const range = state.browseGames.filter.priceRange || null
   return {
     range,
     str: range ? `price:${range[0]} TO ${range[1]}` : '',
@@ -48,14 +48,14 @@ export const selectFilterPriceRange = (state: RootState) => {
 }
 
 export const selectFilterDiscountRange = (state: RootState) => {
-  const range = state.browseGames.filter.discountRange || []
+  const range = state.browseGames.filter.discountRange || null
   return {
     range,
     str: range ? `discount:${range[0]} TO ${range[1]}` : '',
   }
 }
 export const selectFilterRatingRange = (state: RootState) => {
-  const range = state.browseGames.filter.ratingRange || []
+  const range = state.browseGames.filter.ratingRange || null
   return {
     range,
     str: range ? `rating:${range[0]} TO ${range[1]}` : '',

@@ -6,11 +6,13 @@ import { SigninInfo } from 'src/types'
 import { selectUser, signin, googleSignin } from 'src/store/user'
 import { useAppDispatch, useAppSelector } from 'src/store'
 
-import { ReactComponent as FacebookIcon } from 'src/assets/svgs/facebook.svg'
-import { ReactComponent as GoogleIcon } from 'src/assets/svgs/google.svg'
-import { ReactComponent as WarningIcon } from 'src/assets/svgs/warning.svg'
-import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'
-import { ReactComponent as AppleIcon } from 'src/assets/svgs/apple.svg'
+import {
+  FacebookIcon,
+  GoogleIcon,
+  WarningIcon,
+  LoaderIcon,
+  AppleIcon,
+} from 'src/assets'
 
 export interface ISigninProps {}
 
@@ -101,7 +103,7 @@ const Signin = () => {
               //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
             >
               Sign In
-              {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
+              {loading && <LoaderIcon className='inline ml-2 animate-spin' />}
             </button>
 
             <Link

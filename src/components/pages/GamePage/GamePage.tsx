@@ -4,20 +4,21 @@ import { Game } from 'src/types'
 import {
   selectGamePage,
   selectGamePageSimilarGames,
-} from '../../../store/games/gameSelectors'
+} from 'src/store/games/gameSelectors'
 
-import { useAppSelector } from '../../../store'
-import GamePageFeatureBox from '../../atoms/GamePageFeatureBox'
-import GameCard05 from '../../molecules/GameCard05'
-import Specifications from '../../molecules/Specifications'
-import ReviewSection from '../../organisms/ReviewSection'
-import GameCard01Section from '../../organisms/GameCard01Section'
-import { useDocumentTitle } from '../../../hooks/index'
+import { useAppSelector } from 'src/store'
+import { useDocumentTitle } from 'src/hooks/index'
 
-import { ReactComponent as FacebookIcon } from '../../../assets/svgs/facebook.svg'
-import { ReactComponent as TwitterIcon } from '../../../assets/svgs/twitter.svg'
-import { ReactComponent as DiscordIcon } from '../../../assets/svgs/discord.svg'
-import { ReactComponent as InstagramIcon } from '../../../assets/svgs/instagram.svg'
+import {
+  FacebookIcon,
+  TwitterIcon,
+  DiscordIcon,
+  InstagramIcon,
+} from 'src/assets'
+
+import { GamePageFeatureBox } from 'src/components/atoms'
+import { GameCard05, Specifications } from 'src/components/molecules'
+import { ReviewSection, GameCard01Section } from 'src/components/organisms'
 
 export interface IGamePageProps {}
 

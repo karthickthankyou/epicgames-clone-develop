@@ -3,24 +3,23 @@ import React, { useMemo, useState } from 'react'
 
 import debounce from 'lodash.debounce'
 
-import { ReactComponent as CloseIcon } from '../../../assets/svgs/x.svg'
-import { ReactComponent as SearchIcon } from '../../../assets/svgs/search.svg'
-import { ReactComponent as HeartIcon } from '../../../assets/svgs/heartSolid.svg'
-import { ReactComponent as CartIcon } from '../../../assets/svgs/cartSolid.svg'
-import { ReactComponent as MenuIcon } from '../../../assets/svgs/menu.svg'
-
-import { useAppDispatch, useAppSelector } from '../../../store'
 import {
-  selectCartGameIds,
-  selectWishlistGameIds,
-} from '../../../store/userGames'
-import Image from '../../../assets/cyberpunk.png'
+  CloseIcon,
+  SearchIcon,
+  HeartOutlineIcon,
+  CartSolidIcon,
+  MenuIcon,
+} from 'src/assets'
 
-import { soloPaths } from '../../../utils/index'
-import NavIcon from '../../atoms/NavIcon'
-import { selectUser, signout } from '../../../store/user'
+import { useAppDispatch, useAppSelector } from 'src/store'
+import { selectCartGameIds, selectWishlistGameIds } from 'src/store/userGames'
+import Image from 'src/assets/cyberpunk.png'
 
-import { setSearchTerm } from '../../../store/browserGames'
+import { soloPaths } from 'src/utils/index'
+import { selectUser, signout } from 'src/store/user'
+
+import { setSearchTerm } from 'src/store/browserGames'
+import { NavIcon } from 'src/components/atoms'
 
 export interface INavbarProps {}
 
@@ -110,14 +109,14 @@ const Navbar = () => {
           {uid ? (
             <>
               <NavIcon
-                IconComponent={CartIcon}
+                IconComponent={CartSolidIcon}
                 count={cartIds.data.length}
                 linkTo='/cart'
                 classes='h-full'
                 ariaLabel='nav-cart-page-link'
               />
               <NavIcon
-                IconComponent={HeartIcon}
+                IconComponent={HeartOutlineIcon}
                 count={wishlistIds.data.length}
                 linkTo='/wishlist'
                 classes='h-full'

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RangeFilter Component it should match the snapshot 1`] = `
+<DocumentFragment>
+  <div>
+    <button
+      class=" flex justify-between w-full p-4 tracking-widest text-left text-gray-300 uppercase false"
+      type="button"
+    >
+      Karthick
+      <svg
+        class="w-4 h-4 ml-auto text-gray-500"
+      >
+        chevron-down.svg
+      </svg>
+    </button>
+  </div>
+</DocumentFragment>
+`;

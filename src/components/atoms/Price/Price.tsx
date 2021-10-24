@@ -1,11 +1,5 @@
-import { Game } from '../../../types'
-import { discountCalc, withCurrency } from '../../../utils/index'
-
-export type IPriceProps = Pick<Game, 'price' | 'sections'> &
-  Partial<Pick<Game, 'discount'>> & {
-    classes?: string
-    comingSoon?: boolean
-  }
+import { Game, PriceType } from 'src/types'
+import { discountCalc, withCurrency } from 'src/utils/index'
 
 const Price = ({
   price,
@@ -13,7 +7,7 @@ const Price = ({
   sections,
   comingSoon,
   classes,
-}: IPriceProps) => {
+}: PriceType) => {
   const CreatePrice = () => {
     if (comingSoon) return <>Coming Soon</>
     if (price === 0) return <>Free</>

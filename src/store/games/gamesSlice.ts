@@ -10,7 +10,7 @@ import {
   GameSection,
   SpecialSectionKey,
   UserGameStatus,
-} from '../../types'
+} from 'src/types'
 import {
   getGamePage,
   getGameSections,

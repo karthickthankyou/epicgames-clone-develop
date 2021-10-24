@@ -166,6 +166,12 @@ export type StripeItem = {
   images: string[]
 }
 
+export type PriceType = Pick<Game, 'price' | 'sections'> &
+  Partial<Pick<Game, 'discount'>> & {
+    classes?: string
+    comingSoon?: boolean
+  }
+
 export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
 export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void
 

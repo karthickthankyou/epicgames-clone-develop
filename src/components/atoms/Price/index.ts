@@ -1,4 +1,3 @@
-import Price, { IPriceProps } from './Price'
+import Price from './Price'
 
-export type { IPriceProps }
 export default Price

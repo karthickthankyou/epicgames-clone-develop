@@ -1,6 +1,5 @@
 import { SetStateAction, Dispatch } from 'react'
-import { ReactComponent as ChevronDown } from 'src/assets/svgs/chevron-down.svg'
-import { ReactComponent as ChevronUp } from 'src/assets/svgs/chevron-up.svg'
+import { ChevronUpIcon, ChevronDownIcon } from 'src/assets'
 
 export interface IAccordionHeaderProps {}
 
@@ -22,9 +21,9 @@ const AccordionHeader = ({
   >
     {name}
     {open ? (
-      <ChevronUp className='w-4 h-4 ml-auto text-gray-200' />
+      <ChevronUpIcon className='w-4 h-4 ml-auto text-gray-200' />
     ) : (
-      <ChevronDown className='w-4 h-4 ml-auto text-gray-500' />
+      <ChevronDownIcon className='w-4 h-4 ml-auto text-gray-500' />
     )}
   </button>
 )

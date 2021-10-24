@@ -2,8 +2,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/internal'
 import { defaultAsyncGames } from 'src/types/static'
-import { AsyncGames, Game, GameGenre, GameSection, Platform } from '../../types'
-import { addOrRemoveItem, getImageUrl } from '../../utils/index'
+import { AsyncGames, Game, GameGenre, GameSection, Platform } from 'src/types'
+import { addOrRemoveItem, getImageUrl } from 'src/utils'
 import { searchAlgolia } from './browseGamesActions'
 
 type BrowseGamesType = {

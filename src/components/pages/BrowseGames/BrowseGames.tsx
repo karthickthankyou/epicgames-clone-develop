@@ -3,16 +3,17 @@ import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
   selectBrowsePagination,
-} from '../../../store/browserGames/browseGamesSelectors'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import SortDropdown from '../../atoms/SortDropdown'
-import GameCard01 from '../../molecules/GameCard01'
-import Pagination from '../../molecules/Pagination'
-import BrowseFilters from '../../molecules/BrowseFilters'
-import { useDocumentTitle } from '../../../hooks/index'
+} from 'src/store/browserGames/browseGamesSelectors'
+import { useAppDispatch, useAppSelector } from 'src/store'
+import { SortDropdown, Heading } from 'src/components/atoms'
+import {
+  GameCard01,
+  Pagination,
+  BrowseFilters,
+  SkeletonCard01,
+} from 'src/components/molecules'
 
-import SkeletonCard01 from '../../molecules/SkeletonCard01'
-import Heading from '../../atoms/Heading'
+import { useDocumentTitle } from 'src/hooks'
 
 export interface IBrowseGamesProps {}
 

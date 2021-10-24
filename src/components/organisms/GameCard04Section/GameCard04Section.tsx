@@ -1,5 +1,5 @@
-import GameCard04 from '../../molecules/GameCard04'
-import { ReactComponent as GiftIcon } from '../../../assets/svgs/gift.svg'
+import { GameCard04 } from 'src/components/molecules'
+import { GiftIcon } from 'src/assets'
 
 export interface IGameCard04SectionProps {}
 

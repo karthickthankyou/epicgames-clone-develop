@@ -1,12 +1,12 @@
 import React from 'react'
-import { render } from '@testing-library/react'
 import { genres } from 'src/types/static'
+import { renderWithProviders } from 'src/utils/testUtils'
 import { setFilterTags } from 'src/store/browserGames'
 import CategoryFilter from './CategoryFilter'
 
 describe('CategoryFilter Component', () => {
   test('it should match the snapshot', () => {
-    const { asFragment } = render(
+    const { asFragment } = renderWithProviders(
       <CategoryFilter
         name='Karthick'
         options={genres}

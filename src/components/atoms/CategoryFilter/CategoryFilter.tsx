@@ -1,7 +1,7 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { useState } from 'react'
 import { useAppDispatch } from 'src/store'
-import { ReactComponent as Check } from 'src/assets/svgs/check.svg'
+import { CheckIcon } from 'src/assets'
 import { GameGenre, Platform, GameSection } from 'src/types'
 import AccordionHeader from '../AccordionHeader'
 
@@ -50,7 +50,7 @@ const CategoryFilter = <T extends GameGenre | Platform | GameSection>({
                   : 0}
               </div>
               {displayState.includes(option) && (
-                <Check
+                <CheckIcon
                   data-testid='itemSelected'
                   className='absolute left-0 w-3 h-3 ml-2 text-gray-500'
                 />

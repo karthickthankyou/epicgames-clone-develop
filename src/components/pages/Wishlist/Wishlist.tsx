@@ -1,13 +1,10 @@
-import SortDropdown from '../../atoms/SortDropdown'
-import GameCard06 from '../../molecules/GameCard06'
-import { useAppSelector } from '../../../store'
-import { selectWishlistGameIds } from '../../../store/userGames/userGameSelectors'
-import { selectWishlistGames } from '../../../store/games/gameSelectors'
-import Pagination from '../../molecules/Pagination'
-import EmptyList from '../../molecules/EmptyList'
+import { useAppSelector } from 'src/store'
+import { selectWishlistGameIds } from 'src/store/userGames'
+import { selectWishlistGames } from 'src/store/games/gameSelectors'
+import { SortDropdown, Heading } from 'src/components/atoms'
+import { GameCard06, Pagination, EmptyList } from 'src/components/molecules'
 
-import CustomHelmet from '../../organisms/CustomHelmet'
-import Heading from '../../atoms/Heading'
+import { CustomHelmet } from 'src/components/organisms'
 
 export interface IWishlistProps {}
 

@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import gamesReducer from './games/gamesSlice'
+import gamesReducer from './games'
 import userReducer from './user'
-import userGamesReducer from './userGames/userGameSlice'
-import browseGamesReducer from './browserGames/browseGamesSlice'
+import userGamesReducer from './userGames'
+import browseGamesReducer from './browserGames'
 
 export const store = configureStore({
   reducer: {

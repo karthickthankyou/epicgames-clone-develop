@@ -1,6 +1,6 @@
-import Heading from '../../atoms/Heading'
-import MessageWrapper from '../../molecules/MessageWrapper'
-import CustomHelmet from '../../organisms/CustomHelmet'
+import { Heading } from 'src/components/atoms'
+import { MessageWrapper } from 'src/components/molecules'
+import { CustomHelmet } from 'src/components/organisms'
 
 export interface INewsProps {}
 

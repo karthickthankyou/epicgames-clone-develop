@@ -5,7 +5,7 @@ import {
   sortByPriceDescIndex,
   sortByRatingsIndex,
   sortByReleaseDateIndex,
-} from 'src/algolia'
+} from 'src/config/algolia'
 import { useAppDispatch, useAppSelector } from '..'
 import {
   selectFilterDiscountRange,

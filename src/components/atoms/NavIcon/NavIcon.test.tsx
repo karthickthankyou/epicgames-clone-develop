@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
 import { axeViolations, renderWithProviders } from 'src/utils/testUtils'
-import { ReactComponent as AppleIcon } from '../../../assets/svgs/apple.svg'
+import { AppleIcon } from 'src/assets'
 import NavIcon from '.'
 
 describe('Navicon component', () => {

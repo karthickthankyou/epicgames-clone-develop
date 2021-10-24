@@ -1,10 +1,10 @@
 import { useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/userGames/userGameActions'
-import { useAppSelector } from '../../../store'
-import { selectUser } from '../../../store/user'
-import { Game } from '../../../types'
-import Price from '../../atoms/Price'
-import { ReactComponent as Close } from '../../../assets/svgs/x.svg'
+import { updateUserGames } from 'src/store/userGames'
+import { useAppSelector } from 'src/store'
+import { selectUser } from 'src/store/user'
+import { Game } from 'src/types'
+import { CloseIcon } from 'src/assets'
+import { Price } from 'src/components/atoms'
 
 export interface ICartCardProps {
   game: Game
@@ -48,7 +48,7 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
           })
         }
       >
-        <Close className='w-8 h-8 p-1 text-gray-400' />
+        <CloseIcon className='w-8 h-8 p-1 text-gray-400' />
       </button>
     </div>
   )

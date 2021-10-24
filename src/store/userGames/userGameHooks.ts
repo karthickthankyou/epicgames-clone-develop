@@ -7,7 +7,7 @@ import {
   where,
 } from 'firebase/firestore'
 import { useEffect } from 'react'
-import { collections, db } from 'src/firebase'
+import { collections, db } from 'src/config/firebase'
 import { UserGame, UserGameStatus } from 'src/types'
 import { useAppDispatch, useAppSelector } from '..'
 import { selectUser } from '../user'

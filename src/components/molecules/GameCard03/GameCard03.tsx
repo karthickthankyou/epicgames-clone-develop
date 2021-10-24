@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import { getInCart, getWishlisted } from '../../../utils/index'
-import HoverIcon from '../../atoms/HoverIcon'
-import Price, { IPriceProps } from '../../atoms/Price'
+import { PriceType } from 'src/types'
+import { getInCart, getWishlisted } from 'src/utils/index'
+import { Price, HoverIcon } from 'src/components/atoms'
 
 export interface IGameCard03Props {
   gameTitle: string
-  priceInfo: IPriceProps
+  priceInfo: PriceType
   displayImage: string
   wishlisted?: boolean
   inCart?: boolean

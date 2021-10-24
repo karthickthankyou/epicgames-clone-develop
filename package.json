@@ -67,7 +67,8 @@
     "prepare": "husky install",
     "commit": "npx cz",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "depcheck": "npx depcheck"
+    "depcheck": "npx depcheck",
+    "build:deptree": "depcruise --exclude '(node_modules|__tests__|dist)'  | dot -T svg > static/img/dependencygraph.svg"
   },
   "eslintConfig": {
     "extends": [
@@ -119,6 +120,7 @@
     "commitizen": "^4.2.4",
     "cypress": "^8.3.0",
     "cz-conventional-changelog": "^3.3.0",
+    "dependency-cruiser": "^10.5.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",

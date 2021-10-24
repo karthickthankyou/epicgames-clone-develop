@@ -1,10 +1,11 @@
-import Price, { IPriceProps } from '../../atoms/Price'
+import { PriceType } from 'src/types'
+import { Price } from 'src/components/atoms'
 
 export interface IGameCard02Props {
   gameTitle: string
   description: string
   productionCompany: string
-  priceInfo: IPriceProps
+  priceInfo: PriceType
   displayImage: string
   inCart?: boolean
   wishlisted?: boolean

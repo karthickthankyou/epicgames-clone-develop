@@ -1,16 +1,17 @@
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
-import { updateUserGames } from 'src/store/userGames/userGameActions'
-import { useAppSelector } from '../../../store'
-import { selectUser } from '../../../store/user'
-import Price, { IPriceProps } from '../../atoms/Price'
+import { updateUserGames } from 'src/store/userGames'
+import { PriceType } from 'src/types'
+import { useAppSelector } from 'src/store'
+import { selectUser } from 'src/store/user'
+import { CloseIcon } from 'src/assets'
 
-import { ReactComponent as Close } from '../../../assets/svgs/x.svg'
+import { Price } from 'src/components/atoms'
 
 export interface IGameCard06Props {
   id: string
   title: string
-  price: IPriceProps
+  price: PriceType
   displayImage: string
   productionCompany: string
   date: string
@@ -79,7 +80,7 @@ const GameCard06 = ({
           })
         }
       >
-        <Close className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
+        <CloseIcon className='w-8 h-8 p-2 text-gray-500 hover:text-gray-100 ' />
       </button>
     </div>
   )

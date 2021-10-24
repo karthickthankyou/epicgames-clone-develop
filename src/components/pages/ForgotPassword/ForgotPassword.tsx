@@ -4,8 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'src/store'
 import { forgotPassword, selectUser } from 'src/store/user'
 
-import { ReactComponent as LoadingIcon } from 'src/assets/svgs/loader.svg'
-import { ReactComponent as WarningIcon } from 'src/assets/svgs/warning.svg'
+import { LoaderIcon, WarningIcon } from 'src/assets'
 
 export interface IForgotPasswordProps {}
 
@@ -66,7 +65,7 @@ const ForgotPassword = () => {
           //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
         >
           Send reset password link
-          {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
+          {loading && <LoaderIcon className='inline ml-2 animate-spin' />}
         </button>
         {error && <div className='my-2 text-xs'>Invalid email. Try again.</div>}
         {/* TODO: implement this success branch */}

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import MessageWrapper from '../../molecules/MessageWrapper'
+import { MessageWrapper } from 'src/components/molecules'
 
 export interface IUserPageProps {}
 

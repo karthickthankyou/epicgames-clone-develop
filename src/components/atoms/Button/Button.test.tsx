@@ -6,7 +6,9 @@ import Button from '.'
 describe('button component', () => {
   const buttonContent = 'Click me 1'
   test('should render with given text', async () => {
-    const { container } = render(<Button>{buttonContent}</Button>)
+    const { container } = render(
+      <Button clickAction={() => {}}>{buttonContent}</Button>
+    )
     screen.getByRole('button', {
       name: buttonContent,
     })
@@ -17,7 +19,11 @@ describe('button component', () => {
 describe('button component clicks', () => {
   let buttonContent = 'Click me 2'
   test('should be clickable', async () => {
-    render(<Button fullWidth>{buttonContent}</Button>)
+    render(
+      <Button fullWidth clickAction={() => {}}>
+        {buttonContent}
+      </Button>
+    )
     userEvent.click(
       screen.getByRole('button', {
         name: buttonContent,

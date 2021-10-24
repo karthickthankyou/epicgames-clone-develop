@@ -1,12 +1,14 @@
 import { useLocation } from 'react-router-dom'
-import { scrollToTop, soloPaths } from '../../../utils/index'
+import { scrollToTop, soloPaths } from 'src/utils/index'
 
-import { ReactComponent as Copyright } from '../../../assets/svgs/copyright.svg'
-import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
-import { ReactComponent as RegStar } from '../../../assets/svgs/regStar.svg'
-import { ReactComponent as Facebook } from '../../../assets/svgs/facebook.svg'
-import { ReactComponent as Twitter } from '../../../assets/svgs/twitter.svg'
-import { ReactComponent as Youtube } from '../../../assets/svgs/youtube.svg'
+import {
+  CopyrightIcon,
+  ChevronUpIcon,
+  RegStarIcon,
+  FacebookIcon,
+  TwitterIcon,
+  YoutubeIcon,
+} from 'src/assets'
 
 export interface IFooterProps {}
 
@@ -17,13 +19,13 @@ const Footer = () => {
     <footer className='text-sm'>
       <div className='flex my-4'>
         <button type='button' aria-label='facebook icon'>
-          <Facebook className='w-6 h-6 mr-3 hover:text-primary-500' />
+          <FacebookIcon className='w-6 h-6 mr-3 hover:text-primary-500' />
         </button>
         <button type='button' aria-label='twitter icon'>
-          <Twitter className='w-6 h-6 mr-3 hover:text-primary-300' />
+          <TwitterIcon className='w-6 h-6 mr-3 hover:text-primary-300' />
         </button>
         <button type='button' aria-label='youtube icon'>
-          <Youtube className='w-6 h-6 mr-3 hover:text-red-500' />
+          <YoutubeIcon className='w-6 h-6 mr-3 hover:text-red-500' />
         </button>
 
         <button
@@ -32,7 +34,7 @@ const Footer = () => {
           aria-label='go to top'
           onClick={scrollToTop}
         >
-          <ChevronUp className='w-8 h-8 p-1 border rounded-sm' />
+          <ChevronUpIcon className='w-8 h-8 p-1 border rounded-sm' />
         </button>
       </div>
       <div className='mt-4'>
@@ -112,10 +114,10 @@ const Footer = () => {
           </button>
           <div className='flex mt-2 sm:ml-auto'>
             <button type='button' aria-label='icon'>
-              <RegStar className='w-6 h-6 p-1 mr-2' />
+              <RegStarIcon className='w-6 h-6 p-1 mr-2' />
             </button>
             <button type='button' aria-label='icon'>
-              <Copyright className='w-6 h-6 p-1 mr-2' />
+              <CopyrightIcon className='w-6 h-6 p-1 mr-2' />
             </button>
           </div>
         </div>

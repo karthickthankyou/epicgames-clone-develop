@@ -1,17 +1,21 @@
 /* eslint-disable no-plusplus */
 import slugify from 'slugify'
 
-import { ReactComponent as HeartOutlineIcon } from '../assets/svgs/heart.svg'
-import { ReactComponent as HeartSolidIcon } from '../assets/svgs/heartSolid.svg'
-import { ReactComponent as CartOutlineIcon } from '../assets/svgs/cartOutline.svg'
-import { ReactComponent as CartSolidIcon } from '../assets/svgs/cartSolid.svg'
 import {
+  HeartOutlineIcon,
+  HeartSolidIcon,
+  CartOutlineIcon,
+  CartSolidIcon,
+} from '../assets'
+
+import {
+  AsyncGame,
+  AsyncGames,
   AsyncUserGames,
   GameGenre,
   GameSection,
   Platform,
   SimilarGame,
-  UserGame,
   UserGameStatus,
 } from '../types'
 
@@ -194,3 +198,11 @@ export const getStatus = (
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const hasOwnProperty = (object: any, property: any) =>
   Object.prototype.hasOwnProperty.call(object, property)
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isOfType = <T>(value: any): value is T => true
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isItAsyncGames = (obj: any): obj is AsyncGames => true
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const isItAsyncGame = (obj: any): obj is AsyncGame => true

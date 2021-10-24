@@ -1,49 +1,50 @@
 import { AsyncGames, Game } from 'src/types'
-import { defaultAsyncGames } from 'src/types/static'
 import { RootState } from '..'
-import { selectGamesWithWCP, selectGameWithWCP } from './gameUtils'
+import { createSelectorWCPGames, createSelectorWCPGame } from '../userGames'
 
-export const selectActionGames = selectGamesWithWCP(
+export const selectActionGames = createSelectorWCPGames(
   (state) => state.games.genres.Action
 )
 
-export const selectAdventureGames = selectGamesWithWCP(
+export const selectAdventureGames = createSelectorWCPGames(
   (state) => state.games.genres.Adventure
 )
 
-export const selectPuzzleGames = selectGamesWithWCP(
+export const selectPuzzleGames = createSelectorWCPGames(
   (state) => state.games.genres.Puzzle
 )
 
-export const selectNarrationGames = selectGamesWithWCP(
+export const selectNarrationGames = createSelectorWCPGames(
   (state) => state.games.genres.Narration
 )
 
-export const selectUnitsSold = selectGamesWithWCP(
+export const selectUnitsSold = createSelectorWCPGames(
   (state) => state.games.specialSections.unitsSold
 )
 
-export const selectHoursToBeat = selectGamesWithWCP(
+export const selectHoursToBeat = createSelectorWCPGames(
   (state) => state.games.specialSections.hoursToBeat
 )
 
-export const selectAnticipatedBy = selectGamesWithWCP(
+export const selectAnticipatedBy = createSelectorWCPGames(
   (state) => state.games.specialSections.anticipatedBy
 )
 
-export const selectGamePageSimilarGames = selectGamesWithWCP(
+export const selectGamePageSimilarGames = createSelectorWCPGames(
   (state) => state.games.similarGames
 )
 
-export const selectHomeScreenGames = selectGamesWithWCP(
+export const selectHomeScreenGames = createSelectorWCPGames(
   (state) => state.games.sections.HOMESCREEN_CAROUSEL
 )
 
-export const selectHighestDiscounts = selectGamesWithWCP(
+export const selectHighestDiscounts = createSelectorWCPGames(
   (state) => state.games.sections.HIGHEST_DISCOUNT
 )
 
-export const selectGamePage = selectGameWithWCP((state) => state.games.gamePage)
+export const selectGamePage = createSelectorWCPGame(
+  (state) => state.games.gamePage
+)
 
 export const selectCartGames = (state: RootState) => {
   const inCart = state.games.userGames.IN_CART

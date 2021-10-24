@@ -8,15 +8,14 @@ import {
 
 import { useUserGamesListener } from 'src/store/games'
 
-// import { useAppSelector } from './store/hooks'
 // import {
 //   selectCartGames,
 //   selectPurchasedGames,
 //   selectWishlistGameIds,
 // } from './store/userGameSlice'
 
-import { useAlgoliaSearchGames } from './store/browserGames/browseGamesHooks'
-import { useGetHomeGames } from './store/games/gameHooks'
+import { useAlgoliaSearchGames } from './store/browserGames'
+import { useGetHomeGames } from './store/games'
 import { useAppDispatch, useAppSelector } from './store'
 import { useUserListener } from './store/user'
 
@@ -33,15 +32,14 @@ import { useUserListener } from './store/user'
 // import Signin from './components/pages/Signin'
 // import Wishlist from './components/pages/Wishlist'
 // import NotFound from './components/pages/NotFound'
-// import Navbar from './components/organisms/Navbar'
-// import Footer from './components/organisms/Footer'
+// import {Navbar,Footer} from './components/organisms'
 
 // Lazy loaded
 const Navbar = React.lazy(
-  () => import(/* webpackChunkName: "Navbar" */ './components/organisms/Navbar')
+  () => import(/* webpackChunkName: "Navbar" */ './components/templates/Navbar')
 )
 const Footer = React.lazy(
-  () => import(/* webpackChunkName: "Footer" */ './components/organisms/Footer')
+  () => import(/* webpackChunkName: "Footer" */ './components/templates/Footer')
 )
 const News = React.lazy(
   () => import(/* webpackChunkName: "News" */ './components/pages/News')

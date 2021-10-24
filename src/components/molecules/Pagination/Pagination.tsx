@@ -1,6 +1,6 @@
-import { setBrowsePageNumber } from '../../../store/browserGames'
-import { useAppDispatch } from '../../../store'
-import { getPaginationNumbers } from '../../../utils/index'
+import { setBrowsePageNumber } from 'src/store/browserGames'
+import { useAppDispatch } from 'src/store'
+import { getPaginationNumbers } from 'src/utils/index'
 
 export interface IPaginationProps {
   current: number

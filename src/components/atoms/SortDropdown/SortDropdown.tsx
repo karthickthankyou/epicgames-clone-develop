@@ -1,10 +1,9 @@
 import { useState } from 'react'
+import { ChevronUpIcon, ChevronDownIcon } from 'src/assets'
+import { selectSortIndex } from 'src/store/browserGames/browseGamesSelectors'
+import { useAppDispatch, useAppSelector } from 'src/store'
 import { setSelectsortIndex } from 'src/store/browserGames'
-import { ReactComponent as ChevronDown } from '../../../assets/svgs/chevron-down.svg'
-import { ReactComponent as ChevronUp } from '../../../assets/svgs/chevron-up.svg'
-import { selectSortIndex } from '../../../store/browserGames/browseGamesSelectors'
-import { useAppDispatch, useAppSelector } from '../../../store'
-import { sortByOptions } from '../../../types/static'
+import { sortByOptions } from 'src/types/static'
 
 export interface ISortDropdownProps {}
 
@@ -26,12 +25,12 @@ const SortDropdown = () => {
         <span className='mr-2 text-gray-300'>Sortby: </span>
         {sortByOptions[+selectedIndex].displayText}
         {open ? (
-          <ChevronUp
+          <ChevronUpIcon
             className='inline w-4 h-4 ml-2 text-gray-300'
             aria-label='sortIconChevUp'
           />
         ) : (
-          <ChevronDown
+          <ChevronDownIcon
             className='inline w-4 h-4 ml-2 text-gray-300'
             aria-label='sortIconChevDown'
           />

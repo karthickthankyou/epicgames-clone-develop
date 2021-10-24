@@ -1,8 +1,10 @@
 /* eslint-disable no-lone-blocks */
 import { GameGenre, GameSection, Platform } from 'src/types'
-import CategoryFilter from 'src/components/atoms/CategoryFilter'
-import RangeFilter from 'src/components/atoms/RangeFilter'
+
 import { useAppDispatch, useAppSelector } from 'src/store'
+
+import { genres, platforms, events } from 'src/types/static'
+import { RangeFilter, CategoryFilter } from 'src/components/atoms'
 
 import {
   setFilterDiscountRange,
@@ -12,8 +14,6 @@ import {
   setFilterEvents,
   setFilterTags,
   setFiltersToInitial,
-} from 'src/store/browserGames'
-import {
   selectFilterTags,
   selectFilterEvents,
   selectFilterPlatforms,
@@ -21,8 +21,7 @@ import {
   selectFilterDiscountRange,
   selectFilterRatingRange,
   selectBrowseFacets,
-} from 'src/store/browserGames/browseGamesSelectors'
-import { genres, platforms, events } from 'src/types/static'
+} from 'src/store/browserGames'
 
 export interface IBrowseFiltersProps {}
 

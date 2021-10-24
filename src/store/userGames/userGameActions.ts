@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { doc, setDoc } from 'firebase/firestore'
 import { RouteComponentProps } from 'react-router-dom'
-import { collections, db } from 'src/firebase'
+import { collections, db } from 'src/config/firebase'
 import { UserGameStatus } from 'src/types'
 
 export const updateUserGames = createAsyncThunk(

@@ -9,7 +9,7 @@ import {
   getDoc,
   doc,
 } from 'firebase/firestore'
-import { collections, db } from 'src/firebase'
+import { collections, db } from 'src/config/firebase'
 import {
   Game,
   GameGenre,

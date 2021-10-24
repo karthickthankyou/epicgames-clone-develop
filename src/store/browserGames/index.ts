@@ -1,18 +1,5 @@
 import gameReducer from './browseGamesSlice'
 
-export {
-  setSelectsortIndex,
-  setSearchTerm,
-  setFilterPriceRange,
-  setFilterDiscountRange,
-  setFilterRatingRange,
-  setFilterPlatforms,
-  setFilterEvents,
-  setFilterTags,
-  setFiltersToInitial,
-  setBrowsePageNumber,
-} from './browseGamesSlice'
-
 /** Selectors */
 export {
   selectBrowseGamesWithWish,
@@ -32,17 +19,21 @@ export {
 
 /** Actions */
 export {
-  searchAlgolia, // setSearchTerm,
-} from // setSelectsortIndex,
-// setFilterPriceRange,
-// setFilterDiscountRange,
-// setFilterRatingRange,
-// setFilterPlatforms,
-// setFilterEvents,
-// setFilterTags,
-// setFiltersToInitial,
-// setBrowsePageNumber,
-'./browseGamesActions'
+  searchAlgolia, // setSearchTerm, // setSelectsortIndex,
+} from './browseGamesActions'
+
+export {
+  setSelectsortIndex,
+  setSearchTerm,
+  setFilterPriceRange,
+  setFilterDiscountRange,
+  setFilterRatingRange,
+  setFilterPlatforms,
+  setFilterEvents,
+  setFilterTags,
+  setFiltersToInitial,
+  setBrowsePageNumber,
+} from './browseGamesSlice'
 
 /** Hooks */
 export { useAlgoliaSearchGames } from './browseGamesHooks'

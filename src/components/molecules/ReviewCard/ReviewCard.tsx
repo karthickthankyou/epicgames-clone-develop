@@ -1,6 +1,5 @@
-import { getScoreColor } from '../../../utils/index'
-import { ReactComponent as Thumbsup } from '../../../assets/svgs/thumbsup.svg'
-import { ReactComponent as Thumbsdown } from '../../../assets/svgs/thumbsdown.svg'
+import { getScoreColor } from 'src/utils/index'
+import { ThumbsupIcon, ThumbsdownIcon } from 'src/assets'
 
 export interface IReviewCardProps {
   reviewScore: number
@@ -33,13 +32,13 @@ const ReviewCard = ({ reviewScore = 45 }: IReviewCardProps) => (
           type='button'
           className='inline-flex items-center justify-center w-6 h-6 mr-2 bg-white rounded-full bg-opacity-5 hover:bg-opacity-20'
         >
-          <Thumbsup />
+          <ThumbsupIcon />
         </button>
         <button
           type='button'
           className='inline-flex items-center justify-center w-6 h-6 bg-white rounded-full bg-opacity-5 hover:bg-opacity-20'
         >
-          <Thumbsdown />
+          <ThumbsdownIcon />
         </button>
       </div>
     </div>

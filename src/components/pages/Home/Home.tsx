@@ -1,7 +1,6 @@
-import { selectGamesWithWCP } from 'src/store/games/gameUtils'
 import { selectUser, signout } from 'src/store/user'
 import { useAppSelector, useAppDispatch } from 'src/store'
-import { useDocumentTitle } from '../../../hooks/index'
+import { useDocumentTitle } from 'src/hooks'
 import {
   selectActionGames,
   selectAdventureGames,
@@ -14,15 +13,14 @@ import {
   // selectHoursPlayed,
   selectWishlistGames,
   selectCartGames,
-} from '../../../store/games'
+} from 'src/store/games'
 
+import { selectCartGameIds, selectWishlistGameIds } from 'src/store/userGames'
 import {
-  selectCartGameIds,
-  selectWishlistGameIds,
-} from '../../../store/userGames'
-import GameCard01Section from '../../organisms/GameCard01Section'
-import HomeShowcase from '../../organisms/HomeShowcase'
-// import MaskedShowcase from '../../organisms/MaskedShowcase'
+  GameCard01Section,
+  HomeShowcase,
+  MaskedShowcase,
+} from 'src/components/organisms'
 
 export interface IHomeProps {}
 

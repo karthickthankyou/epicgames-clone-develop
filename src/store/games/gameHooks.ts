@@ -1,7 +1,7 @@
 import { ActionCreatorWithPayload } from '@reduxjs/toolkit'
 import { collection, limit, onSnapshot, query, where } from 'firebase/firestore'
 import { useEffect } from 'react'
-import { collections, db } from 'src/firebase'
+import { collections, db } from 'src/config/firebase'
 import { AsyncGames, AsyncUserGames, Game, UserGame } from 'src/types'
 import { getImageUrl } from 'src/utils'
 import { getGamesGenre } from '.'
