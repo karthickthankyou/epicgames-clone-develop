@@ -6,6 +6,7 @@ import {
   sortByRatingsIndex,
   sortByReleaseDateIndex,
 } from 'src/config/algolia'
+
 import { useAppDispatch, useAppSelector } from '..'
 import {
   selectFilterDiscountRange,

@@ -1,4 +1,4 @@
-import { AsyncGames, Game } from 'src/types'
+import { AsyncGames, Game } from '../../types'
 import { RootState } from '..'
 import { createSelectorWCPGames, createSelectorWCPGame } from '../userGames'
 

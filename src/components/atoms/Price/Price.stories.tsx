@@ -10,8 +10,16 @@ export default {
 const Template: ComponentStory<typeof Price> = ({
   price,
   discount,
+  sections,
   comingSoon,
-}) => <Price price={price} discount={discount} comingSoon={comingSoon} />
+}) => (
+  <Price
+    price={price}
+    discount={discount}
+    sections={sections}
+    comingSoon={comingSoon}
+  />
+)
 
 export const Primary = Template.bind({})
 Primary.args = {

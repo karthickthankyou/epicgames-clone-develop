@@ -1,8 +1,8 @@
 /* eslint-disable no-redeclare */
 import { createSelector } from '@reduxjs/toolkit'
-import { AsyncGame, AsyncGames, AsyncUserGames } from 'src/types'
-import { defaultAsyncGame, defaultAsyncGames } from 'src/types/static'
-import { getStatus } from 'src/utils'
+import { defaultAsyncGame, defaultAsyncGames } from '../../types/static'
+import { getStatus } from '../../utils'
+import { AsyncGame, AsyncGames, AsyncUserGames } from '../../types'
 import { RootState } from '..'
 
 // Selectors

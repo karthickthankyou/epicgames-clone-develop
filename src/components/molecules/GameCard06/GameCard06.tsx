@@ -1,7 +1,7 @@
 import dateFormat from 'dateformat'
 import { useHistory } from 'react-router-dom'
 import { updateUserGames } from 'src/store/userGames'
-import { PriceType } from 'src/types'
+import { Game } from 'src/types'
 import { useAppSelector } from 'src/store'
 import { selectUser } from 'src/store/user'
 import { CloseIcon } from 'src/assets'
@@ -9,29 +9,19 @@ import { CloseIcon } from 'src/assets'
 import { Price } from 'src/components/atoms'
 
 export interface IGameCard06Props {
-  id: string
-  title: string
-  price: PriceType
-  displayImage: string
-  productionCompany: string
-  date: string
+  game: Game
 }
 
-const GameCard06 = ({
-  id,
-  title,
-  price: { price, discount = 0 },
-  displayImage,
-  date,
-}: IGameCard06Props) => {
+const GameCard06 = ({ game }: IGameCard06Props) => {
   const {
     data: { uid },
   } = useAppSelector(selectUser)
   const history = useHistory()
+  const { imageUrl, title, price, discount, id, sections, releaseDate } = game
   return (
     <div className='relative grid grid-cols-3 p-2 bg-gray-800 rounded group'>
       <img
-        src={displayImage}
+        src={imageUrl}
         className='object-cover w-full h-full col-span-1 rounded-sm cursor-pointer filter group-hover:brightness-125'
         alt=''
       />
@@ -43,11 +33,11 @@ const GameCard06 = ({
               <span className='max-w-sm line-clamp-2'>{review}</span>
             </div> */}
         <div className='mt-3'>
-          <Price price={price} discount={discount} />
+          <Price sections={sections} price={price} discount={discount} />
         </div>
-        {discount > 0 && (
+        {discount && discount > 0 && (
           <div className='mt-2 text-xs text-gray-400'>
-            Sale ends - {dateFormat(date, 'mmm d "at" h:MM TT')}
+            Sale ends - {dateFormat(releaseDate, 'mmm d "at" h:MM TT')}
           </div>
         )}
 

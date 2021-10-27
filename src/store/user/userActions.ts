@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { SigninInfo, SignupInfo } from 'src/types'
+
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -9,8 +9,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth'
-import { auth } from 'src/config/firebase'
 import { getFunctions, httpsCallable } from 'firebase/functions'
+import { auth } from 'src/config/firebase'
+import { SigninInfo, SignupInfo } from '../../types'
 
 // Wrap the functions with createAsyncThunk to include them within the redux flow. We dont have to wrap these functions with try catch as we handle with in extra reducers.
 

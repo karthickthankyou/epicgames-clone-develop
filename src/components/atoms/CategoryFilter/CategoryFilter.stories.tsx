@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { GameGenre } from 'src/types'
 import { genres } from 'src/types/static'
-import { setFilterTags } from '../../../store/browserGames'
+import { setFilterTags } from '../../../store/browseGames'
 import CategoryFilter from './CategoryFilter'
 
 export default {

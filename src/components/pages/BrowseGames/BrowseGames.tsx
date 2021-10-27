@@ -3,8 +3,8 @@ import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
   selectBrowsePagination,
-} from 'src/store/browserGames/browseGamesSelectors'
-import { useAppDispatch, useAppSelector } from 'src/store'
+} from 'src/store/browseGames'
+import { useAppSelector } from 'src/store'
 import { SortDropdown, Heading } from 'src/components/atoms'
 import {
   GameCard01,

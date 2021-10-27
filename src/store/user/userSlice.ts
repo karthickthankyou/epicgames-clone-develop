@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/types/types-external'
-import { AsyncUser, User } from 'src/types'
+import { AsyncUser, User } from '../../types'
 import {
   signup,
   signin,

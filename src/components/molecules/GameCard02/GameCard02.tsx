@@ -1,21 +1,13 @@
-import { PriceType } from 'src/types'
+import { Game } from 'src/types'
 import { Price } from 'src/components/atoms'
 
 export interface IGameCard02Props {
-  gameTitle: string
-  description: string
-  productionCompany: string
-  priceInfo: PriceType
-  displayImage: string
-  inCart?: boolean
-  wishlisted?: boolean
+  game: Game
   classes?: string
 }
 
 const GameCard02 = ({
-  gameTitle,
-  description,
-  displayImage,
+  game: { title, imageUrl, description, discount, sections },
   classes,
 }: IGameCard02Props) => (
   <div
@@ -24,16 +16,21 @@ const GameCard02 = ({
     }`}
   >
     <img
-      src={displayImage}
+      src={imageUrl}
       className='object-cover w-full transition-all rounded-b-sm cursor-pointer h-60 filter hover:brightness-125'
       alt=''
     />
     <div className='p-4'>
-      <p className='w-full max-w-sm text-lg line-clamp-2'>{gameTitle}</p>
+      <p className='w-full max-w-sm text-lg line-clamp-2'>{title}</p>
       <p className='max-w-sm mt-2 text-sm text-gray-300 line-clamp-3'>
         {description}
       </p>
-      <Price price={20} classes='mt-4' />
+      <Price
+        price={20}
+        discount={discount}
+        sections={sections}
+        classes='mt-4'
+      />
     </div>
   </div>
 )

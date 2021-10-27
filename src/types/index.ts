@@ -3,7 +3,7 @@ export type Game = {
   title: string
   tags: GameGenre[]
   price: number
-  discount: number
+  discount?: number
   publisherId: Publisher['id']
   imageUrl: string
   subImageUrl: string
@@ -48,10 +48,6 @@ export type SigninInfo = {
 export type SignupInfo = SigninInfo & {
   displayName?: string
 }
-
-// const game: Game = {
-//   platform: ["Mac OS","Windows"]
-// }
 
 export type Publisher = {
   id: string
@@ -166,16 +162,5 @@ export type StripeItem = {
   images: string[]
 }
 
-export type PriceType = Pick<Game, 'price' | 'sections'> &
-  Partial<Pick<Game, 'discount'>> & {
-    classes?: string
-    comingSoon?: boolean
-  }
-
-export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
-export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void
-
-// homeScreen?: string
-// unitsSold?: number
-// hoursToBeat?: number
-// hoursPlayed?: string
+// export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
+// export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void

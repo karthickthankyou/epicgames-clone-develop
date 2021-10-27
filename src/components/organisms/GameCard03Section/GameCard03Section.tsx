@@ -1,20 +1,20 @@
 import { GameCard03 } from 'src/components/molecules'
+import { Game } from 'src/types'
 
 export interface IGameCard01SectionProps {
+  games: Game[]
   heading: string
   buttonText?: string
 }
 
-const GameCard03Vertical = ({
-  title,
+const GameCard01Section = ({
+  games,
+  heading,
   buttonText,
-}: {
-  title: string
-  buttonText?: string
-}) => (
+}: IGameCard01SectionProps) => (
   <div className='flex flex-col space-y-1'>
     <div className='flex justify-between mb-2'>
-      {title}
+      {heading}
       {buttonText && (
         <button
           type='button'
@@ -24,50 +24,18 @@ const GameCard03Vertical = ({
         </button>
       )}
     </div>
-    <GameCard03
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Cyber Punk'
-      priceInfo={{
-        price: 10,
-      }}
-    />
-    <GameCard03
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Cyber Punk'
-      priceInfo={{
-        price: 10,
-      }}
-    />
-    <GameCard03
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Cyber Punk'
-      priceInfo={{
-        price: 10,
-      }}
-    />
-    <GameCard03
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Cyber Punk'
-      priceInfo={{
-        price: 10,
-      }}
-    />
-    <GameCard03
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Cyber Punk'
-      priceInfo={{
-        price: 10,
-      }}
-    />
+    {games.map((game) => (
+      <GameCard03 game={game} />
+    ))}
   </div>
 )
 
-const GameCard01Section = () => (
-  <div className='grid grid-cols-3 gap-3'>
-    <GameCard03Vertical title='New Releases' />
-    <GameCard03Vertical title='Top Sellers' buttonText='view more' />
-    <GameCard03Vertical title='Coming soon' />
-  </div>
-)
+// const GameCard01Section = () => (
+//   <div className='grid grid-cols-3 gap-3'>
+//     <GameCard03Vertical heading='New Releases' />
+//     <GameCard03Vertical heading='Top Sellers' buttonText='view more' />
+//     <GameCard03Vertical heading='Coming soon' />
+//   </div>
+// )
 
 export default GameCard01Section

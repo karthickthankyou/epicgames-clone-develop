@@ -8,6 +8,8 @@ export { selectUser } from './userSelectors'
 /**
  * Actions: All possible actions we can do in this domain.
  */
+
+// Asynchronous
 export {
   signin,
   signout,
@@ -16,6 +18,7 @@ export {
   forgotPassword,
 } from './userActions'
 
+// Synchronous
 export { setUser } from './userSlice'
 
 /**

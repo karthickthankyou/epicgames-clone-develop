@@ -8,30 +8,10 @@ export default {
   component: GameCard03,
 } as ComponentMeta<typeof GameCard03>
 
-const Template: ComponentStory<typeof GameCard03> = ({
-  gameTitle,
-  priceInfo,
-  displayImage,
-  inCart,
-  wishlisted,
-}) => (
-  <GameCard03
-    gameTitle={gameTitle}
-    priceInfo={priceInfo}
-    displayImage={displayImage}
-    inCart={inCart}
-    wishlisted={wishlisted}
-  />
+const Template: ComponentStory<typeof GameCard03> = ({ game }) => (
+  <GameCard03 game={game} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {
-  gameTitle: 'Cyber Punk',
-  priceInfo: {
-    price: 10,
-  },
-  displayImage: image,
-  inCart: true,
-  wishlisted: true,
-}
+Primary.args = {}
 Primary.parameters = {}

@@ -4,7 +4,8 @@ import { Game } from 'src/types'
 import {
   selectGamePage,
   selectGamePageSimilarGames,
-} from 'src/store/games/gameSelectors'
+  useGetGamePage,
+} from 'src/store/games'
 
 import { useAppSelector } from 'src/store'
 import { useDocumentTitle } from 'src/hooks/index'
@@ -33,7 +34,7 @@ const GamePage = () => {
 
   const { id } = useParams<{ id: string }>()
 
-  // useGetGamePage(id)
+  useGetGamePage(id)
   // useSimilarGames(game?.similar)
   //   if (game) let features = [{ title: 'Genres', value: game.tags.join(', ') }]
 

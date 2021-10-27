@@ -8,7 +8,7 @@ import {
 } from 'firebase/firestore'
 import { useEffect } from 'react'
 import { collections, db } from 'src/config/firebase'
-import { UserGame, UserGameStatus } from 'src/types'
+import { UserGame, UserGameStatus } from '../../types'
 import { useAppDispatch, useAppSelector } from '..'
 import { selectUser } from '../user'
 import {

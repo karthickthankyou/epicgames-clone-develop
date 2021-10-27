@@ -1,5 +1,13 @@
-import { Game, PriceType } from 'src/types'
+import { Game } from 'src/types'
 import { discountCalc, withCurrency } from 'src/utils/index'
+
+export interface IPriceProps {
+  price: Game['price']
+  discount: Game['discount']
+  sections: Game['sections']
+  classes?: string
+  comingSoon?: boolean
+}
 
 const Price = ({
   price,
@@ -7,7 +15,7 @@ const Price = ({
   sections,
   comingSoon,
   classes,
-}: PriceType) => {
+}: IPriceProps) => {
   const CreatePrice = () => {
     if (comingSoon) return <>Coming Soon</>
     if (price === 0) return <>Free</>

@@ -1,8 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { WritableDraft } from '@reduxjs/toolkit/node_modules/immer/dist/types/types-external'
-import { captureException } from '@sentry/react'
-import { defaultAsyncGame, defaultAsyncGames } from 'src/types/static'
+import { defaultAsyncGame, defaultAsyncGames } from '../../types/static'
 import {
   AsyncGame,
   AsyncGames,
@@ -10,7 +9,7 @@ import {
   GameSection,
   SpecialSectionKey,
   UserGameStatus,
-} from 'src/types'
+} from '../../types'
 import {
   getGamePage,
   getGameSections,

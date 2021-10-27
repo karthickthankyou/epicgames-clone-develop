@@ -14,7 +14,7 @@ import { useUserGamesListener } from 'src/store/games'
 //   selectWishlistGameIds,
 // } from './store/userGameSlice'
 
-import { useAlgoliaSearchGames } from './store/browserGames'
+import { useAlgoliaSearchGames } from './store/browseGames'
 import { useGetHomeGames } from './store/games'
 import { useAppDispatch, useAppSelector } from './store'
 import { useUserListener } from './store/user'

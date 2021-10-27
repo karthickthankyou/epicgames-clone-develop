@@ -10,46 +10,12 @@ export default {
   // decorators: [SbReduxProvider],
 } as ComponentMeta<typeof GameCard06>
 
-const Template: ComponentStory<typeof GameCard06> = ({
-  title,
-  productionCompany,
-  price,
-  displayImage,
-  date,
-}) => (
+const Template: ComponentStory<typeof GameCard06> = ({ game }) => (
   <div className='grid grid-cols-1 gap-2 sm:grid-cols-2'>
-    <GameCard06
-      id='1'
-      title={title}
-      productionCompany={productionCompany}
-      price={price}
-      displayImage={displayImage}
-      date={date}
-    />
-    <GameCard06
-      id='2'
-      title={title}
-      productionCompany={productionCompany}
-      price={price}
-      displayImage={displayImage}
-      date={date}
-    />
-    <GameCard06
-      id='3'
-      title={title}
-      productionCompany={productionCompany}
-      price={price}
-      displayImage={displayImage}
-      date={date}
-    />
-    <GameCard06
-      id='4'
-      title={title}
-      productionCompany={productionCompany}
-      price={price}
-      displayImage={displayImage}
-      date={date}
-    />
+    <GameCard06 game={game} />
+    <GameCard06 game={game} />
+    <GameCard06 game={game} />
+    <GameCard06 game={game} />
   </div>
 )
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { setFilterRatingRange } from '../../../store/browserGames'
+import { setFilterRatingRange } from '../../../store/browseGames'
 import RangeFilter from '.'
 
 export default {

@@ -18,7 +18,7 @@ import Image from 'src/assets/cyberpunk.png'
 import { soloPaths } from 'src/utils/index'
 import { selectUser, signout } from 'src/store/user'
 
-import { setSearchTerm } from 'src/store/browserGames'
+import { setSearchTerm } from 'src/store/browseGames'
 import { NavIcon } from 'src/components/atoms'
 
 export interface INavbarProps {}

@@ -1,4 +1,4 @@
-import { setBrowsePageNumber } from 'src/store/browserGames'
+import { setBrowsePageNumber } from 'src/store/browseGames'
 import { useAppDispatch } from 'src/store'
 import { getPaginationNumbers } from 'src/utils/index'
 

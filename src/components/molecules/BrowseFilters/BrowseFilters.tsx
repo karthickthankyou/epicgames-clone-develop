@@ -21,7 +21,7 @@ import {
   selectFilterDiscountRange,
   selectFilterRatingRange,
   selectBrowseFacets,
-} from 'src/store/browserGames'
+} from 'src/store/browseGames'
 
 export interface IBrowseFiltersProps {}
 

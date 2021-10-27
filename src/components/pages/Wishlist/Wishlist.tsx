@@ -1,6 +1,6 @@
 import { useAppSelector } from 'src/store'
 import { selectWishlistGameIds } from 'src/store/userGames'
-import { selectWishlistGames } from 'src/store/games/gameSelectors'
+import { selectWishlistGames } from 'src/store/games'
 import { SortDropdown, Heading } from 'src/components/atoms'
 import { GameCard06, Pagination, EmptyList } from 'src/components/molecules'
 
@@ -43,18 +43,7 @@ const Wishlist = () => {
           className='grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3'
         >
           {wishlist.map((game) => (
-            <GameCard06
-              key={game.id}
-              id={game.id}
-              date='2021-06-10T08:30:00Z'
-              displayImage={game.imageUrl}
-              title={game.title}
-              price={{
-                discount: game.discount,
-                price: game.price,
-              }}
-              productionCompany={game.publisherId}
-            />
+            <GameCard06 key={game.id} game={game} />
           ))}
         </div>
         <Pagination

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import { renderWithProviders } from 'src/utils/testUtils'
-import { setFilterRatingRange } from 'src/store/browserGames'
+import { setFilterRatingRange } from 'src/store/browseGames'
 import RangeFilter from '.'
 
 describe('RangeFilter Component', () => {

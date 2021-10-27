@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { ChevronUpIcon, ChevronDownIcon } from 'src/assets'
-import { selectSortIndex } from 'src/store/browserGames/browseGamesSelectors'
+import { selectSortIndex, setSelectsortIndex } from 'src/store/browseGames'
 import { useAppDispatch, useAppSelector } from 'src/store'
-import { setSelectsortIndex } from 'src/store/browserGames'
 import { sortByOptions } from 'src/types/static'
 
 export interface ISortDropdownProps {}

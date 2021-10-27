@@ -6,10 +6,12 @@ export default {
   component: GameCard02Section,
 } as ComponentMeta<typeof GameCard02Section>
 
-const Template: ComponentStory<typeof GameCard02Section> = () => (
-  <GameCard02Section />
+const Template: ComponentStory<typeof GameCard02Section> = ({ games }) => (
+  <GameCard02Section games={games} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  games: [],
+}
 Primary.parameters = {}
