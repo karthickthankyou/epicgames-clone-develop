@@ -1,8 +1,8 @@
 import { addDecorator } from '@storybook/react'
 import { MemoryRouter } from 'react-router'
 import { Provider } from 'react-redux'
-import { store } from '../src/store/store'
-import '../src/index.css'
+import { store } from '../src/store/index.ts'
+import 'src/index.css'
 import yourTheme from './EpicTheme'
 
 export const parameters = {
