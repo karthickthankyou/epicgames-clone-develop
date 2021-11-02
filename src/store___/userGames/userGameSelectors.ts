@@ -2,7 +2,7 @@
 import { createSelector } from '@reduxjs/toolkit'
 import { AsyncGame, AsyncGames, AsyncUserGames } from 'src/types'
 import { defaultAsyncGame, defaultAsyncGames } from 'src/types/static'
-import { getStatus } from 'src/utils'
+import { getStatus } from '../../utils'
 import { RootState } from '..'
 
 // Selectors

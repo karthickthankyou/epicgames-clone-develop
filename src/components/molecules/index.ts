@@ -1,5 +1,4 @@
 import BrowseFilters from './BrowseFilters'
-import Carousel from './Carousel'
 import CartCard from './CartCard'
 import EmptyList from './EmptyList'
 import GameCard01 from './GameCard01'
@@ -18,7 +17,6 @@ import Specifications from './Specifications'
 
 export {
   BrowseFilters,
-  Carousel,
   CartCard,
   EmptyList,
   GameCard01,

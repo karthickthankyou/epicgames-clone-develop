@@ -16,7 +16,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "strictBindCallApply": false,
+    // "strictBindCallApply": false,
     "types": ["cypress", "@testing-library/cypress"],
     "baseUrl": "."
   },

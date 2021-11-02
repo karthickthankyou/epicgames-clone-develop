@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { axeViolations } from 'src/utils/testUtils'
-import { slug } from 'src/utils'
 import { AppleIcon } from 'src/assets'
+import { axeViolations } from '../../../utils/testUtils'
+import { slug } from '../../../utils'
 import HoverIcon from '.'
 
 describe('header component', () => {

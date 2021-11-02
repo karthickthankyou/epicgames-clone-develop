@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderWithProviders } from 'src/utils/testUtils'
 import { genres, platforms, events } from 'src/types/static'
+import { renderWithProviders } from '../../../utils/testUtils'
 import BrowseFilters from '.'
 
 const filterMainOptions = [

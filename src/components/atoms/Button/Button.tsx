@@ -1,40 +1,68 @@
+import { MouseEventHandler, ReactElement } from 'react'
+
 export interface IButtonProps {
-  variant?: 'containedPrimary' | 'outlinedPrimary' | 'outlinedWhite'
-  size?: 'lg' | 'md' | 'sm'
+  children: ReactElement | string
+  size?: 'sm' | 'md' | 'lg'
+  variant?: 'contained' | 'outlined' | 'text'
+  color?: 'primary' | 'success' | 'error'
   fullWidth?: boolean
-  clickAction?: () => void
-  children: string
+  disabled?: boolean
+  onClickAction?: MouseEventHandler<HTMLButtonElement>
+  classes?: string
 }
 
-const variants = {
-  containedPrimary: 'bg-primary-600 text-white rounded hover:bg-primary-700',
-  outlinedPrimary:
-    'border border-primary-500 text-primary-300 rounded hover:bg-primary-900 hover:text-primary-100',
-  outlinedWhite: 'border text-white rounded hover:bg-gray-800',
+const variantColor = {
+  contained: {
+    primary: 'text-white bg-primary-600 hover:bg-primary-700',
+    success: 'text-white bg-green-600 hover:bg-green-700',
+    error: 'text-white bg-red-600 hover:bg-red-700',
+  },
+
+  outlined: {
+    primary:
+      'border-2 border-primary-400 text-primary-400 hover:bg-primary-900',
+    success: 'border-2 border-green-400 text-green-400 hover:bg-green-900',
+    error: 'border-2 border-red-400 text-red-400 hover:bg-red-900',
+  },
+  text: {
+    primary: 'text-primary-400 hover:bg-primary-900',
+    success: 'text-green-400 hover:bg-green-900',
+    error: 'text-red-400 hover:bg-red-900',
+  },
 }
 
 const sizes = {
-  lg: 'px-4 py-2.5',
-  md: 'text-sm px-3 py-1.5',
-  sm: 'text-xs px-2 py-1',
+  sm: 'px-3 py-1.5 text-xs',
+  md: 'px-4 py-2 text-sm',
+  lg: 'px-5 py-2 text-base',
 }
 
 const Button = ({
-  variant = 'containedPrimary',
   size = 'md',
+  variant = 'contained',
+  color = 'primary',
   fullWidth = false,
-  clickAction = () => console.error('button not implemented'),
-  children,
-}: IButtonProps) => (
-  <button
-    type='button'
-    onClick={clickAction}
-    className={`uppercase transform transition-all ${variants[variant]} ${
-      sizes[size]
-    } ${fullWidth && 'w-full'}`}
-  >
-    {children}
-  </button>
-)
+  disabled = false,
+  children = '',
+  onClickAction = () => console.error('onClick not implemented'),
+  classes = '',
+}: IButtonProps) => {
+  const sizeCls = sizes[size]
+  const variantCls = variantColor[variant][color]
+
+  const fwCls = fullWidth && 'w-full'
+  const disCls = disabled && 'opacity-50 cursor-auto'
+
+  return (
+    <button
+      type='button'
+      disabled={disabled}
+      onClick={onClickAction}
+      className={`uppercase  rounded-sm ${sizeCls} ${fwCls} ${variantCls} ${disCls} ${classes} `}
+    >
+      {children}
+    </button>
+  )
+}
 
 export default Button

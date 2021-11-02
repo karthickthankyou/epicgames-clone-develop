@@ -1,5 +1,4 @@
 import { useLocation } from 'react-router-dom'
-import { scrollToTop, soloPaths } from 'src/utils/index'
 
 import {
   CopyrightIcon,
@@ -9,6 +8,7 @@ import {
   TwitterIcon,
   YoutubeIcon,
 } from 'src/assets'
+import { scrollToTop, soloPaths } from '../../../utils'
 
 export interface IFooterProps {}
 

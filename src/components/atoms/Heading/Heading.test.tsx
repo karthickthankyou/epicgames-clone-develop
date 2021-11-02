@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import { axeViolations } from 'src/utils/testUtils'
+import { axeViolations } from '../../../utils/testUtils'
 import Heading from '.'
 
 describe('header component', () => {

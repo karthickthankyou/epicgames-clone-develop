@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useAppSelector } from 'src/store'
 import { selectWishlistGameIds } from 'src/store/userGames'
 import { selectCartGames, selectPurchasedGames } from 'src/store/games'
-import { soloPaths } from 'src/utils/index'
+import { soloPaths } from '../../../utils'
 
 export interface INavbarDummyProps {}
 

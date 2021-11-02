@@ -1,5 +1,5 @@
 import { Game } from 'src/types'
-import { discountCalc, withCurrency } from 'src/utils/index'
+import { discountCalc, withCurrency } from '../../../utils'
 
 export interface IPriceProps {
   price: Game['price']

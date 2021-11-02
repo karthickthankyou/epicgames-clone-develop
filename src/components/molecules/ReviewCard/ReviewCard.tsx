@@ -1,5 +1,5 @@
-import { getScoreColor } from 'src/utils/index'
 import { ThumbsupIcon, ThumbsdownIcon } from 'src/assets'
+import { getScoreColor } from '../../../utils'
 
 export interface IReviewCardProps {
   reviewScore: number

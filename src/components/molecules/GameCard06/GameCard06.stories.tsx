@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { defaultAsyncGame } from 'src/types/static'
 import * as PriceStory from '../../atoms/Price/Price.stories'
 import image from '../../../assets/game.jpg'
 // import { SbReduxProvider } from '../../../utils/sb'
@@ -21,10 +22,6 @@ const Template: ComponentStory<typeof GameCard06> = ({ game }) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  title: 'Cyberpunk 2077',
-  productionCompany: 'CD PROJEKT RED',
-  price: PriceStory.Primary.args,
-  displayImage: image,
-  date: '2021-06-10T08:30:00Z',
+  game: defaultAsyncGame.data || undefined,
 }
 Primary.parameters = {}

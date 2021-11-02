@@ -29,7 +29,5 @@ const Template: ComponentStory<typeof CategoryFilter> = ({
 export const Primary = Template.bind({})
 Primary.args = {
   name: 'hi',
-  displayState: false,
-  facet: [],
 }
 Primary.parameters = {}

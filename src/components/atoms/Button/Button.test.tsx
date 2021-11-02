@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
-import { axeViolations } from 'src/utils/testUtils'
 import userEvent from '@testing-library/user-event'
+import { axeViolations } from '../../../utils/testUtils'
 import Button from '.'
 
 describe('button component', () => {
   const buttonContent = 'Click me 1'
   test('should render with given text', async () => {
     const { container } = render(
-      <Button clickAction={() => {}}>{buttonContent}</Button>
+      <Button onClickAction={() => {}}>{buttonContent}</Button>
     )
     screen.getByRole('button', {
       name: buttonContent,
@@ -20,7 +20,7 @@ describe('button component clicks', () => {
   let buttonContent = 'Click me 2'
   test('should be clickable', async () => {
     render(
-      <Button fullWidth clickAction={() => {}}>
+      <Button fullWidth onClickAction={() => {}}>
         {buttonContent}
       </Button>
     )

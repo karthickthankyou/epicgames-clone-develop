@@ -1,7 +1,7 @@
 import React from 'react'
 import { genres } from 'src/types/static'
-import { renderWithProviders } from 'src/utils/testUtils'
 import { setFilterTags } from 'src/store/browseGames'
+import { renderWithProviders } from '../../../utils/testUtils'
 import CategoryFilter from './CategoryFilter'
 
 describe('CategoryFilter Component', () => {

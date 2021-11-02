@@ -15,11 +15,11 @@ import { useAppDispatch, useAppSelector } from 'src/store'
 import { selectCartGameIds, selectWishlistGameIds } from 'src/store/userGames'
 import Image from 'src/assets/cyberpunk.png'
 
-import { soloPaths } from 'src/utils/index'
 import { selectUser, signout } from 'src/store/user'
 
 import { setSearchTerm } from 'src/store/browseGames'
 import { NavIcon } from 'src/components/atoms'
+import { soloPaths } from '../../../utils'
 
 export interface INavbarProps {}
 

@@ -20,6 +20,5 @@ Primary.args = {
   name: 'Hello',
   min: 0,
   max: 12,
-  action: { setFilterRatingRange },
 }
 Primary.parameters = {}

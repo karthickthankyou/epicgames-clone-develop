@@ -17,7 +17,7 @@ import {
   SimilarGame,
   SpecialSectionKey,
 } from 'src/types'
-import { getImageUrl, processGameIdsForSimilarItems } from 'src/utils'
+import { getImageUrl, processGameIdsForSimilarItems } from '../../utils'
 
 export const getGamesGenre = createAsyncThunk(
   'games/genre',

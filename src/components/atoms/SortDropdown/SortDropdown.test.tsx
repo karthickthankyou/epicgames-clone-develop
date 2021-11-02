@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { renderWithProviders } from 'src/utils/testUtils'
+import { renderWithProviders } from '../../../utils/testUtils'
 import SortDropdown from '.'
 
 describe('price component', () => {

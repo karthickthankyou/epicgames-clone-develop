@@ -6,10 +6,10 @@ import { useAppSelector } from 'src/store'
 import { selectUser } from 'src/store/user'
 import { selectCartGames } from 'src/store/games'
 import { Game, StripeItem } from 'src/types'
-import { discountCalc, withCurrency } from 'src/utils/index'
 import { useDocumentTitle } from 'src/hooks'
 import { Heading } from 'src/components/atoms'
 import { CartCard, EmptyList } from 'src/components/molecules'
+import { discountCalc, withCurrency } from '../../../utils'
 
 const Cart = () => {
   const createStripeCheckout = httpsCallable<

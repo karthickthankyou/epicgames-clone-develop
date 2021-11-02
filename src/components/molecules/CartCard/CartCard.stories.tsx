@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { defaultAsyncGame } from 'src/types/static'
 import CartCard from './CartCard'
 
 export default {
@@ -12,9 +13,6 @@ const Template: ComponentStory<typeof CartCard> = ({ game }) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  game: {
-    price: 10,
-    discount: 10,
-  },
+  game: defaultAsyncGame.data || undefined,
 }
 Primary.parameters = {}

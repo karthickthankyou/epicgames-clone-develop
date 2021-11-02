@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { defaultAsyncGame } from 'src/types/static'
 import image from '../../../assets/game.jpg'
 import GameCard02 from './GameCard02'
 
@@ -14,6 +15,6 @@ const Template: ComponentStory<typeof GameCard02> = ({ game }) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  game: {},
+  game: defaultAsyncGame.data || undefined,
 }
 Primary.parameters = {}

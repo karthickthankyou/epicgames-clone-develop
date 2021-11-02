@@ -1,9 +1,8 @@
 import { useRef } from 'react'
 // import { useScroll } from 'react-use'
 import { Game } from 'src/types'
-import { slug } from 'src/utils/index'
-
 import { MaskedShowcaseCard } from 'src/components/molecules'
+import { slug } from '../../../utils'
 
 export interface IMaskedShowcaseProps {
   games: Game[]

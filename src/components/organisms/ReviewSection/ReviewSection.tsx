@@ -1,5 +1,5 @@
-import { getScoreColor } from 'src/utils/index'
 import { ReviewCard } from 'src/components/molecules'
+import { getScoreColor } from '../../../utils'
 
 export interface IReviewSectionProps {
   rating: number

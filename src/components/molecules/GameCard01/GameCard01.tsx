@@ -1,28 +1,17 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
+
 import { Link, useHistory } from 'react-router-dom'
 
 import { updateUserGames } from 'src/store/userGames'
 import { Price, HoverIcon } from 'src/components/atoms'
 import { selectUser } from 'src/store/user'
-import { getInCart, getWishlisted, readable } from 'src/utils/index'
 import { useAppDispatch, useAppSelector } from 'src/store'
 import { Game } from 'src/types'
 import { BriefcaseIcon } from 'src/assets'
+import { getInCart, getWishlisted, readable } from '../../../utils'
 
 export interface ICard01Props {
   game: Game
-}
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.5,
-      delayChildren: 0.5,
-    },
-  },
 }
 
 const GameCard01 = ({ game }: ICard01Props) => {
@@ -62,9 +51,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
           {similarity}%
         </div>
       )}
-      <motion.div
-        variants={container}
-        animate={hover ? 'show' : 'hidden'}
+      <div
         className={`absolute right-0  z-10 opacity-0 flex m-1 ${
           hover && 'opacity-100'
         }`}
@@ -110,7 +97,7 @@ const GameCard01 = ({ game }: ICard01Props) => {
             />
           </>
         )}
-      </motion.div>
+      </div>
 
       <Link to={`/game/${game.id}`}>
         <div className='aspect-w-3 aspect-h-4'>

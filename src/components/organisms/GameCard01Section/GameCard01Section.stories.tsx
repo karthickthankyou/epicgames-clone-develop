@@ -1,5 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { defaultAsyncGames } from 'src/types/static'
 import GameCard01Section from './GameCard01Section'
 
 export default {
@@ -19,6 +20,6 @@ export const Primary = Template.bind({})
 Primary.args = {
   heading: 'Most Popular',
   buttonText: 'view more',
-  games: [],
+  games: defaultAsyncGames,
 }
 Primary.parameters = {}

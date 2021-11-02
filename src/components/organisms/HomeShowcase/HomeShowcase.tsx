@@ -1,7 +1,7 @@
 import { useCarouselTimer } from 'src/hooks/index'
 import { useAppSelector } from 'src/store'
 import { selectHomeScreenGames } from 'src/store/games'
-import { CAROUSEL_DURATION } from 'src/utils/index'
+import { CAROUSEL_DURATION } from '../../../utils'
 
 export interface IHomeShowcaseProps {}
 

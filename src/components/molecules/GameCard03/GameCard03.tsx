@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Game } from 'src/types'
-import { getInCart, getWishlisted } from 'src/utils/index'
 import { Price, HoverIcon } from 'src/components/atoms'
+import { getInCart, getWishlisted } from '../../../utils'
 
 export interface IGameCard03Props {
   game: Game

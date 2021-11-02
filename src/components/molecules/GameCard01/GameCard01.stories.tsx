@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { defaultAsyncGame } from 'src/types/static'
 import image from '../../../assets/game.jpg'
 // import { SbReduxProvider } from '../../../utils/sb'
 import GameCard01 from './GameCard01'
@@ -17,17 +18,7 @@ const Template: ComponentStory<typeof GameCard01> = ({ game }) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  game: {
-    id: '92',
-    gameTitle: 'Cyber Punk',
-    productionCompany: 'Some production company',
-    priceInfo: {},
-    price: 10,
-    discount: 10,
-    displayImage: image,
-    inCart: true,
-    wishlisted: true,
-  },
+  game: defaultAsyncGame.data || undefined,
 }
 Primary.parameters = {
   design: {
