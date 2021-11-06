@@ -1,5 +1,6 @@
 import { addDecorator } from '@storybook/react'
 import { MemoryRouter } from 'react-router'
+import { DocsPage } from 'storybook-addon-deps/blocks'
 import { Provider } from 'react-redux'
 import { store } from '../src/store/index.ts'
 import 'src/index.css'
@@ -15,8 +16,15 @@ export const parameters = {
   },
   docs: {
     theme: yourTheme,
+    // page: DocsPage,
   },
+  // dependencies: { withStoriesOnly: true, hideEmpty: true },
 }
+
+// addParameters({
+//   docs: { page: DocsPage },
+//   dependencies: { withStoriesOnly: true, hideEmpty: true },
+// })
 
 addDecorator((story) => (
   <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>

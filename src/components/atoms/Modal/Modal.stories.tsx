@@ -14,7 +14,7 @@ const Template: ComponentStory<typeof Modal> = ({ children }) => {
       <button type='button' onClick={() => setOpen(true)}>
         open
       </button>
-      <Modal open={open} setOpen={setOpen}>
+      <Modal open={open} onClose={() => setOpen(false)}>
         {children}
       </Modal>
     </div>

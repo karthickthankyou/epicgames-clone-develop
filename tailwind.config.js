@@ -1,8 +1,9 @@
+const resolveConfig = require('tailwindcss/resolveConfig')
 const colors = require('tailwindcss/colors')
 const lineClamp = require('@tailwindcss/line-clamp')
 const aspectRatio = require('@tailwindcss/aspect-ratio')
 
-module.exports = {
+const tailwindConfig = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -46,3 +47,13 @@ module.exports = {
   },
   plugins: [lineClamp, aspectRatio],
 }
+
+module.exports = tailwindConfig
+module.exports.fullConfig = resolveConfig(tailwindConfig)
+
+// corePlugins: {},
+// presets: {},
+// variantOrder: {},
+// prefix: '',
+// important: false,
+// separator: '',

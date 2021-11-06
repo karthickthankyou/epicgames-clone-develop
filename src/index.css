@@ -44,3 +44,8 @@ code {
     @apply text-gray-100 bg-gray-900;
   }
 }
+
+/* MUI */
+.MuiAccordion-root {
+  @apply rotate-45 bg-red-400;
+}

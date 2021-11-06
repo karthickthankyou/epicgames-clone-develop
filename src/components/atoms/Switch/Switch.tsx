@@ -4,7 +4,7 @@ import SwitchUnstyled, {
   switchUnstyledClasses,
   SwitchInputProps,
 } from '@mui/core/SwitchUnstyled'
-import styled from 'styled-components/macro'
+import styled from '@mui/material/styles/styled'
 import tw from 'twin.macro'
 
 const Root = styled('span')`

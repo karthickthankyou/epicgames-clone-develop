@@ -1,14 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Modal from './Modal'
+import Test from './Test'
 
-describe('Modal Component', () => {
+describe('Test Component', () => {
   test('it should match the snapshot', () => {
-    const { asFragment } = render(
-      <Modal open>
-        <div>Hello</div>
-      </Modal>
-    )
+    const { asFragment } = render(<Test />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

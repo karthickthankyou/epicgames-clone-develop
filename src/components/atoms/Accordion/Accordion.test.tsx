@@ -1,14 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import Modal from './Modal'
+import Accordion from './Accordion'
 
-describe('Modal Component', () => {
+describe('Accordion Component', () => {
   test('it should match the snapshot', () => {
-    const { asFragment } = render(
-      <Modal open>
-        <div>Hello</div>
-      </Modal>
-    )
+    const { asFragment } = render(<Accordion />)
     expect(asFragment()).toMatchSnapshot()
   })
 })

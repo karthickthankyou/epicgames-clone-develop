@@ -9,8 +9,8 @@ export default {
 
 const Template: ComponentStory<typeof Slider> = ({
   defaultValue,
-  min,
-  max,
+  min = 0,
+  max = 100,
 }) => {
   const [value, setValue] = useState<number[]>([min, max])
   const handleChange = (event: Event, newValue: number | number[]) => {
