@@ -4,6 +4,7 @@ import { DocsPage } from 'storybook-addon-deps/blocks'
 import { Provider } from 'react-redux'
 import { store } from '../src/store/index.ts'
 import 'src/index.css'
+import BaseStyleTwin from 'src/TwinGlobalStyles'
 import yourTheme from './EpicTheme'
 
 export const parameters = {
@@ -33,6 +34,7 @@ addDecorator((story) => (
 export const decorators = [
   (Story) => (
     <Provider store={store}>
+      <BaseStyleTwin />
       <Story />
     </Provider>
   ),

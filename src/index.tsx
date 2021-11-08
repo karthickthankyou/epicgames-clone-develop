@@ -4,6 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import * as Sentry from '@sentry/react'
 import { Integrations } from '@sentry/tracing'
 import { Provider } from 'react-redux'
+import BaseStyleTwin from './TwinGlobalStyles'
+
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import './index.css'
 import App from './App'
@@ -24,6 +26,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Provider store={store}>
+        <BaseStyleTwin />
         <App />
       </Provider>
     </Router>

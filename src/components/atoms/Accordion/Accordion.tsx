@@ -7,79 +7,82 @@ import MuiAccordionSummary, {
 import MuiAccordionDetails, {
   accordionDetailsClasses,
 } from '@mui/material/AccordionDetails'
-import Button from 'src/components/atoms/Button'
 
 import styled from '@mui/material/styles/styled'
 import { ChevronDownIcon } from 'src/assets'
-import tw from 'twin.macro'
-import { fullConfig } from 'tailwind.config'
-
-console.log('fullConfig: ', fullConfig)
+/* @ts-ignore */
+import tw, { css } from 'twin.macro'
 
 const AccordionMain = styled((props: AccordionProps) => (
-  <MuiAccordion disableGutters {...props} />
-))(tw`text-white bg-green-500 divide-y before:hidden`)
-
-const AccordionSummaryNo = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary {...props} />
-))`
-  & .${accordionSummaryClasses.content} {
-    ${tw`w-6 h-6 text-red-600 transform rotate-6`}
-    & .${accordionSummaryClasses.expanded} {
-      ${tw`bg-red-800 `}
-    }
-  }
-`
-
-// const AccordionSummary = styled((props: AccordionSummaryProps) => (
-//   <MuiAccordionSummary expandIcon={<ChevronDownIcon />} {...props} />
-// ))(() => ({
-//   '& .MuiAccordionSummary-content': `${tw`ml-5 bg-red-500`}`,
-//   // marginLeft: theme.spacing(2),
-// }))
-
+  <MuiAccordion disableGutters elevation={0} square {...props} />
+))(
+  css`
+    ${tw`text-gray-100 bg-gray-900 divide-y`}
+  `
+)
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary {...props} />
-))(({ theme }) => ({
-  '.sampleSummaryy': tw`border border-t-2 rotate-12`,
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': tw`rotate-12`,
-  // '& .MuiAccordionSummary-content': {
-  //   marginLeft: theme.spacing(5),
-  // },
-  '& .MuiAccordionSummary-content': `${tw`p-4 m-3`}`,
-}))
+  <MuiAccordionSummary expandIcon={<ChevronDownIcon />} {...props} />
+))({
+  '& .MuiAccordionSummary-content': tw`text-gray-200`,
+  '& .MuiAccordionSummary-content.Mui-expanded': tw`text-white`,
+  '& .MuiAccordionSummary-expandIconWrapper': tw`flex items-center justify-center w-8 h-8 text-white transform`,
+  '& .MuiAccordionSummary-expandIconWrapper svg': tw`w-12 h-12`,
+  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': tw`transform rotate-45 bg-secondary-500`,
+})
 
-const AccordionSummaryNo2 = styled((props: AccordionSummaryProps) => (
-  <MuiAccordionSummary {...props} />
+const AccordionSummary33 = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary expandIcon={<ChevronDownIcon />} {...props} />
 ))(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, .05)'
+      : 'rgba(0, 0, 0, .03)',
+  '& .MuiAccordionSummary-content': `@apply text-blue-600 m-4 bg-red-700`,
+  '& .MuiAccordionSummary-expandIconWrapper': {
+    color: 'green',
+  },
   '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(100deg)',
-  },
-  '& .MuiAccordionSummary-content': {
-    marginLeft: '.5rem',
-  },
-  '& .MuiAccordionSummary-content.Mui-expanded': {
-    margin: '0',
+    transform: 'rotate(90deg)',
   },
 }))
 
-// const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-//   padding: theme.spacing(2),
-//   borderTop: '1px solid rgba(0, 0, 0, .125)',
-// }))
-const AccordionDetailsNo1 = styled(MuiAccordionDetails)``
+const AccordionSummary111 = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary
+    expandIcon={<ChevronDownIcon className='w-4 h-4 text-white' />}
+    {...props}
+  />
+))(css`
+  '& .muiaccordionsummary-expandiconwrapper.mui-expanded':${tw`text-red-600 rotate-90`}
+  '& .MuiAccordionSummary-expandIconWrapper':${tw`text-green-400`}
+  '& .MuiAccordionSummary-content': ${tw`text-blue-400`}
+`)
 
-// Come on
+// ${accordionSummaryClasses.expandIconWrapper}:${tw`w-5 h-5 text-blue-300`},
 
-const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-  padding: theme.spacing(2),
-  borderTop: '1px solid rgba(0, 0, 0, .125)',
+const AccordionSummary343 = styled((props: AccordionSummaryProps) => (
+  <MuiAccordionSummary expandIcon={<ChevronDownIcon />} {...props} />
+))(({ theme }) => ({
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? 'rgba(255, 255, 255, .05)'
+      : 'rgba(0, 0, 0, .03)',
+  flexDirection: 'row-reverse',
+  '&.MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
+    transform: 'rotate(90deg)',
+  },
+  '&.MuiAccordionSummary-content': {
+    marginLeft: theme.spacing(1),
+  },
 }))
+
+const AccordionDetails = styled(MuiAccordionDetails)(css`
+  ${tw`p-8`}
+`)
 
 export interface IAccordionProps {}
 
 const Accordion = () => (
-  <div className='rotate-12'>
+  <div>
     <AccordionMain>
       <AccordionSummary
         expandIcon={<ChevronDownIcon />}
@@ -102,7 +105,7 @@ const Accordion = () => (
         Hello World 2
       </AccordionSummary>
       <AccordionDetails>
-        <div className='max-w-xs'>
+        <div className='max-w-xs transform rotate-45'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           malesuada lacus ex, sit amet blandit leo lobortis eget.
         </div>
