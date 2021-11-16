@@ -25,7 +25,7 @@ const GameCard01Section = ({
       )}
     </div>
     {games.map((game) => (
-      <GameCard03 game={game} />
+      <GameCard03 key={game.id} game={game} />
     ))}
   </div>
 )

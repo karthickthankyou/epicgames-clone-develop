@@ -10,7 +10,7 @@ const Cart = () => {
     <div className='space-y-2'>
       <div className='py-4 text-lg text-gray-400 uppercase'>Shopping cart</div>
       {cartItems.map((game) => (
-        <CartCard game={game} />
+        <CartCard key={game.id} game={game} />
       ))}
       <div className='flex items-center'>
         <div className='ml-auto'>Subtotal (4 items): </div>

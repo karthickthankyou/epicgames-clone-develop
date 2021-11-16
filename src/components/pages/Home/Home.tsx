@@ -1,6 +1,7 @@
 import { selectUser, signout } from 'src/store/user'
 import { useAppSelector, useAppDispatch } from 'src/store'
 import { useDocumentTitle } from 'src/hooks'
+
 import {
   selectActionGames,
   selectAdventureGames,
@@ -21,6 +22,8 @@ import {
   HomeShowcase,
   MaskedShowcase,
 } from 'src/components/organisms'
+import Slider from 'src/components/atoms/Slider'
+import Accordion from 'src/components/atoms/Accordion'
 
 export interface IHomeProps {}
 
@@ -55,6 +58,8 @@ const Home = () => {
   return (
     <div className='container' id='container'>
       <HomeShowcase />
+      <Slider />
+      <Accordion />
       <GameCard01Section
         heading='Highest Discounts Ever Recorded'
         games={highestDiscoutsEver}

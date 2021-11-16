@@ -22,6 +22,9 @@ const tailwindConfig = {
       auto: 'auto',
     },
     extend: {
+      backgroundImage: {
+        check: "url('/src/assets/svgs/check.svg')",
+      },
       colors: {
         primary: colors.indigo,
         secondary: colors.yellow,

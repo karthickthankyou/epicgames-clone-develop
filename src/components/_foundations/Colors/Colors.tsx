@@ -40,7 +40,10 @@ const ColorBox = ({
         const shade = colorClass.split('-')[2]
         const colorType = colorClass.split('-')[1]
         return (
-          <div className={`w-full shadow-lg text-white flex ${colorClass}`}>
+          <div
+            key={colorClass}
+            className={`w-full shadow-lg text-white flex ${colorClass}`}
+          >
             <div
               className={`flex items-center justify-center w-16 h-16 bg-${colorType}-900`}
             >

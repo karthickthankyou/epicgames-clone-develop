@@ -6,7 +6,7 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
+    'standard',
     'plugin:security/recommended',
     'plugin:cypress/recommended',
     'prettier',
@@ -21,37 +21,11 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'security'],
   rules: {
-    'import/prefer-default-export': 0,
-    'import/no-unresolved': 0,
-    'react/prop-types': 0,
-    'react/require-default-props': 0,
-    'react/react-in-jsx-scope': 0,
-    '@typescript-eslint/no-explicit-any': 'error',
-    'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': ['warn'],
-    // To use JSX inside TSX file.
-    'react/jsx-filename-extension': [
-      1,
-      { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
-    ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: true,
-        optionalDependencies: false,
-        peerDependencies: false,
-      },
-    ],
-    // note you must disable the base rule as it can report incorrect errors
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
-    'import/extensions': 0,
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    '@typescript-eslint/no-use-before-define': 'error',
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
   },
 }

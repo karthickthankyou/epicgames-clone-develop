@@ -1,5 +1,4 @@
 import SliderUnstyled, { SliderUnstyledProps } from '@mui/core/SliderUnstyled'
-import { useState } from 'react'
 import styled from '@mui/material/styles/styled'
 import tw from 'twin.macro'
 
