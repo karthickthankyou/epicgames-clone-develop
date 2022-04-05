@@ -57,7 +57,7 @@ const HomeShowcase = () => {
                   <div className='flex mt-8 text-sm'>
                     <Link
                       to={`/game/${game.id}`}
-                      className='px-4 py-2 font-bold uppercase rounded bg-primary hover:bg-primary-600'
+                      className='px-4 py-2 font-bold uppercase rounded bg-pos-0 hover:bg-pos-100 bg-gradient-to-tr from-primary via-primary to-green-400'
                     >
                       Buy now
                     </Link>

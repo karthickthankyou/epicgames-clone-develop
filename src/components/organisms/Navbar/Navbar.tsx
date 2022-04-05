@@ -48,7 +48,7 @@ const Navbar = () => {
         <div className='flex items-center'>
           <button
             type='button'
-            className='block mr-2 md:hidden'
+            className='block md:hidden'
             onClick={() => setShowMenu((state) => !state)}
             aria-label='drawer'
           >
@@ -58,7 +58,7 @@ const Navbar = () => {
               <MenuIcon className='w-6 h-6' />
             )}
           </button>
-          <Link to='/' className='mr-2 font-bold uppercase'>
+          <Link to='/' className='font-bold uppercase '>
             <div className='px-2 py-1 text-xl font-black tracking-tighter text-white bg-black'>
               EPIC
             </div>

@@ -46,16 +46,36 @@ const Home = () => {
   const puzzleGames = useAppSelector(selectPuzzleGames)
   const narrationGames = useAppSelector(selectNarrationGames)
 
-  const unitsSold = useAppSelector(selectUnitsSold)
+  // const unitsSold = useAppSelector(selectUnitsSold)
+
+  const unitsSold = [
+    { id: '427', units: '510' },
+    { id: '234', units: '450' },
+    { id: '337', units: '331' },
+    { id: '531', units: '191' },
+    { id: '005', units: '126' },
+    { id: '013', units: '109' },
+    { id: '237', units: '72' },
+  ]
+  const anticipatedBy = [
+    { id: '183', units: '230' },
+    { id: '043', units: '190' },
+    { id: '135', units: '166' },
+    { id: '019', units: '94' },
+    { id: '040', units: '80' },
+    { id: '071', units: '71' },
+    { id: '083', units: '56' },
+  ]
   const hoursPlayed = useAppSelector(selectHoursPlayed)
   const hoursToBeat = useAppSelector(selectHoursToBeat)
-  const anticipatedBy = useAppSelector(selectAnticipatedBy)
+  // const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
+  console.log('units sold: ', unitsSold)
   useHomeScreenGames()
   useDocumentTitle('Epic clone | Karthick Ragavendran')
 
   return (
-    <div className='container' id='container'>
+    <div>
       <HomeShowcase />
       <GameCard01Section
         heading='Highest Discounts Ever Recorded'
@@ -63,22 +83,23 @@ const Home = () => {
         buttonText='View all'
         buttonLinkTo='/browse'
       />
-      {/* {unitsSold.length > 0 && (
+
+      {unitsSold.length > 0 && (
         <MaskedShowcase
           title='Blockbusters Of The Month'
           games={unitsSold}
           comment='thousand units sold.'
-          keyUnit='unitsSold'
         />
       )}
+
       {anticipatedBy.length > 0 && (
         <MaskedShowcase
           title='Most anticipated games'
           games={anticipatedBy}
-          comment='wishlisted'
-          keyUnit='anticipatedBy'
+          comment='thousand players wishlisted'
         />
       )}
+      {/*
 
       {hoursToBeat.length > 0 && (
         <MaskedShowcase

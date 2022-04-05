@@ -27,7 +27,7 @@ const GameCard04Section = () => {
       <div className='flex items-center justify-between'>
         <div>
           <GiftIcon className='inline w-8 h-8 mb-2 mr-2 text-gray-300 hover:text-white' />
-          Free Games
+          <div className='inline-block text-xl font-semibold'>Free Games</div>
         </div>
         <Link to='/browse' className='outline '>
           View More

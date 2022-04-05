@@ -18,6 +18,7 @@ const primaryPallete = {
   800: 'hsl(209, 100%, 10%)',
   900: 'hsl(209, 100%, 04%)',
 }
+
 const grayPallete = {
   DEFAULT: 'hsl(209, 10%, 45%)',
   25: 'hsl(209, 10%, 98%)',
@@ -66,6 +67,9 @@ module.exports = {
         'screen-1/2': '50vh',
         'screen-3/4': '75vh',
         screen: '100vh',
+      },
+      maxWidth: {
+        xxs: '10rem',
       },
     },
   },

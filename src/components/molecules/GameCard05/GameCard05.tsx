@@ -4,6 +4,7 @@ import { Game } from '@epictypes/index'
 import { updateUserGames } from '@epicfirebase/crud'
 import { useAppSelector } from '@store/hooks'
 import { selectUser } from '@store/userSlice'
+import Price from '@atoms/Price/Price'
 
 export interface IGameCard05Props {
   game: Game
@@ -41,7 +42,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
       </div>
 
       <Badge badgeText='base game' classes='mt-4' />
-      {/* <Price price={game.price} classes='mt-2' /> */}
+      <Price price={game.price} classes='mt-2' />
       {game.purchased ? (
         <Link
           to='/library'

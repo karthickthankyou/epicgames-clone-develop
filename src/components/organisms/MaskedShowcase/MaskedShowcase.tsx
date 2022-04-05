@@ -1,42 +1,33 @@
 import { useRef } from 'react'
 import { useScroll } from 'react-use'
-import { Game } from '@epictypes/index'
 import { slug } from '@utils/index'
 
 import MaskedShowcaseCard from '@molecules/MaskedShowcaseCard'
 
 export interface IMaskedShowcaseProps {
-  games: Game[]
+  games: { id: string; units: string }[]
   title: string
   comment: string
-  keyUnit: keyof Game
 }
 
-const MaskedShowcase = ({
-  games,
-  title,
-  comment,
-  keyUnit,
-}: IMaskedShowcaseProps) => {
+const MaskedShowcase = ({ games, title, comment }: IMaskedShowcaseProps) => {
   const scrollRef = useRef(null)
   const { x, y } = useScroll(scrollRef)
   return (
-    <div className='my-6' id='gameCardSection01'>
-      <div className='inline-block text-3xl font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-blue-300 via-blue-600 to-green-700'>
-        {title}
-      </div>
+    <div className='pt-4 pb-12 mt-6 ' id='gameCardSection01'>
+      <div className='inline-block text-xl font-semibold '>{title}</div>
       <div
         data-testid={slug(title)}
-        className='flex mt-6 space-x-6 overflow-x-scroll '
+        className='flex mt-6 space-x-6 overflow-x-scroll thin-scrollbar'
         ref={scrollRef}
       >
         {/* eslint-disable-next-line react/destructuring-assignment */}
         {games.map((game) => (
           <MaskedShowcaseCard
             key={game.id}
-            game={game}
+            id={game.id}
             comment={comment}
-            keyUnit={keyUnit}
+            keyUnit={game.units}
           />
         ))}
       </div>

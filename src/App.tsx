@@ -122,7 +122,7 @@ function App() {
       <Suspense fallback={<Loading />}>
         <Navbar />
       </Suspense>
-      <main className='container mx-auto'>
+      <main className='container mx-auto thin-scrollbar'>
         <Switch>
           <Route exact path='/'>
             <Suspense fallback={<Loading />}>
