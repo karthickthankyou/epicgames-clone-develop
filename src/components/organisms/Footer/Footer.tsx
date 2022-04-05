@@ -92,13 +92,7 @@ const Footer = () => {
         </div>
         <hr className='my-8 text-gray-700' />
         <div className='text-gray-400 max-w-prose'>
-          ©2021, Epic Games, Inc. All rights reserved. Epic, Epic Games, the
-          Epic Games logo, Fortnite, the Fortnite logo, Unreal, Unreal Engine,
-          the Unreal Engine logo, Unreal Tournament, and the Unreal Tournament
-          logo are trademarks or registered trademarks of Epic Games, Inc. in
-          the United States of America and elsewhere. Other brands or product
-          names are the trademarks of their respective owners. Non-US
-          transactions through Epic Games International, S.à r.l.
+          ©2021, Epic clone | Karthick Ragavendran.
         </div>
         <div className='my-8 sm:flex'>
           <button type='button' className='mr-4 text-left'>

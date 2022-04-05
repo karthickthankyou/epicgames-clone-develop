@@ -19,6 +19,9 @@ export type Game = {
 
   status?: GameStatus
   similarity?: number
+  wishlisted?: boolean
+  inCart?: boolean
+  purchased?: boolean
 
   // homeScreen?: string
   // unitsSold?: number

@@ -5,6 +5,7 @@
   "dependencies": {
     "@algolia/client-search": "^4.10.5",
     "@craco/craco": "^6.2.0",
+    "@heroicons/react": "^1.0.6",
     "@reduxjs/toolkit": "^1.6.1",
     "@sentry/react": "^6.11.0",
     "@sentry/tracing": "^6.11.0",

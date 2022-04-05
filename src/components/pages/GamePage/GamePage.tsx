@@ -28,6 +28,7 @@ const GamePage = () => {
 
   useGetGamePage(id)
   useSimilarGames(game?.items)
+
   //   if (game) let features = [{ title: 'Genres', value: game.tags.join(', ') }]
 
   return (

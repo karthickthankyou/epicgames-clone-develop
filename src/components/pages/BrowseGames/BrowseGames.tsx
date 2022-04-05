@@ -22,11 +22,11 @@ const BrowseGames = () => {
   const { loading, error } = useAppSelector(selectBrowseGames)
   const games = useAppSelector(selectBrowseGamesWithWish)
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    })
-  })
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //   })
+  // })
 
   if (error) {
     return <div>Something went wrong.</div>

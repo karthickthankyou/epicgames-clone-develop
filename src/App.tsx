@@ -8,7 +8,7 @@ import {
   useHistory,
   useLocation,
 } from 'react-router-dom'
-
+import Loading from '@molecules/Loading/Loading'
 import {
   useBrowseGames,
   useGamesListener,
@@ -119,13 +119,13 @@ function App() {
 
   return (
     <Router>
-      <Suspense fallback={<>Loading</>}>
+      <Suspense fallback={<Loading />}>
         <Navbar />
       </Suspense>
       <main className='container mx-auto'>
         <Switch>
           <Route exact path='/'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Home />
             </Suspense>
           </Route>
@@ -133,72 +133,77 @@ function App() {
             <Redirect to='/wishlist' />
           </Route>
           <Route path='/wishlist'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Wishlist />
             </Suspense>
           </Route>
           <Route path='/news'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <News />
             </Suspense>
           </Route>
           <Route path='/cancel'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <CancelPayment />
             </Suspense>
           </Route>
           <Route path='/community'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Community />
             </Suspense>
           </Route>
           <Route path='/cart'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Checkout />
             </Suspense>
           </Route>
           <Route path='/user/:uid'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <UserPage />
             </Suspense>
           </Route>
+          <Route path='/success'>
+            <Suspense fallback={<Loading />}>
+              <Library />
+            </Suspense>
+          </Route>
           <Route path='/library'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Library />
             </Suspense>
           </Route>
           <Route path='/forgotpassword'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <ForgotPassword />
             </Suspense>
           </Route>
           <Route path='/signin'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Signin />
             </Suspense>
           </Route>
           <Route path='/signup'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <Signup />
             </Suspense>
           </Route>
           <Route path='/browse'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <BrowseGames />
             </Suspense>
           </Route>
           <Route path='/game/:id'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <GamePage />
             </Suspense>
           </Route>
           <Route path='*'>
-            <Suspense fallback={<>Loading</>}>
+            <Suspense fallback={<Loading />}>
               <NotFound />
             </Suspense>
           </Route>
         </Switch>
-        <Suspense fallback={<>Loading</>}>
+        <Suspense fallback={<Loading />}>
           <Footer />
         </Suspense>
       </main>

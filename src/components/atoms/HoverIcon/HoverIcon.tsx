@@ -27,7 +27,7 @@ const HoverIcon = ({
       aria-label={slug(hintText)}
     >
       <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
-        <IconComponent />
+        <IconComponent className='w-4 h-4' />
       </div>
 
       <div

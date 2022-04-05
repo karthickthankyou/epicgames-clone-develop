@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, memo } from 'react'
 import { motion } from 'framer-motion'
 import { Link, useHistory } from 'react-router-dom'
 
@@ -31,27 +31,27 @@ const container = {
   },
 }
 
-const GameCard01 = ({ game }: ICard01Props) => {
+const GameCard01 = memo(({ game }: ICard01Props) => {
   const {
     id,
     title,
     discount,
     imageUrl,
-    status,
     price,
     publisherId,
     notes,
     similarity,
+    wishlisted,
+    inCart,
+    purchased,
   } = game
-  const wishlisted = status === 'WISHLISTED'
-  const inCart = status === 'IN_CART'
-  const purchased = status === 'PURCHASED'
+
   const [hover, setHover] = useState(false)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
 
-  const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted)
-  const { CartIcon, cartHintText } = getInCart(inCart)
+  const { WishlistIcon, wishlistHintText } = getWishlisted(wishlisted || false)
+  const { CartIcon, cartHintText } = getInCart(inCart || false)
 
   return (
     <div
@@ -129,6 +129,6 @@ const GameCard01 = ({ game }: ICard01Props) => {
       </Link>
     </div>
   )
-}
+})
 
 export default GameCard01

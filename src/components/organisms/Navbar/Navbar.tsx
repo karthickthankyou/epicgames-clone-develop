@@ -5,9 +5,11 @@ import debounce from 'lodash.debounce'
 
 import { ReactComponent as CloseIcon } from '@assets/svgs/x.svg'
 import { ReactComponent as SearchIcon } from '@assets/svgs/search.svg'
-import { ReactComponent as HeartIcon } from '@assets/svgs/heart.svg'
-import { ReactComponent as CartIcon } from '@assets/svgs/cart.svg'
+
 import { ReactComponent as MenuIcon } from '@assets/svgs/menu.svg'
+
+import ShoppingCartIconSolid from '@heroicons/react/solid/ShoppingCartIcon'
+import HeartIconSolid from '@heroicons/react/solid/HeartIcon'
 
 import { useAppDispatch, useAppSelector } from '@store/hooks'
 import {
@@ -110,14 +112,14 @@ const Navbar = () => {
           {uid ? (
             <>
               <NavIcon
-                IconComponent={CartIcon}
+                IconComponent={ShoppingCartIconSolid}
                 count={cartIds.length}
                 linkTo='/cart'
                 classes='h-full'
                 ariaLabel='nav-cart-page-link'
               />
               <NavIcon
-                IconComponent={HeartIcon}
+                IconComponent={HeartIconSolid}
                 count={wishlistIds.length}
                 linkTo='/wishlist'
                 classes='h-full'

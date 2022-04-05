@@ -23,8 +23,7 @@ const HomeShowcase = () => {
             {imageId === index && (
               <div className='flex flex-col h-full p-2 sm:p-4 md:p-6 lg:p-8 bg-gradient-to-tr from-black'>
                 <div className='absolute inset-0 z-0 ' />
-                Hello
-                {/* <div
+                <div
                   style={{
                     position: 'absolute',
                     height: '140%',
@@ -34,15 +33,16 @@ const HomeShowcase = () => {
                   }}
                 >
                   <iframe
-                    title='hello'
+                    title='.'
                     // src='https://www.youtube.com/embed/W0LHTWG-UmQ?controls=0&showinfo=0&rel=0&autoplay=1&loop=1'
+                    // @ts-ignore
                     src={`https://www.youtube.com/embed/${game.homeScreen}?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&&mute=${muted}&start=10&end=60&playlist=${game.homeScreen}`}
                     frameBorder='0'
                     allowFullScreen
                     className='absolute inset-0 w-full h-full -z-10'
                     tabIndex={-1}
                   />
-                </div> */}
+                </div>
                 <div className='z-10 mt-auto'>
                   <img
                     src={games[+imageId].subImageUrl}

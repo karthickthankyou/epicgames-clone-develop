@@ -21,7 +21,7 @@ const NavIcon = ({
     className={`flex items-start h-full px-2 ${classes}`}
     to={linkTo}
   >
-    <IconComponent />
+    <IconComponent className='w-4 h-4' />
     <div className='ml-1 text-xs leading-none text-gray-300'>{count}</div>
   </Link>
 )
