@@ -27,13 +27,13 @@ const GameCard03 = ({
   return (
     <Link
       to={`/game/${id}`}
-      className='relative flex items-start overflow-hidden transition-all border rounded-sm border-primary-900 hover:bg-gray-800'
+      className='relative flex items-start overflow-hidden transition-all bg-gray-800 rounded-sm hover:bg-primary-800'
       onMouseEnter={() => setCardHover(true)}
       onMouseLeave={() => setCardHover(false)}
     >
       <img
         src={displayImage}
-        className='flex-shrink-0 object-cover w-20 h-20 rounded-sm'
+        className='flex-shrink-0 object-cover w-20 h-24 rounded-sm'
         alt=''
       />
 

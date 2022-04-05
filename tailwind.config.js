@@ -18,6 +18,21 @@ const primaryPallete = {
   800: 'hsl(209, 100%, 10%)',
   900: 'hsl(209, 100%, 04%)',
 }
+const grayPallete = {
+  DEFAULT: 'hsl(209, 10%, 45%)',
+  25: 'hsl(209, 10%, 98%)',
+  50: 'hsl(209, 10%, 92%)',
+  100: 'hsl(209, 10%, 85%)',
+  200: 'hsl(209, 10%, 75%)',
+  300: 'hsl(209, 10%, 65%)',
+  400: 'hsl(209, 10%, 55%)',
+  500: 'hsl(209, 10%, 45%)',
+  600: 'hsl(209, 10%, 33%)',
+  700: 'hsl(209, 10%, 20%)',
+  800: 'hsl(209, 10%, 10%)',
+  900: 'hsl(209, 10%, 04%)',
+}
+
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -39,7 +54,7 @@ module.exports = {
     extend: {
       colors: {
         primary: primaryPallete,
-        secondary: colors.yellow,
+        gray: grayPallete,
       },
       transitionProperty: {
         width: 'width',
