@@ -68,7 +68,9 @@ const Navbar = () => {
             )}
           </button>
           <Link to='/' className='mr-2 font-bold uppercase'>
-            Epic Clone
+            <div className='px-2 py-1 text-xl font-black tracking-tighter text-white bg-black'>
+              EPIC
+            </div>
           </Link>
           <Link
             type='button'
