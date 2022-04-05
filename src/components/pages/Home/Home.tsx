@@ -27,6 +27,9 @@ import GameCard01Section from '@organisms/GameCard01Section'
 import HomeShowcase from '@organisms/HomeShowcase'
 import MaskedShowcase from '@organisms/MaskedShowcase'
 import GameCard04Section from '@organisms/GameCard04Section'
+import BigBanner from '@organisms/BigBanner'
+import BrowseSection from '@organisms/BrowseSection'
+import GameCard03Section from '@organisms/GameCard03Section/GameCard03Section'
 
 export interface IHomeProps {}
 
@@ -49,7 +52,7 @@ const Home = () => {
   const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
   useHomeScreenGames()
-  useDocumentTitle('Epic clone')
+  useDocumentTitle('Epic clone | Karthick Ragavendran')
 
   return (
     <div className='container' id='container'>
@@ -76,20 +79,21 @@ const Home = () => {
           keyUnit='anticipatedBy'
         />
       )}
-      {hoursPlayed.length > 0 && (
-        <MaskedShowcase
-          title='Most popular games'
-          games={hoursPlayed}
-          comment='hours played'
-          keyUnit='hoursPlayed'
-        />
-      )}
+
       {hoursToBeat.length > 0 && (
         <MaskedShowcase
           title='Longest games'
           games={hoursToBeat}
           comment='game hours'
           keyUnit='hoursToBeat'
+        />
+      )} */}
+      {/* {hoursPlayed.length > 0 && (
+        <MaskedShowcase
+          title='Most popular games'
+          games={hoursPlayed}
+          comment='hours played'
+          keyUnit='hoursPlayed'
         />
       )} */}
       {wishlist.length > 0 && (
@@ -110,6 +114,8 @@ const Home = () => {
           buttonLinkTo='/cart'
         />
       )}
+      <GameCard04Section />
+
       {actionGames.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
@@ -119,17 +125,18 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
+
       {adventureGames.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
           heading='Adventure Games'
           games={adventureGames}
           buttonText='View more'
+          buttonLinkTo='/browse'
         />
       )}
-      hello
-      <GameCard04Section />
-      hello
+      <GameCard03Section />
+
       {puzzleGames.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
@@ -139,6 +146,13 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
+      <BigBanner
+        id='273'
+        title='Rocket League'
+        description='Rocket League is a high-powered hybrid of arcade-style soccer and
+        vehicular mayhem with easy-to-understand controls and fluid,
+        physics-driven competition.'
+      />
       {narrationGames.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
@@ -148,6 +162,7 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
+      <BrowseSection />
     </div>
   )
 }

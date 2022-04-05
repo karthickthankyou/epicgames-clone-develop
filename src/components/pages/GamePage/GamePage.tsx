@@ -22,7 +22,9 @@ const GamePage = () => {
   const game = useAppSelector(selectGamePage)
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)
-  useDocumentTitle(`${game?.title} - Epic clone` || 'Game Page')
+  useDocumentTitle(
+    `${game?.title} - Epic clone | | Karthick Ragavendran` || 'Game Page'
+  )
 
   const { id } = useParams<{ id: string }>()
 

@@ -14,8 +14,10 @@ const Template: ComponentStory<typeof GameCard03> = ({
   displayImage,
   inCart,
   wishlisted,
+  id,
 }) => (
   <GameCard03
+    id={id}
     gameTitle={gameTitle}
     priceInfo={priceInfo}
     displayImage={displayImage}
@@ -26,6 +28,7 @@ const Template: ComponentStory<typeof GameCard03> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
+  id: '099',
   gameTitle: 'Cyber Punk',
   priceInfo: {
     price: 10,
