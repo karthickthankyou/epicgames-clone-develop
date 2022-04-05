@@ -76,7 +76,9 @@ const Home = () => {
 
   return (
     <div>
-      <HomeShowcase />
+      <div className='-mt-16'>
+        <HomeShowcase />
+      </div>
       <GameCard01Section
         heading='Highest Discounts Ever Recorded'
         games={highestDiscoutsEver}

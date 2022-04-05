@@ -15,7 +15,9 @@ const MaskedShowcase = ({ games, title, comment }: IMaskedShowcaseProps) => {
   const { x, y } = useScroll(scrollRef)
   return (
     <div className='pt-4 pb-12 mt-6 ' id='gameCardSection01'>
-      <div className='inline-block text-xl font-semibold '>{title}</div>
+      <div className='inline-block text-xl font-semibold capitalize'>
+        {title}
+      </div>
       <div
         data-testid={slug(title)}
         className='flex mt-6 space-x-6 overflow-x-scroll thin-scrollbar'
