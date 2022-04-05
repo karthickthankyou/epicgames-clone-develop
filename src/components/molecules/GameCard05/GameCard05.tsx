@@ -17,12 +17,16 @@ const KeyValue = ({ label, value }: { label: string; value: string }) => (
 )
 
 const GameCard05 = ({ game }: IGameCard05Props) => {
+  const getDate = (date: string) => new Date(date).toLocaleDateString()
+
   const values = [
     { label: 'Developer', value: game?.developer || '' },
     { label: 'Publisher', value: game.publisherId || '' },
-    { label: 'Release Date', value: game.releaseDate || '' },
+    { label: 'Release Date', value: getDate(game.releaseDate) || '' },
     { label: 'Platform', value: 'Windows' },
   ]
+
+  console.log(values)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
 

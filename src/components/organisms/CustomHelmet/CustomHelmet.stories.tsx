@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import CustomHelmet from './CustomHelmet'
 
 export default {
-  title: 'components/organisms/CustomHelmet',
+  title: 'organisms/CustomHelmet',
   component: CustomHelmet,
 } as ComponentMeta<typeof CustomHelmet>
 

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import NavbarDummy from './NavbarDummy'
 
 export default {
-  title: 'components/molecules/NavbarDummy',
+  title: 'molecules/NavbarDummy',
   component: NavbarDummy,
 } as ComponentMeta<typeof NavbarDummy>
 

@@ -145,14 +145,6 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
-
-      <div className='mt-10'>
-        {uid && (
-          <button type='button' onClick={callSignOut}>
-            Signout
-          </button>
-        )}
-      </div>
     </div>
   )
 }

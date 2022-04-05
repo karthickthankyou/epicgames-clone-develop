@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import EmptyList from './EmptyList'
 
 export default {
-  title: 'components/molecules/EmptyList',
+  title: 'molecules/EmptyList',
   component: EmptyList,
 } as ComponentMeta<typeof EmptyList>
 
