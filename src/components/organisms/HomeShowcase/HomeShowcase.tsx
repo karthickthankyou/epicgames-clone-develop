@@ -18,7 +18,7 @@ const HomeShowcase = () => {
   const [muted, setMuted] = useState<boolean>(true)
   return (
     <>
-      <div className='relative overflow-hidden rounded-t aspect-w-16 lg:aspect-h-7 md:aspect-h-9 aspect-h-16 sm:aspect-h-12'>
+      <div className='relative overflow-hidden aspect-w-10 aspect-h-10 sm:aspect-h-7 md:aspect-h-8 lg:aspect-h-5'>
         {games.map((game, index) => (
           <div key={game.id}>
             {imageId === index && (
@@ -50,7 +50,7 @@ const HomeShowcase = () => {
                     className='object-cover w-48 h-auto'
                     alt=''
                   />
-                  <div className='max-w-xs mt-4 line-clamp-4'>
+                  <div className='max-w-xs mt-4 text-sm line-clamp-4'>
                     {games[+imageId].description ||
                       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi maiores sunt voluptates nam repellat possimus, illum facilis dicta delectus!'}
                   </div>
@@ -63,28 +63,50 @@ const HomeShowcase = () => {
                     </Link>
                   </div>
                 </div>
+
+                <div className='z-20 hidden md:block'>
+                  <div className='grid max-w-lg grid-cols-7 gap-3 ml-auto'>
+                    {games.map((game_, i) => (
+                      <button
+                        key={game_.id}
+                        type='button'
+                        onClick={() => setImageId(i)}
+                        tabIndex={0}
+                        aria-label={game_.title}
+                        className='w-full h-full rounded-full shadow-lg aspect-w-9 aspect-h-9'
+                      >
+                        <img
+                          className={`object-cover object-center w-full h-full rounded-full ${
+                            imageId === i && 'border-2 border-white p-1'
+                          }`}
+                          src={game_.imageUrl}
+                          alt=''
+                        />
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             )}
           </div>
         ))}
       </div>
-
-      <div className='z-20 p-2 mb-6 bg-white rounded-b bg-opacity-10'>
-        <div className='grid max-w-lg grid-cols-7 gap-2 ml-auto'>
-          {games.map((game, index) => (
+      <div className='z-20 block mt-2 md:hidden'>
+        <div className='grid max-w-lg grid-cols-7 gap-3 ml-auto'>
+          {games.map((game_, i) => (
             <button
-              key={game.id}
+              key={game_.id}
               type='button'
-              onClick={() => setImageId(index)}
+              onClick={() => setImageId(i)}
               tabIndex={0}
-              aria-label={game.title}
+              aria-label={game_.title}
               className='w-full h-full rounded-full shadow-lg aspect-w-9 aspect-h-9'
             >
               <img
                 className={`object-cover object-center w-full h-full rounded-full ${
-                  imageId === index && 'border-2 border-white p-1'
+                  imageId === i && 'border-2 border-white p-1'
                 }`}
-                src={game.imageUrl}
+                src={game_.imageUrl}
                 alt=''
               />
             </button>

@@ -43,7 +43,7 @@ const Navbar = () => {
   if (soloPaths.includes(pathname)) return <></>
 
   return (
-    <nav className='sticky top-0 z-30 text-gray-300 bg-gray-800'>
+    <nav className='sticky top-0 z-30 bg-black backdrop-filter backdrop-hue-rotate-90 bg-opacity-40'>
       <div className='container flex items-center justify-between py-4 mx-auto '>
         <div className='flex items-center'>
           <button
@@ -59,28 +59,28 @@ const Navbar = () => {
             )}
           </button>
           <Link to='/' className='font-bold uppercase '>
-            <div className='px-2 py-1 text-xl font-black tracking-tighter text-white bg-black'>
+            <div className='px-2 py-1 text-xl font-black tracking-tighter bg-black'>
               EPIC
             </div>
           </Link>
           <Link
             type='button'
             to='/browse'
-            className='hidden px-2 text-sm uppercase hover:text-white md:block'
+            className='hidden px-2 text-sm uppercase md:block'
           >
             Browse
           </Link>
           <Link
             type='button'
             to='/news'
-            className='hidden px-2 text-sm uppercase hover:text-white md:block'
+            className='hidden px-2 text-sm uppercase md:block'
           >
             News
           </Link>
           <Link
             type='button'
             to='/community'
-            className='hidden px-2 text-sm uppercase hover:text-white md:block'
+            className='hidden px-2 text-sm uppercase md:block'
           >
             Community
           </Link>
@@ -144,7 +144,11 @@ const Navbar = () => {
               </div>
             </>
           ) : (
-            <Link role='button' to='/signin'>
+            <Link
+              role='button'
+              to='/signin'
+              className='px-2 py-1 text-sm bg-black bg-opacity-40'
+            >
               Login
             </Link>
           )}
