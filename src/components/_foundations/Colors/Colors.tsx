@@ -111,7 +111,7 @@ const Colors = () => (
           'bg-primary-400',
           'bg-primary-500',
           'bg-primary-600',
-          'bg-primary-700',
+          'bg-primary-600',
           'bg-primary-800',
           'bg-primary-900',
         ]}

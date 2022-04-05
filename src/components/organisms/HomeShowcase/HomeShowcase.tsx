@@ -4,6 +4,7 @@ import { useCarouselTimer } from '@hooks/index'
 import { selectHomeScreenGames } from '@store/gamesSlice'
 import { useAppSelector } from '@store/hooks'
 import { CAROUSEL_DURATION } from '@utils/index'
+import { Link } from 'react-router-dom'
 
 export interface IHomeShowcaseProps {}
 
@@ -54,18 +55,12 @@ const HomeShowcase = () => {
                       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi maiores sunt voluptates nam repellat possimus, illum facilis dicta delectus!'}
                   </div>
                   <div className='flex mt-8 text-sm'>
-                    <button
-                      type='button'
-                      className='mr-0.5 px-4 py-2 btn-lg bg-primary-600 rounded-l hover:bg-primary-700'
+                    <Link
+                      to={`/game/${game.id}`}
+                      className='px-4 py-2 font-bold uppercase rounded bg-primary hover:bg-primary-600'
                     >
                       Buy now
-                    </button>
-                    <button
-                      type='button'
-                      className='px-4 py-2 rounded-r bg-primary-600 btn hover:bg-primary-700'
-                    >
-                      +
-                    </button>
+                    </Link>
                   </div>
                 </div>
               </div>

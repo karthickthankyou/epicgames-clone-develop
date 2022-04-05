@@ -23,7 +23,7 @@ const GameCard04 = ({
   const { text, bgColor } = free
     ? {
         text: 'Free Now',
-        bgColor: 'bg-primary-600',
+        bgColor: 'bg-primary',
       }
     : {
         text: 'Mystery Game',

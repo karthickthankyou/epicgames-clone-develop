@@ -1,6 +1,23 @@
 /* eslint-disable global-require */
 const colors = require('tailwindcss/colors')
 
+// #0074e4
+// hsl(209, 100%, 45%)
+
+const primaryPallete = {
+  DEFAULT: 'hsl(209, 100%, 45%)',
+  25: 'hsl(209, 100%, 98%)',
+  50: 'hsl(209, 100%, 92%)',
+  100: 'hsl(209, 100%, 85%)',
+  200: 'hsl(209, 100%, 75%)',
+  300: 'hsl(209, 100%, 65%)',
+  400: 'hsl(209, 100%, 55%)',
+  500: 'hsl(209, 100%, 45%)',
+  600: 'hsl(209, 100%, 33%)',
+  700: 'hsl(209, 100%, 20%)',
+  800: 'hsl(209, 100%, 10%)',
+  900: 'hsl(209, 100%, 04%)',
+}
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
@@ -21,7 +38,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: colors.blue,
+        primary: primaryPallete,
         secondary: colors.yellow,
       },
       transitionProperty: {

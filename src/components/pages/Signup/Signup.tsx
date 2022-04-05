@@ -111,7 +111,7 @@ const Signup = () => {
           </div>
           <div className='flex items-baseline justify-between mt-6'>
             <button
-              className='flex items-center text-sm text-white rounded bg-primary-600 btn btn-lg hover:bg-primary-700 focus:outline-none focus:shadow-outline'
+              className='flex items-center text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
               type='submit'
             >
               Create {loading && <LoadingIcon className='ml-2 animate-spin' />}

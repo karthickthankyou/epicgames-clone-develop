@@ -21,7 +21,7 @@ const EmptyList = ({
     <Link
       to={linkTo}
       type='button'
-      className='mt-16 btn btn-lg bg-primary-600 hover:bg-primary-700'
+      className='mt-16 btn btn-lg bg-primary hover:bg-primary-600'
     >
       {buttonText}
     </Link>

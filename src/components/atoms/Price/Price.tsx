@@ -14,7 +14,7 @@ const Discounted = ({ discount, price, notes }: IPriceProps) => (
     <span
       className={`px-1 py-0.5 mr-2 ${
         notes?.includes('HIGHEST_DISCOUNT')
-          ? 'bg-primary-600 text-white'
+          ? 'bg-primary text-white'
           : 'bg-green-700 text-white'
       }  rounded-sm`}
     >

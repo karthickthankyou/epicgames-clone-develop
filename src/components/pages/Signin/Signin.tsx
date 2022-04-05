@@ -99,7 +99,7 @@ const Signin = () => {
           </div>
           <div className='flex items-baseline justify-between'>
             <button
-              className='text-sm text-white rounded bg-primary-600 btn btn-lg hover:bg-primary-700 focus:outline-none focus:shadow-outline'
+              className='text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
               type='submit'
               //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
             >

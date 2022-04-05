@@ -51,7 +51,7 @@ const GameCard06 = ({
         <div className='mt-auto'>
           <button
             type='button'
-            className='w-full px-4 py-2 mt-2 text-xs border-t border-gray-700 btn rounded-white hover:bg-primary-700 group-hover:bg-primary-600'
+            className='w-full px-4 py-2 mt-2 text-xs border-t border-gray-700 btn rounded-white hover:bg-primary-600 group-hover:bg-primary'
             onClick={() =>
               updateUserGames({
                 uid: uid || '',

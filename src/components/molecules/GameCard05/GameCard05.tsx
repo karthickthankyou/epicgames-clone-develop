@@ -32,7 +32,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
 
   return (
     <div>
-      <div className='mt-6 bg-primary-600 aspect-w-16 aspect-h-9 bg-opacity-10'>
+      <div className='mt-6 bg-primary aspect-w-16 aspect-h-9 bg-opacity-10'>
         <img
           className='object-contain object-center w-full p-2'
           src={game.subImageUrl}
@@ -45,14 +45,14 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
       {game.purchased ? (
         <Link
           to='/library'
-          className='flex justify-center w-full mt-4 bg-primary-600 btn btn-xl'
+          className='flex justify-center w-full mt-4 bg-primary btn btn-xl'
         >
           In Library
         </Link>
       ) : (
         <>
           <button
-            className='w-full mt-4 bg-primary-600 btn btn-xl'
+            className='w-full mt-4 bg-primary btn btn-xl'
             type='button'
             onClick={() =>
               updateUserGames({

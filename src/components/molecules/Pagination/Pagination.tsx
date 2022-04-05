@@ -21,9 +21,9 @@ const Pagination = ({ current, total, classes = '' }: IPaginationProps) => {
           type='button'
           key={key}
           className={`relative w-8 h-8 rounded  ${
-            item === currentPage && 'bg-primary-700'
+            item === currentPage && 'bg-primary-600'
           }
-          ${item === '...' ? 'cursor-default' : 'hover:bg-primary-700'}
+          ${item === '...' ? 'cursor-default' : 'hover:bg-primary-600'}
         `}
           onClick={() => {
             let pageNumber = 0

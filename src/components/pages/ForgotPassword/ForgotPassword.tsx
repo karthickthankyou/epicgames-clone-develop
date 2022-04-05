@@ -58,7 +58,7 @@ const ForgotPassword = () => {
           {errors.emailId && <ErrorMessage message={errors.emailId.message} />}
         </div>
         <button
-          className='w-full mt-4 text-sm text-white rounded bg-primary-600 btn btn-lg hover:bg-primary-700 focus:outline-none focus:shadow-outline'
+          className='w-full mt-4 text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
           type='submit'
           //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
         >

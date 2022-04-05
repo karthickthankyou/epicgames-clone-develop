@@ -8,7 +8,7 @@ export interface IButtonProps {
 }
 
 const variants = {
-  containedPrimary: 'bg-primary-600 text-white rounded hover:bg-primary-700',
+  containedPrimary: 'bg-primary text-white rounded hover:bg-primary-600',
   outlinedPrimary:
     'border border-primary-500 text-primary-300 rounded hover:bg-primary-900 hover:text-primary-100',
   outlinedWhite: 'border text-white rounded hover:bg-gray-800',

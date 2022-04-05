@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { scrollToTop, soloPaths } from '@utils/index'
 
 import { ReactComponent as Copyright } from '@assets/svgs/copyright.svg'
@@ -14,7 +14,7 @@ const Footer = () => {
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
   return (
-    <footer className='text-sm'>
+    <footer className='mt-24 text-sm'>
       <div className='flex my-4'>
         <button type='button' aria-label='facebook icon'>
           <Facebook className='w-6 h-6 mr-3 hover:text-primary-500' />
@@ -92,7 +92,17 @@ const Footer = () => {
         </div>
         <hr className='my-8 text-gray-700' />
         <div className='text-gray-400 max-w-prose'>
-          ©2021, Epic clone | Karthick Ragavendran.
+          ©2021, Epic clone |{' '}
+          <a
+            target='_blank'
+            rel='noreferrer'
+            // Brand color!
+            style={{ color: '#e63746' }}
+            href='https://www.iamkarthick.com'
+          >
+            Karthick Ragavendran
+          </a>
+          .
         </div>
         <div className='my-8 sm:flex'>
           <button type='button' className='mr-4 text-left'>

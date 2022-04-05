@@ -108,7 +108,7 @@ const Cart = () => {
               </div>
             </div>
             <button
-              className='w-full px-4 py-3 mt-4 tracking-widest bg-primary-600 btn hover:bg-primary-700'
+              className='w-full px-4 py-3 mt-4 tracking-widest bg-primary btn hover:bg-primary-600'
               type='submit'
             >
               Checkout
