@@ -22,7 +22,9 @@ const GamePage = () => {
   const game = useAppSelector(selectGamePage)
   const similarGames = useAppSelector(selectGamePageSimilarGames)
   //   console.log('similarGames ', similarGames)
-  useDocumentTitle(`${game?.title} - Epic clone` || 'Game Page')
+  useDocumentTitle(
+    `${game?.title} - Epic clone | | Karthick Ragavendran` || 'Game Page'
+  )
 
   const { id } = useParams<{ id: string }>()
 
@@ -36,8 +38,8 @@ const GamePage = () => {
       {game && (
         <>
           <div className='my-3 text-4xl'>{game.title}</div>
-          <div className='grid grid-cols-3 gap-10'>
-            <div className='col-span-2'>
+          <div className='grid grid-cols-1 gap-10 md:grid-cols-3'>
+            <div className='order-2 col-span-2 md:order-1'>
               <div className='mt-6 bg-black aspect-w-16 aspect-h-9'>
                 <img
                   className='object-cover w-full h-full'
@@ -97,7 +99,7 @@ const GamePage = () => {
                 <ReviewSection rating={89} />
               </div>
             </div>
-            <div className='col-span-1'>
+            <div className='order-1 col-span-1 md:order-2'>
               <div className='sticky top-24'>
                 <GameCard05 game={game} />
               </div>

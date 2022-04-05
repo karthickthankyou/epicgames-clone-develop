@@ -26,7 +26,7 @@ export type Game = {
   // homeScreen?: string
   // unitsSold?: number
   // hoursToBeat?: number
-  // hoursPlayed?: string
+  hoursPlayed?: string
 }
 
 export type UserGame = {

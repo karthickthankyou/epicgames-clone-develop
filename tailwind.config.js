@@ -21,7 +21,7 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: colors.indigo,
+        primary: colors.blue,
         secondary: colors.yellow,
       },
       transitionProperty: {

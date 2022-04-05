@@ -17,10 +17,10 @@ const SortDropdown = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className='relative z-20'>
+    <div className='relative z-20 p-3'>
       <button
         type='button'
-        className='flex items-center justify-between w-full py-2'
+        className='flex items-center justify-between w-full'
         onClick={() => setOpen((state) => !state)}
       >
         <span className='mr-2 text-gray-300'>Sortby: </span>

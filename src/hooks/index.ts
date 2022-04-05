@@ -73,7 +73,7 @@ export const useDocumentTitle = (title: string | ReactElement) => {
   useEffect(() => {
     document.title = title.toString()
     return () => {
-      document.title = 'Epic clone'
+      document.title = 'Epic clone | Karthick Ragavendran'
     }
   }, [title])
 }

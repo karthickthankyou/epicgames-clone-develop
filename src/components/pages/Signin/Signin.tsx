@@ -135,13 +135,15 @@ const Signin = () => {
             </button>
             <button
               type='button'
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
+              disabled
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
             >
               <AppleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
+              disabled
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
             >
               <FacebookIcon className='w-6 h-6' />
             </button>

@@ -13,8 +13,10 @@ const Template: ComponentStory<typeof GameCard04> = ({
   displayImage,
   date,
   free,
+  id,
 }) => (
   <GameCard04
+    id={id}
     gameTitle={gameTitle}
     displayImage={displayImage}
     date={date}
@@ -24,6 +26,7 @@ const Template: ComponentStory<typeof GameCard04> = ({
 
 export const Primary = Template.bind({})
 Primary.args = {
+  id: '306',
   gameTitle: 'Cyberpunk 2077',
   displayImage: image,
   date: '2021-08-10T08:30:00Z',

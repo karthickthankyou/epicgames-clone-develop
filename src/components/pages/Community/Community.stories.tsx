@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Community from './Community'
 
 export default {
-  title: 'components/pages/Community',
+  title: 'pages/Community',
   component: Community,
 } as ComponentMeta<typeof Community>
 

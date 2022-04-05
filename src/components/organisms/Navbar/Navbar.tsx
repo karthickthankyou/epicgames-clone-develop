@@ -1,7 +1,5 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useHistory, useLocation } from 'react-router-dom'
 import { useMemo, useState } from 'react'
-
-import debounce from 'lodash.debounce'
 
 import { ReactComponent as CloseIcon } from '@assets/svgs/x.svg'
 import { ReactComponent as SearchIcon } from '@assets/svgs/search.svg'
@@ -24,13 +22,12 @@ import { soloPaths } from '@utils/index'
 import NavIcon from '@atoms/NavIcon'
 import { selectUser } from '@store/userSlice'
 import { callSignOut } from '@epicfirebase/hooks'
-import { setSearchTerm } from '@store/browseGamesSlice'
 
 export interface INavbarProps {}
 
 const Navbar = () => {
   const wishlistIds = useAppSelector(selectWishlistGameIds)
-  const dispatch = useAppDispatch()
+
   const cartIds = useAppSelector(selectCartGameIds)
   const { uid } = useAppSelector(selectUser)
   const cart = useAppSelector(selectCartGames)
@@ -41,13 +38,7 @@ const Navbar = () => {
   const [showUserMenu, setShowUserMenu] = useState(false)
   const { pathname } = useLocation()
 
-  const searchGames = (e: any) => {
-    // Debounce https://dmitripavlutin.com/react-throttle-debounce/
-    // Debounce example http://demo.nimius.net/debounce_throttle/
-    const searchTerm = e.target.value
-    dispatch(setSearchTerm(searchTerm))
-  }
-  const debouncedEventHandler = useMemo(() => debounce(searchGames, 1000), [])
+  const history = useHistory()
 
   if (soloPaths.includes(pathname)) return <></>
 
@@ -95,15 +86,6 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='flex items-center'>
-          <div className='items-center hidden mr-4 md:flex'>
-            <SearchIcon className='z-10 -mr-6' />
-            <input
-              type='search'
-              placeholder='Search'
-              className='p-2 pl-8 bg-gray-700 rounded'
-              onChange={debouncedEventHandler}
-            />
-          </div>
           <button
             type='button'
             onClick={() => setShowSearch((state) => !state)}
@@ -181,19 +163,19 @@ const Navbar = () => {
       {showMenu && (
         <div className='w-full p-2 md:hidden'>
           <Link
-            to='/'
+            to='/browse'
             className='block py-2 text-sm uppercase hover:bg-gray-700 hover:pl-2'
           >
             Browse
           </Link>
           <Link
-            to='/'
+            to='/news'
             className='block py-2 text-sm uppercase hover:bg-gray-700 hover:pl-2'
           >
             News
           </Link>
           <Link
-            to='/'
+            to='/community'
             className='block py-2 text-sm uppercase hover:bg-gray-700 hover:pl-2'
           >
             Community

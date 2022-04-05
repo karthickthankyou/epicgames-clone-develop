@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import MessageWrapper from './MessageWrapper'
 
 export default {
-  title: 'components/molecules/MessageWrapper',
+  title: 'molecules/MessageWrapper',
   component: MessageWrapper,
 } as ComponentMeta<typeof MessageWrapper>
 
