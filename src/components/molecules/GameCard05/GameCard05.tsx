@@ -26,7 +26,7 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
     { label: 'Platform', value: 'Windows' },
   ]
 
-  console.log(values)
+  console.log(game)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
 

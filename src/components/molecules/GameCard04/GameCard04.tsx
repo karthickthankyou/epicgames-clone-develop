@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import dateFormat from 'dateformat'
 import { calculateTimeLeft, ICounter } from '@utils/index'
+import { Link } from 'react-router-dom'
 
 export interface IGameCard04Props {
+  id?: string
   gameTitle: string
   displayImage: string
   date: string
@@ -11,6 +13,7 @@ export interface IGameCard04Props {
 }
 
 const GameCard04 = ({
+  id,
   gameTitle,
   displayImage,
   free = false,
@@ -34,15 +37,22 @@ const GameCard04 = ({
     return () => clearTimeout(timer)
   }, [counter, date])
 
+  const mystery = !id
+
+  const toRoute = mystery ? '/' : `/game/${id}`
+
   return (
-    <div className={`w-full ${classes}`}>
+    <Link
+      to={toRoute}
+      className={`w-full ${mystery && 'cursor-not-allowed'} ${classes}`}
+    >
       <img
         src={displayImage}
-        className='object-cover w-full rounded-t-lg cursor-pointer h-72 filter hover:brightness-125'
+        className='object-cover w-full rounded-t-lg h-72 filter hover:brightness-125'
         alt=''
       />
       <div
-        className={`flex justify-center p-1 text-sm tracking-wider uppercase rounded-b-lg ${bgColor}`}
+        className={`flex justify-center p-1 mt-1 text-sm tracking-wider uppercase rounded-b-lg ${bgColor}`}
       >
         {text}
       </div>
@@ -50,8 +60,8 @@ const GameCard04 = ({
       <div className='mt-4'>
         {free ? (
           <>
-            <div>{gameTitle}</div>
-            <div className='text-sm text-gray-300'>
+            <div className='font-bold'>{gameTitle}</div>
+            <div className='mt-1 text-sm text-gray-300'>
               Free Now - {dateFormat(date, 'mmm d "at" h:MM TT')}
             </div>
           </>
@@ -62,7 +72,7 @@ const GameCard04 = ({
           </div>
         )}
       </div>
-    </div>
+    </Link>
   )
 }
 

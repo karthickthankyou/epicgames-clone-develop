@@ -11,8 +11,9 @@ const Loading = () => (
         }}
         className='w-16 h-16 rounded-full animate-spin'
       />
-      <div className='max-w-xs mt-6 text-xl font-light'>
-        Fetching <strong className='font-bold text-primary-500'>epic</strong>{' '}
+      <div className='max-w-xs mt-6 text-xl'>
+        Fetching{' '}
+        <strong className='font-black tracking-tighter text-black'>epic</strong>{' '}
         stuff for you...
       </div>
     </div>

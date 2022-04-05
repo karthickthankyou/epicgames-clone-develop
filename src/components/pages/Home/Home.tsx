@@ -26,6 +26,7 @@ import { selectUser } from '@store/userSlice'
 import GameCard01Section from '@organisms/GameCard01Section'
 import HomeShowcase from '@organisms/HomeShowcase'
 import MaskedShowcase from '@organisms/MaskedShowcase'
+import GameCard04Section from '@organisms/GameCard04Section'
 
 export interface IHomeProps {}
 
@@ -91,7 +92,6 @@ const Home = () => {
           keyUnit='hoursToBeat'
         />
       )} */}
-
       {wishlist.length > 0 && (
         <GameCard01Section
           //   heading={`From your wishlist ( ${wishlist.length} )`}
@@ -127,6 +127,9 @@ const Home = () => {
           buttonText='View more'
         />
       )}
+      hello
+      <GameCard04Section />
+      hello
       {puzzleGames.length > 0 && (
         <GameCard01Section
           //   heading={`From your cart ( ${cart.length} )`}
