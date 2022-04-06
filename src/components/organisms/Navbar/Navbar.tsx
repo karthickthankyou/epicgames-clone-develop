@@ -18,7 +18,7 @@ import {
 } from '@store/userGameSlice'
 import Image from '@assets/cyberpunk.png'
 
-import { soloPaths } from '@utils/index'
+import { getInitials, soloPaths } from '@utils/index'
 import NavIcon from '@atoms/NavIcon'
 import { selectUser } from '@store/userSlice'
 import { callSignOut } from '@epicfirebase/hooks'
@@ -29,7 +29,7 @@ const Navbar = () => {
   const wishlistIds = useAppSelector(selectWishlistGameIds)
 
   const cartIds = useAppSelector(selectCartGameIds)
-  const { uid } = useAppSelector(selectUser)
+  const { uid, displayName } = useAppSelector(selectUser)
   const cart = useAppSelector(selectCartGames)
   const purchased = useAppSelector(selectPurchasedGames)
 
@@ -115,7 +115,10 @@ const Navbar = () => {
                   aria-label='profile picture'
                   className='block '
                 >
-                  <img src={Image} alt='' className='w-8 h-8 rounded-full' />
+                  <div className='flex items-center justify-center w-8 h-8 overflow-hidden text-xs text-white border rounded-full bg-primary bg-opacity-80 border-primary'>
+                    {getInitials(displayName || '')}
+                  </div>
+                  {/* <img src={Image} alt='' className='w-8 h-8 rounded-full' /> */}
                 </button>
 
                 <div className='invisible group-hover:visible group-focus:visible'>

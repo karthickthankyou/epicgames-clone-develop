@@ -12,12 +12,14 @@ const GameCard03Vertical = ({
   title,
   buttonText,
   games,
+  className,
 }: {
   title: string
   buttonText?: string
   games: { id: string; title: string; price: number }[]
+  className?: string
 }) => (
-  <div className='flex flex-col space-y-2'>
+  <div className={`flex flex-col space-y-3 ${className}`}>
     <div className='flex justify-between mb-2'>
       <div className='text-xl font-semibold capitalize'>{title}</div>
       {buttonText && (
@@ -44,14 +46,23 @@ const GameCard03Vertical = ({
 )
 
 const GameCard01Section = () => (
-  <div className='grid grid-cols-3 gap-3'>
-    <GameCard03Vertical title='New Releases' games={sampleGames.slice(0, 6)} />
+  <div className='flex gap-3 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'>
     <GameCard03Vertical
+      className='flex-shrink-0 w-1/3 min-w-72'
+      title='New Releases'
+      games={sampleGames.slice(0, 6)}
+    />
+    <GameCard03Vertical
+      className='flex-shrink-0 w-1/3 min-w-72'
       title='Top Sellers'
       buttonText='view more'
       games={sampleGames.slice(6, 12)}
     />
-    <GameCard03Vertical title='Coming soon' games={sampleGames.slice(12, 18)} />
+    <GameCard03Vertical
+      className='flex-shrink-0 w-1/3 min-w-72'
+      title='Coming soon'
+      games={sampleGames.slice(12, 18)}
+    />
   </div>
 )
 

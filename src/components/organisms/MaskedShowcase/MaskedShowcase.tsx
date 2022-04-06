@@ -20,7 +20,7 @@ const MaskedShowcase = ({ games, title, comment }: IMaskedShowcaseProps) => {
       </div>
       <div
         data-testid={slug(title)}
-        className='flex mt-6 space-x-6 overflow-x-scroll thin-scrollbar'
+        className='flex mt-6 space-x-6 overflow-x-scroll overscroll-x-none thin-scrollbar'
         ref={scrollRef}
       >
         {/* eslint-disable-next-line react/destructuring-assignment */}

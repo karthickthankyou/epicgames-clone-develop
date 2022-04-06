@@ -37,8 +37,8 @@ const GameCard03 = ({
         alt=''
       />
 
-      <div className='p-2'>
-        <p className='w-full max-w-xs text-sm font-bold line-clamp-2'>
+      <div className='p-3'>
+        <p className='w-full max-w-xs font-semibold line-clamp-2'>
           {gameTitle}
         </p>
         <Price price={priceInfo.price} />

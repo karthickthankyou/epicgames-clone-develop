@@ -37,10 +37,14 @@ const GameCard01Section = ({
       </div>
       <div
         data-testid={slug(`${heading}`)}
-        className='grid grid-cols-2 gap-4 mt-4 sm:grid-cols-3 lg:grid-cols-6 '
+        className='flex gap-3 pt-3 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'
       >
         {gamesSix.map((game) => (
-          <GameCard01 key={game.id} game={game} />
+          <GameCard01
+            className='flex-shrink-0 w-1/5 min-w-72'
+            key={game.id}
+            game={game}
+          />
         ))}
       </div>
     </div>

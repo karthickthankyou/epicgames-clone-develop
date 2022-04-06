@@ -68,6 +68,9 @@ module.exports = {
         'screen-3/4': '75vh',
         screen: '100vh',
       },
+      minWidth: {
+        72: '18rem',
+      },
       maxWidth: {
         xxs: '10rem',
       },

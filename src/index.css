@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   @apply thin-scrollbar;
+  overflow-x: hidden;
 }
 
 code {

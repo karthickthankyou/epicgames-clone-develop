@@ -159,3 +159,10 @@ export const addOrRemoveItem = (arr: string[], item: string) =>
     : [...arr, item]
 
 export const readable = (str: string) => str.split('-').join(' ')
+
+export const getInitials = (text: string) =>
+  text
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()

@@ -17,7 +17,7 @@ const NavbarDummy = () => {
   const { pathname } = useLocation()
   if (soloPaths.includes(pathname)) return <></>
   return (
-    <ul className='flex overflow-x-scroll'>
+    <ul className='flex overflow-x-scroll overscroll-x-none'>
       <li className='p-1 m-1 bg-gray-800 rounded'>
         <Link to='/'>Home</Link>
       </li>

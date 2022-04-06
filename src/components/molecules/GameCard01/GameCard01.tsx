@@ -18,6 +18,7 @@ import { ReactComponent as Briefcase } from '@assets/svgs/briefcase.svg'
 
 export interface ICard01Props {
   game: Game
+  className?: string
 }
 
 const container = {
@@ -31,7 +32,7 @@ const container = {
   },
 }
 
-const GameCard01 = memo(({ game }: ICard01Props) => {
+const GameCard01 = memo(({ game, className }: ICard01Props) => {
   const {
     id,
     title,
@@ -55,7 +56,7 @@ const GameCard01 = memo(({ game }: ICard01Props) => {
 
   return (
     <div
-      className='relative'
+      className={`relative ${className}`}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
