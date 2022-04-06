@@ -46,6 +46,21 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     'import/extensions': 0,
   },
+  overrides: [
+    {
+      files: ['*stories.tsx'],
+      rules: {
+        'react/jsx-props-no-spreading': 'off',
+        'no-param-reassign': 'off',
+      },
+    },
+    {
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
   settings: {
     'import/resolver': {
       node: {

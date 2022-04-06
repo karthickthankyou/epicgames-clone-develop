@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+
 export type Game = {
   id: string
   title: string
@@ -74,3 +76,5 @@ export type SpecialGames =
 
 export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
 export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void
+
+export type Children = ReactElement | ReactElement[] | string
