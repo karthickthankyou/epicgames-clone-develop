@@ -47,6 +47,10 @@ code {
   }
 }
 
+::selection {
+  @apply text-white bg-gradient-to-tr bg-primary;
+}
+
 .thin-scrollbar::-webkit-scrollbar {
   @apply w-1 h-0.5;
 }
