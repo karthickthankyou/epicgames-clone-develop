@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { getInCart, getWishlisted } from '@utils/index'
-import HoverIcon from '@atoms/HoverIcon'
+
 import Price, { IPriceProps } from '@atoms/Price'
 import { Link } from 'react-router-dom'
 
@@ -48,21 +48,3 @@ const GameCard03 = ({
 }
 
 export default GameCard03
-
-// {
-//   cardHover && (
-//     <div className='absolute right-0 z-10 flex flex-col justify-center h-full ml-auto mr-2'>
-//       <HoverIcon
-//         position='left'
-//         IconComponent={WishlistIcon}
-//         hintText={wishlistHintText}
-//       />
-//       <HoverIcon
-//         position='left'
-//         IconComponent={CartIcon}
-//         hintText={cartHintText}
-//         classes='mt-1'
-//       />
-//     </div>
-//   )
-// }

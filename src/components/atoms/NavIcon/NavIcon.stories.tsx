@@ -8,10 +8,18 @@ export default {
   component: NavIcon,
 } as ComponentMeta<typeof NavIcon>
 
-const Template: ComponentStory<typeof NavIcon> = () => (
-  <NavIcon IconComponent={EducationIcon} count={45} linkTo='/lk' />
-)
+const Template: ComponentStory<typeof NavIcon> = (args) => <NavIcon {...args} />
 
 export const Primary = Template.bind({})
-Primary.args = {}
-Primary.parameters = {}
+Primary.args = {
+  IconComponent: EducationIcon,
+  count: 45,
+  linkTo: '/lk',
+}
+
+export const BigNumber = Template.bind({})
+BigNumber.args = {
+  IconComponent: EducationIcon,
+  count: 45000,
+  linkTo: '/',
+}

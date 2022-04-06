@@ -9,7 +9,11 @@ export default {
   decorators: [SbReduxProvider],
 } as ComponentMeta<typeof SortDropdown>
 
-const Template: ComponentStory<typeof SortDropdown> = () => <SortDropdown />
+const Template: ComponentStory<typeof SortDropdown> = () => (
+  <div className='max-w-xs'>
+    <SortDropdown />
+  </div>
+)
 
 export const Primary = Template.bind({})
 Primary.args = {}

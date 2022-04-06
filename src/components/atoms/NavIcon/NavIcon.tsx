@@ -22,7 +22,9 @@ const NavIcon = ({
     to={linkTo}
   >
     <IconComponent className='w-4 h-4' />
-    <div className='ml-1 text-xs leading-none text-gray-300'>{count}</div>
+    <div className='ml-1 text-xs leading-none text-gray-300 '>
+      {count < 100 ? count : '99+'}
+    </div>
   </Link>
 )
 

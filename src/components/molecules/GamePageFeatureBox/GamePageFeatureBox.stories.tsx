@@ -2,14 +2,17 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import GamePageFeatureBox from './GamePageFeatureBox'
 
 export default {
-  title: 'atoms/GamePageFeatureBox',
+  title: 'molecules/GamePageFeatureBox',
   component: GamePageFeatureBox,
 } as ComponentMeta<typeof GamePageFeatureBox>
 
-const Template: ComponentStory<typeof GamePageFeatureBox> = () => (
-  <GamePageFeatureBox title='string' value='string' />
+const Template: ComponentStory<typeof GamePageFeatureBox> = (args) => (
+  <GamePageFeatureBox {...args} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  title: 'Key',
+  value: 'Value',
+}
 Primary.parameters = {}

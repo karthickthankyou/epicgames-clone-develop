@@ -17,9 +17,20 @@ const Template: ComponentStory<typeof Heading> = ({ variant, children }) => (
   </div>
 )
 
-export const Primary = Template.bind({})
-Primary.args = {
-  variant: 'heading-1',
-  children: 'Hello World',
+export const Heading0 = Template.bind({})
+Heading0.args = {
+  variant: 'heading-0',
+  children: 'Heading 0',
 }
-Primary.parameters = {}
+
+export const Heading1 = Template.bind({})
+Heading1.args = {
+  variant: 'heading-1',
+  children: 'Heading 1',
+}
+
+export const Heading2 = Template.bind({})
+Heading2.args = {
+  variant: 'heading-2',
+  children: 'Heading 2',
+}

@@ -8,18 +8,36 @@ export default {
   component: HoverIcon,
 } as ComponentMeta<typeof HoverIcon>
 
-const Template: ComponentStory<typeof HoverIcon> = ({
-  IconComponent,
-  hintText,
-}) => (
+const Template: ComponentStory<typeof HoverIcon> = (args) => (
   <div className='m-20'>
-    <HoverIcon IconComponent={IconComponent} hintText={hintText} />
+    <HoverIcon {...args} />
   </div>
 )
 
-export const Primary = Template.bind({})
-Primary.args = {
+export const Top = Template.bind({})
+Top.args = {
   IconComponent: Heart,
-  hintText: 'Hello World',
+  hintText: 'Top hint',
+  position: 'top',
 }
-Primary.parameters = {}
+
+export const Right = Template.bind({})
+Right.args = {
+  IconComponent: Heart,
+  hintText: 'Right hint',
+  position: 'right',
+}
+
+export const Bottom = Template.bind({})
+Bottom.args = {
+  IconComponent: Heart,
+  hintText: 'Bottom hint',
+  position: 'bottom',
+}
+
+export const Left = Template.bind({})
+Left.args = {
+  IconComponent: Heart,
+  hintText: 'Left hint',
+  position: 'left',
+}

@@ -7,22 +7,52 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>
 
-const Template: ComponentStory<typeof Button> = ({
-  size,
-  variant,
-  fullWidth,
-  children,
-}) => (
-  <Button size={size} variant={variant} fullWidth={fullWidth}>
-    {children}
-  </Button>
-)
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 
 export const Primary = Template.bind({})
 Primary.args = {
   size: 'md',
-  variant: 'containedPrimary',
-  fullWidth: false,
+  variant: 'contained',
   children: 'Hello World',
 }
-Primary.parameters = {}
+export const Small = Template.bind({})
+Small.args = {
+  size: 'sm',
+  children: 'Small',
+}
+export const Medium = Template.bind({})
+Medium.args = {
+  size: 'md',
+  children: 'Medium',
+}
+export const Large = Template.bind({})
+Large.args = {
+  size: 'lg',
+  children: 'Large',
+}
+export const XL = Template.bind({})
+XL.args = {
+  size: 'xl',
+  children: 'Xtra Large',
+}
+
+export const Outlined = Template.bind({})
+Outlined.args = {
+  variant: 'outlined',
+  children: 'Outlined',
+}
+
+export const Red = Template.bind({})
+Red.args = {
+  size: 'md',
+  color: 'red',
+  variant: 'contained',
+  children: 'Hello World',
+}
+export const Green = Template.bind({})
+Green.args = {
+  size: 'md',
+  color: 'green',
+  variant: 'contained',
+  children: 'Hello World',
+}

@@ -35,6 +35,8 @@ const HoverIcon = ({
           showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
         }
         ${position === 'top' && '-translate-x-2/4 left-2/4 bottom-full mb-2'}
+        ${position === 'bottom' && '-translate-x-2/4 left-2/4 top-0-full mt-2'}
+        ${position === 'right' && 'left-full top-0 ml-2 translate-y-0'}
         ${position === 'left' && 'right-full top-0 mr-2 translate-y-0'}
         `}
       >
