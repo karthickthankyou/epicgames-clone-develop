@@ -53,6 +53,15 @@ module.exports = {
       auto: 'auto',
     },
     extend: {
+      rotate: {
+        135: '135deg',
+        225: '225deg',
+        270: '270deg',
+        315: '315deg',
+      },
+      animation: {
+        spin30: 'spin 30s linear infinite',
+      },
       colors: {
         primary: primaryPallete,
         gray: grayPallete,
