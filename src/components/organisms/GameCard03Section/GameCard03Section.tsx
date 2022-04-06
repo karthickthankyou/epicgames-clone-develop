@@ -35,8 +35,8 @@ const GameCard03Vertical = ({
       <GameCard03
         key={game.id}
         id={game.id}
-        displayImage={getImageUrl(game.id).imageUrl}
-        gameTitle={game.title}
+        imageUrl={getImageUrl(game.id).imageUrl}
+        title={game.title}
         priceInfo={{
           price: game.price,
         }}

@@ -14,8 +14,8 @@ import BrowseFilters from '@molecules/BrowseFilters'
 import { useDocumentTitle } from '@hooks/index'
 import SearchIcon from '@heroicons/react/outline/SearchIcon'
 
-import SkeletonCard01 from '@molecules/SkeletonCard01'
 import Heading from '@atoms/Heading'
+import { SkeletonCard01 } from '@molecules/GameCard01/GameCard01'
 
 export interface IBrowseGamesProps {}
 

@@ -6,30 +6,21 @@ const GameCard02Section = () => (
   <div className='grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3'>
     <GameCard02
       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur molestiae voluptatem, exercitationem consequatur quibusdam placeat tempore dolore ex aliquid tempora perspiciatis deleniti soluta ipsam.'
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Battleground 2009'
-      priceInfo={{
-        price: 10,
-      }}
-      productionCompany='Some company'
+      imageUrl='static/media/game.e4f1f703.jpg'
+      title='Battleground 2009'
+      price={10}
     />
     <GameCard02
       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur molestiae voluptatem, exercitationem consequatur quibusdam placeat tempore dolore ex aliquid tempora perspiciatis deleniti soluta ipsam.'
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Battleground 2009'
-      priceInfo={{
-        price: 10,
-      }}
-      productionCompany='Some company'
+      imageUrl='static/media/game.e4f1f703.jpg'
+      title='Battleground 2009'
+      price={10}
     />
     <GameCard02
       description='Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur molestiae voluptatem, exercitationem consequatur quibusdam placeat tempore dolore ex aliquid tempora perspiciatis deleniti soluta ipsam.'
-      displayImage='static/media/game.e4f1f703.jpg'
-      gameTitle='Battleground 2009'
-      priceInfo={{
-        price: 10,
-      }}
-      productionCompany='Some company'
+      imageUrl='static/media/game.e4f1f703.jpg'
+      title='Battleground 2009'
+      price={10}
       classes='col-span-1 sm:col-span-2 md:col-span-1'
     />
   </div>

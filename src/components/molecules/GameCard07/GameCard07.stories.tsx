@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import GameCard07 from './GameCard07'
 
 export default {
-  title: 'molecules/GameCard07',
+  title: 'molecules/LibraryCard',
   component: GameCard07,
 } as ComponentMeta<typeof GameCard07>
 
@@ -14,6 +14,10 @@ const Template: ComponentStory<typeof GameCard07> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  game: {},
+  game: {
+    title: 'Flowers in hell',
+    imageUrl:
+      'https://res.cloudinary.com/thankyou/image/upload/v1621430541/sample.jpg',
+  },
 }
 Primary.parameters = {}

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom'
 
 export interface IGameCard04Props {
   id?: string
-  gameTitle: string
-  displayImage: string
+  title: string
+  imageUrl: string
   date: string
   free?: boolean
   classes?: string
@@ -14,8 +14,8 @@ export interface IGameCard04Props {
 
 const GameCard04 = ({
   id,
-  gameTitle,
-  displayImage,
+  title,
+  imageUrl,
   free = false,
   date,
   classes,
@@ -47,7 +47,7 @@ const GameCard04 = ({
       className={`w-full ${mystery && 'cursor-not-allowed'} ${classes}`}
     >
       <img
-        src={displayImage}
+        src={imageUrl}
         className='object-cover w-full rounded-t-lg h-72 filter hover:brightness-125'
         alt=''
       />
@@ -60,7 +60,7 @@ const GameCard04 = ({
       <div className='mt-4'>
         {free ? (
           <>
-            <div className='font-bold'>{gameTitle}</div>
+            <div className='font-bold'>{title}</div>
             <div className='mt-1 text-sm text-gray-300'>
               Free Now - {dateFormat(date, 'mmm d "at" h:MM TT')}
             </div>

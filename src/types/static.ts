@@ -16,12 +16,12 @@ export const sortByOptions: {
 
 export const sampleGame = {
   id: '92',
-  gameTitle: 'Cyber Punk',
-  productionCompany: 'Some production company',
+  title: 'Cyber Punk',
+  publisherId: 'Some production company',
   priceInfo: {},
   price: 10,
   discount: 10,
-  displayImage: '',
+  imageUrl: '',
   inCart: true,
   wishlisted: true,
 }

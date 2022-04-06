@@ -11,8 +11,8 @@ export interface IGameCard06Props {
   id: string
   title: string
   price: IPriceProps
-  displayImage: string
-  productionCompany: string
+  imageUrl: string
+  publisherId: string
   date: string
 }
 
@@ -20,7 +20,7 @@ const GameCard06 = ({
   id,
   title,
   price: { price, discount = 0 },
-  displayImage,
+  imageUrl,
   date,
 }: IGameCard06Props) => {
   const { uid } = useAppSelector(selectUser)
@@ -28,7 +28,7 @@ const GameCard06 = ({
   return (
     <div className='relative grid grid-cols-3 p-2 bg-gray-800 rounded group'>
       <img
-        src={displayImage}
+        src={imageUrl}
         className='object-cover w-full h-full col-span-1 rounded-sm cursor-pointer filter group-hover:brightness-125'
         alt=''
       />

@@ -7,12 +7,24 @@ export default {
   component: MessageWrapper,
 } as ComponentMeta<typeof MessageWrapper>
 
-const Template: ComponentStory<typeof MessageWrapper> = () => (
-  <MessageWrapper>
-    <div>Hello</div>
-  </MessageWrapper>
+const Template: ComponentStory<typeof MessageWrapper> = (args) => (
+  <MessageWrapper {...args} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {}
-Primary.parameters = {}
+Primary.args = {
+  children: 'Text placed center inside 3/4 screen height.',
+}
+
+export const Custom = Template.bind({})
+Custom.args = {
+  children: (
+    <div>
+      <div className='text-lg font-black'>Heading</div>
+      <div className='max-w-md mt-2 text-sm text-gray-300'>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+        ipsum quasi distinctio!
+      </div>
+    </div>
+  ),
+}

@@ -7,13 +7,27 @@ export default {
   component: Pagination,
 } as ComponentMeta<typeof Pagination>
 
-const Template: ComponentStory<typeof Pagination> = ({ current, total }) => (
-  <Pagination current={current} total={total} />
+const Template: ComponentStory<typeof Pagination> = (args) => (
+  <Pagination {...args} />
 )
 
 export const Primary = Template.bind({})
 Primary.args = {
-  current: 1,
+  current: 0,
   total: 10,
 }
 Primary.parameters = {}
+
+export const Huge = Template.bind({})
+Huge.args = {
+  current: 0,
+  total: 100,
+}
+Huge.parameters = {}
+
+export const HugeMiddleNumber = Template.bind({})
+HugeMiddleNumber.args = {
+  current: 50,
+  total: 100,
+}
+HugeMiddleNumber.parameters = {}

@@ -7,15 +7,22 @@ export default {
   component: EmptyList,
 } as ComponentMeta<typeof EmptyList>
 
-const Template: ComponentStory<typeof EmptyList> = () => (
-  <EmptyList
-    title='Your wishlist is empty'
-    description='Games added to your wishlist will appear here'
-    buttonText='back to store'
-    linkTo='/'
-  />
+const Template: ComponentStory<typeof EmptyList> = (args) => (
+  <EmptyList {...args} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {}
-Primary.parameters = {}
+Primary.args = {
+  title: 'Your wishlist is empty',
+  description: 'Games added to your wishlist will appear here',
+  buttonText: 'back to store',
+  linkTo: '/',
+}
+
+export const Cart = Template.bind({})
+Cart.args = {
+  title: 'Your cart is empty',
+  description: 'Custom message here.',
+  buttonText: 'Back to store',
+  linkTo: '/',
+}

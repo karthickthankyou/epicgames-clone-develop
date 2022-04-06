@@ -7,11 +7,15 @@ export default {
   component: MaskedShowcaseCard,
 } as ComponentMeta<typeof MaskedShowcaseCard>
 
-const Template: ComponentStory<typeof MaskedShowcaseCard> = () => (
+const Template: ComponentStory<typeof MaskedShowcaseCard> = (args) => (
   // @ts-ignore
-  <MaskedShowcaseCard game={sampleGame} comment='hello' />
+  <MaskedShowcaseCard {...args} />
 )
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  id: '002',
+  keyUnit: '127K',
+  comment: 'current players',
+}
 Primary.parameters = {}

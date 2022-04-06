@@ -16,13 +16,14 @@ const CartCard = ({ game, classes }: ICartCardProps) => {
   const history = useHistory()
   return (
     <div
-      className={`flex relative items-start bg-gray-800 shadow-lg rounded  ${classes}`}
+      className={`flex relative items-start bg-gray-800 shadow-lg rounded h-24  ${classes}`}
     >
       <img
         src={game.imageUrl}
         alt=''
         className='object-cover w-16 h-full mr-2 rounded-l'
       />
+
       <div className='p-2 mr-2 text-sm text-gray-200'>
         <div>{game.title}</div>
         <Price

@@ -130,8 +130,6 @@ export const useAlgoliaSearchGames = () => {
       filterRatingString,
     ].filter((item) => item !== '')
 
-    console.log(numericalFilters, categoricalFilter)
-
     const searchIndex = [
       sortByReleaseDateIndex,
       sortByDiscountIndex,
@@ -139,8 +137,6 @@ export const useAlgoliaSearchGames = () => {
       sortByPriceDescIndex,
       sortByRatingsIndex,
     ][+filterSortIndex]
-
-    console.log('searchIndex', searchIndex)
 
     const t0 = performance.now()
     searchIndex
@@ -155,7 +151,6 @@ export const useAlgoliaSearchGames = () => {
       })
       // @ts-ignore
       .then((res: SearchResponse<{ id: string }>): void => {
-        console.log(res)
         const { hits, page, nbPages, facets } = res
         const arr = hits.map((hit) => {
           const { imageUrl, subImageUrl } = getImageUrl(hit.id)
@@ -170,7 +165,6 @@ export const useAlgoliaSearchGames = () => {
           })
         )
         const t1 = performance.now()
-        console.log(`Call to algolia took ${t1 - t0} milliseconds.`)
       })
       .catch((err) => console.log('Algolia error: ', err))
   }, [

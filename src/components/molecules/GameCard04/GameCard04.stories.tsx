@@ -1,35 +1,38 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import image from '@assets/game.jpg'
+import { getDates } from '@organisms/GameCard04Section/GameCard04Section'
 import GameCard04 from './GameCard04'
 
 export default {
-  title: 'molecules/GameCard04',
+  title: 'molecules/GameCardFree',
   component: GameCard04,
 } as ComponentMeta<typeof GameCard04>
 
-const Template: ComponentStory<typeof GameCard04> = ({
-  gameTitle,
-  displayImage,
-  date,
-  free,
-  id,
-}) => (
-  <GameCard04
-    id={id}
-    gameTitle={gameTitle}
-    displayImage={displayImage}
-    date={date}
-    free={free}
-  />
+const Template: ComponentStory<typeof GameCard04> = (args) => (
+  <div className='max-w-sm'>
+    <GameCard04 {...args} />
+  </div>
 )
 
-export const Primary = Template.bind({})
-Primary.args = {
+const { date, nextWeek } = getDates()
+
+export const WeeklyFreeCard = Template.bind({})
+WeeklyFreeCard.args = {
   id: '306',
-  gameTitle: 'Cyberpunk 2077',
-  displayImage: image,
-  date: '2021-08-10T08:30:00Z',
+  title: 'Cyberpunk 2077',
+  imageUrl: image,
+  date,
   free: true,
 }
-Primary.parameters = {}
+WeeklyFreeCard.parameters = {}
+
+export const MysteryCard = Template.bind({})
+MysteryCard.args = {
+  id: '306',
+  title: 'Cyberpunk 2077',
+  imageUrl: image,
+  date: nextWeek,
+  free: false,
+}
+MysteryCard.parameters = {}

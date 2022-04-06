@@ -4,35 +4,30 @@ import image from '@assets/game.jpg'
 import GameCard02 from './GameCard02'
 
 export default {
-  title: 'molecules/GameCard02',
+  title: 'molecules/GameCardSub',
   component: GameCard02,
 } as ComponentMeta<typeof GameCard02>
 
-const Template: ComponentStory<typeof GameCard02> = ({
-  gameTitle,
-  description,
-  displayImage,
-  productionCompany,
-  priceInfo,
-}) => (
-  <GameCard02
-    gameTitle={gameTitle}
-    description={description}
-    displayImage={displayImage}
-    productionCompany={productionCompany}
-    priceInfo={priceInfo}
-  />
+const Template: ComponentStory<typeof GameCard02> = (args) => (
+  <div className='max-w-xs'>
+    <GameCard02 {...args} />
+  </div>
 )
 
 export const Primary = Template.bind({})
 Primary.args = {
-  gameTitle: 'Battleground 2009',
-  productionCompany: 'Some company',
+  title: 'Battleground 2009',
   description:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur molestiae voluptatem, exercitationem consequatur quibusdam placeat tempore dolore ex aliquid tempora perspiciatis deleniti soluta ipsam.',
-  displayImage: image,
-  priceInfo: {
-    price: 10,
-  },
+  imageUrl: image,
+  price: 10,
 }
-Primary.parameters = {}
+
+export const Free = Template.bind({})
+Free.args = {
+  title: 'Battleground 2009',
+  description:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis pariatur molestiae voluptatem, exercitationem consequatur quibusdam placeat tempore dolore ex aliquid tempora perspiciatis deleniti soluta ipsam.',
+  imageUrl: image,
+  price: 0,
+}

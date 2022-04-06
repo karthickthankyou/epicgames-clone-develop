@@ -14,7 +14,6 @@ import {
   getDoc,
 } from 'firebase/firestore'
 import {
-  getAuth,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signOut,
@@ -67,7 +66,6 @@ import {
   Game,
   GameGenre,
   LoadSuccessErrorDispatch,
-  LoadSuccessErrorType,
   SpecialGames,
   UserGame,
   UserGameStatus,

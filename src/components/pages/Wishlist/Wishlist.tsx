@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import SortDropdown from '@atoms/SortDropdown'
 import GameCard06 from '@molecules/GameCard06'
 import { useAppSelector } from '@store/hooks'
@@ -9,7 +8,6 @@ import {
 import Pagination from '@molecules/Pagination'
 import EmptyList from '@molecules/EmptyList'
 
-import { useDocumentTitle } from '@hooks/index'
 import CustomHelmet from '@organisms/CustomHelmet'
 import Heading from '@atoms/Heading'
 
@@ -54,13 +52,13 @@ const Wishlist = () => {
               key={game.id}
               id={game.id}
               date='2021-06-10T08:30:00Z'
-              displayImage={game.imageUrl}
+              imageUrl={game.imageUrl}
               title={game.title}
               price={{
                 discount: game.discount,
                 price: game.price,
               }}
-              productionCompany={game.publisherId}
+              publisherId={game.publisherId}
             />
           ))}
         </div>

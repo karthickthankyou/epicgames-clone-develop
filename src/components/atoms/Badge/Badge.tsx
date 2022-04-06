@@ -4,9 +4,15 @@ export interface IBadgeProps {
   children: Children
   size?: 'sm' | 'md' | 'lg'
   variant?: 'primary' | 'gray' | 'green' | 'white'
+  className?: string
 }
 
-const Badge = ({ children, size = 'md', variant = 'gray' }: IBadgeProps) => {
+const Badge = ({
+  children,
+  size = 'md',
+  variant = 'gray',
+  className,
+}: IBadgeProps) => {
   const sizeCls = {
     sm: 'px-1 py-0.5 text-xs',
     md: 'px-1.5 py-1.0 text-sm',
@@ -20,7 +26,7 @@ const Badge = ({ children, size = 'md', variant = 'gray' }: IBadgeProps) => {
   }
   return (
     <span
-      className={`transition-all inline-block rounded-sm font-semibold ${sizeCls[size]} ${variantCls[variant]}`}
+      className={`transition-all inline-block rounded-sm font-semibold ${sizeCls[size]} ${variantCls[variant]} ${className}`}
     >
       {children}
     </span>

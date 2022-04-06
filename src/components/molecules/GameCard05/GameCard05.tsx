@@ -27,7 +27,6 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
     { label: 'Platform', value: 'Windows' },
   ]
 
-  console.log(game)
   const { uid } = useAppSelector(selectUser)
   const history = useHistory()
 
@@ -41,8 +40,10 @@ const GameCard05 = ({ game }: IGameCard05Props) => {
         />
       </div>
 
-      <Badge badgeText='base game' classes='mt-4' />
-      <Price price={game.price} classes='mt-2' />
+      <Badge className='mt-4'>Base game</Badge>
+      {!game.purchased && (
+        <Price price={game.price} discount={game.discount} classes='mt-2' />
+      )}
       {game.purchased ? (
         <Link
           to='/library'

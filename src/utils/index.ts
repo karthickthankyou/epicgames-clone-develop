@@ -6,6 +6,8 @@ import HeartSolidIcon from '@heroicons/react/solid/HeartIcon'
 
 import CartSolidIcon from '@heroicons/react/solid/ShoppingCartIcon'
 import CartOutlineIcon from '@heroicons/react/outline/ShoppingCartIcon'
+import dateFormat from 'dateformat'
+import { getDates } from '@organisms/GameCard04Section/GameCard04Section'
 
 export const CAROUSEL_DURATION = 50
 export interface ICounter {
@@ -166,3 +168,6 @@ export const getInitials = (text: string) =>
     .map((n) => n[0])
     .join('')
     .toUpperCase()
+
+export const formatDate = (date: string) => dateFormat(date, 'mmm d yyyy')
+export const getRandomDate = () => formatDate(getDates().randomDate)

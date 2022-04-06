@@ -4,9 +4,19 @@ import { ReactComponent as Thumbsdown } from '@assets/svgs/thumbsdown.svg'
 
 export interface IReviewCardProps {
   reviewScore: number
+  userName: string
+  date: string
+  review: string
+  approvalRate: number
 }
 
-const ReviewCard = ({ reviewScore = 45 }: IReviewCardProps) => (
+const ReviewCard = ({
+  reviewScore,
+  userName,
+  date,
+  review,
+  approvalRate,
+}: IReviewCardProps) => (
   <div className='p-3 border border-gray-700 rounded-sm group'>
     <div className='flex'>
       <div
@@ -17,17 +27,13 @@ const ReviewCard = ({ reviewScore = 45 }: IReviewCardProps) => (
         {reviewScore}
       </div>
       <div className='flex flex-col ml-3'>
-        <div className='text-lg'>John Doe </div>
-        <div className='text-sm text-gray-300'>17, May, 2021</div>
+        <div className='text-lg'>{userName}</div>
+        <div className='text-sm text-gray-200'>{date}</div>
       </div>
     </div>
-    <div className='max-w-md mt-2 text-gray-200'>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex minus unde
-      voluptas maxime tempore, aliquid laborum delectus, autem sit reiciendis
-      dolore nemo illo eum accusantium.
-    </div>
-    <div className='flex items-baseline justify-between my-2 text-xs text-gray-400'>
-      <div>32% helpful</div>
+    <div className='max-w-md mt-2'>{review}</div>
+    <div className='flex items-baseline justify-between my-2 text-xs text-gray-300'>
+      <div>{approvalRate}% helpful</div>
       <div className='opacity-0 group-hover:opacity-100'>
         <button
           type='button'

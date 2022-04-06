@@ -2,18 +2,13 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useCarouselTimer } from '@hooks/index'
 
 export interface ICarouselProps {
-  image: string
+  duration?: number
+  images: string[]
 }
 
-export const images = [
-  'https://d33wubrfki0l68.cloudfront.net/dd23708ebc4053551bb33e18b7174e73b6e1710b/dea24/static/images/wallpapers/shared-colors@2x.png',
-  'https://d33wubrfki0l68.cloudfront.net/49de349d12db851952c5556f3c637ca772745316/cfc56/static/images/wallpapers/bridge-02@2x.png',
-  'https://d33wubrfki0l68.cloudfront.net/594de66469079c21fc54c14db0591305a1198dd6/3f4b1/static/images/wallpapers/bridge-01@2x.png',
-]
-
-const Carousel = () => {
+const Carousel = ({ duration = 2000, images }: ICarouselProps) => {
   const [currentIndex, setCurrentIndex] = useCarouselTimer({
-    duration: 4000,
+    duration,
     itemsLength: images.length,
   })
 
@@ -33,13 +28,13 @@ const Carousel = () => {
                   transition={{
                     duration: 0.2,
                   }}
-                  className='w-full'
+                  className='object-cover w-full h-full'
                 />
               )
           )}
         </AnimatePresence>
       </div>
-      <div className='grid grid-cols-3 h-36'>
+      <div className='flex gap-3 py-3 overflow-x-scroll thin-scrollbar overscroll-x-none'>
         {images.map((image, index) => (
           <motion.img
             src={image}
@@ -51,8 +46,10 @@ const Carousel = () => {
               duration: 0.2,
             }}
             onClick={() => setCurrentIndex(index)}
-            className={`object-cover w-full ${
-              image === images[+currentIndex] ? 'scale-110' : 'scale-90'
+            className={`object-cover w-36 h-24 flex-shrink-0 transition-all ${
+              index === currentIndex
+                ? 'scale-125 border-2 border-white'
+                : 'scale-100'
             }`}
           />
         ))}

@@ -25,7 +25,7 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const Signup = () => {
   const user = useAppSelector(selectUser)
-  const [{ loading, success, error }, dispatch] = useLoadSuccessError()
+  const [{ loading, error }, dispatch] = useLoadSuccessError()
 
   type FormValues = { email: string; password: string; displayName: string }
 

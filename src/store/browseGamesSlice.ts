@@ -2,7 +2,7 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit'
 import { Game } from '@epictypes/index'
 import { addOrRemoveItem } from '@utils/index'
-import { combineWCPDataForObject, combineWCPData } from './gamesSlice'
+import { combineWCPData } from './gamesSlice'
 import { RootState } from './store'
 import {
   selectCartGameIds,
