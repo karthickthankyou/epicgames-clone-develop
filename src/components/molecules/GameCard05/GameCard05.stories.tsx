@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { getDates } from '@organisms/GameCard04Section/GameCard04Section'
+import { getDates } from '@utils/index'
 import GameCard05 from './GameCard05'
 
 export default {

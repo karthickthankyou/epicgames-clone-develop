@@ -5,22 +5,22 @@ import { Link } from 'react-router-dom'
 
 export interface IGameCard04Props {
   id?: string
-  title: string
+  title?: string
   imageUrl: string
   date: string
-  free?: boolean
+  mystery?: boolean
   classes?: string
 }
 
-const GameCard04 = ({
+const GameCardFree = ({
   id,
   title,
   imageUrl,
-  free = false,
+  mystery = false,
   date,
   classes,
 }: IGameCard04Props) => {
-  const { text, bgColor } = free
+  const { text, bgColor } = !mystery
     ? {
         text: 'Free Now',
         bgColor: 'bg-primary',
@@ -36,8 +36,6 @@ const GameCard04 = ({
     const timer = setTimeout(() => setCounter(calculateTimeLeft(date)), 1000)
     return () => clearTimeout(timer)
   }, [counter, date])
-
-  const mystery = !id
 
   const toRoute = mystery ? '/' : `/game/${id}`
 
@@ -58,7 +56,7 @@ const GameCard04 = ({
       </div>
 
       <div className='mt-4'>
-        {free ? (
+        {!mystery ? (
           <>
             <div className='font-bold'>{title}</div>
             <div className='mt-1 text-sm text-gray-300'>
@@ -76,4 +74,4 @@ const GameCard04 = ({
   )
 }
 
-export default GameCard04
+export default GameCardFree

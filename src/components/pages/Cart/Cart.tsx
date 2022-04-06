@@ -9,6 +9,7 @@ export interface ICartProps {}
 
 const Cart = () => {
   const cartItems = useAppSelector(selectCartGames)
+
   if (cartItems.length === 0)
     return (
       <MessageWrapper>

@@ -13,6 +13,8 @@ import { ReactComponent as FacebookIcon } from '@assets/svgs/facebook.svg'
 import { ReactComponent as TwitterIcon } from '@assets/svgs/twitter.svg'
 import { ReactComponent as DiscordIcon } from '@assets/svgs/discord.svg'
 import { ReactComponent as InstagramIcon } from '@assets/svgs/instagram.svg'
+import { getRandomNumber } from '@utils/index'
+import { reviews } from '@utils/data'
 
 export interface IGamePageProps {}
 
@@ -96,7 +98,11 @@ const GamePage = () => {
               </div>
               <div className='my-6'>
                 <div className='text-xl font-semibold'>Reviews</div>
-                <ReviewSection rating={89} />
+                <ReviewSection
+                  averageRating={getRandomNumber(0, 100)}
+                  count={getRandomNumber(3, 20000)}
+                  reviews={reviews}
+                />
               </div>
             </div>
             <div className='order-1 col-span-1 md:order-2'>

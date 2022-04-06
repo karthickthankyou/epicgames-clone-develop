@@ -4,9 +4,11 @@ import {
   useHomeScreenGames,
 } from '@epicfirebase/hooks'
 import { useDocumentTitle } from '@hooks/index'
+
 import {
   selectActionGames,
   selectAdventureGames,
+  selectHomeScreenGames,
   selectAnticipatedBy,
   selectHighestDiscounts,
   selectHoursPlayed,
@@ -15,6 +17,7 @@ import {
   selectPuzzleGames,
   selectUnitsSold,
 } from '@store/gamesSlice'
+import { sampleGames } from '@epictypes/static'
 import { useAppSelector } from '@store/hooks'
 import {
   selectCartGameIds,
@@ -30,6 +33,8 @@ import GameCard04Section from '@organisms/GameCard04Section'
 import BigBanner from '@organisms/BigBanner'
 import BrowseSection from '@organisms/BrowseSection'
 import GameCard03Section from '@organisms/GameCard03Section/GameCard03Section'
+import { getImageUrl, getDates } from '@utils/index'
+import { unitsSold, anticipatedBy } from '@utils/data'
 
 export interface IHomeProps {}
 
@@ -47,37 +52,20 @@ const Home = () => {
   const narrationGames = useAppSelector(selectNarrationGames)
 
   // const unitsSold = useAppSelector(selectUnitsSold)
+  const { date, nextWeek } = getDates()
 
-  const unitsSold = [
-    { id: '427', units: '510' },
-    { id: '234', units: '450' },
-    { id: '337', units: '331' },
-    { id: '531', units: '191' },
-    { id: '005', units: '126' },
-    { id: '013', units: '109' },
-    { id: '237', units: '72' },
-  ]
-  const anticipatedBy = [
-    { id: '183', units: '230' },
-    { id: '043', units: '190' },
-    { id: '135', units: '166' },
-    { id: '019', units: '94' },
-    { id: '040', units: '80' },
-    { id: '071', units: '71' },
-    { id: '083', units: '56' },
-  ]
   const hoursPlayed = useAppSelector(selectHoursPlayed)
   const hoursToBeat = useAppSelector(selectHoursToBeat)
   // const anticipatedBy = useAppSelector(selectAnticipatedBy)
 
-  console.log('units sold: ', unitsSold)
   useHomeScreenGames()
   useDocumentTitle('Epic clone | Karthick Ragavendran')
+  const homeShowcaseGames = useAppSelector(selectHomeScreenGames)
 
   return (
     <div>
       <div className='-mt-16'>
-        <HomeShowcase />
+        <HomeShowcase games={homeShowcaseGames} />
       </div>
       <GameCard01Section
         heading='Highest Discounts Ever Recorded'
@@ -137,7 +125,29 @@ const Home = () => {
           buttonLinkTo='/cart'
         />
       )}
-      <GameCard04Section />
+      <GameCard04Section
+        freeGames={[
+          {
+            id: '306',
+            date,
+            imageUrl: getImageUrl('306').imageUrl,
+            title: '3 out of 10, EP 3: "Pivot Like A Champion"',
+          },
+          {
+            id: '460',
+            date,
+            imageUrl: getImageUrl('460').imageUrl,
+            title: 'Cardpocalypse',
+          },
+          {
+            id: '290',
+            date,
+            imageUrl: getImageUrl('290').imageUrl,
+            title: 'Diabotical',
+          },
+        ]}
+        mysteryGame={[{ date: nextWeek }, { date: nextWeek }]}
+      />
 
       {actionGames.length > 0 && (
         <GameCard01Section
@@ -158,7 +168,11 @@ const Home = () => {
           buttonLinkTo='/browse'
         />
       )}
-      <GameCard03Section />
+      <GameCard03Section
+        newReleases={sampleGames.slice(0, 6)}
+        topSellers={sampleGames.slice(6, 12)}
+        comingSoon={sampleGames.slice(12, 18)}
+      />
 
       {puzzleGames.length > 0 && (
         <GameCard01Section

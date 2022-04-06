@@ -1,21 +1,24 @@
 import { useState } from 'react'
 
 import { useCarouselTimer } from '@hooks/index'
-import { selectHomeScreenGames } from '@store/gamesSlice'
+
 import { useAppSelector } from '@store/hooks'
 import { CAROUSEL_DURATION } from '@utils/index'
 import { Link } from 'react-router-dom'
+import { Game } from '@epictypes/index'
 
-export interface IHomeShowcaseProps {}
+export interface IHomeShowcaseProps {
+  games: Game[]
+}
 
-const HomeShowcase = () => {
-  const games = useAppSelector(selectHomeScreenGames)
+const HomeShowcase = ({ games }: IHomeShowcaseProps) => {
   const [imageId, setImageId] = useCarouselTimer({
     duration: CAROUSEL_DURATION * 1000,
     itemsLength: games.length,
   })
 
   const [muted, setMuted] = useState<boolean>(true)
+
   return (
     <>
       <div className='relative overflow-hidden aspect-w-10 aspect-h-10 sm:aspect-h-7 md:aspect-h-8 lg:aspect-h-5'>
@@ -65,7 +68,7 @@ const HomeShowcase = () => {
                 </div>
 
                 <div className='z-20 hidden md:block'>
-                  <div className='grid max-w-lg grid-cols-7 gap-3 ml-auto'>
+                  <div className='flex justify-end max-w-lg gap-3 ml-auto '>
                     {games.map((game_, i) => (
                       <button
                         key={game_.id}
@@ -73,10 +76,10 @@ const HomeShowcase = () => {
                         onClick={() => setImageId(i)}
                         tabIndex={0}
                         aria-label={game_.title}
-                        className='w-full h-full rounded-full shadow-lg aspect-w-9 aspect-h-9'
+                        className='w-16 h-16 rounded-full shadow-lg'
                       >
                         <img
-                          className={`object-cover object-center w-full h-full rounded-full ${
+                          className={`object-cover object-center  w-full h-full rounded-full ${
                             imageId === i && 'border-2 border-white p-1'
                           }`}
                           src={game_.imageUrl}

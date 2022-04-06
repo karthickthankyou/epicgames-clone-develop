@@ -1,17 +1,17 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import image from '@assets/game.jpg'
-import { getDates } from '@organisms/GameCard04Section/GameCard04Section'
-import GameCard04 from './GameCard04'
+import { getDates } from '@utils/index'
+import GameCardFree from './GameCard04'
 
 export default {
   title: 'molecules/GameCardFree',
-  component: GameCard04,
-} as ComponentMeta<typeof GameCard04>
+  component: GameCardFree,
+} as ComponentMeta<typeof GameCardFree>
 
-const Template: ComponentStory<typeof GameCard04> = (args) => (
+const Template: ComponentStory<typeof GameCardFree> = (args) => (
   <div className='max-w-sm'>
-    <GameCard04 {...args} />
+    <GameCardFree {...args} />
   </div>
 )
 

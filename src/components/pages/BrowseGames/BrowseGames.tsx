@@ -25,7 +25,6 @@ const BrowseGames = () => {
   const { loading, error } = useAppSelector(selectBrowseGames)
   const games = useAppSelector(selectBrowseGamesWithWish)
 
-  console.log(games)
   const dispatch = useAppDispatch()
 
   const searchGames = (e: any) => {

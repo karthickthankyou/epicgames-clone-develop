@@ -46,5 +46,5 @@ export const collections = {
 }
 onAuthStateChanged(auth, (user: any) => {
   // Check for user status
-  console.log(user)
+  // console.log(user)
 })

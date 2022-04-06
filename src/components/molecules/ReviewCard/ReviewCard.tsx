@@ -17,14 +17,14 @@ const ReviewCard = ({
   review,
   approvalRate,
 }: IReviewCardProps) => (
-  <div className='p-3 border border-gray-700 rounded-sm group'>
+  <div className='p-3 border border-gray-800 rounded-sm group'>
     <div className='flex'>
       <div
         className={`${getScoreColor(
           reviewScore
         )} shadow-lg rounded-full flex h-12 w-12 items-center justify-center`}
       >
-        {reviewScore}
+        {reviewScore <= 100 ? reviewScore : 100}
       </div>
       <div className='flex flex-col ml-3'>
         <div className='text-lg'>{userName}</div>
@@ -53,3 +53,6 @@ const ReviewCard = ({
 )
 
 export default ReviewCard
+
+//
+// Very interesting game it almost emptied the pack of wifi I had

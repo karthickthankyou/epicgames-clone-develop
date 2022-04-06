@@ -30,7 +30,6 @@ export const updateUserGames = ({
 }
 
 export const resetUserTask = () => {
-  console.log('Running resetUserTask')
   const resetTestUser = httpsCallable(getFunctions(), 'resetTestUser')
   resetTestUser().then((res) => console.log('Reset done'))
 }

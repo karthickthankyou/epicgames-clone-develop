@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { getDates } from '@organisms/GameCard04Section/GameCard04Section'
+import { getDates } from '@utils/index'
 import ReviewCard from './ReviewCard'
 
 export default {
@@ -14,14 +14,23 @@ const Template: ComponentStory<typeof ReviewCard> = (args) => (
 
 export const LowScore = Template.bind({})
 LowScore.args = {
-  reviewScore: 2,
+  reviewScore: 13,
   userName: 'Jon Dough',
   date: getDates().randomDate,
   review:
     'Most challenging game I have ever played. Took me 3 hours to get it to run.',
   approvalRate: 100,
 }
-LowScore.parameters = {}
+
+export const VeryLowScore = Template.bind({})
+VeryLowScore.args = {
+  reviewScore: 1,
+  userName: 'Jon Bo',
+  date: getDates().randomDate,
+  review:
+    'I give this game first rank #1. Best game ever.🏆 🏆 🏆 😃 😃 😃 👍 ',
+  approvalRate: 0,
+}
 
 export const HighScore = Template.bind({})
 HighScore.args = {

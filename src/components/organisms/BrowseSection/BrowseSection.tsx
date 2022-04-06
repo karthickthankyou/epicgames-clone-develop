@@ -12,15 +12,15 @@ const ImageContainer = ({
 }) => (
   <Link
     to={`game/${id}`}
-    className={`absolute rotate w-48 h-6 transform  ${className}`}
+    className={`absolute rotate w-48 h-6 transform   ${className}`}
   >
     <div
       style={{ bottom: '1000%' }}
-      className='absolute text-black transform bg-white'
+      className='absolute text-black transform bg-white rounded-lg hover:shadow-xl transition-all hover:bg-opacity-60 p-0.5 bg-opacity-20 '
     >
       <img
         src={getImageUrl(id).imageUrl}
-        className='object-cover rounded-lg shadow h-54 w-36'
+        className='object-cover p-2 border-yellow-300 rounded-sm shadow h-54 w-36 '
         alt=''
       />
     </div>

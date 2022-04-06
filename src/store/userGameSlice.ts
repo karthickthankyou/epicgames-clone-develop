@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { Game, UserGame } from '@epictypes/index'
 import { RootState } from './store'
 
-const initialState: {
+export const initialState: {
   cartGameIds: UserGame[]
   wishlistGameIds: UserGame[]
   purchasedGameIds: UserGame[]
