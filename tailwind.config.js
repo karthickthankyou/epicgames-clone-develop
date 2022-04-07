@@ -60,7 +60,7 @@ module.exports = {
         315: '315deg',
       },
       animation: {
-        spin30: 'spin 30s linear infinite',
+        spin60: 'spin 60s linear infinite',
       },
       colors: {
         primary: primaryPallete,

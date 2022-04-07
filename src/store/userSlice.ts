@@ -2,7 +2,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { RootState } from './store'
 
-export const initialState = {
+export type User = { uid: null; displayName: null; loading: false; error: null }
+
+export const initialState: User = {
   uid: null,
   displayName: null,
   loading: false,

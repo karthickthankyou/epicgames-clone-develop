@@ -44,7 +44,7 @@ const BrowseSection = () => (
 
     <div
       style={{ left: '75%', top: '150%' }}
-      className='absolute z-10 animate-spin30'
+      className='absolute z-10 animate-spin60'
     >
       <ImageContainer id='001' />
       <ImageContainer id='002' className='rotate-45' />

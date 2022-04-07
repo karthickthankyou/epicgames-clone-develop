@@ -13,7 +13,10 @@ const MaskedShowcaseCard = ({
   comment,
   keyUnit,
 }: IMaskedShowcaseCardProps) => (
-  <Link className='flex-shrink-0 w-64 overflow-hidden' to={`/game/${id}`}>
+  <Link
+    className='flex-shrink-0 w-1/5 overflow-hidden min-w-72'
+    to={`/game/${id}`}
+  >
     <div className='relative w-full overflow-hidden rounded-lg shadow-xl aspect-w-9 aspect-h-12'>
       <img
         src={getImageUrl(id).imageUrl}

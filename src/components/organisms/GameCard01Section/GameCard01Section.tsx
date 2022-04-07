@@ -37,7 +37,7 @@ const GameCard01Section = ({
       </div>
       <div
         data-testid={slug(`${heading}`)}
-        className='flex gap-3 pt-3 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'
+        className='flex gap-4 pt-3 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'
       >
         {gamesSix.map((game) => (
           <GameCard01

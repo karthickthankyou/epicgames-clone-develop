@@ -52,7 +52,7 @@ const GameCard01Section = ({
   topSellers,
   comingSoon,
 }: IGameCard01SectionProps) => (
-  <div className='flex gap-3 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'>
+  <div className='flex gap-4 pb-3 overflow-x-scroll overscroll-x-none thin-scrollbar'>
     <GameCard03Vertical
       className='flex-shrink-0 w-1/3 min-w-72'
       title='New Releases'

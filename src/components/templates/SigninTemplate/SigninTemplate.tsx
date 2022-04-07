@@ -1,11 +1,9 @@
-// eslint-disable-next-line import/no-unresolved
 import { useState } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { useForm } from 'react-hook-form'
-import { callSignup, googleSignin } from '@epicfirebase/hooks'
-import { useAppSelector } from '@store/hooks'
-import { selectUser } from '@store/userSlice'
+import { callSignIn, googleSignin } from '@epicfirebase/hooks'
+import { User } from '@store/userSlice'
 import { useLoadSuccessError } from '@hooks/index'
 
 import { ReactComponent as AppleIcon } from '@assets/svgs/apple.svg'
@@ -13,61 +11,54 @@ import { ReactComponent as FacebookIcon } from '@assets/svgs/facebook.svg'
 import { ReactComponent as GoogleIcon } from '@assets/svgs/google.svg'
 import { ReactComponent as WarningIcon } from '@assets/svgs/warning.svg'
 import { ReactComponent as LoadingIcon } from '@assets/svgs/loader.svg'
+import { getImageUrl } from '@utils/index'
 import AuthLayout from '@organisms/AuthLayout/AuthLayout'
 
-export interface ISignupProps {}
-
 const ErrorMessage = ({ message }: { message: string | undefined }) => (
-  <p className='flex items-center mt-1 text-xs '>
+  <p className='flex items-center text-xs text-gray-300'>
     <WarningIcon className='w-3 h-3 mr-1' />
     {message}
   </p>
 )
 
-const Signup = () => {
-  const user = useAppSelector(selectUser)
-  if (user.uid) return <Redirect to='/' />
-  const [{ loading, error }, dispatch] = useLoadSuccessError()
-
-  type FormValues = { email: string; password: string; displayName: string }
-
+const SigninTemplate = () => {
+  const [showPassword, setShowPassword] = useState(false)
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>()
+  } = useForm<{ email: string; password: string }>()
 
-  const [showPassword, setShowPassword] = useState(false)
+  const [{ loading, success, error }, dispatch] = useLoadSuccessError()
 
   return (
     <AuthLayout>
       <>
         <form
-          onSubmit={handleSubmit(({ email, password, displayName }) => {
+          onSubmit={handleSubmit(({ email, password }) => {
             dispatch('load')
-            callSignup({ email, password, displayName }, dispatch)
+            callSignIn({ email, password }, dispatch)
           })}
           className='p-8'
         >
-          <div className='mb-4 text-3xl font-light'>Create Account</div>
-
-          <div className='mt-4'>
-            <label className='block text-sm ' htmlFor='email'>
-              Email
+          <div className='mb-4 text-3xl font-light'>Sign in</div>
+          <div>
+            <label className='block mb-4 text-sm' htmlFor='username'>
+              Username
               <input
                 className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
-                id='email'
+                id='username'
                 type='text'
-                placeholder='email'
+                placeholder='Username'
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...register('email', { required: 'Email is required.' })}
               />
             </label>
-
             {errors.email && <ErrorMessage message={errors.email.message} />}
           </div>
-          <div className='mt-4'>
-            <label className='relative block text-sm ' htmlFor='password'>
+          <div className='mb-6'>
+            <label className='relative block mb-4 text-sm' htmlFor='password'>
               Password
               <input
                 className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
@@ -91,32 +82,33 @@ const Signup = () => {
               <ErrorMessage message={errors.password.message} />
             )}
           </div>
-          <div>
-            <label className='block mt-4 text-sm ' htmlFor='displayName'>
-              Display name{' '}
-              <span className='ml-1 text-gray-200'>(optional)</span>
-              <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
-                id='displayName'
-                type='text'
-                placeholder='john@john.com'
-                // eslint-disable-next-line react/jsx-props-no-spreading
-                {...register('displayName')}
-              />
-            </label>
-          </div>
-          <div className='flex items-baseline justify-between mt-6'>
+          <div className='flex items-baseline justify-between'>
             <button
-              className='flex items-center text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
+              className='text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
               type='submit'
+              //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
             >
-              Create {loading && <LoadingIcon className='ml-2 animate-spin' />}
+              Sign In
+              {loading && <LoadingIcon className='inline ml-2 animate-spin' />}
             </button>
+            <Link
+              to={{
+                pathname: '/forgotpassword',
+                state: {
+                  email: watch().email,
+                },
+              }}
+              className='inline-block text-sm align-baseline'
+            >
+              Forgot Password?
+            </Link>
           </div>
+          {error && (
+            <div className='my-2 text-xs'>Login failed. Try again.</div>
+          )}
         </form>
-        {error && <div className='my-2 text-xs'>Login failed. Try again.</div>}
-        <div className='p-8'>
-          <div>or continue with</div>
+        <div className='px-8 pb-8'>
+          <div>or signin with</div>
           <div className='flex mt-4'>
             <button
               type='button'
@@ -141,10 +133,15 @@ const Signup = () => {
             </button>
           </div>
           <Link
-            to='/signin'
-            className='block mt-8 text-sm text-right align-baseline '
+            to={{
+              pathname: '/signup',
+              state: {
+                email: watch().email,
+              },
+            }}
+            className='block mt-8 text-sm text-right align-baseline'
           >
-            Already have an account? Log in
+            New user? Create Account
           </Link>
         </div>
       </>
@@ -152,4 +149,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default SigninTemplate
