@@ -38,8 +38,8 @@ const AccordionHeader = ({
 }) => (
   <button
     type='button'
-    className={` flex justify-between w-full p-4 tracking-widest text-left text-gray-300 uppercase ${
-      open && 'bg-gray-800 '
+    className={` flex justify-between w-full py-4 tracking-widest text-left text-gray-300 uppercase ${
+      open && 'font-bold text-white '
     }`}
     onClick={() => setOpen((state) => !state)}
   >
@@ -214,7 +214,7 @@ const events = ['RECENTLY_UPDATED', 'HIGHEST_DISCOUNT', 'TOP_SELLER']
 // 'Epic MEGA Sale',
 // 'Highest Discount Ever',
 
-const BrowseFilters = () => {
+const BrowseFilters = ({ className }: { className?: string }) => {
   const filterEvents = useAppSelector(selectFilterEvents)
   const filterTags = useAppSelector(selectFilterTags)
   const filterPlatforms = useAppSelector(selectFilterPlatforms)
@@ -239,9 +239,9 @@ const BrowseFilters = () => {
     (filterRatingRange ? 1 : 0)
 
   return (
-    <div className='text-xs w-80'>
-      <div className='flex justify-between p-4'>
-        <div className='text-gray-400 uppercase'>
+    <div className={`${className} text-xs`}>
+      <div className='flex justify-between py-4 '>
+        <div className='font-bold text-gray-200 uppercase'>
           filters {filtersLength > 0 && <> ({filtersLength})</>}
         </div>
         <button

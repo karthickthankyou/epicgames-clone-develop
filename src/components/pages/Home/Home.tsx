@@ -1,23 +1,17 @@
-import {
-  callSignOut,
-  callSignIn,
-  useHomeScreenGames,
-} from '@epicfirebase/hooks'
+import { useHomeScreenGames } from '@epicfirebase/hooks'
 import { useDocumentTitle } from '@hooks/index'
 
 import {
   selectActionGames,
   selectAdventureGames,
   selectHomeScreenGames,
-  selectAnticipatedBy,
   selectHighestDiscounts,
   selectHoursPlayed,
   selectHoursToBeat,
   selectNarrationGames,
   selectPuzzleGames,
-  selectUnitsSold,
 } from '@store/gamesSlice'
-import { sampleGames } from '@epictypes/static'
+import { sampleSimpleGames, unitsSold, anticipatedBy } from '@utils/data'
 import { useAppSelector } from '@store/hooks'
 import {
   selectCartGameIds,
@@ -34,7 +28,6 @@ import BigBanner from '@organisms/BigBanner'
 import BrowseSection from '@organisms/BrowseSection'
 import GameCard03Section from '@organisms/GameCard03Section/GameCard03Section'
 import { getImageUrl, getDates } from '@utils/index'
-import { unitsSold, anticipatedBy } from '@utils/data'
 
 export interface IHomeProps {}
 
@@ -169,9 +162,9 @@ const Home = () => {
         />
       )}
       <GameCard03Section
-        newReleases={sampleGames.slice(0, 6)}
-        topSellers={sampleGames.slice(6, 12)}
-        comingSoon={sampleGames.slice(12, 18)}
+        newReleases={sampleSimpleGames.slice(0, 6)}
+        topSellers={sampleSimpleGames.slice(6, 12)}
+        comingSoon={sampleSimpleGames.slice(12, 18)}
       />
 
       {puzzleGames.length > 0 && (

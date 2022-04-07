@@ -10,7 +10,7 @@ import {
   selectWishlistGameIds,
 } from './userGameSlice'
 
-const initialState: {
+export const initialState: {
   games: Game[]
   loading: boolean
   error: boolean

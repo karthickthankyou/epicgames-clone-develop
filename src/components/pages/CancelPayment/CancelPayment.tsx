@@ -5,9 +5,9 @@ export interface ICancelPaymentProps {}
 
 const CancelPayment = () => (
   <MessageWrapper>
-    <div className='p-3'>
-      <div className='text-lg '>Payment cancelled.</div>
-      <div className='text-sm text-gray-400'>
+    <div className='max-w-sm p-3'>
+      <div className='text-lg font-bold'>Payment cancelled.</div>
+      <div className='text-gray-300 '>
         But, your cart items are safe with us.
       </div>
       <Link

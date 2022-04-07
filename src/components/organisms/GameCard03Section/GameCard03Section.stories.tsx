@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { sampleGames } from '@epictypes/static'
+import { sampleSimpleGames } from '@utils/data'
 import GameCard03Section from './GameCard03Section'
 
 export default {
@@ -14,8 +14,8 @@ const Template: ComponentStory<typeof GameCard03Section> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  newReleases: sampleGames.slice(0, 6),
-  topSellers: sampleGames.slice(6, 12),
-  comingSoon: sampleGames.slice(12, 18),
+  newReleases: sampleSimpleGames.slice(0, 6),
+  topSellers: sampleSimpleGames.slice(6, 12),
+  comingSoon: sampleSimpleGames.slice(12, 18),
 }
 Primary.parameters = {}

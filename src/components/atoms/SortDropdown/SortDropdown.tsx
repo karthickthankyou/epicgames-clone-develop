@@ -17,18 +17,18 @@ const SortDropdown = () => {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className='relative z-20 p-3'>
+    <div className='relative z-20 py-3 pl-3 text-sm'>
       <button
         type='button'
         className='flex items-center justify-between w-full'
         onClick={() => setOpen((state) => !state)}
       >
-        <span className='mr-2 text-gray-300'>Sortby: </span>
+        <span className='mr-2'>Sortby: </span>
         {sortByOptions[+selectedIndex].displayText}
         {open ? (
-          <ChevronUp className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronUp className='inline w-4 h-4 ml-2 ' />
         ) : (
-          <ChevronDown className='inline w-4 h-4 ml-2 text-gray-300' />
+          <ChevronDown className='inline w-4 h-4 ml-2 ' />
         )}
       </button>
       {open && (
@@ -37,9 +37,9 @@ const SortDropdown = () => {
             <button
               type='button'
               key={option.displayText}
-              className={`block w-full p-2 text-left  hover:bg-gray-700  ${
+              className={`block  p-2 text-left w-full hover:bg-gray-700  ${
                 index === selectedIndex
-                  ? ' underline text-gray-100'
+                  ? ' underline text-white'
                   : 'text-gray-400'
               }`}
               onClick={() => {

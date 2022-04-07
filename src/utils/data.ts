@@ -1,6 +1,132 @@
+import { Game, GameStatus } from '@epictypes/index'
 import { getDates } from '@utils/index'
 
-export const sampleUserGames = [
+export const sampleSimpleGames = [
+  {
+    title: 'Back 4 Blood',
+    id: '183',
+    price: 2999,
+  },
+  {
+    title: 'The Architect: Paris',
+    id: '043',
+    price: 429,
+  },
+
+  {
+    title: 'Riders Republic',
+    id: '135',
+    price: 2999,
+  },
+  {
+    title: "Luna's Fishing Garden",
+    id: '002',
+    price: 279,
+  },
+
+  {
+    title: 'Beasts of Maravilla Island',
+    id: '003',
+    price: 239,
+  },
+  {
+    title: 'Open Country',
+    id: '007',
+    price: 829,
+  },
+  {
+    title: 'WE ARE FOOTBALL',
+    id: '005',
+    price: 1580,
+  },
+  {
+    title: 'Chicory: A Colorful Tale',
+    id: '004',
+    price: 469,
+  },
+  {
+    title: 'Genshin Impact',
+    id: '010',
+    price: 0,
+  },
+  {
+    title: 'Backbone',
+    id: '012',
+    price: 589,
+  },
+  {
+    title: 'Chivalry 2',
+    id: '013',
+    price: 939,
+  },
+  {
+    title: 'Edge Of Eternity',
+    id: '011',
+    price: 0,
+  },
+  {
+    title: 'Slipways',
+    id: '015',
+    price: 399,
+  },
+  {
+    title: 'Necromunda: Hired Gun',
+    id: '018',
+    price: 1599,
+  },
+  {
+    title: 'Going Medieval',
+    id: '016',
+    price: 589,
+  },
+  {
+    title: 'Stonefly',
+    id: '017',
+    price: 529,
+  },
+  {
+    title: 'Timelie - Game of the Year Edition',
+    id: '020',
+    price: 429,
+  },
+  {
+    title: 'The Longest Road on Earth',
+    id: '021',
+    price: 239,
+  },
+  {
+    title: 'GRAVEN',
+    id: '023',
+    price: 699,
+  },
+  {
+    title: 'Truck Driver',
+    id: '022',
+    price: 709,
+  },
+  {
+    title: 'Tennis Manager 2021',
+    id: '025',
+    price: 1059,
+  },
+  {
+    title: 'BIOMUTANT',
+    id: '024',
+    price: 1889,
+  },
+  {
+    title: 'Knockout City™',
+    id: '019',
+    price: 1499,
+  },
+  {
+    title: 'Wanna Survive',
+    id: '027',
+    price: 349,
+  },
+]
+
+export const sampleGames = [
   {
     title: 'Viscerafest',
     rating: 51,
@@ -627,7 +753,7 @@ export const sampleUserGames = [
     inCart: false,
     purchased: false,
   },
-]
+] as unknown as Game[]
 
 export const unitsSold = [
   { id: '427', units: '510' },
@@ -679,5 +805,131 @@ export const reviews = [
     date: getDates().randomDate,
     review: 'Meh.',
     approvalRate: 65,
+  },
+]
+
+export const getUserGameIdList = ({
+  ids,
+  status,
+}: {
+  ids: string[]
+  status: GameStatus
+}) => ids.map((item) => ({ gameId: item, uid: 'any_id_here_', status }))
+
+export const sampleUserGameIds: {
+  gameId: string
+  uid: string
+  status: GameStatus
+  updatedAt?: string
+}[] = [
+  {
+    gameId: '030',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '031',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '029',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '034',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '028',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '035',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '036',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '021',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '059',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '048',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '037',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '024',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '011',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '010',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'IN_CART',
+  },
+  {
+    gameId: '135',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '043',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '007',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '005',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '002',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '551',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '472',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
+  },
+  {
+    gameId: '004',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'PURCHASED',
   },
 ]

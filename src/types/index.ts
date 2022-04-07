@@ -38,7 +38,7 @@ export type UserGame = {
   updatedAt?: string
 }
 
-type GameStatus =
+export type GameStatus =
   | 'WISHLISTED'
   | 'IN_CART'
   | 'PURCHASED'

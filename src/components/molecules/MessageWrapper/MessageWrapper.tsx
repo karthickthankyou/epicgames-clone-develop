@@ -1,11 +1,14 @@
-import { ReactElement } from 'react'
+import { Children } from '@epictypes/index'
 
 export interface IMessageWrapperProps {
-  children: ReactElement
+  children: Children
+  className?: string
 }
 
-const MessageWrapper = ({ children }: IMessageWrapperProps) => (
-  <div className='flex items-center justify-center min-h-screen-3/4'>
+const MessageWrapper = ({ children, className }: IMessageWrapperProps) => (
+  <div
+    className={`flex flex-col items-center justify-center min-h-screen-3/4 ${className}`}
+  >
     {children}
   </div>
 )

@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
@@ -13,17 +13,22 @@ import Pagination from '@molecules/Pagination'
 import BrowseFilters from '@molecules/BrowseFilters'
 import { useDocumentTitle } from '@hooks/index'
 import SearchIcon from '@heroicons/react/outline/SearchIcon'
+import FilterIcon from '@heroicons/react/solid/FilterIcon'
 
 import Heading from '@atoms/Heading'
 import { SkeletonCard01 } from '@molecules/GameCard01/GameCard01'
+import Sidebar from '@molecules/Sidebar/Sidebar'
+import MessageWrapper from '@molecules/MessageWrapper'
 
 export interface IBrowseGamesProps {}
 
 const BrowseGames = () => {
-  useDocumentTitle('Browse Games')
+  useDocumentTitle('Browse Games | Karthick Ragavendran')
   const { currentPage, totalPages } = useAppSelector(selectBrowsePagination)
   const { loading, error } = useAppSelector(selectBrowseGames)
   const games = useAppSelector(selectBrowseGamesWithWish)
+
+  console.log(currentPage, totalPages, loading, error, games)
 
   const dispatch = useAppDispatch()
 
@@ -33,6 +38,8 @@ const BrowseGames = () => {
     const searchTerm = e.target.value
     dispatch(setSearchTerm(searchTerm))
   }
+
+  const [open, setOpen] = useState(false)
   const debouncedEventHandler = useMemo(() => debounce(searchGames, 1000), [])
 
   // useEffect(() => {
@@ -42,30 +49,55 @@ const BrowseGames = () => {
   // })
 
   if (error) {
-    return <div>Something went wrong.</div>
+    return (
+      <MessageWrapper>
+        <div className='max-w-xs text-left'>
+          <div className='text-xl font-bold'>
+            Sorry. Something went wrong <br /> on our side.
+          </div>
+          <div className='mt-2 text-sm'>
+            Please be patient and retry again.{' '}
+          </div>
+        </div>
+      </MessageWrapper>
+    )
   }
   return (
     <div>
+      <Sidebar overlayBlur open={open} setOpen={setOpen}>
+        <Sidebar.Body>
+          <BrowseFilters className='w-full mt-4' />
+        </Sidebar.Body>
+      </Sidebar>
       <Heading variant='heading-1' headerType='h1' classes='mt-2'>
         Browse Games
       </Heading>
 
-      <div className='flex-row-reverse mt-6 md:flex'>
-        <BrowseFilters />
+      <div className='flex-row-reverse gap-6 mt-6 md:flex'>
+        <BrowseFilters className='hidden w-80 md:block' />
         <div className='flex-grow'>
-          <div className='flex items-start justify-between mb-2'>
+          <div className='flex items-center justify-start mb-2'>
             <div className='flex items-center'>
-              <SearchIcon className='z-10 w-4 h-4 -mr-6' />
               <input
                 type='search'
                 placeholder='Search'
-                className='p-2 pl-8 bg-gray-700 rounded'
+                className='py-2 pl-2 pr-6 bg-gray-800 rounded'
                 onChange={debouncedEventHandler}
               />
+              <SearchIcon className='z-10 w-4 h-4 -ml-7' />
             </div>
-            <SortDropdown />
+            <button
+              type='button'
+              onClick={() => setOpen((state) => !state)}
+              className='block ml-4 md:hidden'
+            >
+              <FilterIcon className='w-6 h-6 p-1' />
+            </button>
+            <div className='ml-auto'>
+              <SortDropdown />
+            </div>
           </div>
-          <div className='grid grid-cols-2 gap-4 mr-6 sm:grid-cols-3 lg:grid-cols-4'>
+          <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4'>
             {loading &&
               [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => (
                 <SkeletonCard01 key={id} />

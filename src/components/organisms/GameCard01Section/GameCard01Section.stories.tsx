@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { sampleUserGames } from '@utils/data'
+import { sampleGames } from '@utils/data'
 import GameCard01Section from './GameCard01Section'
 
 export default {
@@ -16,6 +16,6 @@ export const Primary = Template.bind({})
 Primary.args = {
   heading: 'Most Popular',
   buttonText: 'view more',
-  games: sampleUserGames,
+  games: sampleGames,
 }
 Primary.parameters = {}

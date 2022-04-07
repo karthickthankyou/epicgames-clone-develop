@@ -8,7 +8,7 @@ import {
   selectWishlistGameIds,
 } from './userGameSlice'
 
-const initialState: {
+export const initialState: {
   games: Game[]
   homeScreenGames: Game[]
   highestEverDiscounts: Game[]
@@ -109,6 +109,7 @@ export const combineWCPData = (
   cartIds: UserGame[],
   purchasedIds: UserGame[]
 ) => {
+  console.log('The four: ', input, wishlistIds, cartIds, purchasedIds)
   const includes = (gameId: string) => ({
     wishlisted: wishlistIds.some((game) => game.gameId === gameId),
     inCart: cartIds.some((game) => game.gameId === gameId),

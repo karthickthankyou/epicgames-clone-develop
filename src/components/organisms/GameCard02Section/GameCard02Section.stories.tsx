@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { sampleUserGames } from '@utils/data'
+import { sampleGames } from '@utils/data'
 import GameCard02Section from './GameCard02Section'
 
 export default {
@@ -13,6 +13,6 @@ const Template: ComponentStory<typeof GameCard02Section> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  games: sampleUserGames.slice(0, 6),
+  games: sampleGames.slice(0, 6),
 }
 Primary.parameters = {}

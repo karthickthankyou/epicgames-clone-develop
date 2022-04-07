@@ -5,7 +5,7 @@ import userGamesReducer, { initialState } from '@store/userGameSlice'
 import userReducer, { initialState as userInitialState } from '@store/userSlice'
 import { Provider } from 'react-redux'
 import { Game } from '@epictypes/index'
-import { sampleUserGames } from '@utils/data'
+import { sampleGames } from '@utils/data'
 import Cart from './Cart'
 
 export default {
@@ -19,9 +19,7 @@ const storeWithCardData = createStore(
   {
     userGames: {
       ...initialState,
-      cartGames: sampleUserGames.filter(
-        (game) => game.inCart
-      ) as unknown as Game[],
+      cartGames: sampleGames.filter((game) => game.inCart) as unknown as Game[],
     },
     user: userInitialState,
   }
