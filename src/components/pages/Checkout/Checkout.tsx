@@ -18,6 +18,7 @@ const Cart = () => {
   )
   //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
   const gamesInCart = useAppSelector(selectCartGames)
+  console.log('gamesInCart ', gamesInCart)
   useDocumentTitle(`(${gamesInCart.length}) Cart`)
   const createCheckoutList = (cartList: Game[]) =>
     cartList.map((cartItem) => ({
@@ -26,13 +27,6 @@ const Cart = () => {
       currency: 'inr',
       quantity: 1,
       images: [cartItem.imageUrl],
-      //   price_data: {
-      //     product_data: {
-      //       metadata: {
-      //         id: cartItem.id,
-      //       },
-      //     },
-      //   },
     }))
   const cartGameIds = gamesInCart.map((game) => game.id)
 
@@ -84,10 +78,10 @@ const Cart = () => {
             <CartCard key={game.id} game={game} classes='mb-3' />
           ))}
         </div>
-        <div>
+        <div className='relative'>
           <form
             onSubmit={handleSubmit}
-            className='flex flex-col p-4 mt-8 font-mono text-sm sm:sticky top-24 sm:mt-0'
+            className='flex flex-col font-mono text-sm top-4 sm:sticky sm:mt-0'
           >
             <div className='mb-3 text-base font-semibold'>Order summary</div>
             <div className='flex justify-between py-1'>

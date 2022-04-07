@@ -29,7 +29,7 @@ code {
 
 @layer components {
   .btn {
-    @apply text-xs uppercase rounded-sm;
+    @apply text-sm font-medium uppercase rounded-sm;
   }
   .btn-md {
     @apply px-3 py-1;
