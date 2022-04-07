@@ -126,6 +126,332 @@ export const sampleSimpleGames = [
   },
 ]
 
+export const sampleSimilarGames = [
+  {
+    id: '475',
+    tags: ['Action', 'Narration'],
+    price: 899,
+    discount: 0,
+    publisherId: 'quantic-dream',
+    title: 'Heavy Rain',
+    releaseDate: '2019-06-23T18:30:00.000Z',
+    similarity: 0.3682642493,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F475.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F475.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '472',
+    tags: ['Action', 'Narration'],
+    price: 899,
+    discount: 75,
+    publisherId: 'quantic-dream',
+    title: 'Beyond: Two Souls',
+    releaseDate: '2019-07-21T18:30:00.000Z',
+    similarity: 0.3164696904,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F472.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F472.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '554',
+    tags: ['Exploration', 'Adventure'],
+    price: 595,
+    discount: 25,
+    publisherId: '505-games',
+    title: 'ABZU',
+    releaseDate: '2016-08-01T18:30:00.000Z',
+    similarity: 0.0514440084,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F554.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F554.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '445',
+    tags: ['Puzzle', 'First Person'],
+    price: 595,
+    discount: 50,
+    publisherId: 'pillow-castle',
+    title: 'Superliminal',
+    releaseDate: '2019-11-11T18:30:00.000Z',
+    similarity: 0.0448611782,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F445.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F445.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '327',
+    tags: ['Action', 'Adventure', 'Platformer'],
+    price: 458,
+    discount: 0,
+    publisherId: 'team17-digital-ltd.',
+    title: 'Ageless',
+    releaseDate: '2020-07-27T18:30:00.000Z',
+    similarity: 0.0427193277,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F327.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F327.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '137',
+    tags: ['City Builder', 'Strategy', 'Indie'],
+    price: 589,
+    discount: 0,
+    publisherId: 'mode-7',
+    title: 'The Colonists',
+    releaseDate: '2020-09-14T18:30:00.000Z',
+    similarity: 0.0409310946,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F137.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F137.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '196',
+    tags: ['Puzzle', 'Indie'],
+    price: 599,
+    discount: 0,
+    publisherId: 'focus-home-interactive',
+    title: 'Shady Part of Me',
+    releaseDate: '2020-12-09T18:30:00.000Z',
+    similarity: 0.0383911387,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F196.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F196.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '006',
+    tags: ['Simulation', 'Strategy'],
+    price: 699,
+    discount: 0,
+    publisherId: 'handy-games-gmbh',
+    title: 'Little Big Workshop',
+    releaseDate: '2019-10-16T18:30:00.000Z',
+    similarity: 0.0352441151,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F006.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F006.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '092',
+    tags: ['Action', 'RPG', 'Action-Adventure', 'Adventure'],
+    price: 3999,
+    discount: 66,
+    publisherId: 'square-enix',
+    title: 'KINGDOM HEARTS HD 2.8 Final Chapter Prologue',
+    releaseDate: '2021-03-29T18:30:00.000Z',
+    similarity: 0.0190478935,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F092.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F092.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '003',
+    tags: ['Casual', 'Adventure', 'Indie'],
+    price: 239,
+    discount: 0,
+    publisherId: 'whitethorn-digital',
+    title: 'Beasts of Maravilla Island',
+    releaseDate: '2021-06-11T18:30:00.000Z',
+    similarity: 0,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F003.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F003.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+]
+
+export const sampleGame = {
+  price: 1899,
+  title: 'Detroit: Become Human',
+  publisherId: 'quantic-dream',
+  id: '427',
+  tags: ['Action', 'Narration'],
+  releaseDate: '2019-12-11T18:30:00.000Z',
+  discount: 0,
+  developer: 'Quantic Dream',
+  languages: '',
+  longDesc: [
+    'FREEDOM HAS A PRICE',
+    'Detroit 2038. Technology has evolved to a point where human like androids are everywhere. They speak, move and behave like human beings, but they are only machines serving humans.',
+    'Play three distinct androids and see a world at the brink of chaos – perhaps our future - through their eyes. Your very decisions will dramatically alter how the game’s intense, branching narrative plays out. ',
+    'You will face moral dilemmas and decide who lives or dies. With thousands of choices and dozens of possible endings, how will you affect the future of Detroit and humanity’s destiny?',
+  ],
+  description: '',
+  spec: {
+    recommended: '',
+    minimum: '',
+  },
+  items: [
+    {
+      id: 475,
+      s: 0.3682642493,
+    },
+    {
+      id: 472,
+      s: 0.3164696904,
+    },
+    {
+      id: 554,
+      s: 0.0514440084,
+    },
+    {
+      id: 445,
+      s: 0.0448611782,
+    },
+    {
+      id: 327,
+      s: 0.0427193277,
+    },
+    {
+      id: 137,
+      s: 0.0409310946,
+    },
+    {
+      id: 196,
+      s: 0.0383911387,
+    },
+    {
+      id: 6,
+      s: 0.0352441151,
+    },
+    {
+      s: 0.0190478935,
+      id: 92,
+    },
+    {
+      id: 3,
+      s: 0,
+    },
+    {
+      id: 239,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 264,
+    },
+    {
+      id: 340,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 388,
+    },
+    {
+      id: 2,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 5,
+    },
+    {
+      id: 0,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 1,
+    },
+    {
+      s: 0,
+      id: 4,
+    },
+    {
+      s: 0,
+      id: 9,
+    },
+    {
+      id: 7,
+      s: 0,
+    },
+    {
+      id: 8,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 11,
+    },
+    {
+      id: 14,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 10,
+    },
+    {
+      s: 0,
+      id: 15,
+    },
+    {
+      s: 0,
+      id: 17,
+    },
+    {
+      id: 16,
+      s: 0,
+    },
+    {
+      s: 0,
+      id: 12,
+    },
+    {
+      s: 0,
+      id: 13,
+    },
+  ],
+  platform: ['Windows'],
+  imageUrl:
+    'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F427.jpg?alt=media',
+  subImageUrl:
+    'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F427.jpg?alt=media',
+  wishlisted: false,
+  inCart: false,
+  purchased: false,
+}
+
 export const sampleGames = [
   {
     title: 'Viscerafest',

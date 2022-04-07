@@ -1,4 +1,4 @@
-import { getScoreColor, getDates } from '@utils/index'
+import { getScoreColor } from '@utils/index'
 import ReviewCard, { IReviewCardProps } from '@molecules/ReviewCard/ReviewCard'
 
 export interface IReviewSectionProps {
@@ -31,6 +31,7 @@ const ReviewSection = ({
     <div className='grid grid-cols-1 gap-2 md:grid-cols-2'>
       {reviews.map((item) => (
         <ReviewCard
+          key={item.userName}
           reviewScore={item.reviewScore}
           date={item.date}
           userName={item.userName}

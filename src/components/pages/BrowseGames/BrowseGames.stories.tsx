@@ -6,13 +6,13 @@ import userReducer, { initialState as userInitialState } from '@store/userSlice'
 import userGamesReducer, {
   initialState as userGamesinitialState,
 } from '@store/userGameSlice'
-import { getUserGameIdList, sampleGames, sampleUserGameIds } from '@utils/data'
+import { getUserGameIdList, sampleGames } from '@utils/data'
 import { Provider } from 'react-redux'
-import { GameStatus } from '@epictypes/index'
+
 import BrowseGames from './BrowseGames'
 
 export default {
-  title: 'pages/BrowseGames',
+  title: 'templates/BrowseGames',
   component: BrowseGames,
 } as ComponentMeta<typeof BrowseGames>
 

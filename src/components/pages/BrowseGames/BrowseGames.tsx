@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
@@ -85,8 +85,6 @@ const BrowseGames = () => {
   const { currentPage, totalPages } = useAppSelector(selectBrowsePagination)
   const { loading, error } = useAppSelector(selectBrowseGames)
   const games = useAppSelector(selectBrowseGamesWithWish)
-
-  console.log(currentPage, totalPages, loading, error, games)
 
   const dispatch = useAppDispatch()
 
