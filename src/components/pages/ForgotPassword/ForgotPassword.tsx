@@ -14,7 +14,7 @@ type LocationState = {
 }
 
 const ErrorMessage = ({ message }: { message: string | undefined }) => (
-  <p className='flex items-center text-xs text-gray-300'>
+  <p className='flex items-center text-xs '>
     <WarningIcon className='w-3 h-3 mr-1' />
     {message}
   </p>
@@ -22,7 +22,8 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const ForgotPassword = () => {
   const location = useLocation<LocationState>()
-  const { email } = location.state
+  console.log('Location: ', location)
+  const email = location.state?.email || ''
   const {
     register,
     watch,
@@ -43,8 +44,8 @@ const ForgotPassword = () => {
       >
         <div className='mb-4 text-3xl font-light'>Reset Password</div>
         <div>
-          <label className='block mb-2 text-sm text-gray-300' htmlFor='email'>
-            Enter your email id.
+          <label className='block mb-2 text-sm' htmlFor='email'>
+            Enter your email id
             <input
               className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
               id='email'
@@ -58,7 +59,7 @@ const ForgotPassword = () => {
           {errors.emailId && <ErrorMessage message={errors.emailId.message} />}
         </div>
         <button
-          className='w-full mt-4 text-sm text-white rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
+          className='w-full mt-4 text-sm rounded bg-primary btn btn-lg hover:bg-primary-600 focus:outline-none focus:shadow-outline'
           type='submit'
           //   onClick={() => callSignIn({ email: 'sfd', password: 'sdf' })}
         >
@@ -73,7 +74,7 @@ const ForgotPassword = () => {
         )}
         <Link
           to='/signin'
-          className='block mt-8 text-sm text-right text-gray-300 align-baseline hover:text-gray-400'
+          className='block mt-8 text-sm text-right align-baseline '
         >
           Back to Log in
         </Link>

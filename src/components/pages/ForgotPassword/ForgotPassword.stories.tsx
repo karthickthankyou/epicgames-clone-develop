@@ -1,5 +1,7 @@
 import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { MemoryRouter, Route } from 'react-router-dom'
+
 import ForgotPassword from './ForgotPassword'
 
 export default {
@@ -7,10 +9,18 @@ export default {
   component: ForgotPassword,
 } as ComponentMeta<typeof ForgotPassword>
 
-const Template: ComponentStory<typeof ForgotPassword> = (args) => (
+const Template = ({ email }: { email: string }) => (
+  <MemoryRouter initialEntries={[{ state: { email } }]}>
+    <ForgotPassword />
+  </MemoryRouter>
+)
+const NoEmailTemplate: ComponentStory<typeof ForgotPassword> = () => (
   <ForgotPassword />
 )
 
-export const Primary = Template.bind({})
-Primary.args = {}
-Primary.parameters = {}
+export const NoEmail = NoEmailTemplate.bind({})
+NoEmail.args = {}
+export const WithEmail = Template.bind({})
+WithEmail.args = {
+  email: 'moonknight@marvel.com',
+}
