@@ -43,7 +43,7 @@ const Navbar = () => {
   if (soloPaths.includes(pathname)) return <></>
 
   return (
-    <nav className='sticky top-0 z-30 bg-black backdrop-filter backdrop-hue-rotate-90 bg-opacity-40'>
+    <nav className='sticky top-0 z-30 flex items-center justify-between h-16 bg-black backdrop-filter backdrop-blur-sm backdrop-hue-rotate-90 bg-opacity-40'>
       <div className='container flex items-center justify-between py-4 mx-auto '>
         <div className='flex items-center'>
           <button

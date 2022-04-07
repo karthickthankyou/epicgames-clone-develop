@@ -25,6 +25,7 @@ const GameCard04Section = ({
     <div className='flex flex-col mt-6 space-y-6 md:flex-row md:space-x-6 md:space-y-0 '>
       {freeGames.map((item) => (
         <GameCardFree
+          key={item.id}
           id={item.id}
           date={item.date}
           imageUrl={getImageUrl(item.id).imageUrl}

@@ -28,8 +28,8 @@
       "@utils/*": ["./src/utils/*"],
       "@assets/*": ["./src/assets/*"],
       "@store/*": ["./src/store/*"],
-      "@epicfirebase/*": ["./src/firebase/*"],
-      "@epictypes/*": ["./src/types/*"]
+      "@epictypes/*": ["./src/types/*"],
+      "@epicfirebase/*": ["./src/firebase/*"]
     }
   },
   "include": ["src"]

@@ -8,7 +8,7 @@ import CartSolidIcon from '@heroicons/react/solid/ShoppingCartIcon'
 import CartOutlineIcon from '@heroicons/react/outline/ShoppingCartIcon'
 import dateFormat from 'dateformat'
 
-export const CAROUSEL_DURATION = 50
+export const CAROUSEL_DURATION = 30
 export interface ICounter {
   days: string
   hours: string

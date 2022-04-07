@@ -1259,3 +1259,610 @@ export const sampleUserGameIds: {
     status: 'PURCHASED',
   },
 ]
+
+const sampleHighestDiscountEver = [
+  {
+    notes: ['HIGHEST_DISCOUNT'],
+    tags: ['RPG', 'Strategy', 'Open World'],
+    anticipatedBy: 64,
+    id: '011',
+    price: 709,
+    publisherId: 'dear-villagers',
+    discount: 60,
+    releaseDate: '2021-06-07T18:30:00.000Z',
+    title: 'Edge Of Eternity',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F011.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F011.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    releaseDate: '2021-05-21T18:30:00.000Z',
+    tags: ['Action'],
+    id: '019',
+    publisherId: 'electronic-arts',
+    title: 'Knockout City™',
+    notes: ['HIGHEST_DISCOUNT'],
+    anticipatedBy: 76,
+    price: 1499,
+    discount: 50,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F019.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F019.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 50,
+    releaseDate: '2021-05-19T18:30:00.000Z',
+    publisherId: '1c-entertainment',
+    notes: ['HIGHEST_DISCOUNT'],
+    id: '030',
+    tags: ['Action', 'Shooter'],
+    title: 'Viscerafest',
+    price: 489,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F030.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F030.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '038',
+    notes: ['HIGHEST_DISCOUNT'],
+    publisherId: 'unknown-worlds-entertainment',
+    tags: ['Survival', 'Open World', 'Adventure'],
+    releaseDate: '2019-01-29T18:30:00.000Z',
+    price: 709,
+    discount: 75,
+    title: 'Subnautica Below Zero',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F038.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F038.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 75,
+    title: 'Pine',
+    releaseDate: '2020-09-14T18:30:00.000Z',
+    price: 569,
+    publisherId: 'kongregate',
+    notes: ['HIGHEST_DISCOUNT'],
+    id: '048',
+    tags: ['Action', 'Action-Adventure', 'Open World', 'Adventure'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F048.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F048.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    publisherId: 'draknek-and-friends',
+    title: 'Cosmic Express',
+    price: 239,
+    releaseDate: '2017-03-15T18:30:00.000Z',
+    tags: ['Puzzle', 'Indie'],
+    id: '059',
+    discount: 66,
+    notes: ['HIGHEST_DISCOUNT'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F059.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F059.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    tags: ['Action'],
+    id: '078',
+    notes: ['HIGHEST_DISCOUNT'],
+    title: 'Knight Squad 2',
+    discount: 75,
+    publisherId: 'chainsawesome-games',
+    price: 349,
+    releaseDate: '2021-04-13T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F078.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F078.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '100',
+    discount: 50,
+    releaseDate: '2021-03-25T18:30:00.000Z',
+    tags: ['Simulation', 'City Builder'],
+    notes: ['HIGHEST_DISCOUNT'],
+    publisherId: 'frozen-district',
+    title: 'The Tenants',
+    price: 469,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F100.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F100.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    releaseDate: '2017-10-02T18:30:00.000Z',
+    notes: ['HIGHEST_DISCOUNT'],
+    publisherId: 'thq-nordic',
+    tags: ['Action', 'RPG', 'Indie'],
+    title: 'Battle Chasers: Nightwar',
+    price: 999,
+    id: '102',
+    discount: 50,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F102.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F102.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    price: 1179,
+    notes: ['HIGHEST_DISCOUNT'],
+    title: 'Saviors of Sapphire Wings & Strangers of Sword City Revisited',
+    tags: ['Exploration', 'RPG'],
+    discount: 50,
+    id: '115',
+    publisherId: 'nis-america-inc.',
+    releaseDate: '2021-03-15T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F115.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F115.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+]
+
+export const sampleActionGames = [
+  {
+    price: 469,
+    title: 'Chicory: A Colorful Tale',
+    publisherId: 'finji',
+    id: '004',
+    tags: ['Action', 'Exploration', 'Adventure'],
+    discount: 10,
+    releaseDate: '2021-06-09T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F004.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F004.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    unitsSold: 615,
+    publisherId: '505-games',
+    description:
+      "Ok, Scout, it's time to show us what you’re made of. Prove to yourself that you can break free from your city life and live like a real outdoorsman. The wilderness isn’t for the faint of heart, but if you work hard, hone your hunting and crafting skills, learn how to use the environment and be one with nature, you too can become a Master Outdoorsman and call the Open Country your home.",
+    releaseDate: '2021-06-09T18:30:00.000Z',
+    title: 'Open Country',
+    discount: 0,
+    id: '007',
+    anticipatedBy: 83,
+    tags: ['Open World', 'Action'],
+    price: 829,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F007.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F007.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 10,
+    price: 529,
+    id: '017',
+    tags: ['Action', 'RPG', 'Adventure'],
+    publisherId: 'mwm-interactive',
+    releaseDate: '2021-05-31T18:30:00.000Z',
+    title: 'Stonefly',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F017.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F017.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    releaseDate: '2021-05-31T18:30:00.000Z',
+    title: 'Necromunda: Hired Gun',
+    tags: ['Action', 'Action-Adventure', 'Adventure'],
+    price: 1599,
+    discount: 0,
+    publisherId: 'focus-home-interactive',
+    id: '018',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F018.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F018.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 50,
+    releaseDate: '2021-05-21T18:30:00.000Z',
+    notes: ['HIGHEST_DISCOUNT'],
+    title: 'Knockout City™',
+    price: 1499,
+    anticipatedBy: 76,
+    tags: ['Action'],
+    publisherId: 'electronic-arts',
+    id: '019',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F019.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F019.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    tags: ['Action', 'Shooter'],
+    id: '023',
+    title: 'GRAVEN',
+    price: 699,
+    releaseDate: '2021-05-26T18:30:00.000Z',
+    publisherId: '1c-entertainment-3d-realms',
+    discount: 0,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F023.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F023.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+]
+
+export const sampleAdventureGames = [
+  {
+    discount: 0,
+    specialSections: {
+      hoursToBeat: {
+        units: '112',
+        key: 'hours',
+      },
+      unitsSold: {
+        units: '120',
+        key: 'units',
+      },
+    },
+    releaseDate: '2021-03-18T18:30:00.000Z',
+    title: 'Doctor Who: The Lonely Assassins',
+    id: '000',
+    publisherId: 'maze-theory',
+    price: 139,
+    tags: ['Puzzle', 'Adventure', 'Indie'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F000.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F000.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    tags: ['Casual', 'Adventure', 'Indie'],
+    publisherId: 'whitethorn-digital',
+    id: '003',
+    price: 239,
+    discount: 0,
+    title: 'Beasts of Maravilla Island',
+    releaseDate: '2021-06-11T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F003.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F003.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    price: 469,
+    title: 'Chicory: A Colorful Tale',
+    publisherId: 'finji',
+    id: '004',
+    tags: ['Action', 'Exploration', 'Adventure'],
+    discount: 10,
+    releaseDate: '2021-06-09T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F004.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F004.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '010',
+    title: 'Genshin Impact',
+    publisherId: 'mihoyo-limited',
+    price: 0,
+    tags: ['RPG', 'Open World', 'Adventure'],
+    discount: 0,
+    hoursToBeat: 103,
+    releaseDate: '2021-06-08T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F010.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F010.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 0,
+    price: 589,
+    publisherId: 'raw-fury',
+    title: 'Backbone',
+    id: '012',
+    releaseDate: '2021-06-07T18:30:00.000Z',
+    tags: ['Adventure', 'Indie'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F012.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F012.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 10,
+    price: 529,
+    id: '017',
+    tags: ['Action', 'RPG', 'Adventure'],
+    publisherId: 'mwm-interactive',
+    releaseDate: '2021-05-31T18:30:00.000Z',
+    title: 'Stonefly',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F017.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F017.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+]
+
+export const sampleNarrationGames = [
+  {
+    tags: ['Narration', 'Adventure'],
+    discount: 0,
+    id: '040',
+    title: "The Lion's Song",
+    publisherId: "mi'pu'mi-games",
+    price: 189,
+    releaseDate: '2021-05-12T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F040.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F040.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    id: '071',
+    discount: 75,
+    publisherId: 'versus-evil',
+    releaseDate: '2021-04-14T18:30:00.000Z',
+    tags: ['Puzzle', 'Narration'],
+    price: 589,
+    title: 'Hitchhiker - A Mystery Game',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F071.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F071.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    discount: 0,
+    publisherId: 'daedalic-entertainment',
+    price: 1499,
+    releaseDate: '2017-08-14T18:30:00.000Z',
+    id: '075',
+    title: "Ken Follett's The Pillars of the Earth",
+    tags: ['Puzzle', 'Narration', 'Adventure'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F075.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F075.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    tags: ['Narration', 'First Person', 'Indie'],
+    price: 349,
+    title: 'Before Your Eyes',
+    discount: 0,
+    publisherId: 'skybound-games',
+    releaseDate: '2021-04-07T18:30:00.000Z',
+    id: '083',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F083.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F083.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    price: 349,
+    title: 'The Fabled Woods',
+    tags: ['Action', 'Narration', 'First Person'],
+    id: '101',
+    discount: 10,
+    publisherId: 'headup',
+    releaseDate: '2021-03-24T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F101.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F101.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+  {
+    releaseDate: '2021-03-10T18:30:00.000Z',
+    price: 469,
+    title: 'Cyanide & Happiness - Freakpocalypse',
+    tags: ['Narration', 'Comedy', 'Adventure'],
+    publisherId: 'serenity-forge',
+    id: '119',
+    discount: 66,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F119.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F119.jpg?alt=media',
+    wishlisted: false,
+    inCart: false,
+    purchased: false,
+  },
+]
+
+export const homeShowcaseGames = [
+  {
+    discount: 0,
+    tags: ['Action', 'Open World', 'Adventure'],
+    publisherId: 'ubisoft',
+    title: 'Watch Dogs: Legion',
+    price: 2999,
+    homeScreen: 'L20nioDjCxU',
+    releaseDate: '2020-10-28T18:30:00.000Z',
+    id: '234',
+    description:
+      'In Watch Dogs Legion, you get to build a resistance to take back a near-future London that is facing its downfall.',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F234.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F234.jpg?alt=media',
+  },
+  {
+    releaseDate: '2020-07-13T18:30:00.000Z',
+    tags: ['Action', 'Action-Adventure', 'Open World', 'Adventure'],
+    title: 'DEATH STRANDING',
+    publisherId: '505-games',
+    homeScreen: 'Mpn-MC2B6Zc',
+    price: 4173,
+    id: '337',
+    discount: 0,
+    description:
+      'From legendary game creator Hideo Kojima comes an all-new, genre-defying experience. Sam Bridges must brave a world utterly transformed by the Death Stranding. Carrying the disconnected remnants of our future in his hands, he embarks on a journey to reconnect the shattered world.',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F337.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F337.jpg?alt=media',
+  },
+  {
+    description:
+      'After a secretive agency in New York is invaded by an otherworldly threat, you become the new Director struggling to regain Control.',
+    releaseDate: '2019-08-26T18:30:00.000Z',
+    id: '467',
+    title: 'Control',
+    price: 2161,
+    discount: 90,
+    tags: ['Action', 'Adventure'],
+    notes: ['HIGHEST_DISCOUNT'],
+    publisherId: '505-games',
+    homeScreen: 'PT5yMfC9LQM',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F467.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F467.jpg?alt=media',
+  },
+  {
+    price: 2999,
+    anticipatedBy: 119,
+    discount: 0,
+    releaseDate: '2021-10-11T18:30:00.000Z',
+    tags: ['Shooter', 'Horror', 'Action'],
+    publisherId: 'warner-bros.-games',
+    id: '183',
+    description:
+      'Back 4 Blood is a thrilling cooperative first-person shooter with an intense 4 player co-op narrative campaign, competitive multiplayer as human or Ridden, and frenetic gameplay that keeps you in the action.',
+    title: 'Back 4 Blood',
+    homeScreen: 'UkP8dOQrIyk',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F183.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F183.jpg?alt=media',
+  },
+  {
+    title: 'Cyberpunk 2077',
+    price: 2999,
+    id: '201',
+    publisherId: 'cd-projekt-red',
+    description:
+      'Enter the massive open world of Night City, a place that sets new standards in terms of visuals, complexity and depth.',
+    discount: 0,
+    releaseDate: '2020-12-09T18:30:00.000Z',
+    homeScreen: 'Z8_JEaoYcOs',
+    tags: ['Action', 'RPG', 'Open World', 'Adventure'],
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F201.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F201.jpg?alt=media',
+  },
+  {
+    publisherId: 'rockstar-games',
+    description:
+      'Winner of over 175 Game of the Year Awards and recipient of over 250 perfect scores, Red Dead Redemption 2 is an epic tale of honor and loyalty at the dawn of the modern age. Includes Red Dead Redemption 2: Story Mode and Red Dead Online.',
+    discount: 0,
+    homeScreen: 'eaW0tYpxyp0',
+    id: '447',
+    price: 3199,
+    title: 'Red Dead Redemption 2',
+    tags: ['Action', 'Narration', 'Open World'],
+    releaseDate: '2019-11-04T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F447.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F447.jpg?alt=media',
+  },
+  {
+    price: 595,
+    releaseDate: '2016-07-06T18:30:00.000Z',
+    homeScreen: 'yDm6PAgNohU',
+    publisherId: 'playdead',
+    tags: ['Puzzle', 'Adventure', 'Indie'],
+    description:
+      'Hunted and alone, a boy finds himself drawn into the center of a dark project.',
+    videoId: 'yDm6PAgNohU',
+    discount: 0,
+    id: '555',
+    title: 'Inside',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F555.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F555.jpg?alt=media',
+  },
+]
