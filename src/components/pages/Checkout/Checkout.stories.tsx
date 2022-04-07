@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 import Checkout from './Checkout'
 
 export default {
-  title: 'pages/Checkout',
+  title: 'templates/Checkout',
   component: Checkout,
 } as ComponentMeta<typeof Checkout>
 

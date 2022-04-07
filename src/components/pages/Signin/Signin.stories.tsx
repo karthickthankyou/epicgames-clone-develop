@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Signin from './Signin'
 
 export default {
-  title: 'pages/Signin',
+  title: 'templates/Signin',
   component: Signin,
 } as ComponentMeta<typeof Signin>
 

@@ -1866,3 +1866,205 @@ export const homeShowcaseGames = [
       'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F555.jpg?alt=media',
   },
 ]
+
+export const sampleWishlistIds = [
+  {
+    gameId: '056',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '031',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '029',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '027',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '025',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '003',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '183',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '021',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '059',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+  {
+    gameId: '048',
+    uid: 'cqGM5kzDzOQrDD7w3Mj2N2w8rxs2',
+    status: 'WISHLISTED',
+  },
+]
+
+export const sampleWishlistGames = [
+  {
+    id: '003',
+    tags: ['Casual', 'Adventure', 'Indie'],
+    releaseDate: '2021-06-11T18:30:00.000Z',
+    publisherId: 'whitethorn-digital',
+    discount: 0,
+    price: 239,
+    title: 'Beasts of Maravilla Island',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F003.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F003.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    releaseDate: '2021-05-26T18:30:00.000Z',
+    id: '021',
+    tags: ['Casual', 'Adventure', 'Indie'],
+    title: 'The Longest Road on Earth',
+    price: 239,
+    publisherId: 'raw-fury',
+    discount: 0,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F021.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F021.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    releaseDate: '2021-05-24T18:30:00.000Z',
+    tags: ['Simulation'],
+    publisherId: 'rebound-cg.',
+    price: 1059,
+    title: 'Tennis Manager 2021',
+    id: '025',
+    discount: 0,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F025.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F025.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    releaseDate: '2021-05-20T18:30:00.000Z',
+    id: '027',
+    discount: 0,
+    title: 'Wanna Survive',
+    tags: ['RPG', 'Strategy', 'Adventure'],
+    publisherId: 'nicalis-inc.',
+    price: 349,
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F027.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F027.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    publisherId: 'curve-digital',
+    releaseDate: '2021-05-19T18:30:00.000Z',
+    title: 'Just Die Already',
+    discount: 0,
+    tags: ['Open World', 'Comedy', 'Adventure'],
+    price: 459,
+    id: '029',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F029.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F029.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    price: 469,
+    discount: 0,
+    id: '031',
+    releaseDate: '2021-05-19T18:30:00.000Z',
+    title: 'Grindstone',
+    tags: ['Puzzle', 'Indie'],
+    publisherId: 'capybara-games',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F031.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F031.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    discount: 75,
+    price: 569,
+    releaseDate: '2020-09-14T18:30:00.000Z',
+    tags: ['Action', 'Action-Adventure', 'Open World', 'Adventure'],
+    id: '048',
+    title: 'Pine',
+    notes: ['HIGHEST_DISCOUNT'],
+    publisherId: 'kongregate',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F048.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F048.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    releaseDate: '2020-09-09T18:30:00.000Z',
+    title: "A Monster's Expedition",
+    price: 469,
+    tags: ['Puzzle', 'Adventure', 'Indie'],
+    discount: 10,
+    id: '056',
+    publisherId: 'draknek-and-friends',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F056.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F056.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    notes: ['HIGHEST_DISCOUNT'],
+    title: 'Cosmic Express',
+    publisherId: 'draknek-and-friends',
+    tags: ['Puzzle', 'Indie'],
+    price: 239,
+    discount: 66,
+    id: '059',
+    releaseDate: '2017-03-15T18:30:00.000Z',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F059.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F059.jpg?alt=media',
+    wishlisted: true,
+  },
+  {
+    discount: 0,
+    price: 2999,
+    anticipatedBy: 119,
+    id: '183',
+    homeScreen: 'UkP8dOQrIyk',
+    tags: ['Shooter', 'Horror', 'Action'],
+    releaseDate: '2021-10-11T18:30:00.000Z',
+    publisherId: 'warner-bros.-games',
+    description:
+      'Back 4 Blood is a thrilling cooperative first-person shooter with an intense 4 player co-op narrative campaign, competitive multiplayer as human or Ridden, and frenetic gameplay that keeps you in the action.',
+    title: 'Back 4 Blood',
+    imageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/images%2F183.jpg?alt=media',
+    subImageUrl:
+      'https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/sub-images%2F183.jpg?alt=media',
+    wishlisted: true,
+  },
+]

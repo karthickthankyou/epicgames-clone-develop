@@ -5,7 +5,7 @@ import { MemoryRouter, Route } from 'react-router-dom'
 import ForgotPassword from './ForgotPassword'
 
 export default {
-  title: 'pages/ForgotPassword',
+  title: 'templates/ForgotPassword',
   component: ForgotPassword,
 } as ComponentMeta<typeof ForgotPassword>
 

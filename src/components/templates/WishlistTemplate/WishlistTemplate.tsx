@@ -1,24 +1,20 @@
-import SortDropdown from '@atoms/SortDropdown'
-import GameCard06 from '@molecules/GameCard06'
-import { useAppSelector } from '@store/hooks'
-import {
-  selectWishlistGameIds,
-  selectWishlistGames,
-} from '@store/userGameSlice'
-import Pagination from '@molecules/Pagination'
-import EmptyList from '@molecules/EmptyList'
+import Heading from '@atoms/Heading/Heading'
+import SortDropdown from '@atoms/SortDropdown/SortDropdown'
+import { UserGame, Game } from '@epictypes/index'
+import EmptyList from '@molecules/EmptyList/EmptyList'
+import GameCard06 from '@molecules/GameCard06/GameCard06'
+import Pagination from '@molecules/Pagination/Pagination'
+import CustomHelmet from '@organisms/CustomHelmet/CustomHelmet'
 
-import CustomHelmet from '@organisms/CustomHelmet'
-import Heading from '@atoms/Heading'
+export interface IWishlistTemplateProps {
+  wishlist: Game[]
+  wishlistIds: UserGame[]
+}
 
-export interface IWishlistProps {}
-
-const Wishlist = () => {
-  const wishlist = useAppSelector(selectWishlistGames)
-  const wishlistIds = useAppSelector(selectWishlistGameIds)
-
-  console.log(wishlist, wishlistIds)
-
+const WishlistTemplate = ({
+  wishlist,
+  wishlistIds,
+}: IWishlistTemplateProps) => {
   if (wishlist.length === 0)
     return (
       <EmptyList
@@ -28,7 +24,6 @@ const Wishlist = () => {
         linkTo='/'
       />
     )
-
   return (
     <div className='min-h-screen-3/4'>
       <CustomHelmet
@@ -74,4 +69,4 @@ const Wishlist = () => {
   )
 }
 
-export default Wishlist
+export default WishlistTemplate

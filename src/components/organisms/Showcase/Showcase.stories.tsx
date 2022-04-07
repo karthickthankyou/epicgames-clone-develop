@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import Showcase from './Showcase'
 
 export default {
-  title: 'src/components/organisms/Showcase',
+  title: 'organisms/Showcase',
   component: Showcase,
 } as ComponentMeta<typeof Showcase>
 

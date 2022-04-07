@@ -12,7 +12,7 @@ import { Provider } from 'react-redux'
 import HomeTemplate from './HomeTemplate'
 
 export default {
-  title: 'src/components/templates/HomeTemplate',
+  title: 'templates/HomeTemplate',
   component: HomeTemplate,
 } as ComponentMeta<typeof HomeTemplate>
 

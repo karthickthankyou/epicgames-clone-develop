@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import CancelPayment from './CancelPayment'
 
 export default {
-  title: 'pages/CancelPayment',
+  title: 'templates/CancelPayment',
   component: CancelPayment,
 } as ComponentMeta<typeof CancelPayment>
 

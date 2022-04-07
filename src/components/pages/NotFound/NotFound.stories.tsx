@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import NotFound from './NotFound'
 
 export default {
-  title: 'pages/NotFound',
+  title: 'templates/NotFound',
   component: NotFound,
 } as ComponentMeta<typeof NotFound>
 
