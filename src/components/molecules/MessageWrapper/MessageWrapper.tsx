@@ -7,7 +7,7 @@ export interface IMessageWrapperProps {
 
 const MessageWrapper = ({ children, className }: IMessageWrapperProps) => (
   <div
-    className={`flex flex-col items-center justify-center min-h-screen-3/4 ${className}`}
+    className={`flex flex-col items-center justify-center min-h-screen-1/2 ${className}`}
   >
     {children}
   </div>

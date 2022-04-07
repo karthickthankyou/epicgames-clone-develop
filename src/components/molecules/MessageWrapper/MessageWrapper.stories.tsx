@@ -13,7 +13,7 @@ const Template: ComponentStory<typeof MessageWrapper> = (args) => (
 
 export const Primary = Template.bind({})
 Primary.args = {
-  children: 'Text placed center inside 3/4 screen height.',
+  children: 'Text placed center inside 1/2 screen height.',
 }
 
 export const Custom = Template.bind({})

@@ -29,6 +29,11 @@ const state = {
   userGames: userGamesinitialState,
   user: userInitialState,
 }
+const stateNoResults = {
+  browseGames: initialState,
+  userGames: userGamesinitialState,
+  user: userInitialState,
+}
 const stateWithLoading = {
   browseGames: { ...initialState, loading: true },
   userGames: userGamesinitialState,
@@ -77,6 +82,10 @@ const storeWithLoading = createStore(
   stateWithLoading
 )
 const storeWithError = createStore(combineReducers(reducers), stateWithError)
+const storeWithNoResults = createStore(
+  combineReducers(reducers),
+  stateNoResults
+)
 const storeWithBrowseDataWithWishlisted = createStore(
   combineReducers(reducers),
   stateWithWishlisted
@@ -99,6 +108,12 @@ Primary.decorators = [
 export const Loading = Template.bind({})
 Loading.decorators = [
   (story: () => any) => <Provider store={storeWithLoading}>{story()}</Provider>,
+]
+export const NoResults = Template.bind({})
+NoResults.decorators = [
+  (story: () => any) => (
+    <Provider store={storeWithNoResults}>{story()}</Provider>
+  ),
 ]
 export const Error = Template.bind({})
 Error.decorators = [

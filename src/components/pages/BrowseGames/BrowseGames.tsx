@@ -14,13 +14,71 @@ import BrowseFilters from '@molecules/BrowseFilters'
 import { useDocumentTitle } from '@hooks/index'
 import SearchIcon from '@heroicons/react/outline/SearchIcon'
 import FilterIcon from '@heroicons/react/solid/FilterIcon'
+import FilterIconOutline from '@heroicons/react/outline/FilterIcon'
+import ExclamationCircleIcon from '@heroicons/react/outline/ExclamationCircleIcon'
 
 import Heading from '@atoms/Heading'
 import { SkeletonCard01 } from '@molecules/GameCard01/GameCard01'
 import Sidebar from '@molecules/Sidebar/Sidebar'
 import MessageWrapper from '@molecules/MessageWrapper'
+import { Children } from '@epictypes/index'
 
 export interface IBrowseGamesProps {}
+
+const BrowseGridLayout = ({ children }: { children: Children }) => (
+  <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4'>
+    {children}
+  </div>
+)
+
+const BrowseGamesError = () => (
+  <MessageWrapper>
+    <div className='max-w-xs text-left'>
+      <div className='text-xl font-bold'>
+        <ExclamationCircleIcon className='inline-block w-6 h-6 mb-1 text-red-500' />{' '}
+        <span className='text-red-500'>Sorry.</span> Something went wrong <br />{' '}
+        on our side.
+      </div>
+      <div className='mt-2 text-sm'>Please be patient and retry again. </div>
+    </div>
+  </MessageWrapper>
+)
+const BrowseGamesNoResults = () => (
+  <MessageWrapper>
+    <div className='max-w-xs text-left'>
+      <div className='text-xl font-bold'>No matching games found.</div>
+      <div className='mt-2 text-sm'>
+        Try adjusting the filter{' '}
+        <FilterIconOutline className='inline w-4 h-4 ' /> options.
+      </div>
+    </div>
+  </MessageWrapper>
+)
+const BrowseGamesLoading = () => (
+  <BrowseGridLayout>
+    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => (
+      <SkeletonCard01 key={id} />
+    ))}
+  </BrowseGridLayout>
+)
+
+const OtherStates = ({
+  loading,
+  error,
+  noResults,
+}: {
+  loading: boolean
+  error: boolean
+  noResults: boolean
+}) => {
+  if (error) return <BrowseGamesError />
+
+  if (loading) return <BrowseGamesLoading />
+
+  if (noResults) return <BrowseGamesNoResults />
+
+  return null
+}
 
 const BrowseGames = () => {
   useDocumentTitle('Browse Games | Karthick Ragavendran')
@@ -48,20 +106,6 @@ const BrowseGames = () => {
   //   })
   // })
 
-  if (error) {
-    return (
-      <MessageWrapper>
-        <div className='max-w-xs text-left'>
-          <div className='text-xl font-bold'>
-            Sorry. Something went wrong <br /> on our side.
-          </div>
-          <div className='mt-2 text-sm'>
-            Please be patient and retry again.{' '}
-          </div>
-        </div>
-      </MessageWrapper>
-    )
-  }
   return (
     <div>
       <Sidebar overlayBlur open={open} setOpen={setOpen}>
@@ -97,19 +141,18 @@ const BrowseGames = () => {
               <SortDropdown />
             </div>
           </div>
-          <div className='grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4'>
-            {loading &&
-              [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((id) => (
-                <SkeletonCard01 key={id} />
-              ))}
-            {games?.length > 0 &&
-              games.map((game) => (
-                <GameCard01
-                  key={game.id}
-                  game={game}
-                  // review='An open world you can get lost in and continue finding new things to do. An open world you can get lost in and continue finding new things to do'
-                />
-              ))}
+          <div>
+            <OtherStates
+              loading={loading}
+              error={error}
+              noResults={games.length === 0}
+            />
+
+            <BrowseGridLayout>
+              {games?.length > 0
+                ? games.map((game) => <GameCard01 key={game.id} game={game} />)
+                : null}
+            </BrowseGridLayout>
           </div>
           <div className='flex justify-center my-16'>
             <Pagination current={currentPage} total={totalPages} />

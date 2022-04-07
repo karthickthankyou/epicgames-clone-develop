@@ -77,4 +77,4 @@ export type SpecialGames =
 export type LoadSuccessErrorType = 'load' | 'success' | 'failed'
 export type LoadSuccessErrorDispatch = (arg0: LoadSuccessErrorType) => void
 
-export type Children = ReactElement | ReactElement[] | string
+export type Children = ReactElement | ReactElement[] | string | null
