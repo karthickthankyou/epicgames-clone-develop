@@ -24,7 +24,7 @@ const LibraryTemplate = ({ purchased }: ILibraryTemplateProps) => {
   return (
     <div className='min-h-screen-3/4'>
       <CustomHelmet
-        title={`Wishlist (${purchased.length})`}
+        title={`Your library (${purchased.length})`}
         description={`The wishlisted games appear here. There are currently ${purchased.length} games in this page now.`}
       />
       <Heading variant='heading-1' headerType='h1' classes='mt-2'>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import {
   selectBrowseGames,
   selectBrowseGamesWithWish,
@@ -22,6 +22,7 @@ import { SkeletonCard01 } from '@molecules/GameCard01/GameCard01'
 import Sidebar from '@molecules/Sidebar/Sidebar'
 import MessageWrapper from '@molecules/MessageWrapper'
 import { Children } from '@epictypes/index'
+import { scrollToTop } from '@utils/index'
 
 export interface IBrowseGamesProps {}
 
@@ -98,11 +99,9 @@ const BrowseGames = () => {
   const [open, setOpen] = useState(false)
   const debouncedEventHandler = useMemo(() => debounce(searchGames, 1000), [])
 
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //   })
-  // })
+  useEffect(() => {
+    scrollToTop('auto')
+  }, [])
 
   return (
     <div>

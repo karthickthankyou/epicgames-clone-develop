@@ -17,7 +17,6 @@ const HomeShowcase = ({ games }: IHomeShowcaseProps) => {
   })
 
   const selectedGame = games[imageId]
-  console.log('selectedGame: ', selectedGame)
 
   const [muted, setMuted] = useState<boolean>(true)
 

@@ -1,35 +1,99 @@
 import { Children } from '@epictypes/index'
 import { getImageUrl } from '@utils/index'
+import { Link } from 'react-router-dom'
 
 export interface IAuthLayoutProps {
   children: Children
 }
 
+const imgsArr = [
+  '001',
+  '002',
+  '003',
+  '004',
+  '095',
+  '006',
+  '007',
+  '112',
+  '130',
+  '144',
+  '157',
+  '190',
+  '200',
+  '230',
+  '240',
+]
+const imgsArr2 = [
+  '301',
+  '302',
+  '303',
+  '304',
+  '396',
+  '306',
+  '307',
+  '312',
+  '450',
+  '330',
+  '344',
+  '357',
+  '390',
+  '400',
+  '430',
+  '440',
+
+  '460',
+  '440',
+]
+
+const Reel = ({
+  className = 'animate-move-left',
+  imgs = imgsArr,
+}: {
+  className?: string
+  imgs?: string[]
+}) => (
+  <div className={`flex gap-3 flex-nowrap h-full  ${className} `}>
+    {imgs.map((item) => (
+      <img
+        key={item}
+        src={getImageUrl(item).imageUrl}
+        alt=''
+        className='object-cover w-40 h-full transform -skew-x-6 rounded-xl'
+      />
+    ))}
+  </div>
+)
+
 const AuthLayout = ({ children }: IAuthLayoutProps) => (
-  <div className='relative flex items-center justify-center h-screen'>
-    <div className='absolute w-screen h-screen overflow-hidden -z-20'>
-      <div className='grid w-full h-full grid-cols-4 gap-2 transform scale-110 rotate-12'>
-        {['001', '002', '003', '004', '095', '006', '007', '112'].map(
-          (item) => (
-            <img
-              src={getImageUrl(item).imageUrl}
-              key={item}
-              alt=''
-              className='rounded '
-            />
-          )
-        )}
+  <div className='relative flex items-center justify-center h-screen overflow-y-hidden'>
+    <div
+      // style={{
+      //   boxShadow: 'inset 0 0 50px #000',
+      // }}
+      className='fixed flex flex-col w-screen h-screen gap-3 bg-black -z-20'
+    >
+      <div className='flex-grow '>
+        <Reel className='pt-3 animate-move-right' />
+      </div>
+
+      <div className='flex-grow '>
+        <Reel className='pb-3 animate-move-left' imgs={imgsArr2} />
       </div>
     </div>
-    <div className='absolute w-screen h-screen backdrop-brightness-75 backdrop-blur backdrop-filter -z-10' />
-    <div className='w-full max-w-md'>
-      <div className='mx-auto mt-16 bg-black shadow-xl backdrop-filter backdrop-grayscale rounded-xl bg-opacity-80 '>
-        {children}
+
+    <div className='fixed w-screen h-screen backdrop-brightness-50 backdrop-filter -z-10' />
+    <div className='w-full max-w-md border border-black shadow-2xl backdrop-filter backdrop-saturate-0 bg-gradient-to-tr from-transparent to-transparent rounded-xl via-primary-800'>
+      <div className='bg-black bg-opacity-50'>
+        <div className='mx-auto shadow-xl '>{children}</div>
+
+        <div className='px-8 mb-6 text-xs text-right'>
+          <Link to='/'>Back to home</Link>
+        </div>
+        <p className='w-full h-full max-w-xs p-2 mx-auto text-xs text-center text-white'>
+          &copy;2021 Karthick Ragavendran. All rights reserved! Except they are
+          not.
+        </p>
       </div>
-      <p className='w-full h-full max-w-xs p-2 mx-auto text-xs text-center text-black'>
-        &copy;2021 Karthick Ragavendran. All rights reserved! Except they are
-        not.
-      </p>
     </div>
   </div>
 )

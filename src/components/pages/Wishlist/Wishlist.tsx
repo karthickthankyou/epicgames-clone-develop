@@ -17,8 +17,6 @@ const Wishlist = () => {
   const wishlist = useAppSelector(selectWishlistGames)
   const wishlistIds = useAppSelector(selectWishlistGameIds)
 
-  console.log(wishlist, wishlistIds)
-
   if (wishlist.length === 0)
     return (
       <EmptyList

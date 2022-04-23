@@ -55,7 +55,7 @@ const Signup = () => {
             <label className='block text-sm ' htmlFor='email'>
               Email
               <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='email'
                 type='text'
                 placeholder='email'
@@ -70,7 +70,7 @@ const Signup = () => {
             <label className='relative block text-sm ' htmlFor='password'>
               Password
               <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='password'
                 type={showPassword ? 'text' : 'password'}
                 placeholder='******************'
@@ -96,7 +96,7 @@ const Signup = () => {
               Display name{' '}
               <span className='ml-1 text-gray-200'>(optional)</span>
               <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='displayName'
                 type='text'
                 placeholder='john@john.com'
@@ -113,14 +113,16 @@ const Signup = () => {
               Create {loading && <LoadingIcon className='ml-2 animate-spin' />}
             </button>
           </div>
+          {error && (
+            <div className='my-2 text-xs'>Login failed. Try again.</div>
+          )}
         </form>
-        {error && <div className='my-2 text-xs'>Login failed. Try again.</div>}
         <div className='p-8'>
           <div>or continue with</div>
           <div className='flex mt-4'>
             <button
               type='button'
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-900 rounded hover:bg-gray-900 hover:shadow-lg'
               onClick={googleSignin}
             >
               <GoogleIcon className='w-6 h-6' />
@@ -128,14 +130,14 @@ const Signup = () => {
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-900 rounded cursor-not-allowed hover:bg-gray-900 hover:shadow-lg'
             >
               <AppleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-900 rounded cursor-not-allowed hover:bg-gray-900 hover:shadow-lg'
             >
               <FacebookIcon className='w-6 h-6' />
             </button>

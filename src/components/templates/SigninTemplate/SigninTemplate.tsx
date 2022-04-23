@@ -11,11 +11,17 @@ import { ReactComponent as FacebookIcon } from '@assets/svgs/facebook.svg'
 import { ReactComponent as GoogleIcon } from '@assets/svgs/google.svg'
 import { ReactComponent as WarningIcon } from '@assets/svgs/warning.svg'
 import { ReactComponent as LoadingIcon } from '@assets/svgs/loader.svg'
-import { getImageUrl } from '@utils/index'
+
 import AuthLayout from '@organisms/AuthLayout/AuthLayout'
 
-const ErrorMessage = ({ message }: { message: string | undefined }) => (
-  <p className='flex items-center text-xs text-gray-300'>
+const ErrorMessage = ({
+  message,
+  className,
+}: {
+  message: string | undefined
+  className?: string
+}) => (
+  <p className={`flex items-center text-xs text-gray-300 ${className}`}>
     <WarningIcon className='w-3 h-3 mr-1' />
     {message}
   </p>
@@ -47,21 +53,23 @@ const SigninTemplate = () => {
             <label className='block mb-4 text-sm' htmlFor='username'>
               Username
               <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-1 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='username'
                 type='text'
                 placeholder='Username'
                 // eslint-disable-next-line react/jsx-props-no-spreading
                 {...register('email', { required: 'Email is required.' })}
               />
+              {errors.email && (
+                <ErrorMessage className='mt-1' message={errors.email.message} />
+              )}
             </label>
-            {errors.email && <ErrorMessage message={errors.email.message} />}
           </div>
-          <div className='mb-6'>
+          <div className='mt-2 mb-6'>
             <label className='relative block mb-4 text-sm' htmlFor='password'>
               Password
               <input
-                className='w-full p-3 mt-2 leading-tight bg-gray-700 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='password'
                 type={showPassword ? 'text' : 'password'}
                 placeholder='******************'
@@ -112,7 +120,7 @@ const SigninTemplate = () => {
           <div className='flex mt-4'>
             <button
               type='button'
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded hover:bg-gray-800 hover:shadow-lg'
               onClick={googleSignin}
             >
               <GoogleIcon className='w-6 h-6' />
@@ -120,14 +128,14 @@ const SigninTemplate = () => {
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
             >
               <AppleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-gray-700 border border-gray-600 rounded cursor-not-allowed hover:bg-gray-600 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
             >
               <FacebookIcon className='w-6 h-6' />
             </button>

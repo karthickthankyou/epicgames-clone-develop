@@ -38,7 +38,6 @@ const HomeTemplate = () => {
   const puzzleGames = useAppSelector(selectPuzzleGames)
   const narrationGames = useAppSelector(selectNarrationGames)
   const homeShowcaseGames = useAppSelector(selectHomeScreenGames)
-  console.log('homeShowcaseGames ', homeShowcaseGames)
 
   const { date, nextWeek } = getDates()
 
@@ -108,7 +107,10 @@ const HomeTemplate = () => {
             title: 'Diabotical',
           },
         ]}
-        mysteryGame={[{ date: nextWeek }, { date: nextWeek }]}
+        mysteryGame={[
+          { id: '01', date: nextWeek },
+          { id: '02', date: nextWeek },
+        ]}
       />
       {actionGames.length > 0 && (
         <GameCard01Section

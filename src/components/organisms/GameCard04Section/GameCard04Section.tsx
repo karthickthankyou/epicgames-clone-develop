@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export interface IGameCard04SectionProps {
   freeGames: { id: string; date: string; imageUrl: string; title: string }[]
-  mysteryGame: { date: string }[]
+  mysteryGame: { id: string; date: string }[]
 }
 
 const GameCard04Section = ({
@@ -34,6 +34,7 @@ const GameCard04Section = ({
       ))}
       {mysteryGame.map((item) => (
         <GameCardFree
+          key={item.id}
           date={item.date}
           imageUrl='https://firebasestorage.googleapis.com/v0/b/epic-clone.appspot.com/o/custom%2Fgift.jpeg?alt=media&token=32605241-d3f6-4306-b208-913cfacf6d6d'
           mystery

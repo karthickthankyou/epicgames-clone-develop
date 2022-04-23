@@ -16,7 +16,6 @@ const Showcase = ({ games }: IShowcaseProps) => {
 
   const selectedGame = games[imageId]
   const [muted, setMuted] = useState<boolean>(true)
-  console.log('selectedGame: ', selectedGame)
 
   return (
     <div className='relative h-screen-4/5 '>
@@ -42,8 +41,8 @@ const Showcase = ({ games }: IShowcaseProps) => {
                 </Link>
               </div>
             </div>
-            <div className='flex justify-end w-full mt-8 mb-4'>
-              <div className='flex gap-3 overflow-x-scroll overscroll-x-none '>
+            <div className='flex justify-end w-full mt-8'>
+              <div className='flex gap-3 pb-4 overflow-x-scroll thin-scrollbar overscroll-x-none '>
                 {games?.map((game, i) => (
                   <button
                     key={game.id}

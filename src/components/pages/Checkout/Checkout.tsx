@@ -1,49 +1,71 @@
-import { Redirect } from 'react-router-dom'
-import { loadStripe } from '@stripe/stripe-js'
-import { getFunctions, httpsCallable } from 'firebase/functions'
+import { Link, Redirect, useHistory } from 'react-router-dom'
 import { useAppSelector } from '@store/hooks'
 import { selectUser } from '@store/userSlice'
 import { selectCartGames } from '@store/userGameSlice'
 import CartCard from '@molecules/CartCard'
-import { discountCalc, withCurrency } from '@utils/index'
+import { discountCalc, scrollToTop, withCurrency } from '@utils/index'
 import { Game } from '@epictypes/index'
 import EmptyList from '@molecules/EmptyList'
 import { useDocumentTitle } from '@hooks/index'
 import Heading from '@atoms/Heading'
+import { updateUserGames } from '@epicfirebase/crud'
+import { useEffect, useState } from 'react'
+
+import InformationCircleIcon from '@heroicons/react/outline/InformationCircleIcon'
 
 const Cart = () => {
-  const createStripeCheckout = httpsCallable(
-    getFunctions(),
-    'createStripeCheckout'
-  )
-  //   const stripePromise = loadStripe('pk_test_6pRNASCoBOKtIshFeQd4XMUh')
+  useEffect(() => {
+    scrollToTop('auto')
+  }, [])
+
   const gamesInCart = useAppSelector(selectCartGames)
-  console.log('gamesInCart ', gamesInCart)
   useDocumentTitle(`(${gamesInCart.length}) Cart`)
+  const user = useAppSelector(selectUser)
+
   const createCheckoutList = (cartList: Game[]) =>
     cartList.map((cartItem) => ({
       name: cartItem.title,
-      amount: cartItem.price * 100,
-      currency: 'inr',
-      quantity: 1,
-      images: [cartItem.imageUrl],
+      description: cartItem.description,
+      price: cartItem.price * 100,
+      image: cartItem.imageUrl,
     }))
-  const cartGameIds = gamesInCart.map((game) => game.id)
+
+  const history = useHistory()
+
+  const [loading, setLoading] = useState(false)
+
+  const setPurchasedItems = () =>
+    gamesInCart.map((item) =>
+      updateUserGames({
+        uid: user.uid || '',
+        gameId: item.id,
+        status: 'PURCHASED',
+        history,
+      })
+    )
 
   const handleSubmit = async (event: any) => {
     event.preventDefault()
 
-    const stripe = await loadStripe(
-      'pk_test_FNnXTY8GqUBuadMdPJLojWn4003Rh83Qr0'
-    )
-    createStripeCheckout({
-      cartItems: createCheckoutList(gamesInCart),
-      gameIds: cartGameIds.join(','),
-    }).then((res) => {
-      // @ts-ignore
-      const sessionId = res.data.id
-      stripe?.redirectToCheckout({ sessionId })
-    })
+    setLoading(true)
+    const timer = setTimeout(() => {
+      setLoading(false)
+      setPurchasedItems()
+      history.push('/library')
+    }, 3000)
+
+    // const stripe = await loadStripe(
+    //   'pk_test_51KqWgpSEDaTYTAG4hJgqbE66v0NliUTjrqQddcKNuRrhnn9T7xZ9w1Scr0cgpWK4arEigUjzEwdmP2CWeIYo8C0700QIhVoX41'
+    // )
+
+    // axios
+    //   .post('https://backend.epic.iamkarthick.com/api/create-stripe-session', {
+    //     items: createCheckoutList(gamesInCart),
+    //   })
+    //   .then((res) => {
+    //     const sessionId = res.data.id
+    //     stripe?.redirectToCheckout({ sessionId })
+    //   })
   }
 
   const findTotalAmount = gamesInCart.reduce(
@@ -53,7 +75,6 @@ const Cart = () => {
 
   const findTax = findTotalAmount / 8
 
-  const user = useAppSelector(selectUser)
   if (!user) return <Redirect to='/signin' />
 
   if (gamesInCart.length === 0)
@@ -105,8 +126,29 @@ const Cart = () => {
               className='w-full px-4 py-3 mt-4 tracking-widest bg-primary btn hover:bg-primary-600'
               type='submit'
             >
-              Checkout
+              {loading ? 'Purchasing...' : 'Checkout'}
             </button>
+            <div className='mt-2 text-xs text-gray-400'>
+              <div>Stripe payment is temporarily disabled in this project.</div>
+              <div>
+                Please refer to{' '}
+                <Link
+                  className='text-primary'
+                  to='https://ikea.iamkarthick.com'
+                >
+                  IKEA Clone
+                </Link>{' '}
+                or{' '}
+                <Link
+                  className='text-primary'
+                  to='https://zillow.iamkarthick.com'
+                >
+                  Zillow Clone
+                </Link>{' '}
+                to see stripe payment in action.
+                <div>Thankyou</div>
+              </div>
+            </div>
           </form>
         </div>
       </div>

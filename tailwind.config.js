@@ -61,6 +61,36 @@ module.exports = {
       },
       animation: {
         spin60: 'spin 60s linear infinite',
+        'move-right': 'move-right 240s linear infinite',
+        'move-left': 'move-left 240s linear infinite',
+      },
+      keyframes: {
+        'slide-right': {
+          '40%,60%': {
+            opacity: 1,
+          },
+          '46%': { transform: 'translateX(25%)', opacity: 0 },
+          '54%': {
+            transform: 'translateX(-25%)',
+            opacity: 0,
+          },
+        },
+        'move-right': {
+          '0%': {
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            transform: 'translateX(0%)',
+          },
+        },
+        'move-left': {
+          '0%': {
+            transform: 'translateX(0%)',
+          },
+          '100%': {
+            transform: 'translateX(-100%)',
+          },
+        },
       },
       colors: {
         primary: primaryPallete,

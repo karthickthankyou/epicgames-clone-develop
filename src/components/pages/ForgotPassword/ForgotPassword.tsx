@@ -22,7 +22,6 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const ForgotPassword = () => {
   const location = useLocation<LocationState>()
-  console.log('Location: ', location)
   const email = location.state?.email || ''
   const {
     register,

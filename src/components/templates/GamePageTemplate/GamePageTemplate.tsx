@@ -25,7 +25,7 @@ const GamePageTemplate = ({ game, similarGames }: IGamePageTemplateProps) => {
         <>
           <div className='my-3 text-4xl'>{game.title}</div>
           <div className='grid grid-cols-1 gap-10 md:grid-cols-3'>
-            <div className='order-2 col-span-2 md:order-1'>
+            <div className='order-2 md:col-span-2 md:order-1'>
               <div className='mt-6 bg-black aspect-w-16 aspect-h-9'>
                 <img
                   className='object-cover w-full h-full'

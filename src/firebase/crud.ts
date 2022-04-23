@@ -5,7 +5,7 @@ import { RouteComponentProps } from 'react-router-dom'
 import { UserGameStatus } from '../types'
 import { collections, db } from './index'
 
-export const updateUserGames = ({
+export const updateUserGames = async ({
   uid,
   gameId,
   status,
@@ -18,7 +18,7 @@ export const updateUserGames = ({
 }) => {
   if (!uid) return history.push('/signin')
 
-  const gameRef = doc(db, collections.USER_GAMES, `${uid}-${gameId}`)
+  const gameRef = await doc(db, collections.USER_GAMES, `${uid}-${gameId}`)
 
   setDoc(gameRef, {
     uid,

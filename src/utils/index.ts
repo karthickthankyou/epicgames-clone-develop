@@ -146,8 +146,8 @@ export const processGameIdsForSimilarItems = (
 
 export const findPercentage = (num: number) => Math.round(num * 100)
 
-export const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+export const scrollToTop = (behavior: ScrollBehavior = 'smooth') => {
+  window.scrollTo({ top: 0, behavior })
 }
 
 export const soloPaths = ['/signin', '/signup', '/forgotpassword']

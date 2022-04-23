@@ -30,7 +30,7 @@ const Footer = () => {
           type='button'
           className='ml-auto'
           aria-label='go to top'
-          onClick={scrollToTop}
+          onClick={() => scrollToTop()}
         >
           <ChevronUp className='w-8 h-8 p-1 border rounded-sm' />
         </button>

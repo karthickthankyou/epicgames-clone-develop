@@ -140,8 +140,6 @@ const CategoryFilter = ({
   const [open, setOpen] = useState(false)
   const dispatch = useAppDispatch()
 
-  // console.log('Facet: ', facet, name, options)
-
   return (
     <div>
       <AccordionHeader name={name} open={open} setOpen={setOpen} />
