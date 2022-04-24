@@ -46,7 +46,7 @@ const SigninTemplate = () => {
             dispatch('load')
             callSignIn({ email, password }, dispatch)
           })}
-          className='p-8'
+          className='px-8 pt-8 pb-4'
         >
           <div className='mb-4 text-3xl font-light'>Sign in</div>
           <div>
@@ -115,9 +115,9 @@ const SigninTemplate = () => {
             <div className='my-2 text-xs'>Login failed. Try again.</div>
           )}
         </form>
-        <div className='px-8 pb-8'>
-          <div>or continue with</div>
-          <div className='flex mt-4'>
+        <div className='px-8 pb-4'>
+          <div className='text-sm'>or continue with</div>
+          <div className='flex mt-1'>
             <button
               type='button'
               className='flex items-center justify-center w-10 h-10 mr-2 bg-black rounded hover:bg-gray-800 hover:shadow-lg'

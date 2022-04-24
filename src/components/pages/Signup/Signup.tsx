@@ -47,7 +47,7 @@ const Signup = () => {
             dispatch('load')
             callSignup({ email, password, displayName }, dispatch)
           })}
-          className='p-8'
+          className='px-8 pt-8 pb-6'
         >
           <div className='mb-4 text-3xl font-light'>Create Account</div>
 
@@ -117,9 +117,9 @@ const Signup = () => {
             <div className='my-2 text-xs'>Login failed. Try again.</div>
           )}
         </form>
-        <div className='px-8 pb-8'>
-          <div>or continue with</div>
-          <div className='flex mt-4'>
+        <div className='px-8 pb-4'>
+          <div className='text-sm'>or continue with</div>
+          <div className='flex mt-1'>
             <button
               type='button'
               className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-900 rounded hover:bg-gray-900 hover:shadow-lg'
