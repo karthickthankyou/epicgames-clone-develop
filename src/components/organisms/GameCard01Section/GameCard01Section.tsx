@@ -20,7 +20,7 @@ const GameCard01Section = ({
 }: IGameCard01SectionProps) => {
   const gamesSix = games.slice(0, 6)
   return (
-    <div className={`my-12 ${classes}`}>
+    <div className={`mt-6 mb-12 ${classes}`}>
       <div className='flex items-baseline justify-between'>
         <div className='flex items-center text-xl font-semibold capitalize'>
           {heading}

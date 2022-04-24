@@ -53,7 +53,7 @@ const SigninTemplate = () => {
             <label className='block mb-4 text-sm' htmlFor='username'>
               Username
               <input
-                className='w-full p-3 mt-1 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-gray-800 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='username'
                 type='text'
                 placeholder='Username'
@@ -69,7 +69,7 @@ const SigninTemplate = () => {
             <label className='relative block mb-4 text-sm' htmlFor='password'>
               Password
               <input
-                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-gray-800 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='password'
                 type={showPassword ? 'text' : 'password'}
                 placeholder='******************'
@@ -116,11 +116,11 @@ const SigninTemplate = () => {
           )}
         </form>
         <div className='px-8 pb-8'>
-          <div>or signin with</div>
+          <div>or continue with</div>
           <div className='flex mt-4'>
             <button
               type='button'
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded hover:bg-gray-800 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black rounded hover:bg-gray-800 hover:shadow-lg'
               onClick={googleSignin}
             >
               <GoogleIcon className='w-6 h-6' />
@@ -128,14 +128,14 @@ const SigninTemplate = () => {
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
             >
               <AppleIcon className='w-6 h-6' />
             </button>
             <button
               type='button'
               disabled
-              className='flex items-center justify-center w-10 h-10 mr-2 bg-black border border-gray-700 rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
+              className='flex items-center justify-center w-10 h-10 mr-2 bg-black rounded cursor-not-allowed hover:bg-gray-800 hover:shadow-lg'
             >
               <FacebookIcon className='w-6 h-6' />
             </button>
@@ -149,7 +149,7 @@ const SigninTemplate = () => {
             }}
             className='block mt-8 text-sm text-right align-baseline'
           >
-            New user? Create Account
+            New user? <span className='text-primary-300'>Create Account</span>
           </Link>
         </div>
       </>

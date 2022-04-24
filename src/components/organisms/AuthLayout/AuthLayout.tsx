@@ -82,14 +82,14 @@ const AuthLayout = ({ children }: IAuthLayoutProps) => (
     </div>
 
     <div className='fixed w-screen h-screen backdrop-brightness-50 backdrop-filter -z-10' />
-    <div className='w-full max-w-md border border-black shadow-2xl backdrop-filter backdrop-saturate-0 bg-gradient-to-tr from-transparent to-transparent rounded-xl via-primary-800'>
+    <div className='w-full max-w-md bg-black border border-black shadow-2xl backdrop-filter backdrop-saturate-0 rounded-xl bg-opacity-80'>
       <div className='bg-black bg-opacity-50'>
         <div className='mx-auto shadow-xl '>{children}</div>
 
         <div className='px-8 mb-6 text-xs text-right'>
           <Link to='/'>Back to home</Link>
         </div>
-        <p className='w-full h-full max-w-xs p-2 mx-auto text-xs text-center text-white'>
+        <p className='w-full h-full max-w-xs p-2 mx-auto text-xs text-center text-gray-500'>
           &copy;2021 Karthick Ragavendran. All rights reserved! Except they are
           not.
         </p>

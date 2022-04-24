@@ -61,8 +61,9 @@ const GameCard01 = memo(({ game, className }: ICard01Props) => {
       onMouseLeave={() => setHover(false)}
     >
       {similarity && (
-        <div className='absolute z-10 px-1 bg-black rounded-br-md bg-opacity-70'>
-          {findPercentage(similarity)}%
+        <div className='absolute text-sm z-10 px-1 py-0.5 bg-primary rounded-tl-md bg-opacity-90'>
+          Similarity{' '}
+          <span className='font-bold'>{findPercentage(similarity)}%</span>
         </div>
       )}
       <motion.div

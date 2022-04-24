@@ -5,6 +5,7 @@ import { ReactComponent as TwitterIcon } from '@assets/svgs/twitter.svg'
 import { ReactComponent as DiscordIcon } from '@assets/svgs/discord.svg'
 import { ReactComponent as InstagramIcon } from '@assets/svgs/instagram.svg'
 import Specifications from '@molecules/Specifications/Specifications'
+import QuestionMarkCircleIcon from '@heroicons/react/solid/QuestionMarkCircleIcon'
 import ReviewSection from '@organisms/ReviewSection/ReviewSection'
 import { reviews } from '@utils/data'
 import { getRandomNumber } from '@utils/index'
@@ -96,6 +97,16 @@ const GamePageTemplate = ({ game, similarGames }: IGamePageTemplateProps) => {
             </div>
           </div>
           <div className='my-6'>
+            <div className='flex items-center gap-2'>
+              <QuestionMarkCircleIcon className='w-5 h-5' />
+              <a
+                target='_blank'
+                href='https://karthickragavendran.medium.com/a-quick-content-based-recommender-system-from-a-part-time-ml-guy-3ac37d4c2d5d'
+                rel='noreferrer'
+              >
+                How do we calculate similarity?
+              </a>
+            </div>
             <GameCard01Section games={similarGames} heading='Similar Games' />
           </div>
         </>

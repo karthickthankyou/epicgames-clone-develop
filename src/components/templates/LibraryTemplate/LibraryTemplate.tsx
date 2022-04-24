@@ -39,7 +39,7 @@ const LibraryTemplate = ({ purchased }: ILibraryTemplateProps) => {
       <>
         <div
           aria-label='wishlist-page-list'
-          className='grid grid-cols-1 gap-3 lg:gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+          className='grid grid-cols-2 gap-3 lg:gap-6 md:grid-cols-3 lg:grid-cols-4'
         >
           {purchased.map((game) => (
             <GameCard07 key={game.id} game={game} />

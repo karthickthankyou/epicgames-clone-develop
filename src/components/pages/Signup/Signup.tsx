@@ -55,7 +55,7 @@ const Signup = () => {
             <label className='block text-sm ' htmlFor='email'>
               Email
               <input
-                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-gray-800 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='email'
                 type='text'
                 placeholder='email'
@@ -70,7 +70,7 @@ const Signup = () => {
             <label className='relative block text-sm ' htmlFor='password'>
               Password
               <input
-                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-gray-800 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='password'
                 type={showPassword ? 'text' : 'password'}
                 placeholder='******************'
@@ -96,7 +96,7 @@ const Signup = () => {
               Display name{' '}
               <span className='ml-1 text-gray-200'>(optional)</span>
               <input
-                className='w-full p-3 mt-2 leading-tight bg-black rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+                className='w-full p-3 mt-2 leading-tight bg-gray-800 rounded shadow appearance-none focus:outline-none focus:shadow-outline'
                 id='displayName'
                 type='text'
                 placeholder='john@john.com'
@@ -117,7 +117,7 @@ const Signup = () => {
             <div className='my-2 text-xs'>Login failed. Try again.</div>
           )}
         </form>
-        <div className='p-8'>
+        <div className='px-8 pb-8'>
           <div>or continue with</div>
           <div className='flex mt-4'>
             <button
@@ -146,7 +146,8 @@ const Signup = () => {
             to='/signin'
             className='block mt-8 text-sm text-right align-baseline '
           >
-            Already have an account? Log in
+            Already have an account?{' '}
+            <span className='text-primary-300'>Log in</span>
           </Link>
         </div>
       </>

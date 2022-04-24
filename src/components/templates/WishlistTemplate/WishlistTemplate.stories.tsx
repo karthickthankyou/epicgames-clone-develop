@@ -1,4 +1,3 @@
-import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { sampleWishlistGames, sampleWishlistIds } from '@utils/data'
 import WishlistTemplate from './WishlistTemplate'
