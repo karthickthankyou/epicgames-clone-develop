@@ -26,7 +26,6 @@ const ErrorMessage = ({ message }: { message: string | undefined }) => (
 
 const Signup = () => {
   const user = useAppSelector(selectUser)
-  if (user.uid) return <Redirect to='/' />
   const [{ loading, error }, dispatch] = useLoadSuccessError()
 
   type FormValues = { email: string; password: string; displayName: string }
@@ -38,6 +37,7 @@ const Signup = () => {
   } = useForm<FormValues>()
 
   const [showPassword, setShowPassword] = useState(false)
+  if (user.uid) return <Redirect to='/' />
 
   return (
     <AuthLayout>

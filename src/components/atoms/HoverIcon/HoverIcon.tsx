@@ -26,12 +26,8 @@ const HoverIcon = ({
       onClick={onClick}
       aria-label={slug(hintText)}
     >
-      <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
-        <IconComponent className='w-4 h-4' />
-      </div>
-
       <div
-        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap ${
+        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap  ${
           showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
         }
         ${position === 'top' && '-translate-x-2/4 left-2/4 bottom-full mb-2'}
@@ -41,6 +37,9 @@ const HoverIcon = ({
         `}
       >
         {hintText}
+      </div>
+      <div className='p-1 bg-black rounded-full bg-opacity-60 hover:bg-opacity-100'>
+        <IconComponent className='w-4 h-4' />
       </div>
     </button>
   )
