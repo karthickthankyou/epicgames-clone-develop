@@ -61,8 +61,8 @@ module.exports = {
       },
       animation: {
         spin60: 'spin 60s linear infinite',
-        'move-right': 'move-right 12s linear infinite',
-        'move-left': 'move-left 12s linear infinite',
+        'move-right': 'move-right 180s linear infinite',
+        'move-left': 'move-left 180s linear infinite',
       },
       keyframes: {
         'slide-right': {
