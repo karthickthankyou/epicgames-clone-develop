@@ -132,19 +132,23 @@ const Cart = () => {
               <div>Stripe payment is temporarily disabled in this project.</div>
               <div>
                 Please refer to{' '}
-                <Link
+                <a
+                  target='_blank'
                   className='text-primary'
-                  to='https://ikea.iamkarthick.com'
+                  href='https://ikea.iamkarthick.com'
+                  rel='noreferrer'
                 >
                   IKEA Clone
-                </Link>{' '}
-                or{' '}
-                <Link
+                </a>
+                or
+                <a
+                  target='_blank'
                   className='text-primary'
-                  to='https://zillow.iamkarthick.com'
+                  href='https://zillow.iamkarthick.com'
+                  rel='noreferrer'
                 >
                   Zillow Clone
-                </Link>{' '}
+                </a>{' '}
                 to see stripe payment in action.
                 <div>Thankyou</div>
               </div>
