@@ -61,7 +61,7 @@ const Navbar = () => {
               )}
             </button>
             <Link to='/' className='font-bold uppercase '>
-              <div className='px-2 py-1 text-xl font-black tracking-tighter bg-black'>
+              <div className='px-2 -ml-2 text-xl font-black tracking-tighter bg-black'>
                 EPIC
               </div>
             </Link>
