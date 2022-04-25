@@ -27,7 +27,7 @@ const HoverIcon = ({
       aria-label={slug(hintText)}
     >
       <div
-        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black rounded-sm whitespace-nowrap  ${
+        className={`absolute px-2 py-1 text-xs transition-all pointer-events-none uppercase transform bg-black bg-opacity-80 rounded-sm whitespace-nowrap  ${
           showHint ? 'translate-y-0 opacity-100 ' : 'translate-y-2 opacity-0 '
         }
         ${position === 'top' && '-translate-x-2/4 left-2/4 bottom-full mb-2'}

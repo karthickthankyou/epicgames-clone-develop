@@ -85,6 +85,7 @@ const GameCard01 = memo(({ game, className }: ICard01Props) => {
               key={wishlistHintText}
               IconComponent={WishlistIcon}
               hintText={wishlistHintText}
+              position='left'
               classes='mr-1'
               onClick={() =>
                 updateUserGames({
@@ -99,6 +100,7 @@ const GameCard01 = memo(({ game, className }: ICard01Props) => {
               key={cartHintText}
               IconComponent={CartIcon}
               hintText={cartHintText}
+              position='left'
               onClick={() =>
                 updateUserGames({
                   uid: uid || '',
